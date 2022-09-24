@@ -4,7 +4,7 @@
 ![Unbenannt-4](https://user-images.githubusercontent.com/71924682/192115815-3302566c-fb5e-4df6-959b-b64917d766e7.png)
 ![Unbenannt-1 (13)](https://user-images.githubusercontent.com/71924682/192115817-427317be-f06f-4953-aee7-7d495ced082d.png)
 ![Unbenannt-1 (12)](https://user-images.githubusercontent.com/71924682/192115818-d36872c0-a5dc-4790-a866-00a220b88ab3.png)
-[Assembly (1).pdf](https://github.com/Lemme-lab/Project-Telic/files/9639469/Assembly.1.pdf)
+![Assembly 1_page-0001](https://user-images.githubusercontent.com/71924682/192115946-c8f0dc10-27bf-4ba4-87f5-6ca52155d9e2.jpg)
 ![Screenshot 2022-09-24 214621](https://user-images.githubusercontent.com/71924682/192115864-35614d91-ac93-403b-9313-fff74a58dbeb.png)
 ![Unbenannt_2022-Sep-05_01-53-57AM-000_CustomizedView19715481790_png](https://user-images.githubusercontent.com/71924682/192115871-a2afb84b-d723-4d43-8e34-5bcdae19fd88.png)
 ![Unbenannt_2022-Sep-04_08-47-52PM-000_CustomizedView34217214787_png](https://user-images.githubusercontent.com/71924682/192115875-d3a2ca6e-3527-443b-8df1-08938fd5aa6e.png)
