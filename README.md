@@ -6,7 +6,7 @@
 ![Unbenannt-1 (12)](https://user-images.githubusercontent.com/71924682/192115818-d36872c0-a5dc-4790-a866-00a220b88ab3.png)
 ![Assembly 1_page-0001](https://user-images.githubusercontent.com/71924682/192115946-c8f0dc10-27bf-4ba4-87f5-6ca52155d9e2.jpg)
 ![Prototype1-Hardware](https://user-images.githubusercontent.com/71924682/193449662-5e4b714a-1110-4682-963b-2a2133aa6d13.png)
-![Uploading Prototype1-Hardware-2.1.png…]()
+![Prototype1-Hardware-2 1](https://user-images.githubusercontent.com/71924682/193449805-29613fc1-6248-439d-bb10-6865d43f69c9.png)
 ![Unbenannt_2022-Sep-05_01-53-57AM-000_CustomizedView19715481790_png](https://user-images.githubusercontent.com/71924682/192115871-a2afb84b-d723-4d43-8e34-5bcdae19fd88.png)
 ![Unbenannt_2022-Sep-04_08-47-52PM-000_CustomizedView34217214787_png](https://user-images.githubusercontent.com/71924682/192115875-d3a2ca6e-3527-443b-8df1-08938fd5aa6e.png)
 ![Unbenannt_2022-Sep-05_01-57-56AM-000_CustomizedView3703188751_png](https://user-images.githubusercontent.com/71924682/192115878-f9ff39c5-295f-4792-b39e-4f175e57479e.png)
