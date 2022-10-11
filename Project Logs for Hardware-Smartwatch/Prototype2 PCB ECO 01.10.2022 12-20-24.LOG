@@ -1,0 +1,379 @@
+Add Component: Footprint Not Found PCB-u3hgvlwbh1fojz4efx6r-1
+Add Component: Footprint Not Found SOT-23-OT6_M
+Add Component: Footprint Not Found PCB-u3zw0tki9uf6kmg31iqn-1
+Add Component: Footprint Not Found PCBComponent_1
+Add Component: Footprint Not Found LGA-12
+Add Component: Footprint Not Found LGA
+Add Component: Footprint Not Found PCB-rnv6v97ozil7y8g0pmlh-1
+Add Component: Footprint Not Found PCB-rnv6v97ozil7y8g0pmlh-1
+Add Component: Footprint Not Found PCB-rnv6v97ozil7y8g0pmlh-1
+Add Component: Footprint Not Found PCB-rnv6v97ozil7y8g0pmlh-1
+Add Component: Footprint Not Found PCB-a41llqp6xpt8gy62f2hk-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found PCBComponent_1
+Add Component: Footprint Not Found CAPC1005X55X25ML05T10
+Add Component: Footprint Not Found PCB-b20vf2gkp97cr3yguehn-1
+Add Component: Footprint Not Found PCB-lttyq4g1lvuzst7phzli-1
+Add Component: Footprint Not Found CAPC1005X55X30ML05T10
+Add Component: Footprint Not Found CAPC1005X60X30LL05T10
+Add Component: Footprint Not Found PCB-lttyq4g1lvuzst7phzli-1
+Add Component: Footprint Not Found PCB-lttyq4g1lvuzst7phzli-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found PCB-2o8y9rvhkwcvfcailoy7-1
+Add Component: Footprint Not Found PCB-2o8y9rvhkwcvfcailoy7-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found PCB-igt9wm9mf6kdh4ygcups-1
+Add Component: Footprint Not Found Samsung CL05A224KO5NNNC-Footprint-1
+Add Component: Footprint Not Found PCB-lttyq4g1lvuzst7phzli-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found PCB-9qymwl9t0y1bq7iwb9rx-1
+Add Component: Footprint Not Found PCB-lttyq4g1lvuzst7phzli-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found CAPC1005X55X25NL05T10
+Add Component: Footprint Not Found PCB-b20vf2gkp97cr3yguehn-1
+Add Component: Footprint Not Found CAPC1005X56X25NL10T15
+Add Component: Footprint Not Found PCB-b20vf2gkp97cr3yguehn-1
+Add Component: Footprint Not Found PCB-wc38oeditvpn9r3qsjf8-1
+Add Component: Footprint Not Found PCB-wc38oeditvpn9r3qsjf8-1
+Add Component: Footprint Not Found CAPC1005X56X25NL10T15
+Add Component: Footprint Not Found PCBComponent_1
+Add Component: Footprint Not Found CAPC1005X55X25LL05T10
+Add Component: Footprint Not Found CAPC1005X55X25LL05T10
+Add Component: Footprint Not Found CAPC1005X55X25NL05T10
+Add Component: Footprint Not Found CAPC1005X56X25NL10T15
+Add Component: Footprint Not Found CAPC1005X55X25ML05T10
+Add Component: Footprint Not Found CAPC1005X55X25NL05T10
+Add Component: Footprint Not Found CAPC1005X56X25NL10T15
+Add Component: Footprint Not Found CAPC1005X55X25LL05T10
+Add Component: Footprint Not Found CAPC1005X55X25LL05T10
+Add Component: Footprint Not Found PCB-b20vf2gkp97cr3yguehn-1
+Add Component: Footprint Not Found PCB-8tuutlkq7p1aj3t2dfdp-1
+Add Component: Footprint Not Found PCB-4i05r4rk4159wp88m495-1
+Add Component: Footprint Not Found CAPC1005X55X25NL05T10
+Add Component: Footprint Not Found CAPC1005X55X25NL05T10
+Add Component: Footprint Not Found CAPC1005X56X25NL10T15
+Add Component: Footprint Not Found CAPC0603X33X15NL03T05
+Add Component: Footprint Not Found CAPC1005X55X25LL05T10
+Add Component: Footprint Not Found PCB-2968744-2
+Add Component: Footprint Not Found PixArt PAT9125EL-TKIT-Footprint-1
+Add Component: Footprint Not Found ONSC-SOD-123-2-425-04_V
+Add Component: Footprint Not Found ONSC-SOD-123-2-425-04_V
+Add Component: Footprint Not Found ONSC-SOD-123-2-425-04_V
+Add Component: Footprint Not Found LED-0402
+Add Component: Footprint Not Found LED-0402
+Add Component: Footprint Not Found New footprint 1
+Add Component: Footprint Not Found PCB-i0ipgkgimgjttn9ruy0i-1
+Add Component: Footprint Not Found MXIC-USON-8_V
+Added Component: Designator=IC?(BGA529C80P23X23_1900X1900X152)
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://www.nxp.com/docs/en/data-sheet/IMX6SXIEC.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "1.52mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "NXP"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "MCIMX6X4CVM08AC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser2 Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser2 Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add Component: Footprint Not Found PCB-golsi5rrai9s3p77h0ow-1
+Add Component: Footprint Not Found PCB-zuuv2u5tezfwori2z0s2-1
+Add Component: Footprint Not Found PCB-crnfwttg3wkipbuqaprv-1
+Add Component: Footprint Not Found CAPC1005X60X30LL05T10
+Add Component: Footprint Not Found CAPC1005X60X30LL05T10
+Add Component: Footprint Not Found INDC1005X06N
+Add Component: Footprint Not Found PCB-4fmjq88xgxe0pf6g45vt-1
+Add Component: Footprint Not Found NXP Semiconductors PN5180A0HN_C1E-Footprint-1
+Add Component: Footprint Not Found PCB-89oypsq879wwpt3swtto-1
+Add Component: Footprint Not Found PCB-5g2cap63tq137py3r0gr-1
+Add Component: Footprint Not Found PCB-fvln992s2sfnqnba174z-1
+Add Component: Footprint Not Found ONSC-SOT-363-6-419B-02_W_V
+Add Component: Footprint Not Found PCB-wwee15y6zmt5extocly2-1
+Add Component: Footprint Not Found PCB-mndh2ao1q7oim2ifpjxf-1
+Add Component: Footprint Not Found Yageo RC0402FR-070RL-Footprint-2
+Add Component: Footprint Not Found Yageo RC0402FR-070RL-Footprint-2
+Add Component: Footprint Not Found Yageo RC0402FR-070RL-Footprint-2
+Add Component: Footprint Not Found RESC1005X40X25ML05T10
+Add Component: Footprint Not Found RESC1005X40X25ML05T10
+Add Component: Footprint Not Found RESC1005X37X25LL05T10
+Add Component: Footprint Not Found RESC1005X37X25NL05T10
+Add Component: Footprint Not Found RESC1005X37X25NL05T10
+Add Component: Footprint Not Found PCB-1tvcz1kgsq38xqp5t8gc-1
+Add Component: Footprint Not Found RESC1005X40X25ML05T05
+Add Component: Footprint Not Found RESC3116X65X40NL10T20
+Add Component: Footprint Not Found RESC1005X40X25ML10T10
+Add Component: Footprint Not Found RESC1005X40X25ML05T10
+Add Component: Footprint Not Found RESC1005X40X25ML05T10
+Add Component: Footprint Not Found RESC1005X40X25ML05T10
+Add Component: Footprint Not Found RESC1005X37X25NL05T10
+Add Component: Footprint Not Found RESC1005X37X25LL05T10
+Add Component: Footprint Not Found RESC1005X37X25LL05T10
+Add Component: Footprint Not Found RESC1005X40X20NL05T10
+Add Component: Footprint Not Found RESC1005X37X25LL05T10
+Add Component: Footprint Not Found Yageo RC0402FR-070RL-Footprint-2
+Add Component: Footprint Not Found Yageo RC0402FR-070RL-Footprint-2
+Add Component: Footprint Not Found RESC1005X40X25NL05T10
+Add Component: Footprint Not Found 0402R
+Add Component: Footprint Not Found 0402R
+Add Component: Footprint Not Found RESC1005X40X25NL05T10
+Add Component: Footprint Not Found RESC1005X40X25NL05T10
+Add Component: Footprint Not Found RESC1005X40X25NL05T10
+Add Component: Footprint Not Found RESC1005X40X25NL05T10
+Add Component: Footprint Not Found RESC1005X40X25LL10T10
+Add Component: Footprint Not Found RESC1005X40X25ML10T10
+Add Component: Footprint Not Found RESC1005X40X25LL10T10
+Add Component: Footprint Not Found PCB-h91j38j7fiz7nduy8522-1
+Add Component: Footprint Not Found PCB-mkdigkdyo5adg2mbgdfg-1
+Add Component: Footprint Not Found SOIC-SN8_M
+Add Component: Footprint Not Found PCB-9lguhjxtz3hxtv6sow1n-1
+Add Component: Footprint Not Found PCB-9lguhjxtz3hxtv6sow1n-1
+Add Component: Footprint Not Found RF360 Holdings B39162B4327P810-Footprint-1
+Add Component: Footprint Not Found QFN50P500X500X100_HS-29N
+Add Component: Footprint Not Found PCB-zah3is8l8nrgpohakmjs-1
+Add Component: Footprint Not Found OLGA14
+Add Component: Footprint Not Found SOT-23-3
+Add Component: Footprint Not Found TI-DCK5_V
+Add Component: Footprint Not Found MF05A_L
+Add Component: Footprint Not Found DFN160P250X80-4N
+Add Component: Footprint Not Found PCB-56e43dtnb7esksvnne1a-1
+Added Net: Name=1V8
+Added Net: Name=2V8
+Added Net: Name=Antenna_Point1
+Added Net: Name=Antenna
+Added Net: Name=AntOff
+Added Net: Name=Batterie +
+Added Net: Name=CLK
+Added Net: Name=Coil Point 1
+Added Net: Name=CS_Display
+Added Net: Name=CS_Flash
+Added Net: Name=CS_SRAM
+Added Net: Name=D+
+Added Net: Name=D-
+Added Net: Name=DIO
+Added Net: Name=DO
+Added Net: Name=DTR
+Added Net: Name=ECG-Out
+Added Net: Name=EN
+Added Net: Name=FMARK
+Added Net: Name=GND
+Added Net: Name=Hold
+Added Net: Name=In1
+Added Net: Name=In2
+Added Net: Name=IO0
+Added Net: Name=M-
+Added Net: Name=Miso
+Added Net: Name=Mosi
+Added Net: Name=motion_int
+Added Net: Name=Net*_1
+Added Net: Name=Net*_2
+Added Net: Name=Net*_5
+Added Net: Name=Net*_11
+Added Net: Name=NetC1_1
+Added Net: Name=NetC1_2
+Added Net: Name=NetC7_1
+Added Net: Name=NetC8_1
+Added Net: Name=NetC8_2
+Added Net: Name=NetC11_2
+Added Net: Name=NetC12_2
+Added Net: Name=NetC17_2
+Added Net: Name=NetC18_2
+Added Net: Name=NetC23_2
+Added Net: Name=NetC24_1
+Added Net: Name=NetC24_2
+Added Net: Name=NetC27_2
+Added Net: Name=NetC30_1
+Added Net: Name=NetC30_2
+Added Net: Name=NetC32_1
+Added Net: Name=NetC32_2
+Added Net: Name=NetC34_1
+Added Net: Name=NetC35_1
+Added Net: Name=NetC36_2
+Added Net: Name=NetC38_1
+Added Net: Name=NetC38_2
+Added Net: Name=NetC39_1
+Added Net: Name=NetC39_2
+Added Net: Name=NetC40_1
+Added Net: Name=NetC43_1
+Added Net: Name=NetC44_1
+Added Net: Name=NetC46_1
+Added Net: Name=NetC48_2
+Added Net: Name=NetC51_1
+Added Net: Name=NetC51_2
+Added Net: Name=NetD+_A
+Added Net: Name=NetD-_A
+Added Net: Name=NetECG_+IN
+Added Net: Name=NetECG_-IN
+Added Net: Name=NetL1_1
+Added Net: Name=NetL2_1
+Added Net: Name=NetL3_1
+Added Net: Name=NetL4_2
+Added Net: Name=NetP1_2
+Added Net: Name=NetP2_1
+Added Net: Name=NetP3_2
+Added Net: Name=NetQ1_2
+Added Net: Name=NetQ1_5
+Added Net: Name=NetR2_1
+Added Net: Name=NetR3_1
+Added Net: Name=NetR6_1
+Added Net: Name=NetR9_2
+Added Net: Name=NetR10_1
+Added Net: Name=NetR11_1
+Added Net: Name=NetRF_3
+Added Net: Name=NFC_Poin1
+Added Net: Name=NFC_Point2
+Added Net: Name=NSS
+Added Net: Name=OPAMP+
+Added Net: Name=Point1
+Added Net: Name=Point2
+Added Net: Name=Pot+
+Added Net: Name=PotD
+Added Net: Name=Power_1
+Added Net: Name=Power_2
+Added Net: Name=Reset_1
+Added Net: Name=Reset_2
+Added Net: Name=RF_In
+Added Net: Name=RTS
+Added Net: Name=RXD
+Added Net: Name=SCL
+Added Net: Name=SDA
+Added Net: Name=SDI
+Added Net: Name=Sensor_Inter
+Added Net: Name=TXD
+Added Net: Name=Vcc_Rf
+Added Net: Name=Vib
+Added Net: Name=WP
+Added Net: Name=XTAL_N
+Added Net: Name=XTAL_P
+Add Class Member: Failed to add class member : Component * STMicroelectronics TESEO-LIV3R
+Add Class Member: Failed to add class member : Component * Shenzhen Fuman Elec DW01-A
+Add Class Member: Failed to add class member : Component * Component_1
+Add Class Member: Failed to add class member : Component 10p Hirose BM10NB(0.8)-10DS-0.4V(51)
+Add Class Member: Failed to add class member : Component 24p Hirose DF37B-24DP-0.4V(53)
+Add Class Member: Failed to add class member : Component Axis Kionix KXTJ3-1057
+Add Class Member: Failed to add class member : Component Baro/Temp InvenSense ICP-10111
+Add Class Member: Failed to add class member : Component C1 20pF
+Add Class Member: Failed to add class member : Component C2 20pF
+Add Class Member: Failed to add class member : Component C3 20pF
+Add Class Member: Failed to add class member : Component C4 20pF
+Add Class Member: Failed to add class member : Component C5 10uF
+Add Class Member: Failed to add class member : Component C6 0.1uF
+Add Class Member: Failed to add class member : Component C7 2.2uF
+Add Class Member: Failed to add class member : Component C8 22nF
+Add Class Member: Failed to add class member : Component C9 22uF
+Add Class Member: Failed to add class member : Component C10 10uF
+Add Class Member: Failed to add class member : Component C11 6.8nF
+Add Class Member: Failed to add class member : Component C12 27nF
+Add Class Member: Failed to add class member : Component C13 10uF
+Add Class Member: Failed to add class member : Component C14 10uF
+Add Class Member: Failed to add class member : Component C15 0.1uF
+Add Class Member: Failed to add class member : Component C16 0.1uF
+Add Class Member: Failed to add class member : Component C17 0.1uF
+Add Class Member: Failed to add class member : Component C18 0.1uF
+Add Class Member: Failed to add class member : Component C19
+Add Class Member: Failed to add class member : Component C20
+Add Class Member: Failed to add class member : Component C21 0.1uF
+Add Class Member: Failed to add class member : Component C22 0.1uF
+Add Class Member: Failed to add class member : Component C23 4,7uF
+Add Class Member: Failed to add class member : Component C24 0,22uF
+Add Class Member: Failed to add class member : Component C25 10uF
+Add Class Member: Failed to add class member : Component C26 0.1uF
+Add Class Member: Failed to add class member : Component C27 4,7uF
+Add Class Member: Failed to add class member : Component C28 10uF
+Add Class Member: Failed to add class member : Component C29 0.1uF
+Add Class Member: Failed to add class member : Component C30 0,22uF
+Add Class Member: Failed to add class member : Component C31 100nF
+Add Class Member: Failed to add class member : Component C32 1nF
+Add Class Member: Failed to add class member : Component C33 100nF
+Add Class Member: Failed to add class member : Component C34 15pF
+Add Class Member: Failed to add class member : Component C35 15pF
+Add Class Member: Failed to add class member : Component C36 1nF
+Add Class Member: Failed to add class member : Component C37 2,2uF
+Add Class Member: Failed to add class member : Component C38 82pF
+Add Class Member: Failed to add class member : Component C39 330pF
+Add Class Member: Failed to add class member : Component C40 1,2nF
+Add Class Member: Failed to add class member : Component C41 1nF
+Add Class Member: Failed to add class member : Component C42 0,6pF
+Add Class Member: Failed to add class member : Component C43 1,2nF
+Add Class Member: Failed to add class member : Component C44 1nF
+Add Class Member: Failed to add class member : Component C45 330pF
+Add Class Member: Failed to add class member : Component C46 82pF
+Add Class Member: Failed to add class member : Component C47 100nF
+Add Class Member: Failed to add class member : Component C48 470nF
+Add Class Member: Failed to add class member : Component C49 0.1uF
+Add Class Member: Failed to add class member : Component C50 120pF
+Add Class Member: Failed to add class member : Component C51 120pF
+Add Class Member: Failed to add class member : Component C52 1nF
+Add Class Member: Failed to add class member : Component C53 2,7pF
+Add Class Member: Failed to add class member : Component C54 2.0pF
+Add Class Member: Failed to add class member : Component Compass Honeywell HMC5883L-TR
+Add Class Member: Failed to add class member : Component Crown PixArt PAT9125EL-TKIT
+Add Class Member: Failed to add class member : Component D1 600mV
+Add Class Member: Failed to add class member : Component D2 600mV
+Add Class Member: Failed to add class member : Component D3 600mV
+Add Class Member: Failed to add class member : Component D+ Led
+Add Class Member: Failed to add class member : Component D- Led
+Add Class Member: Failed to add class member : Component ECG AD8232 (Rev. D)
+Add Class Member: Failed to add class member : Component ESP-32 Espressif Systems ESP32-D0WDQ6
+Add Class Member: Failed to add class member : Component Flash Winbond W25Q16JVUXIQ
+Added Member To Class: ClassName=Prototype2 Member=Component IC? MCIMX6X4CVM08AC
+Add Class Member: Failed to add class member : Component J1 Taoglas RECE.20279.001E.01
+Add Class Member: Failed to add class member : Component J2 Molex 105450-0101
+Add Class Member: Failed to add class member : Component L1 33uH
+Add Class Member: Failed to add class member : Component L2 100nH
+Add Class Member: Failed to add class member : Component L3 100nH
+Add Class Member: Failed to add class member : Component L4 5n6
+Add Class Member: Failed to add class member : Component L5 2,7nH
+Add Class Member: Failed to add class member : Component NFC NXP Semiconductors PN5180A0HN/C1E
+Add Class Member: Failed to add class member : Component P1 Yelllow
+Add Class Member: Failed to add class member : Component P2 Vishay VLMB1500-GS08
+Add Class Member: Failed to add class member : Component P3 Rohm SML-P12PTT86
+Add Class Member: Failed to add class member : Component Q1
+Add Class Member: Failed to add class member : Component Q2
+Add Class Member: Failed to add class member : Component Q3 Diodes Inc. 2N7002-7-F
+Add Class Member: Failed to add class member : Component R1 0Ohm
+Add Class Member: Failed to add class member : Component R2
+Add Class Member: Failed to add class member : Component R3
+Add Class Member: Failed to add class member : Component R4 300Ohm
+Add Class Member: Failed to add class member : Component R5 300Ohm
+Add Class Member: Failed to add class member : Component R6 1k
+Add Class Member: Failed to add class member : Component R7 10k
+Add Class Member: Failed to add class member : Component R8 10k
+Add Class Member: Failed to add class member : Component R9 1.01MOhm
+Add Class Member: Failed to add class member : Component R10 3.01kOhm
+Add Class Member: Failed to add class member : Component R11 1.37MOhm
+Add Class Member: Failed to add class member : Component R12 0,5Ohm
+Add Class Member: Failed to add class member : Component R13 300Ohm
+Add Class Member: Failed to add class member : Component R14 300Ohm
+Add Class Member: Failed to add class member : Component R15 300Ohm
+Add Class Member: Failed to add class member : Component R16 10k
+Add Class Member: Failed to add class member : Component R17
+Add Class Member: Failed to add class member : Component R18
+Add Class Member: Failed to add class member : Component R19 Yageo RC0402FR-07100RL
+Add Class Member: Failed to add class member : Component R20 Yageo AC0402FR-071KL
+Add Class Member: Failed to add class member : Component R21 0Ohm
+Add Class Member: Failed to add class member : Component R22 0Ohm
+Add Class Member: Failed to add class member : Component R23 1M
+Add Class Member: Failed to add class member : Component R24 180k
+Add Class Member: Failed to add class member : Component R25 180k
+Add Class Member: Failed to add class member : Component R26 1M
+Add Class Member: Failed to add class member : Component R27 1M
+Add Class Member: Failed to add class member : Component R28 1M
+Add Class Member: Failed to add class member : Component R29 1M
+Add Class Member: Failed to add class member : Component R30 0,15Ohm
+Add Class Member: Failed to add class member : Component R31 470mOhm
+Add Class Member: Failed to add class member : Component R32 0,15Ohm
+Add Class Member: Failed to add class member : Component RF
+Add Class Member: Failed to add class member : Component RTC NXP Semiconductors PCF8563T/5,518
+Add Class Member: Failed to add class member : Component SRAM 23K256T-I/SN
+Add Class Member: Failed to add class member : Component Sw1
+Add Class Member: Failed to add class member : Component Sw2
+Add Class Member: Failed to add class member : Component U1 RF360 Holdings B39162B4327P810
+Add Class Member: Failed to add class member : Component U3 Silicon Labs CP2102-GMR
+Add Class Member: Failed to add class member : Component U5 LTC4120
+Add Class Member: Failed to add class member : Component U7 Maxim Integrated MAX30100EFD+
+Add Class Member: Failed to add class member : Component U8 Torex Semiconductor XC6206P182MR
+Add Class Member: Failed to add class member : Component U9 TLV70028DCKR
+Add Class Member: Failed to add class member : Component U10 LP2985AIM5-3.6/NOPB
+Add Class Member: Failed to add class member : Component Y1 40mHz Crystal
+Add Class Member: Failed to add class member : Component Y2 27,12MHZ
+Added Room: Name=Prototype1
+Added Room: Name=Prototype2
