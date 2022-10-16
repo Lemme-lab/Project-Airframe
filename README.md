@@ -1,10 +1,7 @@
 # Project-Telic
 ![Unbenannt-2 (1)](https://user-images.githubusercontent.com/71924682/192115811-20bebe04-f619-480b-9411-2c92c0393d66.png)
 ![Unbenannt-2](https://user-images.githubusercontent.com/71924682/192115814-a8d6983a-98fe-457b-9841-1481eee79e46.png)
-![Unbenannt-4](https://user-images.githubusercontent.com/71924682/192115815-3302566c-fb5e-4df6-959b-b64917d766e7.png)
-![Unbenannt-1 (13)](https://user-images.githubusercontent.com/71924682/192115817-427317be-f06f-4953-aee7-7d495ced082d.png)
 ![Unbenannt-1 (12)](https://user-images.githubusercontent.com/71924682/192115818-d36872c0-a5dc-4790-a866-00a220b88ab3.png)
-![Assembly 1_page-0001](https://user-images.githubusercontent.com/71924682/192115946-c8f0dc10-27bf-4ba4-87f5-6ca52155d9e2.jpg)
 ![Prototype1-Hardware](https://user-images.githubusercontent.com/71924682/193449662-5e4b714a-1110-4682-963b-2a2133aa6d13.png)
 ![Prototype1-Hardware-2 1](https://user-images.githubusercontent.com/71924682/193449805-29613fc1-6248-439d-bb10-6865d43f69c9.png)
 ![Render](https://user-images.githubusercontent.com/71924682/194941713-4fdcb72d-65a7-4c42-80aa-84004cad4124.png)
