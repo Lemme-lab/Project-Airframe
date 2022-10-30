@@ -1,7 +1,7 @@
 # Project-Telic
 ![Pr-1](https://user-images.githubusercontent.com/71924682/198893195-afc7a420-d0de-4cb4-b758-c4aed32a6b49.png)
 ![Pr-2_70](https://user-images.githubusercontent.com/71924682/198893304-c0dea866-5309-481c-ae6e-378429563c05.png)
-![Render12_70](https://user-images.githubusercontent.com/71924682/197414378-3f52b148-79de-4dda-9e9c-a31260ddba40.png)
+![Render11_80](https://user-images.githubusercontent.com/71924682/198893331-1dc17c75-d6da-4750-adeb-1c245fed6d02.png)
 ![Render14_1_70](https://user-images.githubusercontent.com/71924682/197414396-81cc02d9-c3ad-4336-95f1-c32888ea16e2.png)
 ![Render15_70](https://user-images.githubusercontent.com/71924682/197414397-834ebcaa-ffdb-4af1-9721-bfc85dc873c4.png)
 ![Render19_70](https://user-images.githubusercontent.com/71924682/197414399-4d5d1db7-5beb-4ca1-9f23-abfba9f609a9.png)
