@@ -1,1 +1,9 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Application Type\Linux\1.0\Linux.targets(160,5): error : Es sind keine Remotecomputer für Remotebuilds konfiguriert. Konfigurieren Sie einen Computer über "Extras" > "Optionen" > "Plattformübergreifend" > "Verbindungs-Manager".
+﻿  Validating sources
+  Copying sources remotely to '192.168.7.2'
+  Validating architecture
+  Validating architecture
+  Starting remote build
+  Compiling sources:
+  Main.cpp
+  Linking objects
+  Embedded Code.vcxproj -> C:\Hardware\Project-Telic\Code\Embedded Code\Embedded Code\bin\ARM\Debug\Embedded Code.out

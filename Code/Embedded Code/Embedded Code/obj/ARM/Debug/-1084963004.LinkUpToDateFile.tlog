@@ -1,0 +1,1 @@
+g++ -o "/home/debian/projects/Embedded Code/bin/ARM/Debug/Embedded Code.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack "/home/debian/projects/Embedded Code/obj/ARM/Debug/Main.o"

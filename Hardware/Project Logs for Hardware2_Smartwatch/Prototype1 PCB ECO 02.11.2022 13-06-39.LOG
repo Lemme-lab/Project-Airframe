@@ -1,0 +1,130 @@
+Removed Pin From Net: NetName=+1V0 Pin=C?-1
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Change Component Designator: OldDesignator=C? NewDesignator=C20
+Change Component Designator: OldDesignator=C? NewDesignator=C33
+Change Component Designator: OldDesignator=C? NewDesignator=C34
+Change Component Designator: OldDesignator=C? NewDesignator=C35
+Change Component Designator: OldDesignator=C? NewDesignator=C36
+Change Component Designator: OldDesignator=C? NewDesignator=C37
+Change Component Designator: OldDesignator=C? NewDesignator=C38
+Change Component Designator: OldDesignator=C? NewDesignator=C39
+Change Component Designator: OldDesignator=C? NewDesignator=C40
+Change Component Designator: OldDesignator=C? NewDesignator=C41
+Change Component Designator: OldDesignator=C? NewDesignator=C42
+Change Component Designator: OldDesignator=C? NewDesignator=C43
+Change Component Designator: OldDesignator=C? NewDesignator=C44
+Change Component Designator: OldDesignator=C? NewDesignator=C45
+Change Component Designator: OldDesignator=C? NewDesignator=C46
+Change Component Designator: OldDesignator=C? NewDesignator=C47
+Change Component Designator: OldDesignator=C? NewDesignator=C48
+Change Component Designator: OldDesignator=C? NewDesignator=C49
+Change Component Designator: OldDesignator=C? NewDesignator=C50
+Change Component Designator: OldDesignator=C? NewDesignator=C51
+Change Component Designator: OldDesignator=C? NewDesignator=C52
+Change Component Designator: OldDesignator=C? NewDesignator=C53
+Change Component Designator: OldDesignator=C? NewDesignator=C54
+Change Component Designator: OldDesignator=D? NewDesignator=D7
+Change Component Designator: OldDesignator=IC? NewDesignator=IC7
+Change Component Designator: OldDesignator=L? NewDesignator=L4
+Change Component Designator: OldDesignator=Q? NewDesignator=Q4
+Change Component Designator: OldDesignator=R? NewDesignator=R29
+Change Component Designator: OldDesignator=R? NewDesignator=R30
+Change Component Designator: OldDesignator=R? NewDesignator=R31
+Change Component Designator: OldDesignator=R? NewDesignator=R32
+Change Component Designator: OldDesignator=R? NewDesignator=R33
+Change Component Designator: OldDesignator=R? NewDesignator=R34
+Change Component Designator: OldDesignator=R? NewDesignator=R35
+Change Component Designator: OldDesignator=R? NewDesignator=R36
+Change Component Designator: OldDesignator=R? NewDesignator=R37
+Added Component: Designator=L1(WE-TPC-3816-S)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.we-online.de/katalog/media/pdf/744031001.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "ver 6, Jan-2009"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance"; Value = "1.50 µH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "SMD Inductor, 2-Leads, Body 3.8 x 3.8 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "WE-TPC-3816-S"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "2009"; VariantName = "[No Variations]"
+Added Component: Designator=L2(WE-TPC-3816-S)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.we-online.de/katalog/media/pdf/744031001.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "ver 6, Jan-2009"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance"; Value = "1.50 µH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "SMD Inductor, 2-Leads, Body 3.8 x 3.8 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "WE-TPC-3816-S"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "2009"; VariantName = "[No Variations]"
+Added Component: Designator=L3(WE-TPC-3816-S)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.we-online.de/katalog/media/pdf/744031001.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "ver 6, Jan-2009"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance"; Value = "1.50 µH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "SMD Inductor, 2-Leads, Body 3.8 x 3.8 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "WE-TPC-3816-S"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "2009"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=LX4 Pin=L1-1
+Added Pin To Net: NetName=+VS Pin=L1-2
+Added Pin To Net: NetName=LX3 Pin=L2-1
+Added Pin To Net: NetName=+1V35 Pin=L2-2
+Added Pin To Net: NetName=LX1 Pin=L3-1
+Added Pin To Net: NetName=+1V0 Pin=L3-2
+Added Pin To Net: NetName=LX2 Pin=L4-1
+Added Pin To Net: NetName=+1V8 Pin=L4-2
+Change Net Name : Old Net Name=NetC?_1 New Net Name=NetC46_1
+Change Net Name : Old Net Name=NetC?_2 New Net Name=NetC39_2
+Change Net Name : Old Net Name=NetD?_1 New Net Name=NetD7_1
+Change Net Name : Old Net Name=NetD?_2 New Net Name=NetD7_2
+Added Pin To Net: NetName=NetC48_2 Pin=C48-2
+Added Pin To Net: NetName=NetC48_2 Pin=IC7-7
+Added Net: Name=NetC48_2
+Added Pin To Net: NetName=NetC52_2 Pin=C52-2
+Added Pin To Net: NetName=NetC52_2 Pin=C53-2
+Added Pin To Net: NetName=NetC52_2 Pin=C54-2
+Added Net: Name=NetC52_2
+Added Pin To Net: NetName=NetC53_1 Pin=C53-1
+Added Pin To Net: NetName=NetC53_1 Pin=IC7-6
+Added Net: Name=NetC53_1
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C20 2u2 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C33 2u2 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C34 2u2 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C35 22u 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C36 24k 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C37 22u 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C38 47p 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C39 2u2 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C40 68k 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C41 22u 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C42 22u 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C43 22u 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C44 22u 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C45 4u7 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C46 47k 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C47 22u 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C48 0Ohm 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C49 10k 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C50 22u 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C51 22u 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C52 10k 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C54 10n 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component L1 744031001
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component L2 744031001
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component L3 744031001
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component R29 10k 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component R30 10k 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component R31 10k 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component R32 10k 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component R34 0Ohm 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component R35 CRCW0402300RFKED
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component R36 0Ohm 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component R37 0Ohm 0402

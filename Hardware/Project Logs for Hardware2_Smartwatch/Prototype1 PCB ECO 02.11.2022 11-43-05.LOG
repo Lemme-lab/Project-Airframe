@@ -1,0 +1,635 @@
+Removed Pin From Net: NetName=CTR Pin=C2-2
+Removed Pin From Net: NetName=CTR Pin=C3-2
+Removed Pin From Net: NetName=CTR Pin=C5-1
+Removed Pin From Net: NetName=CTR Pin=C6-1
+Removed Pin From Net: NetName=+VS Pin=C6-2
+Removed Pin From Net: NetName=Power_2 Pin=C9-2
+Removed Pin From Net: NetName=Power_1 Pin=C10-2
+Removed Pin From Net: NetName=CTR Pin=C13-1
+Removed Pin From Net: NetName=+VS Pin=C13-2
+Removed Pin From Net: NetName=CTR Pin=C14-1
+Removed Pin From Net: NetName=CTR Pin=C15-1
+Removed Pin From Net: NetName=+VS Pin=C15-2
+Removed Pin From Net: NetName=CTR Pin=C16-1
+Removed Pin From Net: NetName=CTR Pin=C17-1
+Removed Pin From Net: NetName=CTR Pin=C18-1
+Removed Pin From Net: NetName=CTR Pin=C19-1
+Removed Pin From Net: NetName=+VS Pin=C19-2
+Removed Pin From Net: NetName=CTR Pin=C20-1
+Removed Pin From Net: NetName=CTR Pin=C21-1
+Removed Pin From Net: NetName=+VS Pin=C21-2
+Removed Pin From Net: NetName=CTR Pin=C22-1
+Removed Pin From Net: NetName=CTR Pin=C23-1
+Removed Pin From Net: NetName=NetC24_1 Pin=C24-1
+Removed Pin From Net: NetName=NetC24_2 Pin=C24-2
+Removed Pin From Net: NetName=CTR Pin=C25-1
+Removed Pin From Net: NetName=+VS Pin=C25-2
+Removed Pin From Net: NetName=CTR Pin=C26-1
+Removed Pin From Net: NetName=NetC24_2 Pin=Compass-8
+Removed Pin From Net: NetName=NetC24_1 Pin=Compass-12
+Removed Pin From Net: NetName=CTR Pin=Crown-VSS
+Removed Pin From Net: NetName=Power_1 Pin=D1-2
+Removed Pin From Net: NetName=Power_1 Pin=D2-2
+Removed Pin From Net: NetName=SDA Pin=Health-3
+Removed Pin From Net: NetName=CTR Pin=Health-4
+Removed Pin From Net: NetName=+VS Pin=Health-9
+Removed Pin From Net: NetName=+VS Pin=Health-10
+Removed Pin From Net: NetName=+VS Pin=Health-11
+Removed Pin From Net: NetName=CTR Pin=Health-12
+Removed Pin From Net: NetName=Sensor_Inter Pin=Health-13
+Removed Pin From Net: NetName=NetC16_1 Pin=IC1-15
+Removed Pin From Net: NetName=NetQ1_2 Pin=Q1-2
+Removed Pin From Net: NetName=CTR Pin=Q2-2
+Removed Pin From Net: NetName=CTR Pin=Q2-3
+Removed Pin From Net: NetName=Vib Pin=Q3-1
+Removed Pin From Net: NetName=CTR Pin=Q3-2
+Removed Pin From Net: NetName=M- Pin=Q3-3
+Removed Pin From Net: NetName=Power_2 Pin=R9-1
+Removed Pin From Net: NetName=Power_2 Pin=R11-2
+Removed Pin From Net: NetName=Power_2 Pin=R12-2
+Removed Pin From Net: NetName=Power_1 Pin=R13-2
+Removed Pin From Net: NetName=Power_2 Pin=R14-2
+Removed Pin From Net: NetName=+VS Pin=R15-2
+Removed Pin From Net: NetName=Sensor_Inter Pin=R16-1
+Removed Pin From Net: NetName=+VS Pin=R16-2
+Removed Pin From Net: NetName=CTR Pin=R17-1
+Removed Pin From Net: NetName=SCL Pin=R17-2
+Removed Pin From Net: NetName=SDA Pin=R18-2
+Removed Pin From Net: NetName=CTR Pin=R20-1
+Removed Pin From Net: NetName=OPAMP+ Pin=R23-1
+Removed Pin From Net: NetName=Point1 Pin=R24-1
+Removed Pin From Net: NetName=Point2 Pin=R25-1
+Removed Pin From Net: NetName=Point1 Pin=R26-2
+Removed Pin From Net: NetName=Point2 Pin=R27-2
+Change Component Designator: OldDesignator=ANT? NewDesignator=ANT1
+Change Component Designator: OldDesignator=Axis NewDesignator=Axis1
+Change Component Designator: OldDesignator=Baro NewDesignator=Baro1
+Change Component Designator: OldDesignator=C1 NewDesignator=C21
+Change Component Designator: OldDesignator=C2 NewDesignator=C29
+Change Component Designator: OldDesignator=C3 NewDesignator=C24
+Change Component Designator: OldDesignator=C4 NewDesignator=C32
+Change Component Designator: OldDesignator=C5 NewDesignator=C28
+Change Component Designator: OldDesignator=C6 NewDesignator=C22
+Change Component Designator: OldDesignator=C7 NewDesignator=C23
+Change Component Designator: OldDesignator=C8 NewDesignator=C25
+Change Component Designator: OldDesignator=C9 NewDesignator=C27
+Change Component Designator: OldDesignator=C10 NewDesignator=C26
+Change Component Designator: OldDesignator=C11 NewDesignator=C30
+Change Component Designator: OldDesignator=C12 NewDesignator=C31
+Change Component Designator: OldDesignator=C13 NewDesignator=C10
+Change Component Designator: OldDesignator=C14 NewDesignator=C11
+Change Component Designator: OldDesignator=C16 NewDesignator=C13
+Change Component Designator: OldDesignator=C17 NewDesignator=C14
+Change Component Designator: OldDesignator=C19 NewDesignator=C12
+Change Component Designator: OldDesignator=C20 NewDesignator=C16
+Change Component Designator: OldDesignator=C21 NewDesignator=C1
+Change Component Designator: OldDesignator=C22 NewDesignator=C4
+Change Component Designator: OldDesignator=C23 NewDesignator=C5
+Change Component Designator: OldDesignator=C24 NewDesignator=C2
+Change Component Designator: OldDesignator=C24 NewDesignator=C9
+Change Component Designator: OldDesignator=C25 NewDesignator=C3
+Change Component Designator: OldDesignator=C25 NewDesignator=C8
+Change Component Designator: OldDesignator=C26 NewDesignator=C7
+Change Component Designator: OldDesignator=C26 NewDesignator=C17
+Change Component Designator: OldDesignator=C27 NewDesignator=C6
+Change Component Designator: OldDesignator=Compass NewDesignator=Compass1
+Change Component Designator: OldDesignator=Crown NewDesignator=Crown1
+Change Component Designator: OldDesignator=D1 NewDesignator=D4
+Change Component Designator: OldDesignator=D2 NewDesignator=D5
+Change Component Designator: OldDesignator=D3 NewDesignator=D6
+Change Component Designator: OldDesignator=D4 NewDesignator=D2
+Change Component Designator: OldDesignator=D5 NewDesignator=D3
+Change Component Designator: OldDesignator=D6 NewDesignator=D1
+Change Component Designator: OldDesignator=ECG NewDesignator=ECG1
+Change Component Designator: OldDesignator=H? NewDesignator=H1
+Change Component Designator: OldDesignator=IC1 NewDesignator=IC2
+Change Component Designator: OldDesignator=IC2 NewDesignator=IC1
+Change Component Designator: OldDesignator=IC? NewDesignator=IC6
+Change Component Designator: OldDesignator=Q1 NewDesignator=Q3
+Change Component Designator: OldDesignator=Q2 NewDesignator=Q1
+Change Component Designator: OldDesignator=Q3 NewDesignator=Q2
+Change Component Designator: OldDesignator=R1 NewDesignator=R16
+Change Component Designator: OldDesignator=R2 NewDesignator=R17
+Change Component Designator: OldDesignator=R3 NewDesignator=R19
+Change Component Designator: OldDesignator=R4 NewDesignator=R21
+Change Component Designator: OldDesignator=R5 NewDesignator=R20
+Change Component Designator: OldDesignator=R6 NewDesignator=R18
+Change Component Designator: OldDesignator=R6 NewDesignator=R22
+Change Component Designator: OldDesignator=R7 NewDesignator=R23
+Change Component Designator: OldDesignator=R8 NewDesignator=R25
+Change Component Designator: OldDesignator=R9 NewDesignator=R26
+Change Component Designator: OldDesignator=R10 NewDesignator=R24
+Change Component Designator: OldDesignator=R11 NewDesignator=R27
+Change Component Designator: OldDesignator=R12 NewDesignator=R28
+Change Component Designator: OldDesignator=R13 NewDesignator=R12
+Change Component Designator: OldDesignator=R14 NewDesignator=R8
+Change Component Designator: OldDesignator=R15 NewDesignator=R9
+Change Component Designator: OldDesignator=R16 NewDesignator=R7
+Change Component Designator: OldDesignator=R17 NewDesignator=R6
+Change Component Designator: OldDesignator=R18 NewDesignator=R14
+Change Component Designator: OldDesignator=R20 NewDesignator=R1
+Change Component Designator: OldDesignator=R21 NewDesignator=R13
+Change Component Designator: OldDesignator=R22 NewDesignator=R11
+Change Component Designator: OldDesignator=R22 NewDesignator=R15
+Change Component Designator: OldDesignator=R23 NewDesignator=R10
+Change Component Designator: OldDesignator=R24 NewDesignator=R4
+Change Component Designator: OldDesignator=R25 NewDesignator=R5
+Change Component Designator: OldDesignator=R26 NewDesignator=R2
+Change Component Designator: OldDesignator=R27 NewDesignator=R3
+Change Component Designator: OldDesignator=RTC NewDesignator=RTC1
+Change Component Designator: OldDesignator=U1 NewDesignator=U3
+Change Component Designator: OldDesignator=U2 NewDesignator=U1
+Change Component Designator: OldDesignator=U3 NewDesignator=U2
+Change Component Designator: OldDesignator=U4 NewDesignator=U5
+Added Component: Designator=C19(CAPC1005X55X25ML5T10)
+Add component (AddParameter): Name = "Capacitance"; Value = "1 nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Imperial)"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Metric)"; Value = "1005"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case\/Package"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.murata.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://psearch.en.murata.com/capacitor/product/GRM155R71H102KA01%23.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "07/2016"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "0.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "1 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "125 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-55 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Quantity"; Value = "10000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "2-Pin Surface Mount Device, Body 1 x 0.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Radiation Hardening"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "REACH SVHC"; Value = "No SVHC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHSCompliant"; Value = "true"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type (Capacitors)"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "50 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating (DC)"; Value = "50 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "0.5 mm"; VariantName = "[No Variations]"
+Added Component: Designator=C?(CAPC1005X55X25ML5T10)
+Add component (AddParameter): Name = "Capacitance"; Value = "1 nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Imperial)"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Metric)"; Value = "1005"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case\/Package"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.murata.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://psearch.en.murata.com/capacitor/product/GRM155R71H102KA01%23.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "07/2016"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "0.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "1 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "125 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-55 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Quantity"; Value = "10000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "2-Pin Surface Mount Device, Body 1 x 0.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Radiation Hardening"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "REACH SVHC"; Value = "No SVHC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHSCompliant"; Value = "true"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type (Capacitors)"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "50 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating (DC)"; Value = "50 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "0.5 mm"; VariantName = "[No Variations]"
+Added Component: Designator=C?(CAPC1005X55X25ML5T10)
+Add component (AddParameter): Name = "Capacitance"; Value = "1 nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Imperial)"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Metric)"; Value = "1005"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case\/Package"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.murata.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://psearch.en.murata.com/capacitor/product/GRM155R71H102KA01%23.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "07/2016"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "0.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "1 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "125 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-55 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Quantity"; Value = "10000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "2-Pin Surface Mount Device, Body 1 x 0.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Radiation Hardening"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "REACH SVHC"; Value = "No SVHC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHSCompliant"; Value = "true"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type (Capacitors)"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "50 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating (DC)"; Value = "50 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "0.5 mm"; VariantName = "[No Variations]"
+Added Component: Designator=C?(CAPC1005X55X25ML5T10)
+Add component (AddParameter): Name = "Capacitance"; Value = "1 nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Imperial)"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Metric)"; Value = "1005"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case\/Package"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.murata.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://psearch.en.murata.com/capacitor/product/GRM155R71H102KA01%23.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "07/2016"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "0.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "1 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "125 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-55 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Quantity"; Value = "10000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "2-Pin Surface Mount Device, Body 1 x 0.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Radiation Hardening"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "REACH SVHC"; Value = "No SVHC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHSCompliant"; Value = "true"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type (Capacitors)"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "50 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating (DC)"; Value = "50 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "0.5 mm"; VariantName = "[No Variations]"
+Added Component: Designator=Delete1(RESC1608X55X25ML10T15)
+Add component (AddParameter): Name = "Case Code (Imperial)"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Metric)"; Value = "1608"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Composition"; Value = "ThickFilm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Plating"; Value = "Tin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "http://www.yageo.com/NewPortal/yageodocoutput?fileName=/pdf/R-Chip/PYu-RC_Group_51_RoHS_L_5.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Rev. 5, 10/2016"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Depth"; Value = "0.8mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "0.45mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Lead Free"; Value = "LeadFree"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "1.6mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Yageo"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer URL"; Value = "http://www.yageo.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "155degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Military Standard"; Value = "Not"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-55degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Pins"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Description"; Value = "2-Pin Surface Mount Device, Body 1.6 x 0.8 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Quantity"; Value = "5000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Reference"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "TapeandReel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Power Rating"; Value = "100mW"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Radiation Hardening"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "REACH SVHC"; Value = "NoSVHC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Resistance"; Value = "0mOhm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHSCompliant"; Value = "true"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Coefficient"; Value = "200ppm/degreesC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Termination"; Value = "SMD/SMT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating (DC)"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "0.8mm"; VariantName = "[No Variations]"
+Added Component: Designator=Delete2(RESC1608X55X25ML10T15)
+Add component (AddParameter): Name = "Case Code (Imperial)"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Metric)"; Value = "1608"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Composition"; Value = "ThickFilm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Plating"; Value = "Tin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "http://www.yageo.com/NewPortal/yageodocoutput?fileName=/pdf/R-Chip/PYu-RC_Group_51_RoHS_L_5.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Rev. 5, 10/2016"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Depth"; Value = "0.8mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "0.45mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Lead Free"; Value = "LeadFree"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "1.6mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Yageo"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer URL"; Value = "http://www.yageo.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "155degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Military Standard"; Value = "Not"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-55degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Pins"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Description"; Value = "2-Pin Surface Mount Device, Body 1.6 x 0.8 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Quantity"; Value = "5000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Reference"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "TapeandReel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Power Rating"; Value = "100mW"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Radiation Hardening"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "REACH SVHC"; Value = "NoSVHC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Resistance"; Value = "0mOhm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHSCompliant"; Value = "true"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Coefficient"; Value = "200ppm/degreesC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Termination"; Value = "SMD/SMT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating (DC)"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "0.8mm"; VariantName = "[No Variations]"
+Added Component: Designator=R?(FP-CRCW0402-e3-IPC_C)
+Add component (AddParameter): Name = "Case Code (Imperial)"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case Code (Metric)"; Value = "1005"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Composition"; Value = "Thick Film"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Plating"; Value = "Tin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Depth"; Value = "0.5mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Features"; Value = "Automotive AEC-Q200"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "0.35mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Lead Free"; Value = "Lead Free"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "1mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "155°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Power Dissipation"; Value = "63mW"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Military Standard"; Value = "Not"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-55°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Terminations"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Quantity"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Power Rating"; Value = "63mW"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Radiation Hardening"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Resistance"; Value = "0mR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Coefficient"; Value = "100ppm/°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Termination"; Value = "SMD/SMT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating (DC)"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Weight"; Value = "2.3E-05oz"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "0.5mm"; VariantName = "[No Variations]"
+Added Component: Designator=U4(FP-F143A5-1-MFG)
+Add component (AddParameter): Name = "Automotive"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Category"; Value = "IC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://datasheets.maximintegrated.com/en/ds/MAX30102.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Device Class L1"; Value = "Sensors"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Device Class L2"; Value = "unset"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Device Class L3"; Value = "unset"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digikey Description"; Value = "IC SENSOR OXIMETER/HEARTRATE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Footprint Url"; Value = "https://pdfserv.maximintegrated.com/land_patterns/90-0602.PDF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "1.65mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Lead Free"; Value = "Yes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Maxim Integrated"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "MAX30102EFD+"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Junction Temp"; Value = "+90°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Supply Voltage"; Value = "2V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Supply Voltage"; Value = "1.7V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Description"; Value = "Pulse Oximeter/Heart Rate Sensor, Oesip"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Octopart"; Value = "https://octopart.com/max30102efd%2B-maxim+integrated-59568799"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Supply Current"; Value = "600uA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "F143A5-1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "TRUE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Sensor Output"; Value = "I2C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature"; Value = "-40°C to +85°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range High"; Value = "+85°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range Low"; Value = "-40°C"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=RECT Pin=C1-1
+Added Pin To Net: NetName=CTR Pin=C1-2
+Added Pin To Net: NetName=RECT Pin=C4-1
+Added Pin To Net: NetName=CTR Pin=C4-2
+Added Pin To Net: NetName=RECT Pin=C5-1
+Added Pin To Net: NetName=CTR Pin=C5-2
+Added Pin To Net: NetName=AC2 Pin=C8-1
+Added Pin To Net: NetName=AC1 Pin=C8-2
+Added Pin To Net: NetName=AC2 Pin=C9-1
+Added Pin To Net: NetName=AC1 Pin=C9-2
+Added Pin To Net: NetName=AC2 Pin=C10-1
+Added Pin To Net: NetName=AC1 Pin=C10-2
+Added Pin To Net: NetName=AC2 Pin=C11-1
+Added Pin To Net: NetName=AC1 Pin=C11-2
+Added Pin To Net: NetName=AC1 Pin=C12-2
+Added Pin To Net: NetName=AC1 Pin=C13-2
+Added Pin To Net: NetName=AC1 Pin=C14-1
+Added Pin To Net: NetName=NetC15_1 Pin=C15-1
+Added Pin To Net: NetName=AC1 Pin=C15-2
+Added Pin To Net: NetName=NetC16_1 Pin=C16-1
+Added Pin To Net: NetName=AC1 Pin=C16-2
+Added Pin To Net: NetName=Batt- Pin=C17-1
+Added Pin To Net: NetName=NetC18_1 Pin=C18-1
+Added Pin To Net: NetName=AC1 Pin=C18-2
+Added Pin To Net: NetName=+VS Pin=C21-1
+Added Pin To Net: NetName=CTR Pin=C21-2
+Added Pin To Net: NetName=NetC24_1 Pin=C24-1
+Added Pin To Net: NetName=NetC24_2 Pin=C24-2
+Added Pin To Net: NetName=CTR Pin=C25-1
+Added Pin To Net: NetName=CTR Pin=C26-2
+Added Pin To Net: NetName=CTR Pin=C27-2
+Added Pin To Net: NetName=+VS Pin=C28-1
+Added Pin To Net: NetName=HPSENSE Pin=C29-2
+Added Pin To Net: NetName=CTR Pin=C30-2
+Added Pin To Net: NetName=CTR Pin=C31-2
+Added Pin To Net: NetName=+VS Pin=C32-1
+Added Pin To Net: NetName=CTR Pin=D4-1
+Added Pin To Net: NetName=CTR Pin=D5-1
+Added Pin To Net: NetName=CTR Pin=Delete1-1
+Added Pin To Net: NetName=Shielding Pin=Delete1-2
+Added Pin To Net: NetName=CTR Pin=Delete2-1
+Added Pin To Net: NetName=outer Pin=Delete2-2
+Added Pin To Net: NetName=NetC24_2 Pin=ECG1-4
+Added Pin To Net: NetName=NetC24_1 Pin=ECG1-5
+Added Pin To Net: NetName=NetC16_1 Pin=IC2-16
+Added Pin To Net: NetName=NetQ1_2 Pin=Q1-2
+Added Pin To Net: NetName=Batt+ Pin=Q1-3
+Added Pin To Net: NetName=CHG Pin=Q2-1
+Added Pin To Net: NetName=Vbatt Pin=Q2-2
+Added Pin To Net: NetName=NetQ1_2 Pin=Q2-3
+Added Pin To Net: NetName=CTR Pin=Q3-2
+Added Pin To Net: NetName=CHG Pin=R1-1
+Added Pin To Net: NetName=Batt+ Pin=R2-2
+Added Pin To Net: NetName=Batt+ Pin=R3-2
+Added Pin To Net: NetName=CTR Pin=R4-1
+Added Pin To Net: NetName=CTR Pin=R5-1
+Added Pin To Net: NetName=FOD Pin=R6-1
+Added Pin To Net: NetName=RECT Pin=R6-2
+Added Pin To Net: NetName=FOD Pin=R7-1
+Added Pin To Net: NetName=RECT Pin=R7-2
+Added Pin To Net: NetName=FOD Pin=R8-1
+Added Pin To Net: NetName=CTR Pin=R8-2
+Added Pin To Net: NetName=FOD Pin=R9-1
+Added Pin To Net: NetName=CTR Pin=R9-2
+Added Pin To Net: NetName=NetIC3_6 Pin=R10-1
+Added Pin To Net: NetName=FOD Pin=R12-2
+Added Pin To Net: NetName=Batt+ Pin=R13-2
+Added Pin To Net: NetName=Batt- Pin=R15-1
+Added Pin To Net: NetName=+VS Pin=R16-1
+Added Pin To Net: NetName=Sensor_Inter Pin=R16-2
+Added Pin To Net: NetName=Point1 Pin=R17-1
+Added Pin To Net: NetName=Point2 Pin=R19-1
+Added Pin To Net: NetName=NetC24_1 Pin=R20-1
+Added Pin To Net: NetName=Point1 Pin=R20-2
+Added Pin To Net: NetName=NetC24_1 Pin=R21-1
+Added Pin To Net: NetName=Point2 Pin=R21-2
+Added Pin To Net: NetName=+VS Pin=R22-1
+Added Pin To Net: NetName=CTR Pin=R23-1
+Added Pin To Net: NetName=+VS Pin=R23-2
+Added Pin To Net: NetName=CTR Pin=R25-1
+Added Pin To Net: NetName=CTR Pin=R26-1
+Added Pin To Net: NetName=+VS Pin=R28-1
+Added Pin To Net: NetName=SCL Pin=U4-2
+Added Pin To Net: NetName=SDA Pin=U4-3
+Added Pin To Net: NetName=CTR Pin=U4-4
+Added Pin To Net: NetName=+VS Pin=U4-9
+Added Pin To Net: NetName=+VS Pin=U4-10
+Added Pin To Net: NetName=+VS Pin=U4-11
+Added Pin To Net: NetName=CTR Pin=U4-12
+Added Pin To Net: NetName=Sensor_Inter Pin=U4-13
+Change Net Name : Old Net Name=motion_int New Net Name=Motion_Inter
+Change Net Name : Old Net Name=NetC9_1 New Net Name=NetC26_1
+Change Net Name : Old Net Name=NetC11_1 New Net Name=NetC30_1
+Change Net Name : Old Net Name=NetC26_2 New Net Name=NetC17_2
+Change Net Name : Old Net Name=NetD4_1 New Net Name=NetD2_1
+Change Net Name : Old Net Name=NetD4_2 New Net Name=NetD2_2
+Change Net Name : Old Net Name=NetD5_1 New Net Name=NetD3_1
+Change Net Name : Old Net Name=NetD5_2 New Net Name=NetD3_2
+Change Net Name : Old Net Name=NetIC2_2 New Net Name=NetIC1_2
+Change Net Name : Old Net Name=NetIC2_7 New Net Name=NetIC1_7
+Added Pin To Net: NetName=Bat_Charge Pin=IC3-7
+Added Pin To Net: NetName=Bat_Charge Pin=Q1-1
+Added Net: Name=Bat_Charge
+Added Pin To Net: NetName=NetC12_1 Pin=C12-1
+Added Pin To Net: NetName=NetC12_1 Pin=IC2-5
+Added Net: Name=NetC12_1
+Added Pin To Net: NetName=NetC13_1 Pin=C13-1
+Added Pin To Net: NetName=NetC13_1 Pin=IC2-15
+Added Net: Name=NetC13_1
+Added Pin To Net: NetName=NetC14_2 Pin=C14-2
+Added Pin To Net: NetName=NetC14_2 Pin=IC2-3
+Added Net: Name=NetC14_2
+Added Pin To Net: NetName=NetC22_1 Pin=C22-1
+Added Pin To Net: NetName=NetC22_1 Pin=Compass1-8
+Added Net: Name=NetC22_1
+Added Pin To Net: NetName=NetC22_2 Pin=C22-2
+Added Pin To Net: NetName=NetC22_2 Pin=Compass1-12
+Added Net: Name=NetC22_2
+Added Pin To Net: NetName=NetC23_1 Pin=C23-1
+Added Pin To Net: NetName=NetC23_1 Pin=Compass1-10
+Added Net: Name=NetC23_1
+Added Pin To Net: NetName=NetC25_2 Pin=C25-2
+Added Pin To Net: NetName=NetC25_2 Pin=Crown1-VDDA
+Added Net: Name=NetC25_2
+Added Pin To Net: NetName=NetC29_1 Pin=C29-1
+Added Pin To Net: NetName=NetC29_1 Pin=ECG1-1
+Added Net: Name=NetC29_1
+Added Pin To Net: NetName=NetD1_1 Pin=D1-1
+Added Pin To Net: NetName=NetD1_1 Pin=R1-2
+Added Net: Name=NetD1_1
+Added Pin To Net: NetName=NetD4_2 Pin=D4-2
+Added Pin To Net: NetName=NetD4_2 Pin=R24-2
+Added Net: Name=NetD4_2
+Added Pin To Net: NetName=NetD5_2 Pin=D5-2
+Added Pin To Net: NetName=NetD5_2 Pin=R27-2
+Added Net: Name=NetD5_2
+Added Pin To Net: NetName=NetD6_2 Pin=D6-2
+Added Pin To Net: NetName=NetD6_2 Pin=R28-2
+Added Net: Name=NetD6_2
+Added Pin To Net: NetName=NetECG1_2 Pin=ECG1-2
+Added Pin To Net: NetName=NetECG1_2 Pin=R17-2
+Added Net: Name=NetECG1_2
+Added Pin To Net: NetName=NetECG1_3 Pin=ECG1-3
+Added Pin To Net: NetName=NetECG1_3 Pin=R19-2
+Added Net: Name=NetECG1_3
+Added Pin To Net: NetName=NetIC2_12 Pin=IC2-12
+Added Pin To Net: NetName=NetIC2_12 Pin=R12-1
+Added Net: Name=NetIC2_12
+Added Pin To Net: NetName=NetIC2_13 Pin=IC2-13
+Added Pin To Net: NetName=NetIC2_13 Pin=R14-2
+Added Net: Name=NetIC2_13
+Added Pin To Net: NetName=OUTS2 Pin=IC4-8
+Added Net: Name=OUTS2
+Added Pin To Net: NetName=OUTS3 Pin=IC4-14
+Added Net: Name=OUTS3
+Added Member To Class: ClassName=6_Airframe-Wireless Member=Component ANT1 W3011A
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component Axis1 KXTJ3-1057
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component Baro1 ICP-10111
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C1 10uf 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C2 10uf 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C3 0.1uF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C4 10uf 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C5 0.1uF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C6 0.1uF
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C7 120nF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C8 47nF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C9 68nF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C10 3,3nF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C11 100pF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C12 0.47uF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C13 22nF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C14 10nF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C15 22nF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C16 0.47uF 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C17 0.1uF
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component C18 10nF 0603
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C19 2u2 0402
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C21 C0402C104K8PACTU
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C22 C0402C224K9PACTU
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C23 GRM155R60J475ME47D
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C24 GRM1555C1H102JA01D
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C25 GRM155R60J475ME47D
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C26 CL05A106MP5NUNC
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C27 C0402C104K8PACTU
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C28 C0402C104K8PACTU
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C29 GRM155R71C224KA12D
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C30 CL05A106MP5NUNC
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C31 C0402C104K8PACTU
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component C32 C0402C104K8PACTU
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C? 2u2 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C? 2u2 0402
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component C? 2u2 0402
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component Compass1 HMC5883L-TR
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component Crown1 PAT9125KS
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component D1 SML-P12PTT86
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component D2 SML-P12PTT86
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component D3 SML-P12PTT86
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component D4 SML-P12PTT86
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component D5 SML-P12PTT86
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component D6 SML-P12PTT86
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component Delete1 RC0603JR-070RL
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component Delete2 RC0603JR-070RL
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component ECG1 AD8232ACPZ-R7
+Added Member To Class: ClassName=6_Airframe-Wireless Member=Component H1 PN5180A0HN_C1E
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component IC1 BQ25170JDSGR
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component IC2 BQ51013BRHLR
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component IC3 BQ298215RUGR
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component IC4 MAX20029ATIF_V+
+Added Member To Class: ClassName=2_Airframe-Memory Member=Component IC5 M95M04-DWMN3TP_V
+Added Member To Class: ClassName=6_Airframe-Wireless Member=Component IC6 MAX-M10S-00B
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component Q1 FDV304P
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component Q2 FDV303N
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component Q3 2N7002-7-F
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R1 1.5k 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R2 600Ohm 0402
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R3 600Ohm 0402
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R4 600Ohm 0402
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R5 24kOhm 0402
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R6 392Ohm 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R7 392Ohm 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R8 392Ohm 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R9 392Ohm 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R10 2kOhm 0402
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R11 300Ohm 0402
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R12 42Ohm 0603
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R13 20Ohm 0402
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R14 10k 0402
+Added Member To Class: ClassName=1_Airframe-Power_1 Member=Component R15 1 Ohm 0805
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component R16 RC0402FR-071KL
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component R17 RC0402FR-07180KL
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component R18 CR0402-JW-105GLF
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component R19 RC0402FR-07180KL
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component R20 CR0402-JW-105GLF
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component R21 CR0402-JW-105GLF
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component R22 CR0402-JW-105GLF
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component R23 CR0402-JW-105GLF
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component R24 CRCW0402300RFKED
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component R25 ERJ-2RKF4701X
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component R26 ERJ-2RKF4701X
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component R27 CRCW0402300RFKED
+Added Member To Class: ClassName=5_Airframe-Misc Member=Component R28 CRCW0402300RFKED
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component R? 10k 0402
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component RTC1 PCF8563T/5,518
+Added Member To Class: ClassName=2_Airframe-Memory Member=Component U1 MT41J128M16JT-125:K
+Added Member To Class: ClassName=2_Airframe-Memory Member=Component U2 MT29F2G08ABAEAH4:E TR
+Added Member To Class: ClassName=3_Airframe-NXP_i.MX Member=Component U3 MCIMX7D3EVK10SD
+Added Member To Class: ClassName=4_Airframe-Sensors Member=Component U4 MAX30102EFD+
+Added Member To Class: ClassName=6_Airframe-Wireless Member=Component U5 NRF52840-QIAA-R7
+Added Room: Name=1_Airframe-Power_1
+Added Room: Name=1_Airframe-Power_2
+Added Room: Name=2_Airframe-Memory
+Added Room: Name=3_Airframe-NXP_i.MX
+Added Room: Name=4_Airframe-Sensors
+Added Room: Name=5_Airframe-Misc
+Added Room: Name=6_Airframe-Wireless

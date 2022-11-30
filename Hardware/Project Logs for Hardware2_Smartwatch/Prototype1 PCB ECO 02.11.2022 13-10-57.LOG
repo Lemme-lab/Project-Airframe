@@ -1,0 +1,102 @@
+Removed Pin From Net: NetName=LX4 Pin=L1-1
+Removed Pin From Net: NetName=+VS Pin=L1-2
+Removed Pin From Net: NetName=LX3 Pin=L2-1
+Removed Pin From Net: NetName=+1V35 Pin=L2-2
+Removed Pin From Net: NetName=LX1 Pin=L3-1
+Removed Pin From Net: NetName=+1V0 Pin=L3-2
+Removed Pin From Net: NetName=LX2 Pin=L4-1
+Removed Pin From Net: NetName=+1V8 Pin=L4-2
+Removed Member From Class: ClassName=1_Airframe-Power_2 Member=L1
+Removed Member From Class: ClassName=1_Airframe-Power_2 Member=L2
+Removed Member From Class: ClassName=1_Airframe-Power_2 Member=L3
+Removed Member From Class: ClassName=1_Airframe-Power_2 Member=L4
+Change Component Footprint: Designator=L? Old Footprint=FP-IHLP-2020CZ-FP_1_905x2-MFG New Footprint=BOUR-SRN3015-2_V
+Change Component Comment : Designator=L? Old Comment=IHLP2020CZER1R5M01 New Comment=SRN3015-1R5Y
+Change Managed Component Library Link : Designator=L? Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=BE2500A8-0AC0-4C57-8EAA-74D23F7F7CAD New ItemGUID=89B67BE6-C67C-4CD6-9AA2-F395D4B89237 Old RevisionGUID=95462A1A-B540-443D-9DD3-0D07FD44ED95 New RevisionGUID=82ABD9DA-C56C-4548-80F4-CBB0DA57111B
+Change component parameters: Designator = "L?" ("L?"); Footprint = "FP-IHLP-2020CZ-FP_1_905x2-MFG"; UniqueID = "\NZXXEBLD" ("\NZXXEBLD")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.bourns.com/"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.bourns.com/data/global/pdfs/SRN3015.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink3Description"; Value = "Package Specification"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.bourns.com/data/global/pdfs/SRN3015.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "DatasheetVersion"; Value = "Aug-11"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "DCR Max"; Value = "0.066 Ohm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Inductance"; Value = "1.5 uH"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Inductance tolerance"; Value = "+/- 30%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Isat"; Value = "2 A"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Bourns"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Operating Temperature"; Value = "-40 to 125 degC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "2-Pin SMD, Body 3 x 3 mm, Height 1.5 mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "SRN3015"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Packing"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = "SRN3015-1R5Y"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Rated current"; Value = "2.1 A"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Resistance to Solder Heat"; Value = "+260 degC for 10 sec."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RoHS"; Value = "TRUE"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SRF Min"; Value = "130 MHz"; VariantName = "[No Variations]"
+Added Component: Designator=L?(BOUR-SRN3015-2_V)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.bourns.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.bourns.com/data/global/pdfs/SRN3015.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Package Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.bourns.com/data/global/pdfs/SRN3015.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "Aug-11"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DCR Max"; Value = "0.066 Ohm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance"; Value = "1.5 uH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance tolerance"; Value = "+/- 30%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Isat"; Value = "2 A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Bourns"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-40 to 125 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "2-Pin SMD, Body 3 x 3 mm, Height 1.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "SRN3015"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packing"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = "SRN3015-1R5Y"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated current"; Value = "2.1 A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Resistance to Solder Heat"; Value = "+260 degC for 10 sec."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "TRUE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SRF Min"; Value = "130 MHz"; VariantName = "[No Variations]"
+Added Component: Designator=L?(BOUR-SRN3015-2_V)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.bourns.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.bourns.com/data/global/pdfs/SRN3015.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Package Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.bourns.com/data/global/pdfs/SRN3015.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "Aug-11"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DCR Max"; Value = "0.066 Ohm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance"; Value = "1.5 uH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance tolerance"; Value = "+/- 30%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Isat"; Value = "2 A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Bourns"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-40 to 125 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "2-Pin SMD, Body 3 x 3 mm, Height 1.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "SRN3015"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packing"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = "SRN3015-1R5Y"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated current"; Value = "2.1 A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Resistance to Solder Heat"; Value = "+260 degC for 10 sec."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "TRUE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SRF Min"; Value = "130 MHz"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=LX1 Pin=L?-1
+Added Pin To Net: NetName=LX2 Pin=L?-1
+Added Pin To Net: NetName=LX3 Pin=L?-1
+Added Pin To Net: NetName=LX4 Pin=L?-1
+Added Pin To Net: NetName=+1V0 Pin=L?-2
+Added Pin To Net: NetName=+1V8 Pin=L?-2
+Added Pin To Net: NetName=+1V35 Pin=L?-2
+Added Pin To Net: NetName=+VS Pin=L?-2
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component L? SRN3015-1R5Y
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component L? SRN3015-1R5Y
+Added Member To Class: ClassName=1_Airframe-Power_2 Member=Component L? SRN3015-1R5Y
+Added Room: Name=1_Airframe-Power_1
+Added Room: Name=1_Airframe-Power_2
+Added Room: Name=2_Airframe-Memory
+Added Room: Name=3_Airframe-NXP_i.MX
+Added Room: Name=4_Airframe-Sensors
+Added Room: Name=5_Airframe-Misc
+Added Room: Name=6_Airframe-Wireless

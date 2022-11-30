@@ -1,0 +1,8 @@
+Added Pin To Net: NetName=CTR Pin=C19-2
+Add Pin To Net: Unknown Pin: Pin L1-1
+Add Differential Pair: Number of nets in differential pair DDR3L CK# is 1 instead of 2
+Add Differential Pair: Number of nets in differential pair DDR3L CK is 1 instead of 2
+Add Differential Pair: Number of nets in differential pair DDR3L LDQS# is 1 instead of 2
+Add Differential Pair: Number of nets in differential pair DDR3L LDQS is 1 instead of 2
+Add Differential Pair: Number of nets in differential pair DDR3L UDQS# is 1 instead of 2
+Add Differential Pair: Number of nets in differential pair DDR3L UDQS is 1 instead of 2
