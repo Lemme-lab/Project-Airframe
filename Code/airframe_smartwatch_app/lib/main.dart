@@ -21,7 +21,9 @@ class _AppState extends State<App> {
 
   int battery = 80;
   int O2stand = 40;
-  int steps = 9875;
+  int steps = 6560;
+  int heartrate = 70;
+
 
   List<FlSpot> points = [
     FlSpot(0, 110.0),
@@ -242,7 +244,26 @@ class _AppState extends State<App> {
                                                 width: 130,
                                                 height: 130,
                                                 decoration: BoxDecoration(
-                                                    color: Colors.white,
+                                                    gradient: SweepGradient(
+                                                      endAngle: 10-(steps/1000) + 0.0,
+                                                      colors: <Color>[
+                                                        Color(0xff000000),
+                                                        Color(0xff000000),
+                                                        Color(0xff000000),
+                                                        Color(0xff000000),
+                                                        Color(0xff000000),
+                                                        Color(0xff000000),
+                                                        Color(0xff000000),
+                                                        Color(0xff000000),
+                                                        Color(0xff000000),
+                                                        Color(0xff000000),
+                                                        Color(0xff00ff9b),
+                                                        Color(0xff2effad),
+                                                        Color(0xff2effad),
+                                                        Color(0xff2effad),
+                                                        Color(0xff2effad),
+                                                      ],
+                                                    ),
                                                     shape: BoxShape.circle
                                                 ),
                                               ),
@@ -420,7 +441,6 @@ class _AppState extends State<App> {
                       width: 400,
                       height: 130,
                       margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
-                      padding: EdgeInsets.only(top: 20),
                       decoration: BoxDecoration(
                           color: Color(0xff1A1A1A),
                           border: Border.all(
@@ -434,12 +454,20 @@ class _AppState extends State<App> {
                         style: TextStyle(color: Colors.white),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30.0),
-                        child: Row(
+                        child: Stack(
                             children: [
                               Container(
-
+                                margin: EdgeInsets.only(left: 28.0, top: 5, right: 5.0),
+                                child: Text(
+                                  'Heart Rate',
+                            style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25)
+                                ),
                               ),
                               Container(
+                                padding: EdgeInsets.only(top: 30),
                                 child: Container(
                                   constraints: const BoxConstraints(
                                     maxWidth: 396,
@@ -447,6 +475,7 @@ class _AppState extends State<App> {
                                   ),
                                   child: LineChart(
                                     LineChartData(
+                                      minY: 70,
                                       lineBarsData: [
                                         LineChartBarData(
                                           show: true, // t
@@ -465,7 +494,7 @@ class _AppState extends State<App> {
                                       ],
                                       borderData: FlBorderData(
                                           border: const Border(bottom: BorderSide( color: Colors.white, width: 3), left: BorderSide(color: Colors.white))),
-                                      gridData: FlGridData(show: false),
+                                      gridData: FlGridData(show: true),
                                       titlesData: FlTitlesData(
 
                                         leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -554,11 +583,21 @@ class _AppState extends State<App> {
                                             }
                                             return Text(text);
                                           },
-                                        ),
+                                        ), drawBehindEverything: true,
                                         ),
                                       ),
                                     ),
                                   ),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 300.0, top: 75,),
+                                child: Text(
+                                    '$heartrate''pbm',
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25)
                                 ),
                               ),
                             ]
