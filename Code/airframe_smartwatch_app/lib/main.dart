@@ -64,42 +64,40 @@ class _AppState extends State<App> {
   ];
   List<FlSpot> points1 = [
     FlSpot(0, 110.0),
-    FlSpot(1, 110.0),
-    FlSpot(2, 130.0),
-    FlSpot(3, 100.0),
-    FlSpot(4, 130.0),
-    FlSpot(5, 160.0),
-    FlSpot(6, 190.0),
-    FlSpot(7, 150.0),
-    FlSpot(8, 170.0),
+    FlSpot(0.5, 110.0),
+    FlSpot(1, 130.0),
+    FlSpot(2.5, 100.0),
+    FlSpot(3, 130.0),
+    FlSpot(3.5, 160.0),
+    FlSpot(4, 190.0),
+    FlSpot(4.5, 150.0),
+    FlSpot(5, 170.0),
+    FlSpot(5.5, 180.0),
+    FlSpot(6, 140.0),
+    FlSpot(6.5, 150.0),
+    FlSpot(7, 160.0),
+    FlSpot(7.5, 190.0),
+    FlSpot(8, 150.0),
+    FlSpot(8.5, 170.0),
     FlSpot(9, 180.0),
-    FlSpot(10, 140.0),
-    FlSpot(11, 150.0),
-    FlSpot(12, 160.0),
-    FlSpot(13, 190.0),
-    FlSpot(14, 150.0),
-    FlSpot(15, 170.0),
-    FlSpot(16, 180.0),
-    FlSpot(17, 140.0),
-    FlSpot(18, 150.0),
-    FlSpot(19, 110.0),
-    FlSpot(20, 110.0),
-    FlSpot(21, 130.0),
-    FlSpot(22, 100.0),
-    FlSpot(23, 130.0),
-    FlSpot(24, 160.0),
-    FlSpot(25, 190.0),
-    FlSpot(26, 150.0),
-    FlSpot(27, 170.0),
-    FlSpot(28, 180.0),
-    FlSpot(29, 140.0),
-    FlSpot(30, 150.0),
-    FlSpot(31, 160.0),
-    FlSpot(32, 190.0),
-    FlSpot(33, 150.0),
-    FlSpot(34, 170.0),
-    FlSpot(35, 180.0),
-    FlSpot(36, 140.0),
+    FlSpot(9.5, 140.0),
+    FlSpot(10, 150.0),
+    FlSpot(10.5, 110.0),
+    FlSpot(11, 110.0),
+    FlSpot(11.5, 130.0),
+    FlSpot(12, 100.0),
+    FlSpot(13, 130.0),
+    FlSpot(14, 160.0),
+    FlSpot(15, 190.0),
+    FlSpot(16, 150.0),
+    FlSpot(17, 170.0),
+    FlSpot(18, 180.0),
+    FlSpot(19, 140.0),
+    FlSpot(20, 150.0),
+    FlSpot(21, 160.0),
+    FlSpot(22, 190.0),
+    FlSpot(23, 150.0),
+    FlSpot(24, 170.0),
   ];
   List<Color> gradientColors = [
     const Color(0xff23b6e6),
@@ -111,8 +109,17 @@ class _AppState extends State<App> {
     const Color(0xff02d39a).withOpacity(0.5),
   ];
 
+  List<Color> gradientColors2 = [
+    const Color(0xffF27405),
+    const Color(0xffF27405),
+    const Color(0xffF25C05),
+  ];
 
-
+  List<Color> gradientColors3 = [
+    const Color(0xffF27405).withOpacity(0.3),
+    const Color(0xffF25C05).withOpacity(0.3),
+    const Color(0xffF25C05).withOpacity(0.3),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +146,6 @@ class _AppState extends State<App> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-
                               //Status BaR
                               Container (
                                   width: 190,
@@ -284,7 +290,7 @@ class _AppState extends State<App> {
                                           height: 100,
                                           margin: EdgeInsets.only(top: 7.0),
                                           decoration: BoxDecoration(
-                                              color: Color(0xff2F2F2F),
+                                              color:Colors.white,
                                               border: Border.all(
                                                 color:Colors.white,
                                                 width: 2,
@@ -298,16 +304,22 @@ class _AppState extends State<App> {
                                                   spots: points.map((point) => FlSpot(point.x, point.y)).toList(),
                                                   isCurved: true,
                                                   barWidth: 3,
+                                                  belowBarData: BarAreaData(
+                                                    show: true,
+                                                    gradient: LinearGradient(
+                                                      colors: gradientColors3,
+                                                    ),
+                                                  ),
                                                   dotData: FlDotData(
                                                     show: false,
                                                   ),
                                                   gradient: LinearGradient(
-                                                    colors: gradientColors,
+                                                    colors: gradientColors2,
                                                   ),
                                                 ),
                                               ],
                                               borderData: FlBorderData(
-                                                  border: const Border(bottom: BorderSide(), left: BorderSide())),
+                                                border: const Border(bottom: BorderSide( color: Colors.transparent))),
                                               gridData: FlGridData(show: false),
                                               titlesData: FlTitlesData(
                                                 leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -407,47 +419,153 @@ class _AppState extends State<App> {
                     Container (
                       width: 400,
                       height: 130,
+                      margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                      padding: EdgeInsets.only(top: 20),
                       decoration: BoxDecoration(
                           color: Color(0xff1A1A1A),
                           border: Border.all(
                             color: Colors.white,
+                            width: 2,
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(35))
                       ),
-                      child: LineChart(
-                        LineChartData(
-                          lineBarsData: [
-                            LineChartBarData(
-                              spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
-                              isCurved: true,
 
-                              barWidth: 3,
-                              belowBarData: BarAreaData(
-                                show: true,
-                                gradient: LinearGradient(
-                                  colors: gradientColors1,
+                      child: DefaultTextStyle(
+                        style: TextStyle(color: Colors.white),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30.0),
+                        child: Row(
+                            children: [
+                              Container(
+
+                              ),
+                              Container(
+                                child: Container(
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 396,
+                                    maxHeight: 130,
+                                  ),
+                                  child: LineChart(
+                                    LineChartData(
+                                      lineBarsData: [
+                                        LineChartBarData(
+                                          show: true, // t
+                                          spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
+                                          isCurved: false,
+                                          barWidth: 3,
+                                          belowBarData: BarAreaData(
+                                            show: true,
+                                            color: Color(0xff75D570).withOpacity(0.5),
+                                          ),
+                                          dotData: FlDotData(
+                                            show: false,
+                                          ),
+                                          color: Color(0xff75D570),
+                                        ),
+                                      ],
+                                      borderData: FlBorderData(
+                                          border: const Border(bottom: BorderSide( color: Colors.white, width: 3), left: BorderSide(color: Colors.white))),
+                                      gridData: FlGridData(show: false),
+                                      titlesData: FlTitlesData(
+
+                                        leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                        topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                        rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                        bottomTitles: AxisTitles(sideTitles: SideTitles(
+                                          showTitles: true,
+                                          reservedSize: 15,
+                                          interval: 3,
+                                          getTitlesWidget: (value, meta) {
+
+                                            String text = '';
+                                            switch (value.toInt()) {
+                                              case 1:
+                                                text = '1:00';
+                                                break;
+                                              case 2:
+                                                text = '2:00';
+                                                break;
+                                              case 3:
+                                                text = '3:00';
+                                                break;
+                                              case 4:
+                                                text = '4:00';
+                                                break;
+                                              case 5:
+                                                text = '5:00';
+                                                break;
+                                              case 6:
+                                                text = '6:00';
+                                                break;
+                                              case 7:
+                                                text = '7:00';
+                                                break;
+                                              case 8:
+                                                text = '8:00';
+                                                break;
+                                              case 9:
+                                                text = '9:00';
+                                                break;
+                                              case 10:
+                                                text = '10:00';
+                                                break;
+                                              case 11:
+                                                text = '11:00';
+                                                break;
+                                              case 12:
+                                                text = '12:00';
+                                                break;
+                                              case 13:
+                                                text = '13:00';
+                                                break;
+                                              case 14:
+                                                text = '14:00';
+                                                break;
+                                              case 15:
+                                                text = '15:00';
+                                                break;
+                                              case 16:
+                                                text = '16:00';
+                                                break;
+                                              case 17:
+                                                text = '17:00';
+                                                break;
+                                              case 18:
+                                                text = '18:00';
+                                                break;
+                                              case 19:
+                                                text = '19:00';
+                                                break;
+                                              case 20:
+                                                text = '20:00';
+                                                break;
+                                              case 21:
+                                                text = '21:00';
+                                                break;
+                                              case 22:
+                                                text = '22:00';
+                                                break;
+                                              case 23:
+                                                text = '23:00';
+                                                break;
+                                              case 24:
+                                                text = '24:00';
+                                                break;
+                                            }
+                                            return Text(text);
+                                          },
+                                        ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
-                              dotData: FlDotData(
-                                show: false,
-                              ),
-                              gradient: LinearGradient(
-                                colors: gradientColors,
-                              ),
-                            ),
-                          ],
-                          borderData: FlBorderData(
-                              border: const Border(bottom: BorderSide(), left: BorderSide())),
-                          gridData: FlGridData(show: false),
-                          titlesData: FlTitlesData(
-
-                            leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                            topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                            rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                            bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-
-                          ),
+                            ]
                         ),
+
+
+                      ),
                       ),
 
                     ),
