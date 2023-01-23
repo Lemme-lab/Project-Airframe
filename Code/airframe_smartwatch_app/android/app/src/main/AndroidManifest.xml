@@ -4,7 +4,13 @@
         android:label="airframe_smartwatch_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <activity
+
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyAN7S_tQW_W2EdvdyVBMyADPLz99tNZV4I"/>
+
+
+       <activity
+
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"

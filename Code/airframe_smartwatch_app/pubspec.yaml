@@ -34,6 +34,9 @@ dependencies:
 
   fl_chart: ^0.55.2
   cupertino_icons: ^1.0.2
+  google_maps_flutter: ^2.2.3
+  location: ^4.4.0
+
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +64,12 @@ flutter:
   assets:
     - assets/211920484-7c349c77-0106-4b2a-833e-7458ce933a75.jpg
     - assets/arrow.png
+    - assets/Untitled-1_2.png
+    - assets/6981804.png
+    - assets/nfc.png
+    - assets/gps.png
+    - assets/settings.png
+    - assets/Screenshot 2023-01-23 at 22.05.13.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

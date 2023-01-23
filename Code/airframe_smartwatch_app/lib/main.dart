@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 
 
 
@@ -23,6 +25,12 @@ class _AppState extends State<App> {
   int O2stand = 40;
   int steps = 6560;
   int heartrate = 70;
+  double display = 90;
+  int kcal = 845;
+  int temperature = 24;
+  int altitude = 550;
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
 
 
   List<FlSpot> points = [
@@ -123,6 +131,13 @@ class _AppState extends State<App> {
     const Color(0xffF25C05).withOpacity(0.3),
   ];
 
+  late GoogleMapController mapController;
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,7 +154,12 @@ class _AppState extends State<App> {
       ),
 
       body: Container(
-          color: Color(0xff038C7F),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/Screenshot 2023-01-23 at 22.05.13.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: SingleChildScrollView(
               child: Column(
                   children:[
@@ -320,6 +340,7 @@ class _AppState extends State<App> {
                                           ),
                                           child: LineChart(
                                             LineChartData(
+                                              minY: 60,
                                               lineBarsData: [
                                                 LineChartBarData(
                                                   spots: points.map((point) => FlSpot(point.x, point.y)).toList(),
@@ -341,7 +362,7 @@ class _AppState extends State<App> {
                                               ],
                                               borderData: FlBorderData(
                                                 border: const Border(bottom: BorderSide( color: Colors.transparent))),
-                                              gridData: FlGridData(show: false),
+                                              gridData: FlGridData(show: true),
                                               titlesData: FlTitlesData(
                                                 leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
                                                 topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -418,7 +439,6 @@ class _AppState extends State<App> {
                                           ,)
                                     ),
                                     Container(
-                                      padding: EdgeInsets.only(left: 90.0, top: 90.0, right: 90.0,bottom: 90.0),
                                       width: 180,
                                       height: 180,
                                       margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
@@ -429,6 +449,7 @@ class _AppState extends State<App> {
                                           ),
                                           borderRadius: BorderRadius.all(Radius.circular(35))
                                       ),
+                                      child: Image.asset('assets/Untitled-1_2.png'),
                                     ),
                                   ],
                                 ),
@@ -481,15 +502,15 @@ class _AppState extends State<App> {
                                           show: true, // t
                                           spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
                                           isCurved: false,
-                                          barWidth: 3,
+                                          barWidth: 1.5,
                                           belowBarData: BarAreaData(
                                             show: true,
-                                            color: Color(0xff75D570).withOpacity(0.5),
+                                            color: Color(0xff2A3729).withOpacity(0.5),
                                           ),
                                           dotData: FlDotData(
                                             show: false,
                                           ),
-                                          color: Color(0xff75D570),
+                                          color: Color(0xff76D571),
                                         ),
                                       ],
                                       borderData: FlBorderData(
@@ -610,7 +631,6 @@ class _AppState extends State<App> {
                     ),
                     //Display Brightness
                     Container (
-                      padding: EdgeInsets.only(left: 90.0, top: 90.0, right: 90.0,bottom: 90.0),
                       width: 400,
                       height: 50,
                       margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
@@ -621,29 +641,112 @@ class _AppState extends State<App> {
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(40))
                       ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 360,
+
+                            height: 20,
+                            margin: EdgeInsets.only(left: 19.0, top: 14.0, right: 5.0),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                  color: Colors.white,
+                                ),
+                                gradient: LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment(battery/20, 5),
+                                  colors: <Color>[
+                                    Color(0xff000000),
+                                    Color(0xff383838),
+                                    Color(0xff646464),
+                                    Color(0xff858585),
+                                    Color(0xff9a9a9a),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+                                    Color(0xffffffff),
+
+
+
+                                  ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                  tileMode: TileMode.mirror,
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(40))
+                            ),
+                          ),
+                          Container(
+                            child: Slider(
+                              activeColor: Color(0xff00273d),
+                              value: display,
+                              max: 100,
+                              label: display.round().toString(),
+                              onChanged: (double value) {
+                                setState(() {
+                                  display = value;
+                                });
+                              },
+                            ),
+                          )
+                        ],
+                      ),
 
                     ),
                     //Google Maps
                     Container (
-                      padding: EdgeInsets.only(left: 90.0, top: 90.0, right: 90.0,bottom: 90.0),
                       width: 400,
                       height: 200,
                       margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
                       decoration: BoxDecoration(
                           color: Color(0xff1A1A1A),
                           border: Border.all(
-                            color: Colors.white,
+                            color: Colors.black,
+                            width: 3,
                           ),
+
                           borderRadius: BorderRadius.all(Radius.circular(35))
                       ),
-
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30.0),
+                        child: GoogleMap(
+                          onMapCreated: _onMapCreated,
+                          initialCameraPosition: CameraPosition(
+                            target: _center,
+                            zoom: 11.0,
+                          ),
+                        ),
+                     ),
                     ),
                     //Statistic Tabs
                     Container(
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 90.0, top: 90.0, right: 90.0,bottom: 90.0),
                               width: 195,
                               height: 150,
                               margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
@@ -654,9 +757,39 @@ class _AppState extends State<App> {
                                   ),
                                   borderRadius: BorderRadius.all(Radius.circular(35))
                               ),
+                             child: Column(
+                               children: [
+                                 Container(
+                                   height: 100,
+                                   width: 100,
+                                   child: Image.asset('assets/6981804.png'),
+                                 ),
+                                 Container(
+                                   width: 80,
+                                   height: 6,
+                                   decoration: BoxDecoration(
+                                       color: Color(0xff00ff9b),
+                                       border: Border.all(
+                                         color: Colors.white,
+                                       ),
+                                       borderRadius: BorderRadius.all(Radius.circular(35))
+                                   ),
+
+                                 ),
+                                 Container(
+                                   margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 5.0),
+                                   child: Text(
+                                       '$kcal' 'kcal',
+                                       style: TextStyle(
+                                           color: Colors.white,
+                                           fontWeight: FontWeight.bold,
+                                           fontSize: 25)
+                                   ),
+                                 )
+                               ],
+                             ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 90.0, top: 90.0, right: 90.0,bottom: 90.0),
                               width: 195,
                               height: 150,
                               margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
@@ -666,6 +799,62 @@ class _AppState extends State<App> {
                                     color: Colors.white,
                                   ),
                                   borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(right: 5.0, top: 10),
+                                    child: Text(
+                                        'Temperature',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 23)
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 90.0),
+                                    child: Text(
+                                        '$temperature''°C',
+                                        style: TextStyle(
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 21)
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 150,
+                                    height: 4,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Colors.white,
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(35))
+                                    ),
+
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(right: 55.0, top: 10),
+                                    child: Text(
+                                        'Altitude',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 23)
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 55.0),
+                                    child: Text(
+                                        '$altitude''/absl',
+                                        style: TextStyle(
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 21)
+                                    ),
+                                  ),
+                                ],
                               ),
                             )
                           ],
@@ -679,7 +868,35 @@ class _AppState extends State<App> {
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 90.0, top: 90.0, right: 90.0,bottom: 90.0),
+                              width: 195,
+                              height: 90,
+                              margin: EdgeInsets.only(left: 5.0, top: 15.0, bottom:50.0),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 5.0),
+                                    width: 90,
+                                    height: 90,
+                                    child: Image.asset('assets/nfc.png'),
+
+                              ),
+                                  Container(
+                                    width: 90,
+                                    height: 90,
+                                    child: Image.asset('assets/gps.png'),
+
+                                  ),
+                                ]
+                              ),
+                            ),
+                            Container(
                               width: 195,
                               height: 90,
                               margin: EdgeInsets.only(left: 5.0, top: 15.0, right: 5.0, bottom:50.0),
@@ -690,24 +907,32 @@ class _AppState extends State<App> {
                                   ),
                                   borderRadius: BorderRadius.all(Radius.circular(35))
                               ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(left: 90.0, top: 90.0, right: 90.0,bottom: 90.0),
-                              width: 195,
-                              height: 90,
-                              margin: EdgeInsets.only(left: 5.0, top: 15.0, right: 5.0, bottom:50.0),
-                              decoration: BoxDecoration(
-                                  color: Color(0xff1A1A1A),
-                                  border: Border.all(
-                                    color: Colors.white,
+                              child: Row(
+
+                                children: [
+
+                                  Container(
+                                    margin: EdgeInsets.only(left: 30.0),
+                                    child: Text(
+                                        'Options',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 23)
+                                    ),
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                  Container(
+                                    margin: EdgeInsets.only(right: 32.0),
+                                    width: 50,
+                                    height: 50,
+                                    child: Image.asset('assets/settings.png'),
+                                  )
+                                ],
                               ),
                             )
                           ],
                         )
                     ),
-
                   ]
               )
           )
