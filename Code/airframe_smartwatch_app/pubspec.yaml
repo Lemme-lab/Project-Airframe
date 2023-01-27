@@ -70,6 +70,11 @@ flutter:
     - assets/gps.png
     - assets/settings.png
     - assets/Screenshot 2023-01-23 at 22.05.13.png
+    - assets/Screenshot 2023-01-19 at 10.06.28.png
+    - assets/Untitled-1_2_2.png
+    - assets/Untitled-1_2_1.png
+    - assets/Screenshot 2023-01-19 at 10.10.39.png
+    - assets/Screenshot 2023-01-19 at 10.09.26.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

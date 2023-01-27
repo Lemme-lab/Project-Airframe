@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 const primaryColor = Color(0xFF151026);
 
+
 void main() => runApp(MaterialApp(
   home: App(),
 ));
@@ -17,6 +18,13 @@ class App extends StatefulWidget {
 
   @override
   State<App> createState() => _AppState();
+}
+
+class watchfaces extends StatefulWidget {
+  const watchfaces({Key? key}) : super(key: key);
+
+  @override
+  State<watchfaces> createState() => _watchfacesState();
 }
 
 class _AppState extends State<App> {
@@ -388,7 +396,7 @@ class _AppState extends State<App> {
                                             Container(
                                               height: 180.0,
                                               width: 180.0,
-                                              margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
+                                              margin: EdgeInsets.only(left: 12.0, top: 20.0, right: 5.0),
                                               child: ClipRRect(borderRadius: BorderRadius.circular(20), child: SizedBox.fromSize(
                                                 size: Size.fromRadius(48), // Image radius
                                                 child: Stack(
@@ -438,7 +446,9 @@ class _AppState extends State<App> {
                                           ]
                                           ,)
                                     ),
-                                    Container(
+                                    InkWell(
+                                      onTap: () {_navigateToNextScreen(context);},
+                                    child: Container(
                                       width: 180,
                                       height: 180,
                                       margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
@@ -450,6 +460,7 @@ class _AppState extends State<App> {
                                           borderRadius: BorderRadius.all(Radius.circular(35))
                                       ),
                                       child: Image.asset('assets/Untitled-1_2.png'),
+                                    ),
                                     ),
                                   ],
                                 ),
@@ -938,6 +949,115 @@ class _AppState extends State<App> {
           )
       ),
     );
+  }
+
+  void _navigateToNextScreen(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => watchfaces()));
+  }
+
+
+
+}
+class _watchfacesState extends State<watchfaces> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/Screenshot 2023-01-19 at 10.06.28.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+
+        child: SingleChildScrollView(
+         child: Column(
+
+          children:[
+            InkWell(
+            onTap: () {},
+              child: Container(
+                width: 280,
+                height: 280,
+                margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/Screenshot 2023-01-19 at 10.10.39.png"),
+                      fit: BoxFit.cover,
+                    ),
+                    border: Border.all(
+                      color: Colors.white,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(35))
+                ),
+                child: Image.asset('assets/Untitled-1_2.png'),
+              )
+            ),
+            InkWell(
+                onTap: () {},
+                child: Container(
+                  width: 280,
+                  height: 280,
+                  margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment(4, 5),
+                          colors: <Color>[
+                      Color(0xffFFF500),
+                      Color(0xffACD500),
+                            Color(0xff1c2300),
+                      Color(0xffCEFF00),
+                   ]
+                  ),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                  child: Image.asset('assets/Untitled-1_2_2.png'),
+                )
+            ),
+            InkWell(
+                onTap: () {},
+                child: Container(
+                  width: 280,
+                  height: 280,
+                  margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/Screenshot 2023-01-19 at 10.09.26.png"),
+                        fit: BoxFit.cover,
+                      ),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                  child: Image.asset('assets/Untitled-1_2_1.png'),
+                )
+            ),
+          ],
+        ),
+       ),
+      ),
+    );
+  }
+
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
   }
 }
 
