@@ -5,6 +5,7 @@ gradle-wrapper.jar
 /gradlew.bat
 /local.properties
 /android/app/src/main/AndroidManifest.xml
+/app/src/main/AndroidManifest.xml
 GeneratedPluginRegistrant.java
 
 # Remember to never publicly share your keystore.
