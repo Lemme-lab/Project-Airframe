@@ -20,6 +20,8 @@ class App extends StatefulWidget {
   State<App> createState() => _AppState();
 }
 
+
+
 class watchfaces extends StatefulWidget {
   const watchfaces({Key? key}) : super(key: key);
 
@@ -334,52 +336,75 @@ class _AppState extends State<App> {
                                           color: Colors.white,
                                         ),
                                         //ECG
-                                        Container(
-                                          width: 160,
-                                          height: 100,
-                                          margin: EdgeInsets.only(top: 7.0),
-                                          decoration: BoxDecoration(
-                                              color:Colors.white,
-                                              border: Border.all(
-                                                color:Colors.white,
-                                                width: 2,
-                                              ),
-                                              borderRadius: BorderRadius.all(Radius.circular(15))
-                                          ),
-                                          child: LineChart(
-                                            LineChartData(
-                                              minY: 60,
-                                              lineBarsData: [
-                                                LineChartBarData(
-                                                  spots: points.map((point) => FlSpot(point.x, point.y)).toList(),
-                                                  isCurved: true,
-                                                  barWidth: 3,
-                                                  belowBarData: BarAreaData(
-                                                    show: true,
-                                                    gradient: LinearGradient(
-                                                      colors: gradientColors3,
+                                        InkWell(
+                                          onTap: () {_navigateToNextScreenStats(context);},
+                                          child:(
+                                          Stack(
+                                              children: [
+                                                Container(
+                                                      width: 160,
+                                                      height: 100,
+                                                      margin: EdgeInsets.only(top: 7.0),
+                                                      decoration: BoxDecoration(
+                                                          color:Colors.white,
+                                                          border: Border.all(
+                                                            color:Colors.white,
+                                                            width: 2,
+                                                          ),
+                                                          borderRadius: BorderRadius.all(Radius.circular(15))
+                                                      ),
+                                                      child: LineChart(
+                                                        LineChartData(
+                                                          minY: 60,
+                                                          lineBarsData: [
+                                                            LineChartBarData(
+                                                              spots: points.map((point) => FlSpot(point.x, point.y)).toList(),
+                                                              isCurved: true,
+                                                              barWidth: 2,
+                                                              belowBarData: BarAreaData(
+                                                                show: true,
+                                                                gradient: LinearGradient(
+                                                                  colors: gradientColors3,
+                                                                ),
+                                                              ),
+                                                              dotData: FlDotData(
+                                                                show: false,
+                                                              ),
+                                                              gradient: LinearGradient(
+                                                                colors: gradientColors2,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                          borderData: FlBorderData(
+                                                              border: const Border(bottom: BorderSide( color: Colors.transparent))),
+                                                          gridData: FlGridData(show: true),
+                                                          titlesData: FlTitlesData(
+                                                            leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                                            topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                                            rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                                            bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                                          ),
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  dotData: FlDotData(
-                                                    show: false,
-                                                  ),
-                                                  gradient: LinearGradient(
-                                                    colors: gradientColors2,
+                                                Container(
+                                                  width: 160,
+                                                  height: 100,
+                                                  margin: EdgeInsets.only(top: 7.0),
+                                                  decoration: BoxDecoration(
+                                                      color:Colors.transparent,
+                                                      border: Border.all(
+                                                        color:Colors.white,
+                                                        width: 2,
+                                                      ),
+                                                      borderRadius: BorderRadius.all(Radius.circular(15))
                                                   ),
                                                 ),
                                               ],
-                                              borderData: FlBorderData(
-                                                border: const Border(bottom: BorderSide( color: Colors.transparent))),
-                                              gridData: FlGridData(show: true),
-                                              titlesData: FlTitlesData(
-                                                leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                                topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                                rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                                bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
+                                          )
+                                          )
+                                        )
+
 
                                       ]
                                   )
@@ -469,176 +494,199 @@ class _AppState extends State<App> {
                         )
                     ),
                     //Heart Rate
-                    Container (
-                      width: 400,
-                      height: 130,
-                      margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
-                      decoration: BoxDecoration(
-                          color: Color(0xff1A1A1A),
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(35))
-                      ),
 
-                      child: DefaultTextStyle(
-                        style: TextStyle(color: Colors.white),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30.0),
-                        child: Stack(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 28.0, top: 5, right: 5.0),
-                                child: Text(
-                                  'Heart Rate',
-                            style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25)
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(top: 30),
-                                child: Container(
-                                  constraints: const BoxConstraints(
-                                    maxWidth: 396,
-                                    maxHeight: 130,
-                                  ),
-                                  child: LineChart(
-                                    LineChartData(
-                                      minY: 70,
-                                      lineBarsData: [
-                                        LineChartBarData(
-                                          show: true, // t
-                                          spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
-                                          isCurved: false,
-                                          barWidth: 1.5,
-                                          belowBarData: BarAreaData(
-                                            show: true,
-                                            color: Color(0xff2A3729).withOpacity(0.5),
-                                          ),
-                                          dotData: FlDotData(
-                                            show: false,
-                                          ),
-                                          color: Color(0xff76D571),
-                                        ),
-                                      ],
-                                      borderData: FlBorderData(
-                                          border: const Border(bottom: BorderSide( color: Colors.white, width: 3), left: BorderSide(color: Colors.white))),
-                                      gridData: FlGridData(show: true),
-                                      titlesData: FlTitlesData(
-
-                                        leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                        topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                        rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                        bottomTitles: AxisTitles(sideTitles: SideTitles(
-                                          showTitles: true,
-                                          reservedSize: 15,
-                                          interval: 3,
-                                          getTitlesWidget: (value, meta) {
-
-                                            String text = '';
-                                            switch (value.toInt()) {
-                                              case 1:
-                                                text = '1:00';
-                                                break;
-                                              case 2:
-                                                text = '2:00';
-                                                break;
-                                              case 3:
-                                                text = '3:00';
-                                                break;
-                                              case 4:
-                                                text = '4:00';
-                                                break;
-                                              case 5:
-                                                text = '5:00';
-                                                break;
-                                              case 6:
-                                                text = '6:00';
-                                                break;
-                                              case 7:
-                                                text = '7:00';
-                                                break;
-                                              case 8:
-                                                text = '8:00';
-                                                break;
-                                              case 9:
-                                                text = '9:00';
-                                                break;
-                                              case 10:
-                                                text = '10:00';
-                                                break;
-                                              case 11:
-                                                text = '11:00';
-                                                break;
-                                              case 12:
-                                                text = '12:00';
-                                                break;
-                                              case 13:
-                                                text = '13:00';
-                                                break;
-                                              case 14:
-                                                text = '14:00';
-                                                break;
-                                              case 15:
-                                                text = '15:00';
-                                                break;
-                                              case 16:
-                                                text = '16:00';
-                                                break;
-                                              case 17:
-                                                text = '17:00';
-                                                break;
-                                              case 18:
-                                                text = '18:00';
-                                                break;
-                                              case 19:
-                                                text = '19:00';
-                                                break;
-                                              case 20:
-                                                text = '20:00';
-                                                break;
-                                              case 21:
-                                                text = '21:00';
-                                                break;
-                                              case 22:
-                                                text = '22:00';
-                                                break;
-                                              case 23:
-                                                text = '23:00';
-                                                break;
-                                              case 24:
-                                                text = '24:00';
-                                                break;
-                                            }
-                                            return Text(text);
-                                          },
-                                        ), drawBehindEverything: true,
-                                        ),
+                    InkWell(
+                        onTap: () {_navigateToNextScreenStats(context);},
+                        child:(
+                            Stack(
+                              children: [
+                                Container (
+                                  width: 400,
+                                  height: 130,
+                                  margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                                  decoration: BoxDecoration(
+                                      color: Color(0xff1A1A1A),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
                                       ),
+                                      borderRadius: BorderRadius.all(Radius.circular(35))
+                                  ),
+
+                                  child: DefaultTextStyle(
+                                    style: TextStyle(color: Colors.white),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                      child: Stack(
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.only(left: 28.0, top: 5, right: 5.0),
+                                              child: Text(
+                                                  'Heart Rate',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 25)
+                                              ),
+                                            ),
+                                            Container(
+                                              padding: EdgeInsets.only(top: 30),
+                                              child: Container(
+                                                constraints: const BoxConstraints(
+                                                  maxWidth: 396,
+                                                  maxHeight: 130,
+                                                ),
+                                                child: LineChart(
+                                                  LineChartData(
+                                                    minY: 70,
+                                                    lineBarsData: [
+                                                      LineChartBarData(
+                                                        show: true, // t
+                                                        spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
+                                                        isCurved: false,
+                                                        barWidth: 1.5,
+                                                        belowBarData: BarAreaData(
+                                                          show: true,
+                                                          color: Color(0xff2A3729).withOpacity(0.5),
+                                                        ),
+                                                        dotData: FlDotData(
+                                                          show: false,
+                                                        ),
+                                                        color: Color(0xff76D571),
+                                                      ),
+                                                    ],
+                                                    borderData: FlBorderData(
+                                                        border: const Border(bottom: BorderSide( color: Colors.white, width: 3), left: BorderSide(color: Colors.white))),
+                                                    gridData: FlGridData(show: true),
+                                                    titlesData: FlTitlesData(
+
+                                                      leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                                      topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                                      rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                                      bottomTitles: AxisTitles(sideTitles: SideTitles(
+                                                        showTitles: true,
+                                                        reservedSize: 15,
+                                                        interval: 3,
+                                                        getTitlesWidget: (value, meta) {
+
+                                                          String text = '';
+                                                          switch (value.toInt()) {
+                                                            case 1:
+                                                              text = '1:00';
+                                                              break;
+                                                            case 2:
+                                                              text = '2:00';
+                                                              break;
+                                                            case 3:
+                                                              text = '3:00';
+                                                              break;
+                                                            case 4:
+                                                              text = '4:00';
+                                                              break;
+                                                            case 5:
+                                                              text = '5:00';
+                                                              break;
+                                                            case 6:
+                                                              text = '6:00';
+                                                              break;
+                                                            case 7:
+                                                              text = '7:00';
+                                                              break;
+                                                            case 8:
+                                                              text = '8:00';
+                                                              break;
+                                                            case 9:
+                                                              text = '9:00';
+                                                              break;
+                                                            case 10:
+                                                              text = '10:00';
+                                                              break;
+                                                            case 11:
+                                                              text = '11:00';
+                                                              break;
+                                                            case 12:
+                                                              text = '12:00';
+                                                              break;
+                                                            case 13:
+                                                              text = '13:00';
+                                                              break;
+                                                            case 14:
+                                                              text = '14:00';
+                                                              break;
+                                                            case 15:
+                                                              text = '15:00';
+                                                              break;
+                                                            case 16:
+                                                              text = '16:00';
+                                                              break;
+                                                            case 17:
+                                                              text = '17:00';
+                                                              break;
+                                                            case 18:
+                                                              text = '18:00';
+                                                              break;
+                                                            case 19:
+                                                              text = '19:00';
+                                                              break;
+                                                            case 20:
+                                                              text = '20:00';
+                                                              break;
+                                                            case 21:
+                                                              text = '21:00';
+                                                              break;
+                                                            case 22:
+                                                              text = '22:00';
+                                                              break;
+                                                            case 23:
+                                                              text = '23:00';
+                                                              break;
+                                                            case 24:
+                                                              text = '24:00';
+                                                              break;
+                                                          }
+                                                          return Text(text);
+                                                        },
+                                                      ), drawBehindEverything: true,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.only(left: 300.0, top: 75,),
+                                              child: Text(
+                                                  '$heartrate''pbm',
+                                                  style: TextStyle(
+                                                      color: Colors.grey,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 25)
+                                              ),
+                                            ),
+                                          ]
+                                      ),
+
+
                                     ),
                                   ),
+
                                 ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: 300.0, top: 75,),
-                                child: Text(
-                                    '$heartrate''pbm',
-                                    style: TextStyle(
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 25)
+                                Container(
+                                  width: 400,
+                                  height: 130,
+                                  margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                                  decoration: BoxDecoration(
+                                      color:Colors.transparent,
+                                      border: Border.all(
+                                        color:Colors.transparent,
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.all(Radius.circular(15))
+                                  ),
                                 ),
-                              ),
-                            ]
-                        ),
-
-
-                      ),
-                      ),
-
+                              ],
+                            )
+                        )
                     ),
                     //Display Brightness
                     Container (
@@ -954,10 +1002,12 @@ class _AppState extends State<App> {
   void _navigateToNextScreen(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => watchfaces()));
   }
-
-
+  void _navigateToNextScreenStats(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => stats()));
+  }
 
 }
+
 class _watchfacesState extends State<watchfaces> {
   @override
   Widget build(BuildContext context) {
@@ -1060,6 +1110,741 @@ class _watchfacesState extends State<watchfaces> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
   }
 }
+
+class stats extends StatefulWidget {
+  const stats({Key? key}) : super(key: key);
+
+  @override
+  State<stats> createState() => _statsState();
+}
+
+class _statsState extends State<stats> {
+  int Oxy_AVG = 80;
+  int Oxy_Max = 80;
+  int Oxy_Min = 80;
+
+  int heart_AVG = 80;
+  int heart_Max = 80;
+  int heart_Min = 80;
+
+  List<FlSpot> points1 = [
+    FlSpot(0, 110.0),
+    FlSpot(0.5, 110.0),
+    FlSpot(1, 130.0),
+    FlSpot(2.5, 100.0),
+    FlSpot(3, 130.0),
+    FlSpot(3.5, 160.0),
+    FlSpot(4, 190.0),
+    FlSpot(4.5, 150.0),
+    FlSpot(5, 170.0),
+    FlSpot(5.5, 180.0),
+    FlSpot(6, 140.0),
+    FlSpot(6.5, 150.0),
+    FlSpot(7, 160.0),
+    FlSpot(7.5, 190.0),
+    FlSpot(8, 150.0),
+    FlSpot(8.5, 170.0),
+    FlSpot(9, 180.0),
+    FlSpot(9.5, 140.0),
+    FlSpot(10, 150.0),
+    FlSpot(10.5, 110.0),
+    FlSpot(11, 110.0),
+    FlSpot(11.5, 130.0),
+    FlSpot(12, 100.0),
+    FlSpot(13, 130.0),
+    FlSpot(14, 160.0),
+    FlSpot(15, 190.0),
+    FlSpot(16, 150.0),
+    FlSpot(17, 170.0),
+    FlSpot(18, 180.0),
+    FlSpot(19, 140.0),
+    FlSpot(20, 150.0),
+    FlSpot(21, 160.0),
+    FlSpot(22, 190.0),
+    FlSpot(23, 150.0),
+    FlSpot(24, 170.0),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+    body: Container(
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/Screenshot 2023-01-19 at 10.06.28.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Column(
+      children: [
+        Container (
+          width: 400,
+          height: 180,
+          margin: EdgeInsets.only(left: 5.0, top: 40.0, right: 5.0),
+          decoration: BoxDecoration(
+              color: Color(0xff1A1A1A),
+              border: Border.all(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(35))
+          ),
+
+          child: DefaultTextStyle(
+            style: TextStyle(color: Colors.white),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30.0),
+              child: Stack(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 28.0, top: 5, right: 5.0),
+                      child: Text(
+                          'ECG',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25)
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 30),
+                      child: Container(
+                        constraints: const BoxConstraints(
+                          maxWidth: 396,
+                          maxHeight: 430,
+                        ),
+                        child: LineChart(
+                          LineChartData(
+                            minY: 70,
+                            lineBarsData: [
+                              LineChartBarData(
+                                show: true, // t
+                                spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
+                                isCurved: false,
+                                barWidth: 1.5,
+                                belowBarData: BarAreaData(
+                                  show: true,
+                                  color: Color(0xffFF8E8E).withOpacity(0.6),
+                                ),
+                                dotData: FlDotData(
+                                  show: false,
+                                ),
+                                color: Color(0xffFF8E8E),
+                              ),
+                            ],
+                            borderData: FlBorderData(
+                                border: const Border(bottom: BorderSide( color: Colors.white, width: 3), left: BorderSide(color: Colors.white))),
+                            gridData: FlGridData(show: true),
+                            titlesData: FlTitlesData(
+
+                              leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              bottomTitles: AxisTitles(sideTitles: SideTitles(
+                                showTitles: true,
+                                reservedSize: 15,
+                                interval: 3,
+                                getTitlesWidget: (value, meta) {
+
+                                  String text = '';
+                                  switch (value.toInt()) {
+                                    case 1:
+                                      text = '1:00';
+                                      break;
+                                    case 2:
+                                      text = '2:00';
+                                      break;
+                                    case 3:
+                                      text = '3:00';
+                                      break;
+                                    case 4:
+                                      text = '4:00';
+                                      break;
+                                    case 5:
+                                      text = '5:00';
+                                      break;
+                                    case 6:
+                                      text = '6:00';
+                                      break;
+                                    case 7:
+                                      text = '7:00';
+                                      break;
+                                    case 8:
+                                      text = '8:00';
+                                      break;
+                                    case 9:
+                                      text = '9:00';
+                                      break;
+                                    case 10:
+                                      text = '10:00';
+                                      break;
+                                    case 11:
+                                      text = '11:00';
+                                      break;
+                                    case 12:
+                                      text = '12:00';
+                                      break;
+                                    case 13:
+                                      text = '13:00';
+                                      break;
+                                    case 14:
+                                      text = '14:00';
+                                      break;
+                                    case 15:
+                                      text = '15:00';
+                                      break;
+                                    case 16:
+                                      text = '16:00';
+                                      break;
+                                    case 17:
+                                      text = '17:00';
+                                      break;
+                                    case 18:
+                                      text = '18:00';
+                                      break;
+                                    case 19:
+                                      text = '19:00';
+                                      break;
+                                    case 20:
+                                      text = '20:00';
+                                      break;
+                                    case 21:
+                                      text = '21:00';
+                                      break;
+                                    case 22:
+                                      text = '22:00';
+                                      break;
+                                    case 23:
+                                      text = '23:00';
+                                      break;
+                                    case 24:
+                                      text = '24:00';
+                                      break;
+                                  }
+                                  return Text(text);
+                                },
+                              ), drawBehindEverything: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]
+              ),
+
+
+            ),
+          ),
+
+        ),
+        Container (
+          width: 400,
+          height: 180,
+          margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+          decoration: BoxDecoration(
+              color: Color(0xff1A1A1A),
+              border: Border.all(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(35))
+          ),
+
+          child: DefaultTextStyle(
+            style: TextStyle(color: Colors.white),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30.0),
+              child: Stack(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 28.0, top: 5, right: 5.0),
+                      child: Text(
+                          'Oxymeter',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25)
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 30),
+                      child: Container(
+                        constraints: const BoxConstraints(
+                          maxWidth: 396,
+                          maxHeight: 430,
+                        ),
+                        child: LineChart(
+                          LineChartData(
+                            minY: 70,
+                            lineBarsData: [
+                              LineChartBarData(
+                                show: true, // t
+                                spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
+                                isCurved: false,
+                                barWidth: 1.5,
+                                belowBarData: BarAreaData(
+                                  show: true,
+                                  color: Color(0xff2A3729).withOpacity(0.5),
+                                ),
+                                dotData: FlDotData(
+                                  show: false,
+                                ),
+                                color: Color(0xff76D571),
+                              ),
+                            ],
+                            borderData: FlBorderData(
+                                border: const Border(bottom: BorderSide( color: Colors.white, width: 3), left: BorderSide(color: Colors.white))),
+                            gridData: FlGridData(show: true),
+                            titlesData: FlTitlesData(
+
+                              leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              bottomTitles: AxisTitles(sideTitles: SideTitles(
+                                showTitles: true,
+                                reservedSize: 15,
+                                interval: 3,
+                                getTitlesWidget: (value, meta) {
+
+                                  String text = '';
+                                  switch (value.toInt()) {
+                                    case 1:
+                                      text = '1:00';
+                                      break;
+                                    case 2:
+                                      text = '2:00';
+                                      break;
+                                    case 3:
+                                      text = '3:00';
+                                      break;
+                                    case 4:
+                                      text = '4:00';
+                                      break;
+                                    case 5:
+                                      text = '5:00';
+                                      break;
+                                    case 6:
+                                      text = '6:00';
+                                      break;
+                                    case 7:
+                                      text = '7:00';
+                                      break;
+                                    case 8:
+                                      text = '8:00';
+                                      break;
+                                    case 9:
+                                      text = '9:00';
+                                      break;
+                                    case 10:
+                                      text = '10:00';
+                                      break;
+                                    case 11:
+                                      text = '11:00';
+                                      break;
+                                    case 12:
+                                      text = '12:00';
+                                      break;
+                                    case 13:
+                                      text = '13:00';
+                                      break;
+                                    case 14:
+                                      text = '14:00';
+                                      break;
+                                    case 15:
+                                      text = '15:00';
+                                      break;
+                                    case 16:
+                                      text = '16:00';
+                                      break;
+                                    case 17:
+                                      text = '17:00';
+                                      break;
+                                    case 18:
+                                      text = '18:00';
+                                      break;
+                                    case 19:
+                                      text = '19:00';
+                                      break;
+                                    case 20:
+                                      text = '20:00';
+                                      break;
+                                    case 21:
+                                      text = '21:00';
+                                      break;
+                                    case 22:
+                                      text = '22:00';
+                                      break;
+                                    case 23:
+                                      text = '23:00';
+                                      break;
+                                    case 24:
+                                      text = '24:00';
+                                      break;
+                                  }
+                                  return Text(text);
+                                },
+                              ), drawBehindEverything: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]
+              ),
+
+
+            ),
+          ),
+
+        ),
+        Container (
+          width: 400,
+          height: 50,
+          margin: EdgeInsets.only(left: 5.0, top: 10.0, right: 5.0),
+          decoration: BoxDecoration(
+              color: Color(0xff1A1A1A),
+              border: Border.all(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(35))
+          ),
+          child: Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 25.0, top: 0.0, right: 15.0),
+                child:Text(
+                  "AVG: ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                child:Text(
+                  '$Oxy_AVG%',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+              Container(
+                child:Text(
+                  "Min: ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                child:Text(
+                  '$Oxy_Min%',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+              Container(
+                child:Text(
+                  "Max: ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                child:Text(
+                  '$Oxy_Max%',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+            ],
+
+          ),
+
+        ),
+        Container (
+          width: 400,
+          height: 180,
+          margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+          decoration: BoxDecoration(
+              color: Color(0xff1A1A1A),
+              border: Border.all(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(35))
+          ),
+
+          child: DefaultTextStyle(
+            style: TextStyle(color: Colors.white),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30.0),
+              child: Stack(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 28.0, top: 5, right: 5.0),
+                      child: Text(
+                          'Heart Rate',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25)
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 30),
+                      child: Container(
+                        constraints: const BoxConstraints(
+                          maxWidth: 396,
+                          maxHeight: 430,
+                        ),
+                        child: LineChart(
+                          LineChartData(
+                            minY: 70,
+                            lineBarsData: [
+                              LineChartBarData(
+                                show: true, // t
+                                spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
+                                isCurved: false,
+                                barWidth: 1.5,
+                                belowBarData: BarAreaData(
+                                  show: true,
+                                  color: Color(0xff71C0F3).withOpacity(0.5),
+                                ),
+                                dotData: FlDotData(
+                                  show: false,
+                                ),
+                                color: Color(0xff71C0F3),
+                              ),
+                            ],
+                            borderData: FlBorderData(
+                                border: const Border(bottom: BorderSide( color: Colors.white, width: 3), left: BorderSide(color: Colors.white))),
+                            gridData: FlGridData(show: true),
+                            titlesData: FlTitlesData(
+
+                              leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              bottomTitles: AxisTitles(sideTitles: SideTitles(
+                                showTitles: true,
+                                reservedSize: 15,
+                                interval: 3,
+                                getTitlesWidget: (value, meta) {
+
+                                  String text = '';
+                                  switch (value.toInt()) {
+                                    case 1:
+                                      text = '1:00';
+                                      break;
+                                    case 2:
+                                      text = '2:00';
+                                      break;
+                                    case 3:
+                                      text = '3:00';
+                                      break;
+                                    case 4:
+                                      text = '4:00';
+                                      break;
+                                    case 5:
+                                      text = '5:00';
+                                      break;
+                                    case 6:
+                                      text = '6:00';
+                                      break;
+                                    case 7:
+                                      text = '7:00';
+                                      break;
+                                    case 8:
+                                      text = '8:00';
+                                      break;
+                                    case 9:
+                                      text = '9:00';
+                                      break;
+                                    case 10:
+                                      text = '10:00';
+                                      break;
+                                    case 11:
+                                      text = '11:00';
+                                      break;
+                                    case 12:
+                                      text = '12:00';
+                                      break;
+                                    case 13:
+                                      text = '13:00';
+                                      break;
+                                    case 14:
+                                      text = '14:00';
+                                      break;
+                                    case 15:
+                                      text = '15:00';
+                                      break;
+                                    case 16:
+                                      text = '16:00';
+                                      break;
+                                    case 17:
+                                      text = '17:00';
+                                      break;
+                                    case 18:
+                                      text = '18:00';
+                                      break;
+                                    case 19:
+                                      text = '19:00';
+                                      break;
+                                    case 20:
+                                      text = '20:00';
+                                      break;
+                                    case 21:
+                                      text = '21:00';
+                                      break;
+                                    case 22:
+                                      text = '22:00';
+                                      break;
+                                    case 23:
+                                      text = '23:00';
+                                      break;
+                                    case 24:
+                                      text = '24:00';
+                                      break;
+                                  }
+                                  return Text(text);
+                                },
+                              ), drawBehindEverything: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]
+              ),
+
+
+            ),
+          ),
+
+        ),
+        Container (
+          width: 400,
+          height: 50,
+          margin: EdgeInsets.only(left: 5.0, top: 10.0, right: 5.0),
+          decoration: BoxDecoration(
+              color: Color(0xff1A1A1A),
+              border: Border.all(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(35))
+          ),
+          child: Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 25.0, top: 0.0, right: 15.0),
+                child:Text(
+                  "AVG: ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                child:Text(
+                  '$heart_AVG%',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+              Container(
+                child:Text(
+                  "Min: ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                child:Text(
+                  '$heart_Min%',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                child:Text(
+                  "Max: ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                child:Text(
+                  '$heart_Max%',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+            ],
+
+          ),
+
+        ),
+      ],
+    ),
+    ),
+    );
+  }
+
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+}
+
+
+
+
+
 
 
 
