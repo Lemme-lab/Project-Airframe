@@ -777,7 +777,12 @@ class _AppState extends State<App> {
 
                     ),
                     //Google Maps
-                    Container (
+                    InkWell(
+                    onTap: () {_navigateToNextScreenMaps(context);},
+                    child:(
+                    Stack(
+                    children: [
+                      Container (
                       width: 400,
                       height: 200,
                       margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
@@ -801,6 +806,24 @@ class _AppState extends State<App> {
                         ),
                      ),
                     ),
+                      Container(
+                        width: 350,
+                        height: 200,
+                        margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                        decoration: BoxDecoration(
+                            color:Colors.transparent,
+                            border: Border.all(
+                              color:Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(15))
+                        ),
+                      ),
+                       ],
+                      )
+                     )
+                    ),
+
                     //Statistic Tabs
                     Container(
                         child: Row(
@@ -1004,6 +1027,9 @@ class _AppState extends State<App> {
   }
   void _navigateToNextScreenStats(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => stats()));
+  }
+  void _navigateToNextScreenMaps(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => maps()));
   }
 
 }
@@ -1840,6 +1866,82 @@ class _statsState extends State<stats> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
   }
 }
+
+class maps extends StatefulWidget {
+  const maps({Key? key}) : super(key: key);
+
+  @override
+  State<maps> createState() => _mapsState();
+}
+
+class _mapsState extends State<maps> {
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  late GoogleMapController mapController;
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/Screenshot 2023-01-19 at 10.06.28.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+
+        child: SingleChildScrollView(
+          child: Column(
+
+            children:[
+              Container (
+                width: 800,
+                height: 790,
+                decoration: BoxDecoration(
+                    color: Color(0xff1A1A1A),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 3,
+                    ),
+
+
+                ),
+                  child: GoogleMap(
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                      target: _center,
+                      zoom: 11.0,
+                    ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+}
+
 
 
 
