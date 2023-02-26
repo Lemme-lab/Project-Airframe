@@ -266,6 +266,9 @@ class _AppState extends State<App> {
                                           color: Colors.white,
                                         ),
                                         //Steps
+                                        InkWell(
+                                        onTap: () {_navigateToNextScreenHealth(context);},
+                                        child:(
                                         Container(
                                           child: Stack(
                                             children: [
@@ -328,6 +331,8 @@ class _AppState extends State<App> {
                                               ),
                                             ],
                                           ),
+                                        )
+                                        )
                                         ),
                                         //Split line
                                         Container(
@@ -359,20 +364,15 @@ class _AppState extends State<App> {
                                                           lineBarsData: [
                                                             LineChartBarData(
                                                               spots: points.map((point) => FlSpot(point.x, point.y)).toList(),
-                                                              isCurved: true,
                                                               barWidth: 2,
                                                               belowBarData: BarAreaData(
                                                                 show: true,
-                                                                gradient: LinearGradient(
-                                                                  colors: gradientColors3,
-                                                                ),
+                                                                color:Colors.red.withOpacity(0.5),
                                                               ),
                                                               dotData: FlDotData(
                                                                 show: false,
                                                               ),
-                                                              gradient: LinearGradient(
-                                                                colors: gradientColors2,
-                                                              ),
+                                                              color:Colors.red,
                                                             ),
                                                           ],
                                                           borderData: FlBorderData(
@@ -841,6 +841,10 @@ class _AppState extends State<App> {
                               ),
                              child: Column(
                                children: [
+                                 InkWell(
+                                 onTap: () {_navigateToNextScreenHealth(context);},
+                                 child: Column(
+                                     children: [
                                  Container(
                                    height: 100,
                                    width: 100,
@@ -868,6 +872,8 @@ class _AppState extends State<App> {
                                            fontSize: 25)
                                    ),
                                  )
+                                 ]
+                                ))
                                ],
                              ),
                             ),
@@ -1031,6 +1037,9 @@ class _AppState extends State<App> {
   void _navigateToNextScreenMaps(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => maps()));
   }
+  void _navigateToNextScreenHealth(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => health()));
+  }
 
 }
 
@@ -1060,7 +1069,6 @@ class _watchfacesState extends State<watchfaces> {
 
         child: SingleChildScrollView(
          child: Column(
-
           children:[
             InkWell(
             onTap: () {},
@@ -1123,6 +1131,36 @@ class _watchfacesState extends State<watchfaces> {
                       borderRadius: BorderRadius.all(Radius.circular(35))
                   ),
                   child: Image.asset('assets/Untitled-1_2_1.png'),
+                )
+            ),
+            InkWell(
+                onTap: () {},
+                child: Container(
+                  width: 280,
+                  height: 280,
+                  margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/watchface-4.png"),
+                        fit: BoxFit.cover,
+                      ),
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment(1,3),
+                        colors: <Color>[
+                          Color(0xff00E0D7),
+                          Color(0xff004B8B),
+                          Color(0xff001AA8),
+                          Color(0xff016069),
+                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                        tileMode: TileMode.mirror,
+                      ),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                  child: Image.asset('assets/watchface-4.png'),
                 )
             ),
           ],
@@ -1204,6 +1242,7 @@ class _statsState extends State<stats> {
         centerTitle: true,
         backgroundColor: Color(0xff023535),
       ),
+
     body: Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -1212,6 +1251,7 @@ class _statsState extends State<stats> {
           fit: BoxFit.cover,
         ),
       ),
+
       child: Column(
       children: [
         Container (
@@ -1941,6 +1981,1070 @@ class _mapsState extends State<maps> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
   }
 }
+
+class health extends StatefulWidget {
+  const health({Key? key}) : super(key: key);
+
+  @override
+  State<health> createState() => _healthState();
+}
+
+class _healthState extends State<health> {
+  int bpm = 117;
+  int kcal = 346;
+  int hours = 7;
+  int minutes = 23;
+  List<double> past_sleep = [10, 8.12, 5.12, 6.12, 9.20, 5.8, 7.9, 7.7, 7.2, 8.3, 8.8, 5.9];
+  List<double> past_distance = [15000, 10000, 8000, 12300, 14200, 3400];
+  List<String> past_distance_month = ["Mar", "Mar", "Mar", "Mar", "Mar", "Mar"];
+  List<String> past_distance_day = ["14", "16", "18", "20", "22", "24"];
+  String training_status = "Running";
+  String daily_progress = "63";
+  int steps = 6799;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        color: Color(0xff1A1A1A),
+
+        child: SingleChildScrollView(
+          child: Column(
+            children:[
+              Container(
+              child: Row(
+                children:[
+                  Container(
+                    width: 190,
+                    height: 190,
+                    margin: EdgeInsets.only(left: 10.0,top:15),
+                    decoration: BoxDecoration(
+                        color: Color(0xff1A1A1A),
+                        border: Border.all(
+                          color: Colors.white,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(10))
+
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                        child: Row(
+                        children: [
+                          Container(
+                            width: 110,
+                            height: 110,
+                            margin: EdgeInsets.only(top: 0.0),
+                            child: Image.asset('assets/Untitled-1.png'),
+                          ),
+                          Container(
+                              child: Column(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(left: 0.0),
+                                      child: Text(
+                                          '$bpm',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 30)
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 0.0),
+                                      child: Text(
+                                          'bpm',
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 25)
+                                      ),
+                                    ),
+                                  ]
+                              )
+                          ),
+                        ]
+                        ),
+                        ),
+                        Container(
+                          width: 240,
+                          height: 75,
+                          margin: EdgeInsets.only(right: 15.0),
+                          child: Image.asset('assets/idkidk.png'),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Column(
+                      children:[
+                        Container(
+                          width: 190,
+                          height: 190,
+                          margin: EdgeInsets.only(left: 10.0,top:15),
+                          decoration: BoxDecoration(
+                              color: Color(0xff1A1A1A),
+                              border: Border.all(
+                                color: Colors.white,
+                              ),
+                              borderRadius: BorderRadius.all(Radius.circular(10))
+
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(right: 80.0, top:5),
+                                child: Text(
+                                    'Sleep',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30)
+                                ),
+                              ),
+                              Container(
+                                child: Row(
+                                    children: [
+                                      Container(
+                                        width: 60,
+                                        height: 60,
+                                        child: Image.asset('assets/Untitled-4.png'),
+                                      ),
+                                      Container(
+                                          child: Column(
+                                              children: [
+                                                Container(
+                                                 child: Row(
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.only(right: 0.0, top:5),
+                                                      child: Text(
+                                                          '$hours',
+                                                          style: TextStyle(
+                                                              color: Colors.white,
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 30)
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(left: 5.0, top:5),
+                                                      child: Text(
+                                                          'h',
+                                                          style: TextStyle(
+                                                              color: Colors.grey,
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 30)
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(left: 7.0, top:5),
+                                                      child: Text(
+                                                          '$minutes',
+                                                          style: TextStyle(
+                                                              color: Colors.white,
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 30)
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(left: 5.0, top:5),
+                                                      child: Text(
+                                                          'm',
+                                                          style: TextStyle(
+                                                              color: Colors.grey,
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 30)
+                                                      ),
+                                                    ),
+                                                    ]),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(right: 60.0, top:0),
+                                                  child: Text(
+                                                      'Time',
+                                                      style: TextStyle(
+                                                          color: Colors.grey,
+                                                          fontWeight: FontWeight.bold,
+                                                          fontSize: 20)
+                                                  ),
+                                                ),
+                                                ])
+                                      ),
+
+                                      ]),
+                              ),
+                              Container(
+                                  child: Row(
+                                      children: [
+                                        Container(
+                                          child: Stack(
+                                          children: [
+                                            Container(
+                                              height: 70,
+                                              width: 10,
+                                              margin: EdgeInsets.only(left: 5.0, top: 5),
+                                              decoration: BoxDecoration(
+                                                color: Color(0xff1A1A1A),
+                                                border: Border.all(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: past_sleep[0]*7,
+                                              width: 10,
+                                              margin: EdgeInsets.only(left: 5.0,top: 5),
+                                              decoration: BoxDecoration(
+                                                gradient: LinearGradient(
+                                                  begin: Alignment.centerLeft,
+                                                  end: Alignment(0.1,5),
+                                                  colors: <Color>[
+                                                    Color(0xff00F0D5),
+                                                    Color(0xff008BAC),
+                                                    Color(0xff00FFEB),
+                                                    Color(0xff008BAC),
+
+
+
+                                                  ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                  tileMode: TileMode.mirror,
+                                                ),
+                                                border: Border.all(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ])),
+                                        Container(
+                                            child: Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0, top: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xff1A1A1A),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: past_sleep[1]*7,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[1]*7)),
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment(0.1,5),
+                                                        colors: <Color>[
+                                                          Color(0xff00F0D5),
+                                                          Color(0xff008BAC),
+                                                          Color(0xff00FFEB),
+                                                          Color(0xff008BAC),
+
+
+
+                                                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                        tileMode: TileMode.mirror,
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ])),
+                                        Container(
+                                            child: Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0, top: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xff1A1A1A),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: past_sleep[2]*7,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[2]*7)),
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment(0.1,5),
+                                                        colors: <Color>[
+                                                          Color(0xff00F0D5),
+                                                          Color(0xff008BAC),
+                                                          Color(0xff00FFEB),
+                                                          Color(0xff008BAC),
+
+
+
+                                                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                        tileMode: TileMode.mirror,
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ])),
+                                        Container(
+                                            child: Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0, top: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xff1A1A1A),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: past_sleep[3]*7,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[3]*7)),
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment(0.1,5),
+                                                        colors: <Color>[
+                                                          Color(0xff00F0D5),
+                                                          Color(0xff008BAC),
+                                                          Color(0xff00FFEB),
+                                                          Color(0xff008BAC),
+
+
+
+                                                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                        tileMode: TileMode.mirror,
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ])),
+                                        Container(
+                                            child: Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0, top: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xff1A1A1A),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: past_sleep[4]*7,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[4]*7)),
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment(0.1,5),
+                                                        colors: <Color>[
+                                                          Color(0xff00F0D5),
+                                                          Color(0xff008BAC),
+                                                          Color(0xff00FFEB),
+                                                          Color(0xff008BAC),
+
+
+
+                                                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                        tileMode: TileMode.mirror,
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ])),
+                                        Container(
+                                            child: Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0, top: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xff1A1A1A),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: past_sleep[6]*7,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[6]*7)),
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment(0.1,5),
+                                                        colors: <Color>[
+                                                          Color(0xff00F0D5),
+                                                          Color(0xff008BAC),
+                                                          Color(0xff00FFEB),
+                                                          Color(0xff008BAC),
+
+
+
+                                                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                        tileMode: TileMode.mirror,
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ])),
+                                        Container(
+                                            child: Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0, top: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xff1A1A1A),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: past_sleep[7]*7,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[7]*7)),
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment(0.1,5),
+                                                        colors: <Color>[
+                                                          Color(0xff00F0D5),
+                                                          Color(0xff008BAC),
+                                                          Color(0xff00FFEB),
+                                                          Color(0xff008BAC),
+
+
+
+                                                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                        tileMode: TileMode.mirror,
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ])),
+                                        Container(
+                                            child: Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0, top: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xff1A1A1A),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: past_sleep[8]*7,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[8]*7)),
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment(0.1,5),
+                                                        colors: <Color>[
+                                                          Color(0xff00F0D5),
+                                                          Color(0xff008BAC),
+                                                          Color(0xff00FFEB),
+                                                          Color(0xff008BAC),
+
+
+
+                                                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                        tileMode: TileMode.mirror,
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ])),
+                                        Container(
+                                            child: Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0, top: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xff1A1A1A),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: past_sleep[9]*7,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[9]*7)),
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment(0.1,5),
+                                                        colors: <Color>[
+                                                          Color(0xff00F0D5),
+                                                          Color(0xff008BAC),
+                                                          Color(0xff00FFEB),
+                                                          Color(0xff008BAC),
+
+
+
+                                                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                        tileMode: TileMode.mirror,
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ])),
+                                        Container(
+                                            child: Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0, top: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xff1A1A1A),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: past_sleep[10]*7,
+                                                    width: 10,
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[10]*7)),
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment(0.1,5),
+                                                        colors: <Color>[
+                                                          Color(0xff00F0D5),
+                                                          Color(0xff008BAC),
+                                                          Color(0xff00FFEB),
+                                                          Color(0xff008BAC),
+
+
+
+                                                        ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                                        tileMode: TileMode.mirror,
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ])),
+                                      ])),
+                            ],
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+              Container(
+                margin: EdgeInsets.only(top: 15.0),
+                height:10,
+                width: 380,
+                color: Colors.white,
+              ),
+              Container(
+                 width: 390,
+                 height: 300,
+                 margin: EdgeInsets.only(top: 10.0),
+                 decoration: BoxDecoration(
+                 color: Color(0xff1A1A1A),
+                 border: Border.all(
+                 color: Colors.white,
+                 ),
+                 borderRadius: BorderRadius.all(Radius.circular(10))
+            ),
+                child: Column(
+                  children:[
+                    Container(
+                      margin: EdgeInsets.only(top: 15.0),
+                      child: Text(
+                          '$training_status',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30)
+                      ),
+                    ),
+                    InkWell(
+                        child:(
+                            Container(
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 95, top: 20, bottom: 10),
+                                    width: 200,
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                        gradient: SweepGradient(
+                                          endAngle: 10-(steps/1000) + 0.0,
+                                          colors: <Color>[
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xffFFFFFF),
+                                            Color(0xff00AA7C),
+                                            Color(0xff8BFFED),
+                                            Color(0xff00E0C6),
+                                            Color(0xff00FF93),
+                                            Color(0xff2effad),
+                                          ],
+                                        ),
+                                        shape: BoxShape.circle
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 102, top: 27, bottom: 10),
+                                    width: 185,
+                                    height: 185,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xff1A1A1A),
+                                        shape: BoxShape.circle
+                                    ),
+                                  ),
+                                  Container(
+                                      margin: EdgeInsets.only(left:5, top: 70, bottom: 10),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                          '$steps',
+                                          style: TextStyle(color: Colors.white, fontSize: 40))
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: 120, left: 150),
+                                    width: 90,
+                                    height: 4,
+                                    color:   Color(0xff00FF93),
+                                  ),
+                                  Container(
+                                      margin: EdgeInsets.only(top: 125, bottom: 10),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                          'Steps',
+                                          style: TextStyle(color: Colors.grey, fontSize: 27))
+                                  ),
+                                ],
+                              ),
+                            )
+                        )
+                    ),
+                    Container(),
+                    ])
+              ),
+              Container(
+                width: 390,
+                height: 100,
+                margin: EdgeInsets.only(top: 10.0),
+                decoration: BoxDecoration(
+                    color: Color(0xff1A1A1A),
+                    border: Border.all(
+                      color: Colors.white,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(10))
+                ),
+                child: Column(
+                    children:[
+                      Container(
+                          margin: EdgeInsets.only(left:5, top: 5),
+                          alignment: Alignment.center,
+                          child: Text(
+                              '$kcal',
+                              style: TextStyle(color: Colors.white, fontSize: 40))
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 1, left: 10),
+                        width: 90,
+                        height: 3,
+                        color:   Color(0xff57FFB8),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 1, ),
+                          alignment: Alignment.center,
+                          child: Text(
+                              'Calories Burnt',
+                              style: TextStyle(color: Colors.grey, fontSize: 27))
+                      ),
+                    ]
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 15.0),
+                height:10,
+                width: 380,
+                color: Colors.white,
+              ),
+              Container(
+                width: 390,
+                height: 300,
+                margin: EdgeInsets.only(top: 10.0, bottom: 15),
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    border: Border.all(
+                      color: Colors.white,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(10))
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                        child: Column(
+                            children: [
+                              Container(
+                                child: Row(
+                                    children: [
+                                      Container(
+                                          child: Column(
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.only(top: 10.0, left:30),
+                                                  child: Text(
+                                                      'Progress:',
+                                                      style: TextStyle(
+                                                          color: Colors.grey,
+                                                          fontWeight: FontWeight.bold,
+                                                          fontSize: 25)
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(top: 2.0, right:10),
+                                                  child: Text(
+                                                      '$daily_progress%',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 33)
+                                                  ),
+                                                ),
+                                              ])),
+                                      Container(
+                                          child: Column(
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.only(top: 10.0, left:75),
+                                                  child: Text(
+                                                      'Distance:',
+                                                      style: TextStyle(
+                                                          color: Colors.grey,
+                                                          fontWeight: FontWeight.bold,
+                                                          fontSize: 25)
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(top: 2.0, left:95),
+                                                  child: Text(
+                                                      past_distance[5].toInt().toString() + " m",
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 33)
+                                                  ),
+                                                ),
+                                              ])),
+                                    ])),
+                              Container(
+                                  child: Row(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          height:past_distance[0]/80,
+                                          width: 45,
+                                          margin: EdgeInsets.only(left: 40.0,top: (15000/80 - past_distance[0]/80)),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(20),
+                                              topLeft: Radius.circular(20),
+                                            ),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.centerLeft,
+                                              end: Alignment(2,4),
+                                              colors: <Color>[
+                                                Color(0xff0EA4B1),
+                                                Color(0xff11E2AA),
+                                                Color(0xff00E0D7),
+                                                Color(0xff0090AA),
+                                                Color(0xff00D38A),
+                                              ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                              tileMode: TileMode.mirror,
+                                            ),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          height:past_distance[1]/80,
+                                          width: 45,
+                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - past_distance[1]/80)),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(20),
+                                              topLeft: Radius.circular(20),
+                                            ),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.centerLeft,
+                                              end: Alignment(2,4),
+                                              colors: <Color>[
+                                                Color(0xff0EA4B1),
+                                                Color(0xff11E2AA),
+                                                Color(0xff00E0D7),
+                                                Color(0xff0090AA),
+                                                Color(0xff00D38A),
+                                              ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                              tileMode: TileMode.mirror,
+                                            ),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          height:past_distance[2]/80,
+                                          width: 45,
+                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - past_distance[2]/80)),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(20),
+                                              topLeft: Radius.circular(20),
+                                            ),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.centerLeft,
+                                              end: Alignment(2,4),
+                                              colors: <Color>[
+                                                Color(0xff0EA4B1),
+                                                Color(0xff11E2AA),
+                                                Color(0xff00E0D7),
+                                                Color(0xff0090AA),
+                                                Color(0xff00D38A),
+                                              ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                              tileMode: TileMode.mirror,
+                                            ),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          height:past_distance[3]/80,
+                                          width: 45,
+                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - past_distance[3]/80)),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(20),
+                                              topLeft: Radius.circular(20),
+                                            ),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.centerLeft,
+                                              end: Alignment(2,4),
+                                              colors: <Color>[
+                                                Color(0xff0EA4B1),
+                                                Color(0xff11E2AA),
+                                                Color(0xff00E0D7),
+                                                Color(0xff0090AA),
+                                                Color(0xff00D38A),
+                                              ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                              tileMode: TileMode.mirror,
+                                            ),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          height:past_distance[4]/80,
+                                          width: 45,
+                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - past_distance[4]/80)),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(20),
+                                              topLeft: Radius.circular(20),
+                                            ),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.centerLeft,
+                                              end: Alignment(2,4),
+                                              colors: <Color>[
+                                                Color(0xff0EA4B1),
+                                                Color(0xff11E2AA),
+                                                Color(0xff00E0D7),
+                                                Color(0xff0090AA),
+                                                Color(0xff00D38A),
+                                              ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                              tileMode: TileMode.mirror,
+                                            ),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          height:past_distance[5]/80,
+                                          width: 45,
+                                          margin: EdgeInsets.only(left: 10.0, top: (15000/80 - past_distance[5]/80)),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(20),
+                                              topLeft: Radius.circular(20),
+                                            ),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.centerLeft,
+                                              end: Alignment(2,4),
+                                              colors: <Color>[
+                                                Color(0xff0EA4B1),
+                                                Color(0xff11E2AA),
+                                                Color(0xff00E0D7),
+                                                Color(0xff0090AA),
+                                                Color(0xff00D38A),
+                                              ], // Gradient from https://learnui.design/tools/gradient-generator.html
+                                              tileMode: TileMode.mirror,
+                                            ),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ])),
+                              Container(
+                                  child: Row(
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.only(top: 5.0, left:35),
+                                          child: Text(
+                                              past_distance_day[0].toString() + " "+ past_distance_month[0].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15)
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(top: 5.0, left:7),
+                                          child: Text(
+                                              past_distance_day[1].toString() + " "+ past_distance_month[1].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15)
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(top: 5.0, left:7),
+                                          child: Text(
+                                              past_distance_day[2].toString() + " "+ past_distance_month[2].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15)
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(top: 5.0, left:7),
+                                          child: Text(
+                                              past_distance_day[3].toString() + " "+ past_distance_month[3].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15)
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(top: 5.0, left:7),
+                                          child: Text(
+                                              past_distance_day[4].toString() + " "+ past_distance_month[4].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15)
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(top: 5.0, left:7),
+                                          child: Text(
+                                              past_distance_day[5].toString() + " "+ past_distance_month[5].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15)
+                                          ),
+                                        ),
+                                      ])),
+
+                            ])),
+                  ],
+                )
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+}
+
 
 
 

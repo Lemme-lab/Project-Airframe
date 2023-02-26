@@ -75,6 +75,10 @@ flutter:
     - assets/Untitled-1_2_1.png
     - assets/Screenshot 2023-01-19 at 10.10.39.png
     - assets/Screenshot 2023-01-19 at 10.09.26.png
+    - assets/idkidk.png
+    - assets/Untitled-1.png
+    - assets/Untitled-4.png
+    - assets/watchface-4.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
