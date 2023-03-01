@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'globals.dart' as globals;
 
 
 
@@ -18,15 +18,6 @@ class App extends StatefulWidget {
 
   @override
   State<App> createState() => _AppState();
-}
-
-
-
-class watchfaces extends StatefulWidget {
-  const watchfaces({Key? key}) : super(key: key);
-
-  @override
-  State<watchfaces> createState() => _watchfacesState();
 }
 
 class _AppState extends State<App> {
@@ -160,15 +151,24 @@ class _AppState extends State<App> {
         title:
         Text('Airframe'),
         centerTitle: true,
+        //Black
+        //backgroundColor: Color(0xff1A1A1A),
+        //Green
         backgroundColor: Color(0xff023535),
+
       ),
 
       body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/Screenshot 2023-01-23 at 22.05.13.png"),
-              fit: BoxFit.cover,
-            ),
+              //Black
+              color: Color(0xff1A1A1A),
+              //Green Background
+              /*
+              image: DecorationImage(
+                image: AssetImage("assets/Screenshot 2023-01-23 at 22.05.13.png"),
+                fit: BoxFit.cover,
+              ),
+             */
           ),
           child: SingleChildScrollView(
               child: Column(
@@ -471,22 +471,103 @@ class _AppState extends State<App> {
                                           ]
                                           ,)
                                     ),
-                                    InkWell(
-                                      onTap: () {_navigateToNextScreen(context);},
-                                    child: Container(
-                                      width: 180,
-                                      height: 180,
-                                      margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
-                                      decoration: BoxDecoration(
-                                          color: Color(0xff1A1A1A),
-                                          border: Border.all(
-                                            color: Colors.white,
+                                    Container (
+                                      child: globals.watchface == 1?
+                                      InkWell(
+                                        onTap: () {_navigateToNextScreen(context);},
+                                        child: Container(
+                                          width: 180,
+                                          height: 180,
+                                          margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xff1A1A1A),
+                                              border: Border.all(
+                                                color: Colors.white,
+                                              ),
+                                              borderRadius: BorderRadius.all(Radius.circular(35))
                                           ),
-                                          borderRadius: BorderRadius.all(Radius.circular(35))
+
+                                          child: Image.asset('assets/Untitled-1_2.png'),
+                                        ),
+                                      ):
+                                      InkWell(
+                                        onTap: () {_navigateToNextScreen(context);},
+                                        child: Container(),
                                       ),
-                                      child: Image.asset('assets/Untitled-1_2.png'),
                                     ),
+                                    Container (
+                                      child: globals.watchface == 2?
+                                      InkWell(
+                                        onTap: () {_navigateToNextScreen(context);},
+                                        child: Container(
+                                          width: 180,
+                                          height: 180,
+                                          margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xff1A1A1A),
+                                              border: Border.all(
+                                                color: Colors.white,
+                                              ),
+                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                          ),
+
+                                          child: Image.asset('assets/Untitled-1_2_2.png'),
+                                        ),
+                                      ):
+                                      InkWell(
+                                        onTap: () {_navigateToNextScreen(context);},
+                                        child: Container(),
+                                      ),
                                     ),
+                                    Container (
+                                      child: globals.watchface == 3?
+                                      InkWell(
+                                        onTap: () {_navigateToNextScreen(context);},
+                                        child: Container(
+                                          width: 180,
+                                          height: 180,
+                                          margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xff1A1A1A),
+                                              border: Border.all(
+                                                color: Colors.white,
+                                              ),
+                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                          ),
+
+                                          child: Image.asset('assets/Untitled-1_2_1.png'),
+                                        ),
+                                      ):
+                                      InkWell(
+                                        onTap: () {_navigateToNextScreen(context);},
+                                        child: Container(),
+                                      ),
+                                    ),
+                                    Container (
+                                      child: globals.watchface == 4?
+                                      InkWell(
+                                        onTap: () {_navigateToNextScreen(context);},
+                                        child: Container(
+                                          width: 180,
+                                          height: 180,
+                                          margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xff1A1A1A),
+                                              border: Border.all(
+                                                color: Colors.white,
+                                              ),
+                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                          ),
+
+                                          child: Image.asset('assets/watchface-4.png'),
+                                        ),
+                                      ):
+                                      InkWell(
+                                        onTap: () {_navigateToNextScreen(context);},
+                                        child: Container(),
+                                      ),
+                                    ),
+
                                   ],
                                 ),
                               ),
@@ -984,40 +1065,46 @@ class _AppState extends State<App> {
                                 ]
                               ),
                             ),
-                            Container(
-                              width: 195,
-                              height: 90,
-                              margin: EdgeInsets.only(left: 5.0, top: 15.0, right: 5.0, bottom:50.0),
-                              decoration: BoxDecoration(
-                                  color: Color(0xff1A1A1A),
-                                  border: Border.all(
-                                    color: Colors.white,
-                                  ),
-                                  borderRadius: BorderRadius.all(Radius.circular(35))
-                              ),
-                              child: Row(
-
-                                children: [
-
-                                  Container(
-                                    margin: EdgeInsets.only(left: 30.0),
-                                    child: Text(
-                                        'Options',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 23)
+                        InkWell(
+                            onTap: () {_navigateToNextScreenSettings(context);},
+                            child:(
+                                Stack(
+                                  children: [
+                                    Container(
+                                    width: 195,
+                                    height: 90,
+                                    margin: EdgeInsets.only(left: 5.0, top: 15.0, right: 5.0, bottom:50.0),
+                                    decoration: BoxDecoration(
+                                        color: Color(0xff1A1A1A),
+                                        border: Border.all(
+                                          color: Colors.white,
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(35))
                                     ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(right: 32.0),
-                                    width: 50,
-                                    height: 50,
-                                    child: Image.asset('assets/settings.png'),
-                                  )
-                                ],
-                              ),
-                            )
+                                    child: Row(
+
+                                      children: [
+
+                                        Container(
+                                          margin: EdgeInsets.only(left: 30.0),
+                                          child: Text(
+                                              'Options',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 23)
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(right: 32.0),
+                                          width: 50,
+                                          height: 50,
+                                          child: Image.asset('assets/settings.png'),
+                                        )
+                                      ],
+                                    ),
+                                  )])),
+                            ),
                           ],
                         )
                     ),
@@ -1040,7 +1127,19 @@ class _AppState extends State<App> {
   void _navigateToNextScreenHealth(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => health()));
   }
+  void _navigateToNextScreenSettings(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => settings()));
+  }
 
+
+}
+
+class watchfaces extends StatefulWidget {
+  const watchfaces({Key? key}) : super(key: key);
+
+
+  @override
+  State<watchfaces> createState() => _watchfacesState();
 }
 
 class _watchfacesState extends State<watchfaces> {
@@ -1061,17 +1160,22 @@ class _watchfacesState extends State<watchfaces> {
       body: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
+          //Black
+          color: Color(0xff1A1A1A),
+          //Green Background
+          /*
           image: DecorationImage(
             image: AssetImage("assets/Screenshot 2023-01-19 at 10.06.28.png"),
             fit: BoxFit.cover,
           ),
+          */
         ),
 
         child: SingleChildScrollView(
          child: Column(
           children:[
             InkWell(
-            onTap: () {},
+            onTap: () {globals.watchface = 1;_navigateToNextScreenhome(context);},
               child: Container(
                 width: 280,
                 height: 280,
@@ -1090,7 +1194,7 @@ class _watchfacesState extends State<watchfaces> {
               )
             ),
             InkWell(
-                onTap: () {},
+                onTap: () {globals.watchface = 2;_navigateToNextScreenhome(context);},
                 child: Container(
                   width: 280,
                   height: 280,
@@ -1115,7 +1219,7 @@ class _watchfacesState extends State<watchfaces> {
                 )
             ),
             InkWell(
-                onTap: () {},
+                onTap: () {globals.watchface = 3;_navigateToNextScreenhome(context);},
                 child: Container(
                   width: 280,
                   height: 280,
@@ -1134,7 +1238,7 @@ class _watchfacesState extends State<watchfaces> {
                 )
             ),
             InkWell(
-                onTap: () {},
+                onTap: () {globals.watchface = 4;_navigateToNextScreenhome(context);},
                 child: Container(
                   width: 280,
                   height: 280,
@@ -1246,10 +1350,15 @@ class _statsState extends State<stats> {
     body: Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
+        //Black
+        color: Color(0xff1A1A1A),
+        //Green Background
+        /*
         image: DecorationImage(
           image: AssetImage("assets/Screenshot 2023-01-19 at 10.06.28.png"),
           fit: BoxFit.cover,
         ),
+      */
       ),
 
       child: Column(
@@ -3044,6 +3153,380 @@ class _healthState extends State<health> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
   }
 }
+
+
+class settings extends StatefulWidget {
+  const settings({Key? key}) : super(key: key);
+
+  @override
+  State<settings> createState() => _settingsState();
+}
+
+class _settingsState extends State<settings> {
+
+  bool _customTileExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        color: Color(0xff1A1A1A),
+
+        child: SingleChildScrollView(
+          child: Column(
+            children:[
+              InkWell(
+              onTap: () {_navigateToNextSettingsGenerell;},
+               child:(
+                Stack(
+                  children: [
+                    Container (
+        width: 320,
+        height: 50,
+        margin: EdgeInsets.only(left: 0.0, top: 30.0),
+        padding: EdgeInsets.only(left:100, top: 6),
+        decoration: BoxDecoration(
+            color: Color(0xff1A1A1A),
+            border: Border.all(
+              color: Colors.white,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(35))
+        ),
+        child: Row(
+            children:[
+              Container(
+                  child: Text(
+                      'Generell',
+                      style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                  )
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 36.0, top: 5,),
+                width: 35,
+                height: 35,
+                child: Image.asset('assets/arrow1.png'),
+              )
+            ]
+        ),
+      ),
+             ]))),
+              InkWell(
+                  onTap: () {},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Wireless',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 36.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Sensor',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 58.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:60, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Informations',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 22.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+
+            ],
+          ),
+        ),
+      ),
+    );
+
+  }
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+  void _navigateToNextSettingsGenerell(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Generell()));
+  }
+}
+
+
+class Generell extends StatefulWidget {
+  const Generell({Key? key}) : super(key: key);
+
+  @override
+  State<Generell> createState() => _GenerellState();
+}
+
+class _GenerellState extends State<Generell> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        color: Color(0xff1A1A1A),
+
+        child: SingleChildScrollView(
+          child: Column(
+            children:[
+              InkWell(
+                  onTap: () {},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 520,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Generell',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 36.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Wireless',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 36.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Sensor',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 58.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:60, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Informations',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 22.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+
+            ],
+          ),
+        ),
+      ),
+    );
+
+  }
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+}
+
+
 
 
 
