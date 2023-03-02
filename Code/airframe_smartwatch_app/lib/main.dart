@@ -180,7 +180,7 @@ class _AppState extends State<App> {
                             children: [
                               //Status BaR
                               Container (
-                                  width: 190,
+                                  width: 185,
                                   height: 380,
                                   margin: EdgeInsets.only(left: 5.0, top: 20.0),
                                   decoration: BoxDecoration(
@@ -421,7 +421,7 @@ class _AppState extends State<App> {
                                             Container(
                                               height: 180.0,
                                               width: 180.0,
-                                              margin: EdgeInsets.only(left: 12.0, top: 20.0, right: 5.0),
+                                              margin: EdgeInsets.only(left: 5.0, top: 22.0, right: 5.0),
                                               child: ClipRRect(borderRadius: BorderRadius.circular(20), child: SizedBox.fromSize(
                                                 size: Size.fromRadius(48), // Image radius
                                                 child: Stack(
@@ -478,7 +478,7 @@ class _AppState extends State<App> {
                                         child: Container(
                                           width: 180,
                                           height: 180,
-                                          margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
+                                          margin: EdgeInsets.only(left: 8.0, top: 20.0, right: 5.0),
                                           decoration: BoxDecoration(
                                               color: Color(0xff1A1A1A),
                                               border: Border.all(
@@ -502,7 +502,7 @@ class _AppState extends State<App> {
                                         child: Container(
                                           width: 180,
                                           height: 180,
-                                          margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
+                                          margin: EdgeInsets.only(left: 8.0, top: 20.0, right: 5.0),
                                           decoration: BoxDecoration(
                                               color: Color(0xff1A1A1A),
                                               border: Border.all(
@@ -526,7 +526,7 @@ class _AppState extends State<App> {
                                         child: Container(
                                           width: 180,
                                           height: 180,
-                                          margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
+                                          margin: EdgeInsets.only(left: 8.0, top: 20.0, right: 5.0),
                                           decoration: BoxDecoration(
                                               color: Color(0xff1A1A1A),
                                               border: Border.all(
@@ -550,7 +550,7 @@ class _AppState extends State<App> {
                                         child: Container(
                                           width: 180,
                                           height: 180,
-                                          margin: EdgeInsets.only(left: 15.0, top: 20.0, right: 5.0),
+                                          margin: EdgeInsets.only(left: 8.0, top: 20.0, right: 5.0),
                                           decoration: BoxDecoration(
                                               color: Color(0xff1A1A1A),
                                               border: Border.all(
@@ -735,7 +735,7 @@ class _AppState extends State<App> {
                                               ),
                                             ),
                                             Container(
-                                              margin: EdgeInsets.only(left: 300.0, top: 75,),
+                                              margin: EdgeInsets.only(left: 270.0, top: 75,),
                                               child: Text(
                                                   '$heartrate''pbm',
                                                   style: TextStyle(
@@ -910,9 +910,9 @@ class _AppState extends State<App> {
                         child: Row(
                           children: [
                             Container(
-                              width: 195,
+                              width: 179,
                               height: 150,
-                              margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                              margin: EdgeInsets.only(left: 10.0, top: 20.0, right: 5.0),
                               decoration: BoxDecoration(
                                   color: Color(0xff1A1A1A),
                                   border: Border.all(
@@ -959,7 +959,7 @@ class _AppState extends State<App> {
                              ),
                             ),
                             Container(
-                              width: 195,
+                              width: 180,
                               height: 150,
                               margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
                               decoration: BoxDecoration(
@@ -1037,9 +1037,9 @@ class _AppState extends State<App> {
                         child: Row(
                           children: [
                             Container(
-                              width: 195,
+                              width: 180,
                               height: 90,
-                              margin: EdgeInsets.only(left: 5.0, top: 15.0, bottom:50.0),
+                              margin: EdgeInsets.only(left: 10.0, top: 15.0, bottom:50.0),
                               decoration: BoxDecoration(
                                   color: Color(0xff1A1A1A),
                                   border: Border.all(
@@ -1050,14 +1050,15 @@ class _AppState extends State<App> {
                               child: Row(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(left: 5.0),
-                                    width: 90,
+                                    margin: EdgeInsets.only(left: 15.0),
+                                    width: 70,
                                     height: 90,
                                     child: Image.asset('assets/nfc.png'),
 
                               ),
                                   Container(
-                                    width: 90,
+                                    margin: EdgeInsets.only(right: 15.0),
+                                    width: 70,
                                     height: 90,
                                     child: Image.asset('assets/gps.png'),
 
@@ -1071,9 +1072,9 @@ class _AppState extends State<App> {
                                 Stack(
                                   children: [
                                     Container(
-                                    width: 195,
+                                    width: 180,
                                     height: 90,
-                                    margin: EdgeInsets.only(left: 5.0, top: 15.0, right: 5.0, bottom:50.0),
+                                    margin: EdgeInsets.only(left: 5.0, top: 15.0, right: 0.0, bottom:50.0),
                                     decoration: BoxDecoration(
                                         color: Color(0xff1A1A1A),
                                         border: Border.all(
@@ -1096,7 +1097,7 @@ class _AppState extends State<App> {
                                           ),
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(right: 32.0),
+                                          margin: EdgeInsets.only(right: 17.0),
                                           width: 50,
                                           height: 50,
                                           child: Image.asset('assets/settings.png'),
@@ -1360,9 +1361,10 @@ class _statsState extends State<stats> {
         ),
       */
       ),
+      child: SingleChildScrollView(
+        child: Column(
+          children:[
 
-      child: Column(
-      children: [
         Container (
           width: 400,
           height: 180,
@@ -1750,7 +1752,7 @@ class _statsState extends State<stats> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 14.0),
                 child:Text(
                   '$Oxy_Max%',
                   style: TextStyle(
@@ -1990,7 +1992,7 @@ class _statsState extends State<stats> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 14.0),
                 child:Text(
                   '$heart_Max%',
                   style: TextStyle(
@@ -2006,6 +2008,7 @@ class _statsState extends State<stats> {
 
         ),
       ],
+    ),
     ),
     ),
     );
@@ -2136,9 +2139,9 @@ class _healthState extends State<health> {
               child: Row(
                 children:[
                   Container(
-                    width: 190,
+                    width: 182,
                     height: 190,
-                    margin: EdgeInsets.only(left: 10.0,top:15),
+                    margin: EdgeInsets.only(left: 5.0,top:15),
                     decoration: BoxDecoration(
                         color: Color(0xff1A1A1A),
                         border: Border.all(
@@ -2201,7 +2204,7 @@ class _healthState extends State<health> {
                     child: Column(
                       children:[
                         Container(
-                          width: 190,
+                          width: 182,
                           height: 190,
                           margin: EdgeInsets.only(left: 10.0,top:15),
                           decoration: BoxDecoration(
@@ -3154,7 +3157,6 @@ class _healthState extends State<health> {
   }
 }
 
-
 class settings extends StatefulWidget {
   const settings({Key? key}) : super(key: key);
 
@@ -3188,7 +3190,7 @@ class _settingsState extends State<settings> {
           child: Column(
             children:[
               InkWell(
-              onTap: () {_navigateToNextSettingsGenerell;},
+                  onTap: () {_navigateToNextSettingsGenerell(context);},
                child:(
                 Stack(
                   children: [
@@ -3223,7 +3225,7 @@ class _settingsState extends State<settings> {
       ),
              ]))),
               InkWell(
-                  onTap: () {},
+                  onTap: () {_navigateToNextSettingsWireless(context);},
                   child:(
                       Stack(
                           children: [
@@ -3258,7 +3260,7 @@ class _settingsState extends State<settings> {
                             ),
                           ]))),
               InkWell(
-                  onTap: () {},
+                  onTap: () {_navigateToNextSettingsSensor(context);},
                   child:(
                       Stack(
                           children: [
@@ -3293,7 +3295,7 @@ class _settingsState extends State<settings> {
                             ),
                           ]))),
               InkWell(
-                  onTap: () {},
+                  onTap: () {_navigateToNextSettingsInfos(context);},
                   child:(
                       Stack(
                           children: [
@@ -3327,7 +3329,6 @@ class _settingsState extends State<settings> {
                               ),
                             ),
                           ]))),
-
             ],
           ),
         ),
@@ -3340,6 +3341,16 @@ class _settingsState extends State<settings> {
   }
   void _navigateToNextSettingsGenerell(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => Generell()));
+  }
+  void _navigateToNextSettingsWireless(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsWireless()));
+  }
+  void _navigateToNextSettingsSensor(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Sensor()));
+  }
+
+  void _navigateToNextSettingsInfos(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => infos()));
   }
 }
 
@@ -3374,15 +3385,15 @@ class _GenerellState extends State<Generell> {
           child: Column(
             children:[
               InkWell(
-                  onTap: () {},
+                  onTap: () {_navigateToNextSettings(context);},
                   child:(
                       Stack(
                           children: [
                             Container (
-                              width: 520,
-                              height: 50,
+                              width:380,
+                              height: 380,
                               margin: EdgeInsets.only(left: 0.0, top: 30.0),
-                              padding: EdgeInsets.only(left:100, top: 6),
+                              padding: EdgeInsets.only(left:0, top: 6),
                               decoration: BoxDecoration(
                                   color: Color(0xff1A1A1A),
                                   border: Border.all(
@@ -3390,26 +3401,604 @@ class _GenerellState extends State<Generell> {
                                   ),
                                   borderRadius: BorderRadius.all(Radius.circular(35))
                               ),
-                              child: Row(
+                              child: Column(
                                   children:[
                                     Container(
-                                        child: Text(
-                                            'Generell',
-                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        child: Row(
+                                            children:[
+                                              Container(
+                                                  margin: EdgeInsets.only(left: 110.0, top: 0.0),
+                                                  padding: EdgeInsets.only(left:0, top: 6),
+                                                  child: Text(
+                                                      'Generell',
+                                                      style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                                  )
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.only(left: 30.0, top: 9,),
+                                                width: 35,
+                                                height: 35,
+                                                child: Image.asset('assets/arrow1.png'),
+                                              ),
+                                            ])
+                                    ),
+                                    Container(
+                                      child: Stack(
+                                        children: [
+                                          Container(
+                                              child: Row(
+                                                  children:[
+                                                    Container (
+                                                      width: 280,
+                                                      height: 30,
+                                                      margin: EdgeInsets.only(left: 50.0, top: 30.0),
+                                                      padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                      decoration: BoxDecoration(
+                                                          color: Color(0xff1A1A1A),
+                                                          border: Border.all(
+                                                            color: Colors.white,
+                                                          ),
+                                                          borderRadius: BorderRadius.all(Radius.circular(35))
+                                                      ),
+                                                      child: Row(
+                                                          children:[
+                                                            Container(
+                                                                child: Text(
+                                                                    'Always On Display',
+                                                                    style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold,)
+                                                                )
+                                                            ),
+
+                                                          ]
+                                                      ),
+                                                    ),
+                                                  ])),
+                                          InkWell(
+                                              onTap: () {globals.Battery_Saving_Mode =! globals.Battery_Saving_Mode;setState(() {});},
+                                              child:(
+                                                  Stack(
+                                                      children: [
+                                                        Container (
+                                                          width: 75,
+                                                          height: 25,
+                                                          margin: EdgeInsets.only(left: 250.0, top: 32.5),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Colors.white,
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Sensor',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                        if (globals.Battery_Saving_Mode == true) ...[
+                                                          Container (
+                                                            width: 40,
+                                                            height: 20,
+                                                            margin: EdgeInsets.only(left: 282.0, top: 35.0),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.greenAccent,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                        ] else ...[
+                                                          Container (
+                                                            width: 40,
+                                                            height: 20,
+                                                            margin: EdgeInsets.only(left: 257.0, top: 35.0),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.grey,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ],
+                                                      ))),
+                                        ]
+                                      )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Battery Saving Mode',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.always_on_display =! globals.always_on_display;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.always_on_display == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
                                         )
                                     ),
                                     Container(
-                                      margin: EdgeInsets.only(left: 36.0, top: 5,),
-                                      width: 35,
-                                      height: 35,
-                                      child: Image.asset('assets/arrow1.png'),
-                                    )
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Reset to Defaults',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.reset_to_default =! globals.reset_to_default;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          Container (
+                                                            width: 70,
+                                                            height: 20,
+                                                            margin: EdgeInsets.only(left: 253.0, top: 25.0),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.blueGrey,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      )
+                                                  )),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Software Updates',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.software_update =! globals.software_update;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Software Updates',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          Container (
+                                                            width: 70,
+                                                            height: 20,
+                                                            margin: EdgeInsets.only(left: 253.0, top: 25.0),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.blueGrey,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Software Updates',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      )
+                                                  )),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Flush Cache',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.flush_cache =! globals.flush_cache;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          Container (
+                                                            width: 70,
+                                                            height: 20,
+                                                            margin: EdgeInsets.only(left: 253.0, top: 25.0),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.blueGrey,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      )
+                                                  )),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Reset to Defaults',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.always_on_display =! globals.always_on_display;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          Container (
+                                                            width: 70,
+                                                            height: 20,
+                                                            margin: EdgeInsets.only(left: 253.0, top: 25.0),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.blueGrey,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      )
+                                                  )),
+                                            ]
+                                        )
+                                    ),
+
                                   ]
                               ),
                             ),
                           ]))),
               InkWell(
-                  onTap: () {},
+                  onTap: () {_navigateToNextSettingsWireless(context);},
                   child:(
                       Stack(
                           children: [
@@ -3444,7 +4033,7 @@ class _GenerellState extends State<Generell> {
                             ),
                           ]))),
               InkWell(
-                  onTap: () {},
+                  onTap: () {_navigateToNextSettingsSensor(context);},
                   child:(
                       Stack(
                           children: [
@@ -3479,7 +4068,7 @@ class _GenerellState extends State<Generell> {
                             ),
                           ]))),
               InkWell(
-                  onTap: () {},
+                  onTap: () {_navigateToNextSettingsInfos(context);},
                   child:(
                       Stack(
                           children: [
@@ -3521,10 +4110,1709 @@ class _GenerellState extends State<Generell> {
     );
 
   }
+
   void _navigateToNextScreenhome(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
   }
+  void _navigateToNextSettingsGenerell(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Generell()));
+  }
+  void _navigateToNextSettingsWireless(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsWireless()));
+  }
+  void _navigateToNextSettingsSensor(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Sensor()));
+  }
+  void _navigateToNextSettingsInfos(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => infos()));
+  }
+  void _navigateToNextSettings(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => settings()));
+  }
 }
+
+class SettingsWireless extends StatefulWidget {
+  const SettingsWireless({Key? key}) : super(key: key);
+
+  @override
+  State<SettingsWireless> createState() => _SettingsWirelessState();
+}
+
+class _SettingsWirelessState extends State<SettingsWireless> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        color: Color(0xff1A1A1A),
+
+        child: SingleChildScrollView(
+          child: Column(
+            children:[
+              InkWell(
+                  onTap: () {_navigateToNextSettingsGenerell(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Generell',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 58.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {_navigateToNextSettings(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width:380,
+                              height: 380,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:0, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Column(
+                                  children:[
+                                    Container(
+                                        child: Row(
+                                            children:[
+                                              Container(
+                                                  margin: EdgeInsets.only(left: 110.0, top: 0.0),
+                                                  padding: EdgeInsets.only(left:0, top: 6),
+                                                  child: Text(
+                                                      'Wireless',
+                                                      style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                                  )
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.only(left: 30.0, top: 9,),
+                                                width: 35,
+                                                height: 35,
+                                                child: Image.asset('assets/arrow1.png'),
+                                              ),
+                                            ])
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 30.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Bluetooth 5.2',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.bluetooth =! globals.bluetooth;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 32.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.bluetooth == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 35.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                              child: Row(
+                                                                  children:[
+                                                                    Container(
+                                                                        child: Text(
+                                                                            'Sensor',
+                                                                            style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                        )
+                                                                    ),
+
+                                                                  ]
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 35.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                              child: Row(
+                                                                  children:[
+                                                                    Container(
+                                                                        child: Text(
+                                                                            'Sensor',
+                                                                            style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                        )
+                                                                    ),
+
+                                                                  ]
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'NFC Reader/Tag',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.nfc =! globals.nfc;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.nfc == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'GPS',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.gps =! globals.gps;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.gps == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Receive Messages',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.messages =! globals.messages;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.messages == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Dissable Updates',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.disable_updates =! globals.disable_updates;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.disable_updates == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+
+
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {_navigateToNextSettingsSensor(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Sensor',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 58.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {_navigateToNextSettingsInfos(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:60, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Informations',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 22.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+
+            ],
+          ),
+        ),
+      ),
+    );
+
+  }
+
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+  void _navigateToNextSettingsGenerell(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Generell()));
+  }
+  void _navigateToNextSettingsWireless(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsWireless()));
+  }
+  void _navigateToNextSettingsSensor(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Sensor()));
+  }
+  void _navigateToNextSettingsInfos(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => infos()));
+  }
+  void _navigateToNextSettings(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => settings()));
+  }
+}
+
+class Sensor extends StatefulWidget {
+  const Sensor({Key? key}) : super(key: key);
+
+  @override
+  State<Sensor> createState() => _SensorState();
+}
+
+class _SensorState extends State<Sensor> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        color: Color(0xff1A1A1A),
+
+        child: SingleChildScrollView(
+          child: Column(
+            children:[
+              InkWell(
+                  onTap: () {_navigateToNextSettingsGenerell(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Generell',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 58.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {_navigateToNextSettingsWireless(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Wireless',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 58.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {_navigateToNextSettings(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width:380,
+                              height: 380,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:0, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Column(
+                                  children:[
+                                    Container(
+                                        child: Row(
+                                            children:[
+                                              Container(
+                                                  margin: EdgeInsets.only(left: 110.0, top: 0.0),
+                                                  padding: EdgeInsets.only(left:0, top: 6),
+                                                  child: Text(
+                                                      'Sensors',
+                                                      style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                                  )
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.only(left: 30.0, top: 9,),
+                                                width: 35,
+                                                height: 35,
+                                                child: Image.asset('assets/arrow1.png'),
+                                              ),
+                                            ])
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 30.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Oxymeter/Pulse',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.Oxymeter_pulse =! globals.Oxymeter_pulse;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 32.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.Oxymeter_pulse == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 35.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                              child: Row(
+                                                                  children:[
+                                                                    Container(
+                                                                        child: Text(
+                                                                            'Sensor',
+                                                                            style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                        )
+                                                                    ),
+
+                                                                  ]
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 35.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                              child: Row(
+                                                                  children:[
+                                                                    Container(
+                                                                        child: Text(
+                                                                            'Sensor',
+                                                                            style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                        )
+                                                                    ),
+
+                                                                  ]
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Pressure/Attitude',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.pressure_attitude =! globals.pressure_attitude;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.pressure_attitude == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'ECG',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.ECG =! globals.ECG;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.ECG == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Compass',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.compass =! globals.compass;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.compass == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+                                    Container(
+                                        child: Stack(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                      children:[
+                                                        Container (
+                                                          width: 280,
+                                                          height: 30,
+                                                          margin: EdgeInsets.only(left: 50.0, top: 20.0),
+                                                          padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                          decoration: BoxDecoration(
+                                                              color: Color(0xff1A1A1A),
+                                                              border: Border.all(
+                                                                color: Colors.white,
+                                                              ),
+                                                              borderRadius: BorderRadius.all(Radius.circular(35))
+                                                          ),
+                                                          child: Row(
+                                                              children:[
+                                                                Container(
+                                                                    child: Text(
+                                                                        'Keep all on Device',
+                                                                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
+                                                                    )
+                                                                ),
+
+                                                              ]
+                                                          ),
+                                                        ),
+                                                      ])),
+                                              InkWell(
+                                                  onTap: () {globals.keep_all_on_device =! globals.keep_all_on_device;setState(() {});},
+                                                  child:(
+                                                      Stack(
+                                                        children: [
+                                                          Container (
+                                                            width: 75,
+                                                            height: 25,
+                                                            margin: EdgeInsets.only(left: 250.0, top: 22.5),
+                                                            padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                border: Border.all(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                borderRadius: BorderRadius.all(Radius.circular(35))
+                                                            ),
+                                                            child: Row(
+                                                                children:[
+                                                                  Container(
+                                                                      child: Text(
+                                                                          'Sensor',
+                                                                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold,)
+                                                                      )
+                                                                  ),
+
+                                                                ]
+                                                            ),
+                                                          ),
+                                                          if (globals.keep_all_on_device == true) ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 282.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.greenAccent,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ] else ...[
+                                                            Container (
+                                                              width: 40,
+                                                              height: 20,
+                                                              margin: EdgeInsets.only(left: 257.0, top: 25.0),
+                                                              padding: EdgeInsets.only(left:10, top: 0, right: 100),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors.grey,
+                                                                  border: Border.all(
+                                                                    color: Colors.white,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ],
+                                                      ))),
+                                            ]
+                                        )
+                                    ),
+
+
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {_navigateToNextSettingsInfos(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:60, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Informations',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 22.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+
+            ],
+          ),
+        ),
+      ),
+    );
+
+  }
+
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+  void _navigateToNextSettingsGenerell(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Generell()));
+  }
+  void _navigateToNextSettingsWireless(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsWireless()));
+  }
+  void _navigateToNextSettingsSensor(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Sensor()));
+  }
+  void _navigateToNextSettingsInfos(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => infos()));
+  }
+  void _navigateToNextSettings(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => settings()));
+  }
+}
+
+class infos extends StatefulWidget {
+  const infos({Key? key}) : super(key: key);
+
+  @override
+  State<infos> createState() => _infosState();
+}
+
+class _infosState extends State<infos> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        color: Color(0xff1A1A1A),
+
+        child: SingleChildScrollView(
+          child: Column(
+            children:[
+              InkWell(
+                  onTap: () {_navigateToNextSettingsGenerell(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Generell',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 58.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {_navigateToNextSettingsWireless(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Wireless',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 58.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {_navigateToNextSettingsSensor(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width: 320,
+                              height: 50,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0),
+                              padding: EdgeInsets.only(left:100, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Row(
+                                  children:[
+                                    Container(
+                                        child: Text(
+                                            'Sensors',
+                                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 62.0, top: 5,),
+                                      width: 35,
+                                      height: 35,
+                                      child: Image.asset('assets/arrow1.png'),
+                                    )
+                                  ]
+                              ),
+                            ),
+                          ]))),
+              InkWell(
+                  onTap: () {_navigateToNextSettings(context);},
+                  child:(
+                      Stack(
+                          children: [
+                            Container (
+                              width:380,
+                              height: 580,
+                              margin: EdgeInsets.only(left: 0.0, top: 30.0, bottom: 10),
+                              padding: EdgeInsets.only(left:0, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff1A1A1A),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(35))
+                              ),
+                              child: Column(
+                                  children:[
+                                    Container(
+                                        child: Row(
+                                            children:[
+                                              Container(
+                                                  margin: EdgeInsets.only(left: 100.0, top: 0.0),
+                                                  padding: EdgeInsets.only(left:0, top: 6),
+                                                  child: Text(
+                                                      'Informations',
+                                                      style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,)
+                                                  )
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.only(left: 30.0, top: 9,),
+                                                width: 35,
+                                                height: 35,
+                                                child: Image.asset('assets/arrow1.png'),
+                                              ),
+                                            ])
+                                    ),
+                                    Container(
+                                        margin: EdgeInsets.only(right: 130.0, top: 10.0),
+                                        padding: EdgeInsets.only(left:0, top: 12),
+                                        child: Text(
+                                            'Watch: ' + globals.watch_type,
+                                            style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                        margin: EdgeInsets.only(right: 175.0, top: 0.0),
+                                        padding: EdgeInsets.only(left:0, top: 2),
+                                        child: Text(
+                                            'Version: ' + globals.hardware_version.toString(),
+                                            style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+
+                                    Container(
+                                        margin: EdgeInsets.only(right: 70.0, top: 10.0),
+                                        padding: EdgeInsets.only(left:0, top: 12),
+                                        child: Text(
+                                            'SOC: ' + globals.soc,
+                                            style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                        margin: EdgeInsets.only(right: 55.0, top: 0.0),
+                                        padding: EdgeInsets.only(left:0, top: 2),
+                                        child: Text(
+                                            'Ram: ' + globals.ram.toString(),
+                                            style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+                                    Container(
+                                        margin: EdgeInsets.only(right: 75.0, top: 0.0),
+                                        padding: EdgeInsets.only(left:0, top: 2),
+                                        child: Text(
+                                            'Flash: ' + globals.flash.toString(),
+                                            style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+
+                                    Container(
+                                        margin: EdgeInsets.only(right: 65.0, top: 15.0),
+                                        padding: EdgeInsets.only(left:38, top: 2),
+                                        child: Text(
+                                            'Wireless: ' + globals.wireless.toString(),
+                                            style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+
+                                    Container(
+                                        margin: EdgeInsets.only(right: 55.0, top: 15.0),
+                                        padding: EdgeInsets.only(left: 40, top: 2),
+                                        child: Text(
+                                            'Sensors: ' + globals.senors.toString(),
+                                            style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+
+                                    Container(
+                                        margin: EdgeInsets.only(right: 125.0, top: 40.0),
+                                        padding: EdgeInsets.only(left:0, top: 2),
+                                        child: Text(
+                                            'Software: ' + globals.software_version.toString(),
+                                            style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+
+                                    Container(
+                                        margin: EdgeInsets.only(right: 215.0, top: 20.0),
+                                        padding: EdgeInsets.only(left:0, top: 2),
+                                        child: Text(
+                                            globals.last_update.toString(),
+                                            style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold,)
+                                        )
+                                    ),
+
+                                  ]
+                              ),
+                            ),
+                          ]))),
+
+            ],
+          ),
+        ),
+      ),
+    );
+
+  }
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+  void _navigateToNextSettingsGenerell(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Generell()));
+  }
+  void _navigateToNextSettingsWireless(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsWireless()));
+  }
+  void _navigateToNextSettingsSensor(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Sensor()));
+  }
+  void _navigateToNextSettingsInfos(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => infos()));
+  }
+  void _navigateToNextSettings(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => settings()));
+  }
+}
+
+
+
 
 
 
