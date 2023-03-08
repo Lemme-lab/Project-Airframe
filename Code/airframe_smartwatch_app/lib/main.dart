@@ -3354,7 +3354,6 @@ class _settingsState extends State<settings> {
   }
 }
 
-
 class Generell extends StatefulWidget {
   const Generell({Key? key}) : super(key: key);
 
