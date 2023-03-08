@@ -1,0 +1,7 @@
+set(CMAKE_SYSTEM_NAME Android)
+set(CMAKE_SYSTEM_VERSION 28)
+set(CMAKE_ANDROID_ARCH_ABI arm64-v8a)
+set(CMAKE_ANDROID_NDK /path/to/android-ndk)
+set(CMAKE_ANDROID_NDK_TOOLCHAIN_VERSION clang)
+set(CMAKE_C_COMPILER /path/to/i.MX8/cross-compiler)
+set(CMAKE_CXX_COMPILER /path/to/i.MX8/cross-compiler)
