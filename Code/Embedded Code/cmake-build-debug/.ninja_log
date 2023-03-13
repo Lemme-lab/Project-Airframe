@@ -1,0 +1,4 @@
+# ninja log v5
+2	101	7000091891424653	build.ninja	c627043103a0fc14
+0	182	6999973925897850	CMakeFiles/Embedded_Code.dir/main.cpp.obj	2d6f51827673b081
+183	249	6999973926543407	Embedded_Code.exe	afd29a8a78b2281c

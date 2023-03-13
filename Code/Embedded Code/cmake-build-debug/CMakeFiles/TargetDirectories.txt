@@ -1,0 +1,3 @@
+C:/Hardware/Project-Airframe/Project-Airframe/Code/Embedded Code/cmake-build-debug/CMakeFiles/Embedded_Code.dir
+C:/Hardware/Project-Airframe/Project-Airframe/Code/Embedded Code/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Hardware/Project-Airframe/Project-Airframe/Code/Embedded Code/cmake-build-debug/CMakeFiles/rebuild_cache.dir
