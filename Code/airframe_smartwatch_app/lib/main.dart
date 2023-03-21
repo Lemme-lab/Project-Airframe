@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:flutter_blue/flutter_blue.dart';
 import 'globals.dart' as globals;
 
 
@@ -139,55 +138,6 @@ class _AppState extends State<App> {
     mapController = controller;
   }
 
-  FlutterBlue flutterBlue = FlutterBlue.instance;
-  List<BluetoothDevice> devices = [];
-  BluetoothDevice? connectedDevice;
-  BluetoothCharacteristic? characteristic;
-
-  @override
-  void initState() {
-    super.initState();
-    _startScan();
-  }
-
-  void _startScan() {
-    flutterBlue.scan().listen((scanResult) {
-      if (!devices.contains(scanResult.device)) {
-        setState(() {
-          devices.add(scanResult.device);
-        });
-      }
-    });
-  }
-
-  void _connectToDevice(BluetoothDevice device) async {
-    if (connectedDevice != null) {
-      await connectedDevice!.disconnect();
-    }
-    await device.connect();
-    List<BluetoothService> services = await device.discoverServices();
-    services.forEach((service) {
-      service.characteristics.forEach((characteristic) {
-        if (characteristic.uuid.toString() == "0000XXXX-0000-1000-8000-00805f9b34fb") {
-          this.characteristic = characteristic;
-        }
-      });
-    });
-    setState(() {
-      connectedDevice = device;
-    });
-    _startListening();
-  }
-
-  void _startListening() async {
-    if (characteristic != null) {
-      characteristic!.setNotifyValue(true);
-      characteristic!.value.listen((value) {
-        // handle incoming data here
-        print(value);
-      });
-    }
-  }
 
 
   @override

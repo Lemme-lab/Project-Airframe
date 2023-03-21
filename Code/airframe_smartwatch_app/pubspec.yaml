@@ -32,11 +32,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_blue: ^0.8.0
   fl_chart: ^0.55.2
   cupertino_icons: ^1.0.2
   google_maps_flutter: ^2.2.3
   location: ^4.4.0
-  flutter_blue: ^0.8.0
+
 
 
 dev_dependencies:
