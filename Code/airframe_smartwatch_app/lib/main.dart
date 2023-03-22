@@ -1,12 +1,20 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:developer';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'globals.dart' as globals;
+import 'ble.dart';
+import 'data.dart';
+import 'package:flutter_blue/flutter_blue.dart';
+
 
 
 
 const primaryColor = Color(0xFF151026);
-
 
 void main() => runApp(MaterialApp(
   home: App(),
@@ -22,16 +30,78 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
 
-  int battery = 80;
-  int O2stand = 40;
-  int steps = 6560;
-  int heartrate = 70;
-  double display = 90;
-  int kcal = 845;
-  int temperature = 24;
-  int altitude = 550;
+  void setup(){
+    globals.battery = 80;
+    globals.O2stand = 40;
+    globals.steps = 6560;
+    globals.heartrate = 70;
+    globals.display = 90;
+    globals.kcal = 845;
+    globals.temperature = 24;
+    globals.altitude = 550;
+  }
+
 
   final LatLng _center = const LatLng(45.521563, -122.677433);
+
+
+  /*
+  FlutterBlue flutterBlue = FlutterBlue.instance;
+  List<BluetoothDevice> devices = [];
+  BluetoothDevice? connectedDevice;
+  BluetoothCharacteristic? characteristic;
+
+  @override
+  StreamSubscription<List<int>>? _readSubscription;
+*/
+
+  @override
+  void initState() {
+    super.initState();
+    setup();
+    log('Fuuuuuck');
+    BluetoothIsolate.start();
+    log('Fuuuuuck');
+  }
+
+  /*
+  void _startScan() {
+    flutterBlue.scan().listen((scanResult) {
+      if (!devices.contains(scanResult.device) && scanResult.device.name == "MyDeviceName") {
+        setState(() {
+          devices.add(scanResult.device);
+        });
+      }
+    });
+  }
+
+  void _connectToDevice(BluetoothDevice device) async {
+    if (connectedDevice != null) {
+      await connectedDevice!.disconnect();
+    }
+    await device.connect();
+    List<BluetoothService> services = await device.discoverServices();
+    services.forEach((service) {
+      service.characteristics.forEach((characteristic) async {
+        if (characteristic.uuid.toString() == "0000fff1-0000-1000-8000-00805f9b34fb") {
+          _readSubscription = characteristic.value.listen((value) {
+            final jsonStr = utf8.decode(value);
+            final data = MyData.fromJson(json.decode(jsonStr));
+            _processData(data);
+          });
+        }
+      });
+    });
+    setState(() {
+      connectedDevice = device;
+    });
+  }
+
+  void _processData(MyData data) {
+    print('Received data: ${data.name}, ${data.age}, ${data.height}');
+  }
+
+   */
 
 
   List<FlSpot> points = [
@@ -255,7 +325,7 @@ class _AppState extends State<App> {
                                                   Container(
                                                       margin: EdgeInsets.only(right: 78.0, top: 5.0),
                                                       child: Text(
-                                                          '$O2stand%',
+                                                          globals.O2stand.toString() + '%',
                                                           style: TextStyle(color: Colors.white, fontSize: 20))
                                                   ),                               ]
                                             )
@@ -266,7 +336,7 @@ class _AppState extends State<App> {
                                           height: 5,
                                           color: Colors.white,
                                         ),
-                                        //Steps
+                                        //globals.steps
                                         InkWell(
                                         onTap: () {_navigateToNextScreenHealth(context);},
                                         child:(
@@ -279,7 +349,7 @@ class _AppState extends State<App> {
                                                 height: 130,
                                                 decoration: BoxDecoration(
                                                     gradient: SweepGradient(
-                                                      endAngle: 10-(steps/1000) + 0.0,
+                                                      endAngle: 10-(globals.steps/1000) + 0.0,
                                                       colors: <Color>[
                                                         Color(0xff000000),
                                                         Color(0xff000000),
@@ -314,7 +384,7 @@ class _AppState extends State<App> {
                                                   margin: EdgeInsets.only(top: 50, bottom: 10),
                                                   alignment: Alignment.center,
                                                   child: Text(
-                                                      '$steps',
+                                                      globals.steps.toString(),
                                                       style: TextStyle(color: Colors.white, fontSize: 26))
                                               ),
                                               Container(
@@ -435,7 +505,7 @@ class _AppState extends State<App> {
                                                           decoration: BoxDecoration(
                                                               gradient: LinearGradient(
                                                                 begin: Alignment.centerLeft,
-                                                                end: Alignment(battery/20, 5),
+                                                                end: Alignment(globals.battery/20, 5),
                                                                 colors: <Color>[
                                                                   Color(0xff00ff9b),
                                                                   Color(0xff2effad),
@@ -461,7 +531,7 @@ class _AppState extends State<App> {
                                                               borderRadius: BorderRadius.all(Radius.circular(35))
                                                           ),
                                                           child: Text(
-                                                            '$battery%',
+                                                            globals.battery.toString() + '%',
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(color: Color(0xff6E6E6E), fontSize: 20),)
                                                       )
@@ -738,7 +808,7 @@ class _AppState extends State<App> {
                                             Container(
                                               margin: EdgeInsets.only(left: 270.0, top: 75,),
                                               child: Text(
-                                                  '$heartrate''pbm',
+                                                  globals.heartrate.toString() + 'pbm',
                                                   style: TextStyle(
                                                       color: Colors.grey,
                                                       fontWeight: FontWeight.bold,
@@ -796,7 +866,7 @@ class _AppState extends State<App> {
                                 ),
                                 gradient: LinearGradient(
                                   begin: Alignment.centerLeft,
-                                  end: Alignment(battery/20, 5),
+                                  end: Alignment(globals.battery/20, 5),
                                   colors: <Color>[
                                     Color(0xff000000),
                                     Color(0xff383838),
@@ -844,12 +914,12 @@ class _AppState extends State<App> {
                           Container(
                             child: Slider(
                               activeColor: Color(0xff00273d),
-                              value: display,
+                              value: globals.display,
                               max: 100,
-                              label: display.round().toString(),
+                              label: globals.display.round().toString(),
                               onChanged: (double value) {
                                 setState(() {
-                                  display = value;
+                                  globals.display = value;
                                 });
                               },
                             ),
@@ -947,7 +1017,7 @@ class _AppState extends State<App> {
                                  Container(
                                    margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 5.0),
                                    child: Text(
-                                       '$kcal' 'kcal',
+                                       globals.kcal.toString() + 'kcal',
                                        style: TextStyle(
                                            color: Colors.white,
                                            fontWeight: FontWeight.bold,
@@ -975,7 +1045,7 @@ class _AppState extends State<App> {
                                   Container(
                                     margin: EdgeInsets.only(right: 5.0, top: 10),
                                     child: Text(
-                                        'Temperature',
+                                        'Temperature:',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
@@ -985,7 +1055,7 @@ class _AppState extends State<App> {
                                   Container(
                                     margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 90.0),
                                     child: Text(
-                                        '$temperature''°C',
+                                        globals.temperature.toString() + '°C',
                                         style: TextStyle(
                                             color: Colors.grey,
                                             fontWeight: FontWeight.bold,
@@ -1007,7 +1077,7 @@ class _AppState extends State<App> {
                                   Container(
                                     margin: EdgeInsets.only(right: 55.0, top: 10),
                                     child: Text(
-                                        'Altitude',
+                                        'Altitude:',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
@@ -1017,7 +1087,7 @@ class _AppState extends State<App> {
                                   Container(
                                     margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 55.0),
                                     child: Text(
-                                        '$altitude''/absl',
+                                        globals.altitude.toString() + '/absl',
                                         style: TextStyle(
                                             color: Colors.grey,
                                             fontWeight: FontWeight.bold,
@@ -1289,13 +1359,22 @@ class stats extends StatefulWidget {
 }
 
 class _statsState extends State<stats> {
-  int Oxy_AVG = 80;
-  int Oxy_Max = 80;
-  int Oxy_Min = 80;
 
-  int heart_AVG = 80;
-  int heart_Max = 80;
-  int heart_Min = 80;
+  void setup(){
+    globals.Oxy_AVG = 80;
+    globals.Oxy_Max = 80;
+    globals.Oxy_Min = 80;
+
+    globals.heart_AVG = 80;
+    globals.heart_Max = 80;
+    globals.heart_Min = 80;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setup();
+  }
 
   List<FlSpot> points1 = [
     FlSpot(0, 110.0),
@@ -1334,6 +1413,7 @@ class _statsState extends State<stats> {
     FlSpot(23, 150.0),
     FlSpot(24, 170.0),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1715,7 +1795,7 @@ class _statsState extends State<stats> {
               Container(
                 margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
                 child:Text(
-                  '$Oxy_AVG%',
+                  globals.Oxy_AVG.toString() + '%',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -1735,7 +1815,7 @@ class _statsState extends State<stats> {
               Container(
                 margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
                 child:Text(
-                  '$Oxy_Min%',
+                  globals.Oxy_Min.toString() + '%',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -1755,7 +1835,7 @@ class _statsState extends State<stats> {
               Container(
                 margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 14.0),
                 child:Text(
-                  '$Oxy_Max%',
+                  globals.Oxy_Max.toString() + '%',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -1956,7 +2036,7 @@ class _statsState extends State<stats> {
               Container(
                 margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
                 child:Text(
-                  '$heart_AVG%',
+                   globals.heart_AVG.toString() + '%',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -1976,7 +2056,7 @@ class _statsState extends State<stats> {
               Container(
                 margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
                 child:Text(
-                  '$heart_Min%',
+                  globals.heart_Min.toString() + '%',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -1995,7 +2075,7 @@ class _statsState extends State<stats> {
               Container(
                 margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 14.0),
                 child:Text(
-                  '$heart_Max%',
+                  globals.heart_Max.toString() + '%',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -2103,17 +2183,24 @@ class health extends StatefulWidget {
 }
 
 class _healthState extends State<health> {
-  int bpm = 117;
-  int kcal = 346;
-  int hours = 7;
-  int minutes = 23;
-  List<double> past_sleep = [10, 8.12, 5.12, 6.12, 9.20, 5.8, 7.9, 7.7, 7.2, 8.3, 8.8, 5.9];
-  List<double> past_distance = [15000, 10000, 8000, 12300, 14200, 3400];
-  List<String> past_distance_month = ["Mar", "Mar", "Mar", "Mar", "Mar", "Mar"];
-  List<String> past_distance_day = ["14", "16", "18", "20", "22", "24"];
-  String training_status = "Running";
-  String daily_progress = "63";
-  int steps = 6799;
+
+  void setup(){
+    globals.bpm = 117;
+    globals.kcal = 346;
+    globals.hours = 7;
+    globals.minutes = 23;
+    globals.past_sleep = [10, 8.12, 5.12, 6.12, 9.20, 5.8, 7.9, 7.7, 7.2, 8.3, 8.8, 5.9];
+    globals.past_distance = [15000, 10000, 8000, 12300, 14200, 3400];
+    globals.past_distance_month = ["Mar", "Mar", "Mar", "Mar", "Mar", "Mar"];
+    globals.past_distance_day = ["14", "16", "18", "20", "22", "24"];
+    globals.training_status = "Running";
+    globals.steps = 6799;
+  }
+
+  void initState() {
+    super.initState();
+    setup();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -2168,7 +2255,7 @@ class _healthState extends State<health> {
                                     Container(
                                       margin: EdgeInsets.only(left: 0.0),
                                       child: Text(
-                                          '$bpm',
+                                          globals.bpm.toString(),
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
@@ -2178,7 +2265,7 @@ class _healthState extends State<health> {
                                     Container(
                                       margin: EdgeInsets.only(left: 0.0),
                                       child: Text(
-                                          'bpm',
+                                          'Pbm',
                                           style: TextStyle(
                                               color: Colors.grey,
                                               fontWeight: FontWeight.bold,
@@ -2245,7 +2332,7 @@ class _healthState extends State<health> {
                                                     Container(
                                                       margin: EdgeInsets.only(right: 0.0, top:5),
                                                       child: Text(
-                                                          '$hours',
+                                                        globals.hours.toString(),
                                                           style: TextStyle(
                                                               color: Colors.white,
                                                               fontWeight: FontWeight.bold,
@@ -2265,7 +2352,7 @@ class _healthState extends State<health> {
                                                     Container(
                                                       margin: EdgeInsets.only(left: 7.0, top:5),
                                                       child: Text(
-                                                          '$minutes',
+                                                          globals.minutes.toString(),
                                                           style: TextStyle(
                                                               color: Colors.white,
                                                               fontWeight: FontWeight.bold,
@@ -2317,7 +2404,7 @@ class _healthState extends State<health> {
                                               ),
                                             ),
                                             Container(
-                                              height: past_sleep[0]*7,
+                                              height: globals.past_sleep[0]*7,
                                               width: 10,
                                               margin: EdgeInsets.only(left: 5.0,top: 5),
                                               decoration: BoxDecoration(
@@ -2329,9 +2416,6 @@ class _healthState extends State<health> {
                                                     Color(0xff008BAC),
                                                     Color(0xff00FFEB),
                                                     Color(0xff008BAC),
-
-
-
                                                   ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                   tileMode: TileMode.mirror,
                                                 ),
@@ -2356,9 +2440,9 @@ class _healthState extends State<health> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: past_sleep[1]*7,
+                                                    height: globals.past_sleep[1]*7,
                                                     width: 10,
-                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[1]*7)),
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-globals.past_sleep[1]*7)),
                                                     decoration: BoxDecoration(
                                                       gradient: LinearGradient(
                                                         begin: Alignment.centerLeft,
@@ -2368,9 +2452,6 @@ class _healthState extends State<health> {
                                                           Color(0xff008BAC),
                                                           Color(0xff00FFEB),
                                                           Color(0xff008BAC),
-
-
-
                                                         ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                         tileMode: TileMode.mirror,
                                                       ),
@@ -2395,9 +2476,9 @@ class _healthState extends State<health> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: past_sleep[2]*7,
+                                                    height: globals.past_sleep[2]*7,
                                                     width: 10,
-                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[2]*7)),
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-globals.past_sleep[2]*7)),
                                                     decoration: BoxDecoration(
                                                       gradient: LinearGradient(
                                                         begin: Alignment.centerLeft,
@@ -2407,9 +2488,6 @@ class _healthState extends State<health> {
                                                           Color(0xff008BAC),
                                                           Color(0xff00FFEB),
                                                           Color(0xff008BAC),
-
-
-
                                                         ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                         tileMode: TileMode.mirror,
                                                       ),
@@ -2434,9 +2512,9 @@ class _healthState extends State<health> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: past_sleep[3]*7,
+                                                    height: globals.past_sleep[3]*7,
                                                     width: 10,
-                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[3]*7)),
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-globals.past_sleep[3]*7)),
                                                     decoration: BoxDecoration(
                                                       gradient: LinearGradient(
                                                         begin: Alignment.centerLeft,
@@ -2446,9 +2524,6 @@ class _healthState extends State<health> {
                                                           Color(0xff008BAC),
                                                           Color(0xff00FFEB),
                                                           Color(0xff008BAC),
-
-
-
                                                         ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                         tileMode: TileMode.mirror,
                                                       ),
@@ -2473,9 +2548,9 @@ class _healthState extends State<health> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: past_sleep[4]*7,
+                                                    height: globals.past_sleep[4]*7,
                                                     width: 10,
-                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[4]*7)),
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-globals.past_sleep[4]*7)),
                                                     decoration: BoxDecoration(
                                                       gradient: LinearGradient(
                                                         begin: Alignment.centerLeft,
@@ -2485,9 +2560,6 @@ class _healthState extends State<health> {
                                                           Color(0xff008BAC),
                                                           Color(0xff00FFEB),
                                                           Color(0xff008BAC),
-
-
-
                                                         ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                         tileMode: TileMode.mirror,
                                                       ),
@@ -2512,9 +2584,9 @@ class _healthState extends State<health> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: past_sleep[6]*7,
+                                                    height: globals.past_sleep[6]*7,
                                                     width: 10,
-                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[6]*7)),
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-globals.past_sleep[6]*7)),
                                                     decoration: BoxDecoration(
                                                       gradient: LinearGradient(
                                                         begin: Alignment.centerLeft,
@@ -2524,9 +2596,6 @@ class _healthState extends State<health> {
                                                           Color(0xff008BAC),
                                                           Color(0xff00FFEB),
                                                           Color(0xff008BAC),
-
-
-
                                                         ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                         tileMode: TileMode.mirror,
                                                       ),
@@ -2551,9 +2620,9 @@ class _healthState extends State<health> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: past_sleep[7]*7,
+                                                    height: globals.past_sleep[7]*7,
                                                     width: 10,
-                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[7]*7)),
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-globals.past_sleep[7]*7)),
                                                     decoration: BoxDecoration(
                                                       gradient: LinearGradient(
                                                         begin: Alignment.centerLeft,
@@ -2563,9 +2632,6 @@ class _healthState extends State<health> {
                                                           Color(0xff008BAC),
                                                           Color(0xff00FFEB),
                                                           Color(0xff008BAC),
-
-
-
                                                         ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                         tileMode: TileMode.mirror,
                                                       ),
@@ -2590,9 +2656,9 @@ class _healthState extends State<health> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: past_sleep[8]*7,
+                                                    height: globals.past_sleep[8]*7,
                                                     width: 10,
-                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[8]*7)),
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-globals.past_sleep[8]*7)),
                                                     decoration: BoxDecoration(
                                                       gradient: LinearGradient(
                                                         begin: Alignment.centerLeft,
@@ -2602,9 +2668,6 @@ class _healthState extends State<health> {
                                                           Color(0xff008BAC),
                                                           Color(0xff00FFEB),
                                                           Color(0xff008BAC),
-
-
-
                                                         ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                         tileMode: TileMode.mirror,
                                                       ),
@@ -2629,9 +2692,9 @@ class _healthState extends State<health> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: past_sleep[9]*7,
+                                                    height: globals.past_sleep[9]*7,
                                                     width: 10,
-                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[9]*7)),
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-globals.past_sleep[9]*7)),
                                                     decoration: BoxDecoration(
                                                       gradient: LinearGradient(
                                                         begin: Alignment.centerLeft,
@@ -2641,9 +2704,6 @@ class _healthState extends State<health> {
                                                           Color(0xff008BAC),
                                                           Color(0xff00FFEB),
                                                           Color(0xff008BAC),
-
-
-
                                                         ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                         tileMode: TileMode.mirror,
                                                       ),
@@ -2668,9 +2728,9 @@ class _healthState extends State<health> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: past_sleep[10]*7,
+                                                    height: globals.past_sleep[10]*7,
                                                     width: 10,
-                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-past_sleep[10]*7)),
+                                                    margin: EdgeInsets.only(left: 5.0,top: 5 + (70-globals.past_sleep[10]*7)),
                                                     decoration: BoxDecoration(
                                                       gradient: LinearGradient(
                                                         begin: Alignment.centerLeft,
@@ -2680,9 +2740,6 @@ class _healthState extends State<health> {
                                                           Color(0xff008BAC),
                                                           Color(0xff00FFEB),
                                                           Color(0xff008BAC),
-
-
-
                                                         ], // Gradient from https://learnui.design/tools/gradient-generator.html
                                                         tileMode: TileMode.mirror,
                                                       ),
@@ -2725,7 +2782,7 @@ class _healthState extends State<health> {
                     Container(
                       margin: EdgeInsets.only(top: 15.0),
                       child: Text(
-                          '$training_status',
+                           globals.training_status.toString(),
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -2743,7 +2800,7 @@ class _healthState extends State<health> {
                                     height: 200,
                                     decoration: BoxDecoration(
                                         gradient: SweepGradient(
-                                          endAngle: 10-(steps/1000) + 0.0,
+                                          endAngle: 10-(globals.steps/1000) + 0.0,
                                           colors: <Color>[
                                             Color(0xffFFFFFF),
                                             Color(0xffFFFFFF),
@@ -2779,7 +2836,7 @@ class _healthState extends State<health> {
                                       margin: EdgeInsets.only(left:5, top: 70, bottom: 10),
                                       alignment: Alignment.center,
                                       child: Text(
-                                          '$steps',
+                                          globals.steps.toString(),
                                           style: TextStyle(color: Colors.white, fontSize: 40))
                                   ),
                                   Container(
@@ -2820,7 +2877,7 @@ class _healthState extends State<health> {
                           margin: EdgeInsets.only(left:5, top: 5),
                           alignment: Alignment.center,
                           child: Text(
-                              '$kcal',
+                              globals.kcal.toString(),
                               style: TextStyle(color: Colors.white, fontSize: 40))
                       ),
                       Container(
@@ -2880,7 +2937,7 @@ class _healthState extends State<health> {
                                                 Container(
                                                   margin: EdgeInsets.only(top: 2.0, right:10),
                                                   child: Text(
-                                                      '$daily_progress%',
+                                                      globals.daily_progress.toString() + '%',
                                                       style: TextStyle(
                                                           color: Colors.white,
                                                           fontSize: 33)
@@ -2903,7 +2960,7 @@ class _healthState extends State<health> {
                                                 Container(
                                                   margin: EdgeInsets.only(top: 2.0, left:95),
                                                   child: Text(
-                                                      past_distance[5].toInt().toString() + " m",
+                                                      globals.past_distance[5].toInt().toString() + " m",
                                                       style: TextStyle(
                                                           color: Colors.white,
                                                           fontSize: 33)
@@ -2916,9 +2973,9 @@ class _healthState extends State<health> {
                                       children: [
                                         Container(
                                           alignment: Alignment.bottomCenter,
-                                          height:past_distance[0]/80,
+                                          height:globals.past_distance[0]/80,
                                           width: 45,
-                                          margin: EdgeInsets.only(left: 40.0,top: (15000/80 - past_distance[0]/80)),
+                                          margin: EdgeInsets.only(left: 40.0,top: (15000/80 - globals.past_distance[0]/80)),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(20),
@@ -2943,9 +3000,9 @@ class _healthState extends State<health> {
                                         ),
                                         Container(
                                           alignment: Alignment.bottomCenter,
-                                          height:past_distance[1]/80,
+                                          height:globals.past_distance[1]/80,
                                           width: 45,
-                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - past_distance[1]/80)),
+                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - globals.past_distance[1]/80)),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(20),
@@ -2970,9 +3027,9 @@ class _healthState extends State<health> {
                                         ),
                                         Container(
                                           alignment: Alignment.bottomCenter,
-                                          height:past_distance[2]/80,
+                                          height:globals.past_distance[2]/80,
                                           width: 45,
-                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - past_distance[2]/80)),
+                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - globals.past_distance[2]/80)),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(20),
@@ -2997,9 +3054,9 @@ class _healthState extends State<health> {
                                         ),
                                         Container(
                                           alignment: Alignment.bottomCenter,
-                                          height:past_distance[3]/80,
+                                          height:globals.past_distance[3]/80,
                                           width: 45,
-                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - past_distance[3]/80)),
+                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - globals.past_distance[3]/80)),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(20),
@@ -3024,9 +3081,9 @@ class _healthState extends State<health> {
                                         ),
                                         Container(
                                           alignment: Alignment.bottomCenter,
-                                          height:past_distance[4]/80,
+                                          height:globals.past_distance[4]/80,
                                           width: 45,
-                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - past_distance[4]/80)),
+                                          margin: EdgeInsets.only(left: 10.0,top: (15000/80 - globals.past_distance[4]/80)),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(20),
@@ -3051,9 +3108,9 @@ class _healthState extends State<health> {
                                         ),
                                         Container(
                                           alignment: Alignment.bottomCenter,
-                                          height:past_distance[5]/80,
+                                          height:globals.past_distance[5]/80,
                                           width: 45,
-                                          margin: EdgeInsets.only(left: 10.0, top: (15000/80 - past_distance[5]/80)),
+                                          margin: EdgeInsets.only(left: 10.0, top: (15000/80 - globals.past_distance[5]/80)),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(20),
@@ -3083,7 +3140,7 @@ class _healthState extends State<health> {
                                         Container(
                                           margin: EdgeInsets.only(top: 5.0, left:35),
                                           child: Text(
-                                              past_distance_day[0].toString() + " "+ past_distance_month[0].toString(),
+                                              globals.past_distance_day[0].toString() + " "+ globals.past_distance_month[0].toString(),
                                               style: TextStyle(
                                                   color: Colors.grey,
                                                   fontWeight: FontWeight.bold,
@@ -3093,7 +3150,7 @@ class _healthState extends State<health> {
                                         Container(
                                           margin: EdgeInsets.only(top: 5.0, left:7),
                                           child: Text(
-                                              past_distance_day[1].toString() + " "+ past_distance_month[1].toString(),
+                                              globals.past_distance_day[1].toString() + " "+ globals.past_distance_month[1].toString(),
                                               style: TextStyle(
                                                   color: Colors.grey,
                                                   fontWeight: FontWeight.bold,
@@ -3103,7 +3160,7 @@ class _healthState extends State<health> {
                                         Container(
                                           margin: EdgeInsets.only(top: 5.0, left:7),
                                           child: Text(
-                                              past_distance_day[2].toString() + " "+ past_distance_month[2].toString(),
+                                              globals.past_distance_day[2].toString() + " "+ globals.past_distance_month[2].toString(),
                                               style: TextStyle(
                                                   color: Colors.grey,
                                                   fontWeight: FontWeight.bold,
@@ -3113,7 +3170,7 @@ class _healthState extends State<health> {
                                         Container(
                                           margin: EdgeInsets.only(top: 5.0, left:7),
                                           child: Text(
-                                              past_distance_day[3].toString() + " "+ past_distance_month[3].toString(),
+                                              globals.past_distance_day[3].toString() + " "+ globals.past_distance_month[3].toString(),
                                               style: TextStyle(
                                                   color: Colors.grey,
                                                   fontWeight: FontWeight.bold,
@@ -3123,7 +3180,7 @@ class _healthState extends State<health> {
                                         Container(
                                           margin: EdgeInsets.only(top: 5.0, left:7),
                                           child: Text(
-                                              past_distance_day[4].toString() + " "+ past_distance_month[4].toString(),
+                                              globals.past_distance_day[4].toString() + " "+ globals.past_distance_month[4].toString(),
                                               style: TextStyle(
                                                   color: Colors.grey,
                                                   fontWeight: FontWeight.bold,
@@ -3133,7 +3190,7 @@ class _healthState extends State<health> {
                                         Container(
                                           margin: EdgeInsets.only(top: 5.0, left:7),
                                           child: Text(
-                                              past_distance_day[5].toString() + " "+ past_distance_month[5].toString(),
+                                              globals.past_distance_day[5].toString() + " "+ globals.past_distance_month[5].toString(),
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
@@ -3560,7 +3617,7 @@ class _GenerellState extends State<Generell> {
                                                               children:[
                                                                 Container(
                                                                     child: Text(
-                                                                        'Battery Saving Mode',
+                                                                        'globals.battery Saving Mode',
                                                                         style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
                                                                     )
                                                                 ),
@@ -5105,7 +5162,7 @@ class _SensorState extends State<Sensor> {
                                                               children:[
                                                                 Container(
                                                                     child: Text(
-                                                                        'Pressure/Attitude',
+                                                                        'Pressure/altitude',
                                                                         style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold,)
                                                                     )
                                                                 ),
@@ -5115,7 +5172,7 @@ class _SensorState extends State<Sensor> {
                                                         ),
                                                       ])),
                                               InkWell(
-                                                  onTap: () {globals.pressure_attitude =! globals.pressure_attitude;setState(() {});},
+                                                  onTap: () {globals.pressure_altitude =! globals.pressure_altitude;setState(() {});},
                                                   child:(
                                                       Stack(
                                                         children: [
@@ -5143,7 +5200,7 @@ class _SensorState extends State<Sensor> {
                                                                 ]
                                                             ),
                                                           ),
-                                                          if (globals.pressure_attitude == true) ...[
+                                                          if (globals.pressure_altitude == true) ...[
                                                             Container (
                                                               width: 40,
                                                               height: 20,
