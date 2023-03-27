@@ -45,63 +45,80 @@ class _AppState extends State<App> {
   final LatLng _center = const LatLng(45.521563, -122.677433);
 
 
-  /*
-  FlutterBlue flutterBlue = FlutterBlue.instance;
-  List<BluetoothDevice> devices = [];
-  BluetoothDevice? connectedDevice;
-  BluetoothCharacteristic? characteristic;
-
-  @override
-  StreamSubscription<List<int>>? _readSubscription;
-*/
-
+/*
   @override
   void initState() {
     super.initState();
     setup();
-    log('Fuuuuuck');
     BluetoothIsolate.start();
-    log('Fuuuuuck');
+    BluetoothIsolate();
+  }
+  */
+
+  FlutterBlue flutterBlue = FlutterBlue.instance;
+  BluetoothDevice? device;
+  bool connected = false;
+
+  @override
+  void initState() {
+    super.initState();
+    scanForDevices();
+    print('got here');
   }
 
-  /*
-  void _startScan() {
-    flutterBlue.scan().listen((scanResult) {
-      if (!devices.contains(scanResult.device) && scanResult.device.name == "MyDeviceName") {
-        setState(() {
-          devices.add(scanResult.device);
-        });
+  Future<void> scanForDevices() async {
+    flutterBlue.startScan(timeout: Duration(seconds: 5));
+
+
+    flutterBlue.scanResults.listen((results) {
+      for (ScanResult r in results) {
+        if (r.device.name == 'Airframe-Watch') {
+          connectToDevice(r.device);
+          print('Connected to: ');
+          print(r.device.name);
+          break;
+        }
       }
     });
   }
 
-  void _connectToDevice(BluetoothDevice device) async {
-    if (connectedDevice != null) {
-      await connectedDevice!.disconnect();
-    }
+  Future<void> connectToDevice(BluetoothDevice device) async {
+    flutterBlue.stopScan();
+
     await device.connect();
-    List<BluetoothService> services = await device.discoverServices();
-    services.forEach((service) {
-      service.characteristics.forEach((characteristic) async {
-        if (characteristic.uuid.toString() == "0000fff1-0000-1000-8000-00805f9b34fb") {
-          _readSubscription = characteristic.value.listen((value) {
-            final jsonStr = utf8.decode(value);
-            final data = MyData.fromJson(json.decode(jsonStr));
-            _processData(data);
-          });
-        }
-      });
-    });
+
     setState(() {
-      connectedDevice = device;
+      this.device = device;
+      connected = true;
     });
+
+    await discoverServices();
   }
 
-  void _processData(MyData data) {
-    print('Received data: ${data.name}, ${data.age}, ${data.height}');
+  Future<void> discoverServices() async {
+    List<BluetoothService> services = await device!.discoverServices();
+
+    for (BluetoothService service in services) {
+      if (service.uuid.toString() == '0000fff0-0000-1000-8000-00805f9b34fb') {
+        List<BluetoothCharacteristic> characteristics = service.characteristics;
+
+        for (BluetoothCharacteristic characteristic in characteristics) {
+          if (characteristic.uuid.toString() ==
+              '0000fff1-0000-1000-8000-00805f9b35fb') {
+            characteristic.setNotifyValue(true);
+
+            characteristic.value.listen((value) {
+              // Process the received data in the background
+              // e.g. save to a database, update UI, etc.
+              print('Received data: ${String.fromCharCodes(value)}');
+            });
+          }
+        }
+      }
+    }
   }
 
-   */
+
 
 
   List<FlSpot> points = [
