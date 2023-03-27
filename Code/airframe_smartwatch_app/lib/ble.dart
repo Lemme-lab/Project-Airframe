@@ -27,6 +27,7 @@ class BluetoothIsolate {
 
     // Start Bluetooth scanning
     flutterBlue.scan().listen((scanResult) async {
+      log('Scan: $scanResult');
       if (scanResult.device.name == "Airframe-Watch") {
         sendPort.send(scanResult.device);
 
