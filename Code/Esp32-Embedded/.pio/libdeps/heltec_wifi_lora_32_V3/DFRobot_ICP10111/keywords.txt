@@ -1,0 +1,34 @@
+#######################################
+# Syntax Coloring Map For DFRobot_Sensor
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFRobot_ICP10111	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+setWorkPattern	KEYWORD2
+getTemperature	KEYWORD2
+getAirPressure	KEYWORD2
+getElevation	KEYWORD2
+
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+eLowPower	LITERAL1
+eNormal	LITERAL1
+eLowNoise	LITERAL1
+eUltraLowNoise	LITERAL1
+
