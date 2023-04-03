@@ -1,15 +1,10 @@
 #include <Arduino.h>
-#include <BLEDevice.h>
-#include <BLEServer.h>
-#include <BLEUtils.h>
-#include <BLE2902.h>
 #include "SPI.h"
 #include <TFT_eSPI.h>
 #include "scanner.h"
 #include "sensors.h"
 #include "SPIFFS.h"
-#include <Thread.h>
-#include <ThreadController.h>
+#include "ble.h"
 
 
 #define BD71850_I2C_ADDRESS 0x4B
@@ -41,7 +36,6 @@ int32_t spo2;
 float airPressure;
 float temperature; 
 float altitude;
-
 
 unsigned long previousMillis = 0;
 const unsigned long interval = 1000;
@@ -597,101 +591,23 @@ void outputData(){
 
 }
 
-BLEServer* pServer = NULL;
-BLECharacteristic* pCharacteristic = NULL;
-bool deviceConnected = false;
-bool oldDeviceConnected = false;
-
-#define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
-#define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
-class MyServerCallbacks: public BLEServerCallbacks {
-    void onConnect(BLEServer* pServer) {
-      deviceConnected = true;
-      BLEDevice::startAdvertising();
-    };
-
-    void onDisconnect(BLEServer* pServer) {
-      deviceConnected = false;
-    }
-};
-
-void btCallback(){
-  // notify changed value
-    if (deviceConnected) {
-
-      Serial.print("Sending BLE Data");
-      String str = "fuck";
-      
-
-      
-      pCharacteristic->setValue((char*)str.c_str());
-      pCharacteristic->notify();
-
-    }
-    // disconnecting
-    if (!deviceConnected && oldDeviceConnected) {
-        //delay(500); // give the bluetooth stack the chance to get things ready
-        pServer->startAdvertising(); // restart advertising
-        Serial.println("start advertising");
-        oldDeviceConnected = deviceConnected;
-    }
-    // connecting
-    if (deviceConnected && !oldDeviceConnected) {
-        // do stuff here on connecting
-        oldDeviceConnected = deviceConnected;
-    }
-}
-
-void initBT(){
-  // Create the BLE Device
-  BLEDevice::init("Airframe-Watch");
-
-  // Create the BLE Server
-  pServer = BLEDevice::createServer();
-  pServer->setCallbacks(new MyServerCallbacks());
-
-  // Create the BLE Service
-  BLEService *pService = pServer->createService(SERVICE_UUID);
-
-  // Create a BLE Characteristic
-  pCharacteristic = pService->createCharacteristic(
-                      CHARACTERISTIC_UUID,
-                      BLECharacteristic::PROPERTY_READ   |
-                      BLECharacteristic::PROPERTY_WRITE  |
-                      BLECharacteristic::PROPERTY_NOTIFY |
-                      BLECharacteristic::PROPERTY_INDICATE
-                    );
-
-  pCharacteristic->addDescriptor(new BLE2902());
-
-  // Start the service
-  pService->start();
-
-  // Start advertising
-  BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
-  pAdvertising->addServiceUUID(SERVICE_UUID);
-  pAdvertising->setScanResponse(false);
-  pAdvertising->setMinPreferred(0x0);  
-  BLEDevice::startAdvertising();
-  Serial.println("Waiting a client connection to notify...");
-  
-}
-
-ThreadController controll = ThreadController();
-
-Thread* btThread = new Thread();
-Thread* drawingThread = new Thread();
+const BleData data(123456, 1, 10000, 3, true, 2, 1, 50, 2, 3.2, 90.5, 8,
+               60, 120, 80, 90, 100, 95, 100, 25, 80, 95, 500, 80, 120, 10,
+               10, 30, 512, 80);
 
 void setup() {
 
   Serial.begin(115200);
+  Serial.println("");
+  Serial.println("");
+  Serial.println("");
 
-  initBT();
+  bleSetup();
 
-  btThread->onRun(btCallback);
-  btThread->setInterval(100);
-
-
+  Serial.println(data.to_string().c_str());
+  
+  
+  
   //Wire.begin(46,45);
   //Max30105Setup();
   //LIS2MDLTRSetup();
@@ -722,7 +638,8 @@ void setup() {
 
 void loop() {
 
-    controll.run();
+   delay(2000);
+   sendJson(data);
 
 
    /*

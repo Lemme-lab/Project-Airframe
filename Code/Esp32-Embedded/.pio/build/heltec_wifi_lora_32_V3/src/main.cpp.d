@@ -175,35 +175,6 @@
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/spi_flash/include/esp_spi_flash.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/spi_flash/include/esp_spi_flash_counters.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/esp_hw_support/include/soc/esp32/spiram.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEDevice.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gap_ble_api.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_bt_defs.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gattc_api.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gatt_defs.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/include/esp32s3/include/esp_bt.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEServer.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gatts_api.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUUID.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gatt_defs.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEAdvertising.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/RTOS.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/esp_ringbuf/include/freertos/ringbuf.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLECharacteristic.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEDescriptor.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEValue.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEService.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLESecurity.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEAddress.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEClient.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLERemoteService.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLERemoteCharacteristic.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLERemoteDescriptor.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEAdvertisedDevice.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEScan.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUtils.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEServer.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUtils.h \
- C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLE2902.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src/SPI.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-spi.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/TFT_eSPI/TFT_eSPI.h \
@@ -309,6 +280,34 @@
  src/sensors.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/SparkFun_MAX3010x_Sensor_Library-master/src/MAX30105.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/Adafruit\ Unified\ Sensor/Adafruit_Sensor.h \
- .pio/libdeps/heltec_wifi_lora_32_V3/ArduinoThread/Thread.h \
- .pio/libdeps/heltec_wifi_lora_32_V3/ArduinoThread/ThreadController.h \
- .pio/libdeps/heltec_wifi_lora_32_V3/ArduinoThread/Thread.h
+ src/ble.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEDevice.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gap_ble_api.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_bt_defs.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gattc_api.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gatt_defs.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/include/esp32s3/include/esp_bt.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEServer.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gatts_api.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUUID.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gatt_defs.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEAdvertising.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/RTOS.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/esp_ringbuf/include/freertos/ringbuf.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLECharacteristic.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEDescriptor.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEValue.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEService.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLESecurity.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEAddress.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEClient.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLERemoteService.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLERemoteCharacteristic.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLERemoteDescriptor.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEAdvertisedDevice.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEScan.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUtils.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUtils.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEServer.h \
+ C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLE2902.h \
+ src/bleObj.h
