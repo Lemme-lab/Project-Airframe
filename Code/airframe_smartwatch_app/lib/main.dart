@@ -10,6 +10,10 @@ import 'globals.dart' as globals;
 import 'ble.dart';
 import 'data.dart';
 import 'package:flutter_blue/flutter_blue.dart';
+import 'dart:async';
+import 'dart:convert' show utf8;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_ble/flutter_ble.dart';
 
 
 
@@ -21,7 +25,7 @@ void main() => runApp(MaterialApp(
 ));
 
 class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+  const App({Key key}) : super(key: key);
 
 
   @override
@@ -55,66 +59,251 @@ class _AppState extends State<App> {
   }
   */
 
-  FlutterBlue flutterBlue = FlutterBlue.instance;
-  BluetoothDevice? device;
-  bool connected = false;
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  FlutterBle _flutterBlue = FlutterBle.instance;
+
+  /// Scanning
+  StreamSubscription _scanSubscription;
+  Map<DeviceIdentifier, ScanResult> scanResults = new Map();
+  bool isScanning = false;
+
+  /// State
+  StreamSubscription _stateSubscription;
+  BluetoothState state = BluetoothState.unknown;
+
+  /// Device
+  BluetoothDevice device;
+
+  bool get isConnected => (device != null);
+  StreamSubscription deviceConnection;
+  StreamSubscription deviceStateSubscription;
+  List<BluetoothService> services = new List();
+  Map<Guid, StreamSubscription> valueChangedSubscriptions = {};
+  BluetoothDeviceState deviceState = BluetoothDeviceState.disconnected;
+
+  static const String CHARACTERISTIC_UUID =
+      "beb5483e-36e1-4688-b7f5-ea07361b26a8";
+  static const String kMYDEVICE = "myDevice";
+  String _myDeviceId = "";
+  String _temperature = "?";
+  String _humidity = "?";
 
   @override
   void initState() {
     super.initState();
-    scanForDevices();
-    print('got here');
-  }
-
-  Future<void> scanForDevices() async {
-    flutterBlue.startScan(timeout: Duration(seconds: 5));
-
-
-    flutterBlue.scanResults.listen((results) {
-      for (ScanResult r in results) {
-        if (r.device.name == 'Airframe-Watch') {
-          connectToDevice(r.device);
-          print('Connected to: ');
-          print(r.device.name);
-          break;
-        }
-      }
+    // Immediately get the state of FlutterBle
+    _flutterBlue.state.then((s) {
+      setState(() {
+        state = s;
+      });
     });
+    // Subscribe to state changes
+    _stateSubscription = _flutterBlue.onStateChanged().listen((s) {
+      setState(() {
+        state = s;
+      });
+    });
+
+    _loadMyDeviceId();
   }
 
-  Future<void> connectToDevice(BluetoothDevice device) async {
-    flutterBlue.stopScan();
+  _loadMyDeviceId() async {
+    SharedPreferences prefs = await _prefs;
+    _myDeviceId = prefs.getString(kMYDEVICE) ?? "";
+    print("_myDeviceId : " + _myDeviceId);
 
-    await device.connect();
+    if (_myDeviceId.isNotEmpty) {
+      _startScan();
+    }
+  }
+
+  @override
+  void dispose() {
+    _stateSubscription?.cancel();
+    _stateSubscription = null;
+    _scanSubscription?.cancel();
+    _scanSubscription = null;
+    deviceConnection?.cancel();
+    deviceConnection = null;
+    super.dispose();
+  }
+
+  _startScan() {
+    _scanSubscription = _flutterBlue
+        .scan(
+      timeout: const Duration(seconds: 5),
+      /*withServices: [
+          new Guid('0000180F-0000-1000-8000-00805F9B34FB')
+        ]*/
+    )
+        .listen((scanResult) {
+//      print('localName: ${scanResult.advertisementData.localName}');
+//      print(
+//          'manufacturerData: ${scanResult.advertisementData.manufacturerData}');
+//      print('serviceData: ${scanResult.advertisementData.serviceData}');
+
+      if (_myDeviceId == scanResult.device.id.toString()) {
+        _stopScan();
+        _connect(scanResult.device);
+      }
+
+      setState(() {
+        scanResults[scanResult.device.id] = scanResult;
+      });
+    }, onDone: _stopScan);
 
     setState(() {
-      this.device = device;
-      connected = true;
+      isScanning = true;
     });
-
-    await discoverServices();
   }
 
-  Future<void> discoverServices() async {
-    List<BluetoothService> services = await device!.discoverServices();
+  _stopScan() {
+    _scanSubscription?.cancel();
+    _scanSubscription = null;
+    setState(() {
+      isScanning = false;
+    });
+  }
 
-    for (BluetoothService service in services) {
-      if (service.uuid.toString() == '0000fff0-0000-1000-8000-00805f9b34fb') {
-        List<BluetoothCharacteristic> characteristics = service.characteristics;
+  _connect(BluetoothDevice d) async {
+    device = d;
+    // Connect to device
+    deviceConnection = _flutterBlue
+        .connect(device, timeout: const Duration(seconds: 4))
+        .listen(
+      null,
+      onDone: _disconnect,
+    );
 
-        for (BluetoothCharacteristic characteristic in characteristics) {
-          if (characteristic.uuid.toString() ==
-              '0000fff1-0000-1000-8000-00805f9b35fb') {
-            characteristic.setNotifyValue(true);
+    // Update the connection state immediately
+    device.state.then((s) {
+      setState(() {
+        deviceState = s;
+      });
+    });
 
-            characteristic.value.listen((value) {
-              // Process the received data in the background
-              // e.g. save to a database, update UI, etc.
-              print('Received data: ${String.fromCharCodes(value)}');
-            });
-          }
-        }
+    // Subscribe to connection changes
+    deviceStateSubscription = device.onStateChanged().listen((s) {
+      setState(() {
+        deviceState = s;
+      });
+      if (s == BluetoothDeviceState.connected) {
+        device.discoverServices().then((s) {
+          setState(() {
+            services = s;
+
+            print("*** device.id : ${device.id.toString()}");
+
+            _restoreDeviceId(device.id.toString());
+            _TurnOnCharacterService();
+          });
+        });
       }
+    });
+  }
+
+  _disconnect() {
+    // Remove all value changed listeners
+    valueChangedSubscriptions.forEach((uuid, sub) => sub.cancel());
+    valueChangedSubscriptions.clear();
+    deviceStateSubscription?.cancel();
+    deviceStateSubscription = null;
+    deviceConnection?.cancel();
+    deviceConnection = null;
+    setState(() {
+      device = null;
+    });
+  }
+
+  _readCharacteristic(BluetoothCharacteristic c) async {
+    await device.readCharacteristic(c);
+    setState(() {});
+  }
+
+  _writeCharacteristic(BluetoothCharacteristic c) async {
+    await device.writeCharacteristic(c, [0x12, 0x34],
+        type: CharacteristicWriteType.withResponse);
+    setState(() {});
+  }
+
+  _readDescriptor(BluetoothDescriptor d) async {
+    await device.readDescriptor(d);
+    setState(() {});
+  }
+
+  _writeDescriptor(BluetoothDescriptor d) async {
+    await device.writeDescriptor(d, [0x12, 0x34]);
+    setState(() {});
+  }
+
+  _setNotification(BluetoothCharacteristic c) async {
+    if (c.isNotifying) {
+      await device.setNotifyValue(c, false);
+      // Cancel subscription
+      valueChangedSubscriptions[c.uuid]?.cancel();
+      valueChangedSubscriptions.remove(c.uuid);
+    } else {
+      await device.setNotifyValue(c, true);
+      // ignore: cancel_subscriptions
+      final sub = device.onValueChanged(c).listen((d) {
+        final decoded = utf8.decode(d);
+        _DataParser(decoded);
+
+//        setState(() {
+//          print('onValueChanged $d');
+//        });
+      });
+      // Add to map
+      valueChangedSubscriptions[c.uuid] = sub;
+    }
+    setState(() {});
+  }
+
+  _refreshDeviceState(BluetoothDevice d) async {
+    var state = await d.state;
+    setState(() {
+      deviceState = state;
+      print('State refreshed: $deviceState');
+    });
+  }
+
+  _buildScanningButton() {
+    if (isConnected || state != BluetoothState.on) {
+      return null;
+    }
+    if (isScanning) {
+      return new FloatingActionButton(
+        child: new Icon(Icons.stop),
+        onPressed: _stopScan,
+        backgroundColor: Colors.red,
+      );
+    } else {
+      return new FloatingActionButton(
+          child: new Icon(Icons.search), onPressed: _startScan);
+    }
+  }
+
+  _buildScanResultTiles() {
+    return scanResults.values
+        .map((r) => ScanResultTile(
+      result: r,
+      onTap: () => _connect(r.device),
+    ))
+        .toList();
+  }
+
+  _DataParser(String data) {
+    if (data.isNotEmpty) {
+      var tempValue = data.split(",")[0];
+      var humidityValue = data.split(",")[1];
+
+      print("tempValue: ${tempValue}");
+      print("humidityValue: ${humidityValue}");
+
+      setState(() {
+        _temperature = tempValue + "'C";
+        _humidity = humidityValue + "%";
+      });
     }
   }
 
