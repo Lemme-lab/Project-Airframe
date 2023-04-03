@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: ">=2.1.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,12 +31,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_blue: ^0.8.0
   fl_chart: ^0.55.2
   cupertino_icons: ^1.0.2
   google_maps_flutter: ^2.2.3
   location: ^4.4.0
-
+  shared_preferences: ^0.5.3+2
+  flutter_blue: ^0.6.3+1
+  flutter_swiper: ^1.1.6
+  rxdart: ^0.22.1+1
+  get_it: ^2.0.1
 
 
 dev_dependencies:
