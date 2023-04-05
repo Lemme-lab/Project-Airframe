@@ -591,7 +591,7 @@ void outputData(){
 
 }
 
-const BleData data(123456, 1, 10000, 3, true, 2, 1, 50, 2, 3.2, 90.5, 8,
+const BleData data(123456, 1, 8720, 3, true, 2, 1, 50, 2, 3.2, 90.5, 8,
                60, 120, 80, 90, 100, 95, 100, 25, 80, 95, 500, 80, 120, 10,
                10, 30, 512, 80);
 
@@ -602,7 +602,7 @@ void setup() {
   Serial.println("");
   Serial.println("");
 
-  bleSetup();
+  blesetup();
 
   Serial.println(data.to_string().c_str());
   

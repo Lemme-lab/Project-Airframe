@@ -204,4 +204,4 @@
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUtils.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEServer.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLE2902.h \
- src/bleObj.h
+ src/ble.h src/bleObj.h

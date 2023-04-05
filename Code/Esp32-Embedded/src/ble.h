@@ -5,7 +5,7 @@
 #include <BLE2902.h>
 #include <bleObj.h>
 
-string strToString(std::string str);
+String strToString(std::string str);
 
 int strToInt(std::string str);
 
@@ -13,8 +13,7 @@ double intToDouble(int value, double max);
 
 bool intToBool(int value);
 
-void bleSetup();
+void blesetup();
 
 void sendJson(BleData bleData);
 
-BleData getData();

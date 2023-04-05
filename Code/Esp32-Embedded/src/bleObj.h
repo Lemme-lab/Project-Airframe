@@ -181,116 +181,113 @@ public:
     Serial.print("soc: "); Serial.println(soc);
   }
 
-  std::string to_string() const {
-    std::stringstream ss;
-    ss << "last_update: " << last_update << std::endl
-       << "software_version: " << software_version << std::endl
-       << "steps: " << steps << std::endl
-       << "sensors: " << sensors << std::endl
-       << "wireless: " << wireless << std::endl
-       << "hardware_version: " << hardware_version << std::endl
-       << "watch_type: " << watch_type << std::endl
-       << "daily_progress: " << daily_progress << std::endl
-       << "training_status: " << training_status << std::endl
-       << "past_distance_day: " << past_distance_day << std::endl
-       << "past_distance_month: " << past_distance_month << std::endl
-       << "past_sleep: " << past_sleep << std::endl
-       << "heart_Min: " << heart_Min << std::endl
-       << "heart_Max: " << heart_Max << std::endl
-       << "heart_AVG: " << heart_AVG << std::endl
-       << "Oxy_Min: " << Oxy_Min << std::endl
-       << "Oxy_Max: " << Oxy_Max << std::endl
-       << "Oxy_AVG: " << Oxy_AVG << std::endl
-       << "altitude: " << altitude << std::endl
-       << "temperature: " << temperature << std::endl
-       << "heartrate: " << heartrate << std::endl
-       << "O2stand: " << O2stand << std::endl
-       << "kcal: " << kcal << std::endl
-       << "battery: " << battery << std::endl
-       << "bpm: " << bpm << std::endl
-       << "flash: " << flash << std::endl
-       << "hours: " << hours << std::endl
-       << "minutes: " << minutes << std::endl
-       << "ram: " << ram << std::endl
-       << "soc: " << soc << std::endl;
-  
-    return ss.str();
-  }
+  String to_string() const {
+    String str = "last_update: " + String(last_update) + ", " +
+                 "software_version: " + String(software_version) + ", " +
+                 "steps: " + String(steps) + ", " +
+                 "sensors: " + String(sensors) + ", " +
+                 "wireless: " + String(wireless) + ", " +
+                 "hardware_version: " + String(hardware_version) + ", " +
+                 "watch_type: " + String(watch_type) + ", " +
+                 "daily_progress: " + String(daily_progress) + ", " +
+                 "training_status: " + String(training_status) + ", " +
+                 "past_distance_day: " + String(past_distance_day) + ", " +
+                 "past_distance_month: " + String(past_distance_month) + ", " +
+                 "past_sleep: " + String(past_sleep) + ", " +
+                 "heart_Min: " + String(heart_Min) + ", " +
+                 "heart_Max: " + String(heart_Max) + ", " +
+                 "heart_AVG: " + String(heart_AVG) + ", " +
+                 "Oxy_Min: " + String(Oxy_Min) + ", " +
+                 "Oxy_Max: " + String(Oxy_Max) + ", " +
+                 "Oxy_AVG: " + String(Oxy_AVG) + ", " +
+                 "altitude: " + String(altitude) + ", " +
+                 "temperature: " + String(temperature) + ", " +
+                 "heartrate: " + String(heartrate) + ", " +
+                 "O2stand: " + String(O2stand) + ", " +
+                 "kcal: " + String(kcal) + ", " +
+                 "battery: " + String(battery) + ", " +
+                 "bpm: " + String(bpm) + ", " +
+                 "flash: " + String(flash) + ", " +
+                 "hours: " + String(hours) + ", " +
+                 "minutes: " + String(minutes) + ", " +
+                 "ram: " + String(ram) + ", " +
+                 "soc: " + String(soc);
+                 
+    return str;
+}
 
-  BleData convertStringToBleData(string input_string) {
+BleData convertStringToBleData(string input_string) {
     BleData data;
     stringstream ss(input_string);
     string line;
     while (getline(ss, line)) {
-        string key, value;
         stringstream line_ss(line);
-        getline(line_ss, key, ':');
-        getline(line_ss, value);
-        if (key == "last_update") {
-            data.last_update = stol(value);
-        } else if (key == "software_version") {
-            data.software_version = stoi(value);
-        } else if (key == "steps") {
-            data.steps = stoi(value);
-        } else if (key == "sensors") {
-            data.sensors = stoi(value);
-        } else if (key == "wireless") {
-            data.wireless = stoi(value);
-        } else if (key == "hardware_version") {
-            data.hardware_version = stoi(value);
-        } else if (key == "watch_type") {
-            data.watch_type = stoi(value);
-        } else if (key == "daily_progress") {
-            data.daily_progress = stoi(value);
-        } else if (key == "training_status") {
-            data.training_status = stoi(value);
-        } else if (key == "past_distance_day") {
-            data.past_distance_day = stof(value);
-        } else if (key == "past_distance_month") {
-            data.past_distance_month = stof(value);
-        } else if (key == "past_sleep") {
-            data.past_sleep = stoi(value);
-        } else if (key == "heart_Min") {
-            data.heart_Min = stoi(value);
-        } else if (key == "heart_Max") {
-            data.heart_Max = stoi(value);
-        } else if (key == "heart_AVG") {
-            data.heart_AVG = stoi(value);
-        } else if (key == "Oxy_Min") {
-            data.Oxy_Min = stoi(value);
-        } else if (key == "Oxy_Max") {
-            data.Oxy_Max = stoi(value);
-        } else if (key == "Oxy_AVG") {
-            data.Oxy_AVG = stoi(value);
-        } else if (key == "altitude") {
-            data.altitude = stoi(value);
-        } else if (key == "temperature") {
-            data.temperature = stoi(value);
-        } else if (key == "heartrate") {
-            data.heartrate = stoi(value);
-        } else if (key == "O2stand") {
-            data.O2stand = stoi(value);
-        } else if (key == "kcal") {
-            data.kcal = stoi(value);
-        } else if (key == "battery") {
-            data.battery = stoi(value);
-        } else if (key == "bpm") {
-            data.bpm = stoi(value);
-        } else if (key == "flash") {
-            data.flash = stoi(value);
-        } else if (key == "hours") {
-            data.hours = stoi(value);
-        } else if (key == "minutes") {
-            data.minutes = stoi(value);
-        } else if (key == "ram") {
-            data.ram = stoi(value);
-        } else if (key == "soc") {
-            data.soc = stoi(value);
+        string key, value;
+        if (getline(line_ss, key, ':') && getline(line_ss, value)) {
+            if (key == "last_update") {
+                data.last_update = stol(value);
+            } else if (key == "software_version") {
+                data.software_version = stoi(value);
+            } else if (key == "steps") {
+                data.steps = stoi(value);
+            } else if (key == "sensors") {
+                data.sensors = stoi(value);
+            } else if (key == "wireless") {
+                data.wireless = stoi(value);
+            } else if (key == "hardware_version") {
+                data.hardware_version = stoi(value);
+            } else if (key == "watch_type") {
+                data.watch_type = stoi(value);
+            } else if (key == "daily_progress") {
+                data.daily_progress = stoi(value);
+            } else if (key == "training_status") {
+                data.training_status = stoi(value);
+            } else if (key == "past_distance_day") {
+                data.past_distance_day = stof(value);
+            } else if (key == "past_distance_month") {
+                data.past_distance_month = stof(value);
+            } else if (key == "past_sleep") {
+                data.past_sleep = stoi(value);
+            } else if (key == "heart_Min") {
+                data.heart_Min = stoi(value);
+            } else if (key == "heart_Max") {
+                data.heart_Max = stoi(value);
+            } else if (key == "heart_AVG") {
+                data.heart_AVG = stoi(value);
+            } else if (key == "Oxy_Min") {
+                data.Oxy_Min = stoi(value);
+            } else if (key == "Oxy_Max") {
+                data.Oxy_Max = stoi(value);
+            } else if (key == "Oxy_AVG") {
+                data.Oxy_AVG = stoi(value);
+            } else if (key == "altitude") {
+                data.altitude = stoi(value);
+            } else if (key == "temperature") {
+                data.temperature = stoi(value);
+            } else if (key == "heartrate") {
+                data.heartrate = stoi(value);
+            } else if (key == "O2stand") {
+                data.O2stand = stoi(value);
+            } else if (key == "kcal") {
+                data.kcal = stoi(value);
+            } else if (key == "battery") {
+                data.battery = stoi(value);
+            } else if (key == "bpm") {
+                data.bpm = stoi(value);
+            } else if (key == "flash") {
+                data.flash = stoi(value);
+            } else if (key == "hours") {
+                data.hours = stoi(value);
+            } else if (key == "minutes") {
+                data.minutes = stoi(value);
+            } else if (key == "ram") {
+                data.ram = stoi(value);
+            } else if (key == "soc") {
+                data.soc = stoi(value);
+            }
         }
     }
     return data;
 }
-
-
 
 };
