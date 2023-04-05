@@ -1,12 +1,11 @@
 #include <Arduino.h>
-#include <BLEDevice.h>
-#include <BLEServer.h>
-#include <BLEUtils.h>
-#include <BLE2902.h>
 #include "SPI.h"
 #include <TFT_eSPI.h>
 #include "scanner.h"
 #include "sensors.h"
+#include "SPIFFS.h"
+#include "ble.h"
+
 
 #define BD71850_I2C_ADDRESS 0x4B
 
@@ -37,7 +36,6 @@ int32_t spo2;
 float airPressure;
 float temperature; 
 float altitude;
-
 
 unsigned long previousMillis = 0;
 const unsigned long interval = 1000;
@@ -529,48 +527,6 @@ const uint16_t image2[240*240] PROGMEM  = {
 }; 
 const uint16_t image3[1] PROGMEM  = {};
 
-BLECharacteristic *pCharacteristic;
-bool deviceConnected = false;
-
-class MyServerCallbacks : public BLEServerCallbacks {
-  void onConnect(BLEServer* pServer) {
-    deviceConnected = true;
-  }
-
-  void onDisconnect(BLEServer* pServer) {
-    deviceConnected = false;
-  }
-};
-
-void ble_setup(){
-  BLEDevice::init("Airframe-Watch"); // Set the name of the device
-
-  BLEServer *pServer = BLEDevice::createServer(); // Create the BLE server
-  pServer->setCallbacks(new MyServerCallbacks());
-
-  // Create a custom service with a custom UUID
-  BLEUUID customServiceUUID("0000fff1-0000-1000-8000-00805f9b34fb");
-  BLEService *pService = pServer->createService(customServiceUUID);
-
-  // Create a custom characteristic with a custom UUID
-  BLEUUID customCharUUID("0000fff1-0000-1000-8000-00805f9b35fb");
-  pCharacteristic = pService->createCharacteristic(
-                      customCharUUID,
-                      BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE | BLECharacteristic::PROPERTY_NOTIFY
-                    );
-
-  pCharacteristic->addDescriptor(new BLE2902()); // Add the descriptor
-
-  pService->start(); // Start the service
-  BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
-  pAdvertising->addServiceUUID(customServiceUUID); // Add the custom service UUID
-  pAdvertising->setScanResponse(false);
-  pAdvertising->setMinPreferred(0x06);  // Set the advertising interval
-  pAdvertising->setMinPreferred(0x12);
-  BLEDevice::startAdvertising(); // Start advertising
-  Serial.println("Waiting for a connection...");
-}
-
 void setBuckVoltage(uint8_t reg, uint16_t voltage) {
   // Write voltage to register
 
@@ -635,16 +591,30 @@ void outputData(){
 
 }
 
+const BleData data(123456, 1, 8720, 3, true, 2, 1, 50, 2, 3.2, 90.5, 8,
+               60, 120, 80, 90, 100, 95, 100, 25, 80, 95, 500, 80, 120, 10,
+               10, 30, 512, 80);
+
 void setup() {
 
   Serial.begin(115200);
-  Wire.begin(46,45);
-  Max30105Setup();
-  LIS2MDLTRSetup();
+  Serial.println("");
+  Serial.println("");
+  Serial.println("");
+
+  blesetup();
+
+  Serial.println(data.to_string().c_str());
+  
+  
+  
+  //Wire.begin(46,45);
+  //Max30105Setup();
+  //LIS2MDLTRSetup();
   //Max30105_O2_Setup();
-  ICP_Setup();
+  //ICP_Setup();
   //KXTJ3_Setup();
-  LSM6DSLTR_Setup();
+  //LSM6DSLTR_Setup();
 
   //Serial.begin(115200);
   //Wire.begin(3,4);
@@ -662,18 +632,24 @@ void setup() {
   //Wire.write(00111100);
   //Wire.endTransmission();
 
-  //ble_setup();
   //scanner_setup();
 
 }
 
 void loop() {
+
+   delay(2000);
+   sendJson(data);
+
+
+   /*
    unsigned long currentMillis = millis();
 
    int ecgValue = analogRead(1);
    float voltage = (float)ecgValue * (3.3 / 4095.0); // Convert ADC reading to voltage
    Serial.println(voltage, 4); // Print voltage with 4 decimal places
    delay(10); // Wait for 10ms before next reading
+   */
    
    //Max30105HeartRate(irValue, beatsPerMinute, beatAvg);
    //LIS2MDLTRData(x, y, z);
@@ -681,7 +657,7 @@ void loop() {
    //KXTJ3_Data(x_acceleration, y_acceleration, z_acceleration);
    //LSM6DSLTR_Data(x_acceleration, y_acceleration, z_acceleration);
 
-
+   /*
    if (currentMillis - previousMillis >= interval) {
       //outputData();
       previousMillis = currentMillis;
@@ -692,7 +668,7 @@ void loop() {
       //Max30105_O2(heartRate, spo2);
       previousMillis = currentMillis;  
       }
-
+  */
     
    //scanner();
 
