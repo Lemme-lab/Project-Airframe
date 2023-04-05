@@ -1,28 +1,159 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
-import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:smartphone_app/settings.dart';
+import 'bluetoothconnect.dart';
 import 'globals.dart' as globals;
 import 'ble.dart';
-import 'data.dart';
-import 'package:flutter_blue/flutter_blue.dart';
-import 'dart:async';
-import 'dart:convert' show utf8;
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_ble/flutter_ble.dart';
 
-
-
+GetIt getIt = GetIt.instance;
 
 const primaryColor = Color(0xFF151026);
 
-void main() => runApp(MaterialApp(
-  home: App(),
-));
+StreamController<String> _stringController = StreamController<String>.broadcast();
+
+String _stringOutput = "";
+StreamSubscription<String> _stringSubscription;
+
+void _checkVariable(String newValue) {
+  // Check if the variable has changed
+  if (newValue != _stringOutput) {
+    // Add the new value to the stream
+    _stringController.add(newValue);
+  }
+}
+
+void main() {
+  getIt.registerSingleton<ConfigNameController>(ConfigNameController("ESP32"));
+  getIt.registerSingleton<SnackbarController>(SnackbarController());
+  getIt.registerSingleton<BluetoothController>(BluetoothController());
+
+  final bluetooth = getIt.get<BluetoothController>();
+
+  int idk = 0;
+
+  String _stringOutput = "";
+  StreamSubscription<String> _stringSubscription;
+  StreamSubscription<bool> _boolSubscription;
+  StreamSubscription<int> _intSubscription;
+
+  bluetooth.getStringStream().listen((data) {
+    _stringOutput = data;
+    print(data);
+
+    List<String> inputList = data.split(", ");
+
+    for (String item in inputList) {
+      List<String> pair = item.split(": ");
+      String key = pair[0];
+      String value = pair[1];
+
+      switch (key) {
+        case "last_update":
+          globals.last_update = value;
+          break;
+        case "software_version":
+          globals.software_version = value;
+          break;
+        case "steps":
+          globals.steps = int.parse(value);
+          _checkVariable(value);
+          break;
+        case "sensors":
+          globals.senors = value;
+          break;
+        case "wireless":
+          globals.wireless = value;
+          break;
+        case "hardware_version":
+          globals.hardware_version = double.parse(value);
+          break;
+        case "watch_type":
+          globals.watch_type = value;
+          break;
+        case "daily_progress":
+          globals.daily_progress = value;
+          break;
+        case "training_status":
+          globals.training_status = value;
+          break;
+        case "past_distance_day":
+        //globals.past_distance_day = double.parse(value);
+          break;
+        case "past_distance_month":
+        //globals.past_distance_month = double.parse(value);
+          break;
+        case "past_sleep":
+        //globals.past_sleep = value;
+          break;
+        case "heart_Min":
+          globals.heart_Min = int.parse(value);
+          break;
+        case "heart_Max":
+          globals.heart_Max = int.parse(value);
+          break;
+        case "heart_AVG":
+          globals.heart_AVG = int.parse(value);
+          break;
+        case "Oxy_Min":
+          globals.Oxy_Min = int.parse(value);
+          break;
+        case "Oxy_Max":
+          globals.Oxy_Max = int.parse(value);
+          break;
+        case "Oxy_AVG":
+          globals.Oxy_AVG = int.parse(value);
+          break;
+        case "altitude":
+          globals.altitude = int.parse(value);
+          break;
+        case "temperature":
+          globals.temperature = int.parse(value);
+          break;
+        case "heartrate":
+          globals.heartrate = int.parse(value);
+          break;
+        case "O2stand":
+          globals.O2stand = int.parse(value);
+          break;
+        case "kcal":
+          globals.kcal = int.parse(value);
+          break;
+        case "battery":
+          globals.battery = int.parse(value);
+          break;
+        case "bpm":
+          globals.bpm = int.parse(value);
+          break;
+        case "flash":
+          globals.flash = value;
+          break;
+        case "hours":
+          globals.hours = int.parse(value);
+          break;
+        case "minutes":
+          globals.minutes = int.parse(value);
+          break;
+        case "ram":
+          globals.ram = value;
+          break;
+        case "soc":
+          globals.soc = value;
+          break;
+      }
+    }
+
+  });
+
+  runApp(MaterialApp(
+    home: App(),
+  ));
+}
+
 
 class App extends StatefulWidget {
   const App({Key key}) : super(key: key);
@@ -33,6 +164,25 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+
+
+  @override
+  void initState() {
+    super.initState();
+    _stringSubscription = _stringController.stream.listen((data) {
+      setState(() {
+        _stringOutput = data;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _stringController.close();
+    _stringSubscription.cancel();
+    super.dispose();
+  }
+
 
   void setup(){
     globals.battery = 80;
@@ -47,267 +197,6 @@ class _AppState extends State<App> {
 
 
   final LatLng _center = const LatLng(45.521563, -122.677433);
-
-
-/*
-  @override
-  void initState() {
-    super.initState();
-    setup();
-    BluetoothIsolate.start();
-    BluetoothIsolate();
-  }
-  */
-
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  FlutterBle _flutterBlue = FlutterBle.instance;
-
-  /// Scanning
-  StreamSubscription _scanSubscription;
-  Map<DeviceIdentifier, ScanResult> scanResults = new Map();
-  bool isScanning = false;
-
-  /// State
-  StreamSubscription _stateSubscription;
-  BluetoothState state = BluetoothState.unknown;
-
-  /// Device
-  BluetoothDevice device;
-
-  bool get isConnected => (device != null);
-  StreamSubscription deviceConnection;
-  StreamSubscription deviceStateSubscription;
-  List<BluetoothService> services = new List();
-  Map<Guid, StreamSubscription> valueChangedSubscriptions = {};
-  BluetoothDeviceState deviceState = BluetoothDeviceState.disconnected;
-
-  static const String CHARACTERISTIC_UUID =
-      "beb5483e-36e1-4688-b7f5-ea07361b26a8";
-  static const String kMYDEVICE = "myDevice";
-  String _myDeviceId = "";
-  String _temperature = "?";
-  String _humidity = "?";
-
-  @override
-  void initState() {
-    super.initState();
-    // Immediately get the state of FlutterBle
-    _flutterBlue.state.then((s) {
-      setState(() {
-        state = s;
-      });
-    });
-    // Subscribe to state changes
-    _stateSubscription = _flutterBlue.onStateChanged().listen((s) {
-      setState(() {
-        state = s;
-      });
-    });
-
-    _loadMyDeviceId();
-  }
-
-  _loadMyDeviceId() async {
-    SharedPreferences prefs = await _prefs;
-    _myDeviceId = prefs.getString(kMYDEVICE) ?? "";
-    print("_myDeviceId : " + _myDeviceId);
-
-    if (_myDeviceId.isNotEmpty) {
-      _startScan();
-    }
-  }
-
-  @override
-  void dispose() {
-    _stateSubscription?.cancel();
-    _stateSubscription = null;
-    _scanSubscription?.cancel();
-    _scanSubscription = null;
-    deviceConnection?.cancel();
-    deviceConnection = null;
-    super.dispose();
-  }
-
-  _startScan() {
-    _scanSubscription = _flutterBlue
-        .scan(
-      timeout: const Duration(seconds: 5),
-      /*withServices: [
-          new Guid('0000180F-0000-1000-8000-00805F9B34FB')
-        ]*/
-    )
-        .listen((scanResult) {
-//      print('localName: ${scanResult.advertisementData.localName}');
-//      print(
-//          'manufacturerData: ${scanResult.advertisementData.manufacturerData}');
-//      print('serviceData: ${scanResult.advertisementData.serviceData}');
-
-      if (_myDeviceId == scanResult.device.id.toString()) {
-        _stopScan();
-        _connect(scanResult.device);
-      }
-
-      setState(() {
-        scanResults[scanResult.device.id] = scanResult;
-      });
-    }, onDone: _stopScan);
-
-    setState(() {
-      isScanning = true;
-    });
-  }
-
-  _stopScan() {
-    _scanSubscription?.cancel();
-    _scanSubscription = null;
-    setState(() {
-      isScanning = false;
-    });
-  }
-
-  _connect(BluetoothDevice d) async {
-    device = d;
-    // Connect to device
-    deviceConnection = _flutterBlue
-        .connect(device, timeout: const Duration(seconds: 4))
-        .listen(
-      null,
-      onDone: _disconnect,
-    );
-
-    // Update the connection state immediately
-    device.state.then((s) {
-      setState(() {
-        deviceState = s;
-      });
-    });
-
-    // Subscribe to connection changes
-    deviceStateSubscription = device.onStateChanged().listen((s) {
-      setState(() {
-        deviceState = s;
-      });
-      if (s == BluetoothDeviceState.connected) {
-        device.discoverServices().then((s) {
-          setState(() {
-            services = s;
-
-            print("*** device.id : ${device.id.toString()}");
-
-            _restoreDeviceId(device.id.toString());
-            _TurnOnCharacterService();
-          });
-        });
-      }
-    });
-  }
-
-  _disconnect() {
-    // Remove all value changed listeners
-    valueChangedSubscriptions.forEach((uuid, sub) => sub.cancel());
-    valueChangedSubscriptions.clear();
-    deviceStateSubscription?.cancel();
-    deviceStateSubscription = null;
-    deviceConnection?.cancel();
-    deviceConnection = null;
-    setState(() {
-      device = null;
-    });
-  }
-
-  _readCharacteristic(BluetoothCharacteristic c) async {
-    await device.readCharacteristic(c);
-    setState(() {});
-  }
-
-  _writeCharacteristic(BluetoothCharacteristic c) async {
-    await device.writeCharacteristic(c, [0x12, 0x34],
-        type: CharacteristicWriteType.withResponse);
-    setState(() {});
-  }
-
-  _readDescriptor(BluetoothDescriptor d) async {
-    await device.readDescriptor(d);
-    setState(() {});
-  }
-
-  _writeDescriptor(BluetoothDescriptor d) async {
-    await device.writeDescriptor(d, [0x12, 0x34]);
-    setState(() {});
-  }
-
-  _setNotification(BluetoothCharacteristic c) async {
-    if (c.isNotifying) {
-      await device.setNotifyValue(c, false);
-      // Cancel subscription
-      valueChangedSubscriptions[c.uuid]?.cancel();
-      valueChangedSubscriptions.remove(c.uuid);
-    } else {
-      await device.setNotifyValue(c, true);
-      // ignore: cancel_subscriptions
-      final sub = device.onValueChanged(c).listen((d) {
-        final decoded = utf8.decode(d);
-        _DataParser(decoded);
-
-//        setState(() {
-//          print('onValueChanged $d');
-//        });
-      });
-      // Add to map
-      valueChangedSubscriptions[c.uuid] = sub;
-    }
-    setState(() {});
-  }
-
-  _refreshDeviceState(BluetoothDevice d) async {
-    var state = await d.state;
-    setState(() {
-      deviceState = state;
-      print('State refreshed: $deviceState');
-    });
-  }
-
-  _buildScanningButton() {
-    if (isConnected || state != BluetoothState.on) {
-      return null;
-    }
-    if (isScanning) {
-      return new FloatingActionButton(
-        child: new Icon(Icons.stop),
-        onPressed: _stopScan,
-        backgroundColor: Colors.red,
-      );
-    } else {
-      return new FloatingActionButton(
-          child: new Icon(Icons.search), onPressed: _startScan);
-    }
-  }
-
-  _buildScanResultTiles() {
-    return scanResults.values
-        .map((r) => ScanResultTile(
-      result: r,
-      onTap: () => _connect(r.device),
-    ))
-        .toList();
-  }
-
-  _DataParser(String data) {
-    if (data.isNotEmpty) {
-      var tempValue = data.split(",")[0];
-      var humidityValue = data.split(",")[1];
-
-      print("tempValue: ${tempValue}");
-      print("humidityValue: ${humidityValue}");
-
-      setState(() {
-        _temperature = tempValue + "'C";
-        _humidity = humidityValue + "%";
-      });
-    }
-  }
-
-
 
 
   List<FlSpot> points = [
@@ -390,52 +279,80 @@ class _AppState extends State<App> {
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
   ];
-
   List<Color> gradientColors1 = [
     const Color(0xff23b6e6).withOpacity(0.5),
     const Color(0xff02d39a).withOpacity(0.5),
   ];
-
   List<Color> gradientColors2 = [
     const Color(0xffF27405),
     const Color(0xffF27405),
     const Color(0xffF25C05),
   ];
-
   List<Color> gradientColors3 = [
     const Color(0xffF27405).withOpacity(0.3),
     const Color(0xffF25C05).withOpacity(0.3),
     const Color(0xffF25C05).withOpacity(0.3),
   ];
-
-  late GoogleMapController mapController;
+  GoogleMapController mapController;
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
 
 
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold (
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.home),
-
-        ),
-        title:
-        Text('Airframe'),
-        centerTitle: true,
-        //Black
-        //backgroundColor: Color(0xff1A1A1A),
-        //Green
         backgroundColor: Color(0xff023535),
-
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 60.0, right: 10),
+              child: Icon(Icons.home,
+                color: Colors.white,
+                size: 32.0,
+              ),
+            ),
+            SizedBox(width: 4.0),
+            Text("Airframe",
+              style: TextStyle(
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(width: 4.0),
+            BluetoothConnect(
+              deviceName: "ESP32",
+            ),
+          ],
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              icon: Icon(Icons.settings),
+              color: Colors.white,
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      content: SettingsButton(),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
 
-      body: Container(
+
+      body:  Container (
           decoration: BoxDecoration(
               //Black
               color: Color(0xff1A1A1A),
@@ -1393,6 +1310,10 @@ class _AppState extends State<App> {
     );
   }
 
+  void _navigateToNextApp(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+
   void _navigateToNextScreen(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => watchfaces()));
   }
@@ -1413,7 +1334,7 @@ class _AppState extends State<App> {
 }
 
 class watchfaces extends StatefulWidget {
-  const watchfaces({Key? key}) : super(key: key);
+  const watchfaces({Key key}) : super(key: key);
 
 
   @override
@@ -1558,7 +1479,7 @@ class _watchfacesState extends State<watchfaces> {
 }
 
 class stats extends StatefulWidget {
-  const stats({Key? key}) : super(key: key);
+  const stats({Key key}) : super(key: key);
 
   @override
   State<stats> createState() => _statsState();
@@ -2307,7 +2228,7 @@ class _statsState extends State<stats> {
 }
 
 class maps extends StatefulWidget {
-  const maps({Key? key}) : super(key: key);
+  const maps({Key key}) : super(key: key);
 
   @override
   State<maps> createState() => _mapsState();
@@ -2317,7 +2238,7 @@ class _mapsState extends State<maps> {
 
   final LatLng _center = const LatLng(45.521563, -122.677433);
 
-  late GoogleMapController mapController;
+  GoogleMapController mapController;
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -2382,7 +2303,7 @@ class _mapsState extends State<maps> {
 }
 
 class health extends StatefulWidget {
-  const health({Key? key}) : super(key: key);
+  const health({Key key}) : super(key: key);
 
   @override
   State<health> createState() => _healthState();
@@ -3422,7 +3343,7 @@ class _healthState extends State<health> {
 }
 
 class settings extends StatefulWidget {
-  const settings({Key? key}) : super(key: key);
+  const settings({Key key}) : super(key: key);
 
   @override
   State<settings> createState() => _settingsState();
@@ -3619,7 +3540,7 @@ class _settingsState extends State<settings> {
 }
 
 class Generell extends StatefulWidget {
-  const Generell({Key? key}) : super(key: key);
+  const Generell({Key key}) : super(key: key);
 
   @override
   State<Generell> createState() => _GenerellState();
@@ -4395,7 +4316,7 @@ class _GenerellState extends State<Generell> {
 }
 
 class SettingsWireless extends StatefulWidget {
-  const SettingsWireless({Key? key}) : super(key: key);
+  const SettingsWireless({Key key}) : super(key: key);
 
   @override
   State<SettingsWireless> createState() => _SettingsWirelessState();
@@ -5094,7 +5015,7 @@ class _SettingsWirelessState extends State<SettingsWireless> {
 }
 
 class Sensor extends StatefulWidget {
-  const Sensor({Key? key}) : super(key: key);
+  const Sensor({Key key}) : super(key: key);
 
   @override
   State<Sensor> createState() => _SensorState();
@@ -5793,7 +5714,7 @@ class _SensorState extends State<Sensor> {
 }
 
 class infos extends StatefulWidget {
-  const infos({Key? key}) : super(key: key);
+  const infos({Key key}) : super(key: key);
 
   @override
   State<infos> createState() => _infosState();

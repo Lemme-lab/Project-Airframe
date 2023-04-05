@@ -27,6 +27,7 @@ class BluetoothController extends BluetoothConnector {
 
   @override
   sendInit() async {
+    //await device.requestMtu(512);
     await sendSliderValue(_sliderValue);
     await sendTextFieldValue(_textfieldValue);
     await sendButtonPressed(_buttonState);

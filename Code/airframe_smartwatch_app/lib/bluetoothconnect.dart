@@ -10,9 +10,11 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
 
+import './settings.dart';
 import './ble.dart';
 
 GetIt getIt = GetIt.instance;
+int counter = 0;
 
 class BluetoothConnect extends StatelessWidget {
   final bluetooth = getIt.get<BluetoothController>();
@@ -20,6 +22,7 @@ class BluetoothConnect extends StatelessWidget {
 
   BluetoothConnect({Key key, String deviceName}) : super(key: key) {
     bluetooth.setTargetDeviceName(deviceName);
+
   }
 
   @override
@@ -27,7 +30,7 @@ class BluetoothConnect extends StatelessWidget {
     snackbar.stream.listen(
           (snack) {
         if (snack != null) {
-          Scaffold.of(context).showSnackBar(snack);
+         ScaffoldMessenger.of(context).showSnackBar(snack);
         }
       },
     );
@@ -56,10 +59,9 @@ class BluetoothConnect extends StatelessWidget {
           );
         } else {
           return IconButton(
-            icon: Icon(Icons.bluetooth_disabled),
+            icon: Icon(Icons.bluetooth),
             iconSize: 32,
-            onPressed: () => bluetooth.showSnackbar(
-                Icons.bluetooth_disabled, 'Turn on Bluetooth!'),
+            onPressed: () => bluetooth.startScan(),
           );
         }
       },
@@ -75,7 +77,7 @@ class SnackbarController {
     _controller = BehaviorSubject.seeded(null);
   }
 
-  Observable<Widget> get stream => _controller.stream;
+  Stream<Widget> get stream => _controller.stream;
   Widget get current => _controller.value;
 
   openSnackbar(Widget widget, String msg) {
@@ -115,7 +117,7 @@ class BluetoothConnector {
     initDevice();
   }
 
-  Observable<int> get stream => _controller.stream;
+  Stream<int> get stream => _controller.stream;
   int get current => _controller.value;
 
   startScan() async {
@@ -137,6 +139,7 @@ class BluetoothConnector {
   disconnect() async {
     if (device != null) {
       showSnackbar(Icons.bluetooth_disabled, 'Disonnected from ${device.name}');
+      counter=0;
       device.disconnect();
       close();
 
@@ -155,10 +158,11 @@ class BluetoothConnector {
 
   Future<void> initDevice() async {
     FlutterBlue.instance.state.listen((data) {
+      device.requestMtu(512);
       bool isAvalible = (data == BluetoothState.on);
       isBtAvalible = isAvalible;
       if (isAvalible) {
-        // showSnackbar(Icons.bluetooth, 'Bluetooth is online again!');
+        showSnackbar(Icons.bluetooth, 'Bluetooth is online again!');
       }
       calcState();
     });
@@ -203,7 +207,12 @@ class BluetoothConnector {
 
       map = new HashMap<String, BluetoothCharacteristic>();
 
-      showSnackbar(Icons.bluetooth, 'Connected to ${_device.name}');
+      if(counter == 0){
+        showSnackbar(Icons.bluetooth, 'Connected to ${_device.name}');
+      }
+      counter++;
+
+
       device = _device;
       isConnected = true;
       calcState();

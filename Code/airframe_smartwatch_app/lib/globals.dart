@@ -1,27 +1,27 @@
 library globals;
 
-int battery = 80;
-int O2stand = 40;
-int steps = 6560;
-int heartrate = 70;
-double display = 90;
-int kcal = 845;
-int temperature = 24;
-int altitude = 550;
+int battery = 0;
+int O2stand = 0;
+int steps = 0;
+int heartrate = 0;
+double display = 0;
+int kcal = 0;
+int temperature = 0;
+int altitude = 0;
 
-int Oxy_AVG = 80;
-int Oxy_Max = 80;
-int Oxy_Min = 80;
+int Oxy_AVG = 0;
+int Oxy_Max = 0;
+int Oxy_Min = 0;
 
-int heart_AVG = 80;
-int heart_Max = 80;
-int heart_Min = 80;
+int heart_AVG = 0;
+int heart_Max = 0;
+int heart_Min = 0;
 
-int bpm = 117;
-int hours = 7;
-int minutes = 23;
-List<double> past_sleep = [10, 8.12, 5.12, 6.12, 9.20, 5.8, 7.9, 7.7, 7.2, 8.3, 8.8, 5.9];
-List<double> past_distance = [15000, 10000, 8000, 12300, 14200, 3400];
+int bpm = 0;
+int hours = 0;
+int minutes = 0;
+List<double> past_sleep = [0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+List<double> past_distance = [0, 0, 0, 0, 0, 0];
 List<String> past_distance_month = ["Mar", "Mar", "Mar", "Mar", "Mar", "Mar"];
 List<String> past_distance_day = ["14", "16", "18", "20", "22", "24"];
 String training_status = "Running";
