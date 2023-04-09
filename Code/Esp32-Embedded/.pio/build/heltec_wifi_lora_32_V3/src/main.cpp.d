@@ -280,7 +280,7 @@
  src/sensors.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/SparkFun_MAX3010x_Sensor_Library-master/src/MAX30105.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/Adafruit\ Unified\ Sensor/Adafruit_Sensor.h \
- src/ble.h \
+ src/health.h src/ble.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEDevice.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gap_ble_api.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_bt_defs.h \
@@ -310,4 +310,4 @@
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUtils.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEServer.h \
  C:/Users/lucas/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLE2902.h \
- src/bleObj.h
+ src/bleObj.h src/stepcounter.h src/Sleeptracker.h

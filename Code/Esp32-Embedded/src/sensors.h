@@ -1,6 +1,8 @@
 #include "MAX30105.h"
 #include "Adafruit_Sensor.h"
 
+
+
 void Max30105Setup( );
 
 void Max30105HeartRate(long& irValue, float& beatsPerMinute, double& beatAvg);
@@ -19,7 +21,7 @@ void LIS2MDLTRCompass(float& heading);
 
 void ICP_Setup();
 
-void ICP_Data(float& airPressure, float& temperature, float& altitude);
+void ICP_Data(float& airPressure, int& temperature, int& altitude);
 
 void KXTJ3_Setup();
 
@@ -31,5 +33,5 @@ void LSM6DSLTR_Data();
 
 void LSM6DSLTR_Setup();
 
-void LSM6DSLTR_Data(float& x_acceleration, float& y_acceleration, float& z_acceleration);
+void LSM6DSLTR_Data(float& x_acceleration, float& y_acceleration, float& z_acceleration, float& avg_acc);
 

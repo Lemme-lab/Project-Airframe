@@ -17,3 +17,6 @@ void blesetup();
 
 void sendJson(BleData bleData);
 
+void sendJsonData1(BleData bleData);
+void sendJsonData2(BleData bleData);
+void sendJsonInfos(BleData bleData);

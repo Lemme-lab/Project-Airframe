@@ -135,6 +135,48 @@ void sendJson(BleData bleData){
     std::string send = data.c_str();
     sSendString->setValue(send);
     Serial.println(data);
+    Serial.println("");
+    sSendString->notify();
+    }else{
+      Serial.println("Not Connected");
+    }
+}
+
+void sendJsonData1(BleData bleData){
+  if (deviceConnected) {
+    Serial.println("Sending Object Data");
+    String data = bleData.to_string_data1();
+    std::string send = data.c_str();
+    sSendString->setValue(send);
+    Serial.println(data);
+    Serial.println("");
+    sSendString->notify();
+    }else{
+      Serial.println("Not Connected");
+    }
+}
+
+void sendJsonData2(BleData bleData){
+  if (deviceConnected) {
+    Serial.println("Sending Object Data");
+    String data = bleData.to_string_data2();
+    std::string send = data.c_str();
+    sSendString->setValue(send);
+    Serial.println(data);
+    Serial.println("");
+    sSendString->notify();
+    }else{
+      Serial.println("Not Connected");
+    }
+}
+
+void sendJsonInfos(BleData bleData){
+  if (deviceConnected) {
+    Serial.println("Sending Object Data");
+    String data = bleData.to_string_infos();
+    std::string send = data.c_str();
+    sSendString->setValue(send);
+    Serial.println(data);
     sSendString->notify();
     }else{
       Serial.println("Not Connected");

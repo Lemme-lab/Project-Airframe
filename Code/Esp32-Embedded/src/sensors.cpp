@@ -40,7 +40,6 @@ float acc_x_init = 0;
 float acc_y_init = 0;
 float acc_z_init = 0;
 
-
 void Max30105Setup(){
 
   Serial.println("Initializing Max30105");
@@ -173,10 +172,10 @@ void ICP_Setup(){
    icp.setWorkPattern(icp.eNormal);
 };
 
-void ICP_Data(float& airPressure, float& temperature, float& altitude){
+void ICP_Data(float& airPressure, int& temperature, int& altitude){
   airPressure = icp.getAirPressure();
-  temperature = icp.getTemperature();
-  altitude = icp.getElevation();
+  temperature = static_cast<int>(icp.getTemperature());
+  altitude = static_cast<int>(icp.getElevation());
 };
 
 void KXTJ3_Setup(){
@@ -258,12 +257,15 @@ void LSM6DSLTR_Setup(){
 
 }
 
-void LSM6DSLTR_Data(float& x_acceleration, float& y_acceleration, float& z_acceleration){
+float avg_acc_saved = 0;
+
+void LSM6DSLTR_Data(float& x_acceleration, float& y_acceleration, float& z_acceleration, float& avg_acc){
   
   Wire.beginTransmission(LSM6DSL_ADDR);
   Wire.write(0x22); 
   Wire.endTransmission(false);
   Wire.requestFrom(LSM6DSL_ADDR, 12, true);
+
 
   int16_t gyro_x = (Wire.read() | Wire.read() << 8);
   int16_t gyro_y = (Wire.read() | Wire.read() << 8);
@@ -275,9 +277,13 @@ void LSM6DSLTR_Data(float& x_acceleration, float& y_acceleration, float& z_accel
   float accel_scale = 0.061f; 
   float gyro_scale = 70.0f; 
   
-  x_acceleration = (accel_x * accel_scale) - acc_x_init;
-  y_acceleration = (accel_y * accel_scale) - acc_y_init;
-  z_acceleration = (accel_z * accel_scale) - acc_z_init;
+  x_acceleration = ((accel_x * accel_scale) - acc_x_init) / 100;
+  y_acceleration = ((accel_y * accel_scale) - acc_y_init) / 100;
+  z_acceleration = ((accel_z * accel_scale) - acc_z_init) / 100;
+
+  float avg_acc_new = (x_acceleration + y_acceleration + z_acceleration)/3;
+  avg_acc_saved = (avg_acc + avg_acc_new)/2;
+  avg_acc = avg_acc_saved;
 }
 
 
