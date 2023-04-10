@@ -6,6 +6,9 @@
 #include <DFRobot_ICP10111.h>
 #include "kxtj3-1057.h"
 #include <Adafruit_LSM6DS33.h>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
+#include <freertos/semphr.h>
 
 #define LOW_POWER
 #define KXTJ3_DEBUG Serial
@@ -21,7 +24,8 @@ byte rates[RATE_SIZE];
 byte rateSpot = 0;
 long lastBeat = 0; 
 
-MAX30105 particleSensor;
+extern MAX30105 particleSensor;
+
 Adafruit_LIS2MDL mag = Adafruit_LIS2MDL(12345);
 DFRobot_ICP10111 icp;
 Adafruit_LSM6DS33 lsm6ds;
@@ -40,28 +44,43 @@ float acc_x_init = 0;
 float acc_y_init = 0;
 float acc_z_init = 0;
 
+int32_t heartRate1;
+int32_t spo21;
+
+int32_t spoarr[500];
+int counter;
+
+int32_t getheartRate(){
+   return heartRate1;
+}
+
+int32_t getSpo2(){
+   return spo21;
+}
+
 void Max30105Setup(){
+  Serial.begin(115200);
+  Serial.println("Initializing...");
 
-  Serial.println("Initializing Max30105");
-
-  if (!particleSensor.begin(Wire, I2C_SPEED_FAST)) 
+  // Initialize sensor
+  if (!particleSensor.begin(Wire, I2C_SPEED_FAST)) //Use default I2C port, 400kHz speed
   {
     Serial.println("MAX30105 was not found. Please check wiring/power. ");
     while (1);
   }
-
-  particleSensor.setup(); 
-  particleSensor.setPulseAmplitudeRed(0x0A); 
-  particleSensor.setPulseAmplitudeGreen(0); 
-  particleSensor.enableDIETEMPRDY();
+  particleSensor.softReset();
+  particleSensor.setup(); //Configure sensor with default settings
+  particleSensor.setPulseAmplitudeRed(0x0A); //Turn Red LED to low to indicate sensor is running
+  particleSensor.setPulseAmplitudeGreen(0); //Turn off Green LED
 
 }
 
 void Max30105HeartRate(long& irValue, float& beatsPerMinute, double& beatAvg){
-  irValue = particleSensor.getIR();
+   irValue = particleSensor.getIR();
 
   if (checkForBeat(irValue) == true)
   {
+    //We sensed a beat!
     long delta = millis() - lastBeat;
     lastBeat = millis();
 
@@ -69,18 +88,37 @@ void Max30105HeartRate(long& irValue, float& beatsPerMinute, double& beatAvg){
 
     if (beatsPerMinute < 255 && beatsPerMinute > 20)
     {
-      rates[rateSpot++] = (byte)beatsPerMinute; 
-      rateSpot %= RATE_SIZE; 
+      rates[rateSpot++] = (byte)beatsPerMinute; //Store this reading in the array
+      rateSpot %= RATE_SIZE; //Wrap variable
+
+      //Take average of readings
       beatAvg = 0;
       for (byte x = 0 ; x < RATE_SIZE ; x++)
         beatAvg += rates[x];
-        beatAvg /= RATE_SIZE;
+      beatAvg /= RATE_SIZE;
     }
   }
+  
+ 
+  Serial.print("IR=");
+  Serial.print(irValue);
+  Serial.print(", BPM=");
+  Serial.print(beatsPerMinute);
+  Serial.print(", Avg BPM=");
+  Serial.print(beatAvg);
+  
+
+/*
+  if (irValue < 50000)
+    Serial.print(" No finger?");
+*/
+  Serial.println();
 }
 
 void Max30105Temp(float& temperature){
   temperature = particleSensor.readTemperature();
+  Serial.print("temperatureC=");
+  Serial.print(temperature, 4);
 }
 
 void Max30105_O2_Setup(){
@@ -90,13 +128,13 @@ void Max30105_O2_Setup(){
     while (1);
   }
 
-  byte ledBrightness = 60; 
-  byte sampleAverage = 4; 
-  byte ledMode = 2; 
-  byte sampleRate = 100; 
-  int pulseWidth = 411; 
-  int adcRange = 4096; 
-
+  byte ledBrightness = 60; //Options: 0=Off to 255=50mA
+  byte sampleAverage = 4; //Options: 1, 2, 4, 8, 16, 32
+  byte ledMode = 3; //Options: 1 = Red only, 2 = Red + IR, 3 = Red + IR + Green
+  byte sampleRate = 100; //Options: 50, 100, 200, 400, 800, 1000, 1600, 3200
+  int pulseWidth = 411; //Options: 69, 118, 215, 411
+  int adcRange = 4096; //Options: 2048, 4096, 8192, 16384
+  particleSensor.softReset();
   particleSensor.setup(ledBrightness, sampleAverage, ledMode, sampleRate, pulseWidth, adcRange);
 }
 
@@ -130,9 +168,65 @@ void Max30105_O2(int32_t& heartRate, int32_t& spo2){
       redBuffer[i] = particleSensor.getRed();
       irBuffer[i] = particleSensor.getIR();
       particleSensor.nextSample(); 
-    }
 
+        Serial.print("Heart Rate: ");
+        Serial.print(heartRate);
+        Serial.print(" bpm, SpO2: ");
+        Serial.print(spo2);
+        Serial.println(" %");
+
+
+    }
     maxim_heart_rate_and_oxygen_saturation(irBuffer, bufferLength, redBuffer, &spo2, &validSPO2, &heartRate, &validHeartRate);
+}
+
+extern SemaphoreHandle_t max30105_semaphore;
+
+bool continue_task = true;
+
+TaskHandle_t max30105_task_handle = NULL;
+
+void Max30105_O2_task(void *parameter)
+{
+  while (continue_task)
+  {
+    if (xSemaphoreTake(max30105_semaphore, portMAX_DELAY) == pdTRUE)
+    {
+      Serial.println("why why why");
+      Max30105_O2(heartRate1, spo21);
+      if (validHeartRate && validSPO2)
+      {
+        Serial.print("Heart Rate: ");
+        Serial.print(heartRate1);
+        Serial.print(" bpm, SpO2: ");
+        Serial.print(spo21);
+        Serial.println(" %");
+      }
+    }
+  }
+  vTaskDelete(NULL);
+  max30105_task_handle = NULL;
+}
+
+void stop_Max30105_O2_task()
+{
+  continue_task = false;
+}
+
+void start_Max30105_O2_task()
+{
+  if (max30105_task_handle == NULL)
+  {
+    continue_task = true;
+    xTaskCreatePinnedToCore(
+        Max30105_O2_task,
+        "Max30105_O2_task",
+        4096,
+        NULL,
+        1,
+        &max30105_task_handle,
+        APP_CPU_NUM);
+  }
 }
 
 void LIS2MDLTRSetup() {

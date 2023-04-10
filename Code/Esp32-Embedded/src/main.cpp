@@ -8,6 +8,8 @@
 #include "ble.h"
 #include "stepcounter.h"
 #include "Sleeptracker.h"
+#include "esp_timer.h"
+#include "wireless.h"
 
 
 #define BD71850_I2C_ADDRESS 0x4B
@@ -34,19 +36,21 @@ float y_acceleration;
 float z_acceleration;
 float avg_acc;
 
-int32_t heartRate;
-int32_t spo2;
+int32_t heartRate = 0;
+int32_t spo2 = 0;
 
 int latitude = 0;
 int longitude = 0;
 
 float airPressure;
-int temperature = 0; 
+float temperature = 0; 
 int altitude = 0;
 
 unsigned long previousMillis = 0;
-const unsigned long interval = 1000;
+unsigned long previousMillis3 = 0;
+const unsigned long interval = 2000;
 const unsigned long interval2 = 4000;
+const unsigned long interval3 = 30000;
     
 const uint16_t image1[240*240] PROGMEM  = {
     0xc617, 0xce38, 0xc5d6, 0xc5f7, 0xc5b6, 0xc5d6, 0xbdb6, 0xbdb6, 0xb555, 0xbd75, 0xb575, 0xbd96, 0xa4f3, 0xb575, 0xa4d2, 0xb575, 0xbd95, 0xb554, 0xad34, 0xad34, 0xad34, 0xa4b2, 0xa4d2, 0xa4f3, 0xad13, 0xb555, 0xa4d2, 0xa4f3, 0xa4d3, 0xa4f3, 0xb554, 0xa4d2, 0xa4f3, 0x9cb2, 0x9cb2, 0x9cb2, 0x9451, 0x9491, 0xad34, 0xacf3, 0xacf3, 0x9cb2, 0xa4f3, 0xa4d3, 0x9cb2, 0xad13, 0x9cb2, 0xa4d3, 0x9cb2, 0x9c91, 0x9cb2, 0x9491, 0xa4d2, 0x9cb2, 0xa4d3, 0x9451, 0x9c91, 0xa4d3, 0x9c92, 0xad13, 0x7b8d, 0x9cd2, 0xad34, 0x9450, 0x8c10, 0x9c92, 0xad34, 0x8c30, 0x9471, 0xa4f3, 0xb554, 0x9471, 0x7bae, 0xb575, 0x9451, 0xbd95, 0x9451, 0x6b4c, 0xad34, 0x8c30, 0xb575, 0xb554, 0x6b2c, 0x9450, 0xad34, 0x9451, 0xb555, 0xbdd7, 0x9c91, 0x5acb, 0x9471, 0xad34, 0x8c50, 0x9471, 0xbd95, 0xbdf7, 0xb554, 0x83ef, 0x5acb, 0x9c92, 0xd658, 0xa4f3, 0x9cf3, 0x9451, 0x8c0f, 0xce17, 0xb575, 0xbdf7, 0xce38, 0xbdb6, 0xbd95, 0xb554, 0xad13, 0x9450, 0x83ef, 0x736d, 0x6b4d, 0x7bae, 0x738d, 0x632c, 0x6b4d, 0x73ae, 0x736d, 0x734c, 0x7bae, 0x83ef, 0x9430, 0xa4f3, 0xb554, 0xbd95, 0xbdb6, 0xc617, 0xc5f7, 0xad55, 0xce38, 0x9c91, 0x8c10, 0x9cd3, 0xa4d3, 0xce17, 0xacf3, 0x5acb, 0x7bae, 0xb533, 0xc5d7, 0xbdb6, 0xa4d2, 0x8c30, 0xa4f3, 0xb534, 0x5acb, 0x8c30, 0xbdb6, 0xb575, 0x8c30, 0xa514, 0x8c10, 0x62eb, 0xad33, 0xbdd7, 0x9471, 0xa4f3, 0x83ef, 0x83ce, 0xbdb6, 0xa4f3, 0xa4d3, 0x83ce, 0x8c0f, 0xb554, 0x9cb2, 0x9c92, 0x7b8d, 0xb575, 0x9471, 0xad13, 0x8c0f, 0xad13, 0x9cb2, 0x9471, 0x9cb2, 0xa4f3, 0x9450, 0x8c0f, 0xad34, 0xad13, 0x9cb2, 0x9c92, 0x9c92, 0x9cb2, 0x9cb2, 0x9471, 0x9cb2, 0x9471, 0x9cb2, 0xacf3, 0x9c91, 0x9491, 0x9c92, 0xad13, 0xacf3, 0xa4d2, 0xa4f3, 0xa4d3, 0x9cb2, 0x9471, 0xa4d3, 0x9cb2, 0xb534, 0xad13, 0xb554, 0x9cd2, 0xad34, 0xb554, 0xa4d3, 0xb554, 0xb554, 0xa4f3, 0xad13, 0xa4f3, 0xa4f3, 0xa4d2, 0xb554, 0xb575, 0xb575, 0xad14, 0xb554, 0xb575, 0xad34, 0xb575, 0xb575, 0xad34, 0xbdb6, 0xbd95, 0xc5d6, 0xbdb6, 0xc5d6, 0xc5f7, 0xc5d7, 0xbdb6, 
@@ -602,7 +606,6 @@ void outputData(){
 int battery = 80;
 int O2stand = 75;
 int steps = 0;
-int heartrate = 78;
 double display = 80;
 int kcal = 657;
 int Oxy_AVG = 80;
@@ -670,6 +673,9 @@ BleData data(battery, spo2, steps, beatsPerMinute, display, kcal, temperature, a
                ram, flash, wireless,  sensors, software_version, last_update);
 
 
+MAX30105 particleSensor;
+SemaphoreHandle_t max30105_semaphore;
+
 void setup() {
 
   Serial.begin(115200);
@@ -677,17 +683,17 @@ void setup() {
   Serial.println("");
   Serial.println("");
 
-  blesetup();
+  //blesetup();
   //data.printValues();
   
   
   Wire.begin(46,45);
-  Max30105Setup();
-  LIS2MDLTRSetup();
-  Max30105_O2_Setup();
-  ICP_Setup();
-  KXTJ3_Setup();
-  LSM6DSLTR_Setup();
+  //Max30105Setup();
+  //LIS2MDLTRSetup();
+  //Max30105_O2_Setup();
+  //ICP_Setup();
+  //KXTJ3_Setup();
+  //LSM6DSLTR_Setup();
 
   //Serial.begin(115200);
   //Wire.begin(3,4);
@@ -707,6 +713,19 @@ void setup() {
 
   //scanner_setup();
 
+max30105_semaphore = xSemaphoreCreateBinary();
+
+  xTaskCreatePinnedToCore(
+      Max30105_O2_task,
+      "Max30105_O2_task",
+      4096,
+      NULL,
+      1,
+      NULL,
+      APP_CPU_NUM
+  );
+  
+
 }
 
 
@@ -723,12 +742,19 @@ String activity = "Normal";
 bool flag = false;
 bool timeflag = false;
 
+bool o2_flag = false;
+bool pbm_flag = true;
+
+int counter_sensor_health = 0;
+
+
 SleepQualityCalculator sleepQualityCalc;
 
 
 void loop() {
 
   unsigned long currentMillis = millis();
+  unsigned long currentMillis3 = millis();
 
    /*
    delay(1000);
@@ -741,6 +767,7 @@ void loop() {
    sendJsonInfos(data);
    */
   
+  /*
    float acceleration[3] = {x_acceleration, y_acceleration, z_acceleration};
 
    if (sleepQualityCalc.isWithinTimeRange()) {
@@ -787,6 +814,7 @@ void loop() {
    daily_progress = (steps/100) + "";
 
    delay(500);
+   */
    
    /*
    unsigned long currentMillis = millis();
@@ -796,12 +824,14 @@ void loop() {
    Serial.println(voltage, 4); // Print voltage with 4 decimal places
    delay(10); // Wait for 10ms before next reading
    */
-   
-   Max30105HeartRate(irValue, beatsPerMinute, beatAvg);
-   LIS2MDLTRData(x, y, z);
-   ICP_Data(airPressure,temperature,altitude);
+
+   //Max30105HeartRate(irValue, beatsPerMinute, beatAvg);
+   //Max30105_O2(heartRate, spo2);
+   //Max30105Temp(temperature);
+   //LIS2MDLTRData(x, y, z);
+   //ICP_Data(airPressure,temperature,altitude);
    //KXTJ3_Data(x_acceleration, y_acceleration, z_acceleration); // not working now
-   LSM6DSLTR_Data(x_acceleration, y_acceleration, z_acceleration, avg_acc);
+   //LSM6DSLTR_Data(x_acceleration, y_acceleration, z_acceleration, avg_acc);
    axsi[0] = x;
    axsi[1] = y;
    axsi[2] = z;
@@ -810,19 +840,62 @@ void loop() {
    acc[1] = y_acceleration;
    acc[2] = z_acceleration;
 
+   if(counter_sensor_health == 0){
+      if(pbm_flag == true){
+        Serial.println("Setting up PBM");
+        Max30105Setup();
+      }
 
+      if(o2_flag == true){
+        Serial.println("Setting up O2");
+        Max30105_O2_Setup();
+        start_Max30105_O2_task();
+      }
+   }
+
+   if(pbm_flag == true){
+     //Serial.println("Checking Heart Beat");
+     Max30105HeartRate(irValue, beatsPerMinute, beatAvg);
+     counter_sensor_health++;
+   }
+
+   if(o2_flag == true){
+     //Serial.println("Checking O2 Levels");
+     xSemaphoreGive(max30105_semaphore);
+     //Max30105_O2(heartRate, spo2);
+     counter_sensor_health++;
+   }
+   
    
    if (currentMillis - previousMillis >= interval) {
       outputData();
       previousMillis = currentMillis;
+    }
+
+    if (currentMillis3 - previousMillis3 >= interval3) {
+
+      if(pbm_flag == true){
+        pbm_flag = false;
+      }else{
+        pbm_flag = true;
       }
 
+      if(o2_flag == true){
+        o2_flag = false;
+      }else{
+        o2_flag = true;
+      }
+      
+      counter_sensor_health = 0;
+      previousMillis3 = currentMillis3;
+     }
 
+ /*
    if (currentMillis - previousMillis >= interval2) {
       Max30105_O2(heartRate, spo2);
       previousMillis = currentMillis;  
       }
-  
+ */ 
     
    //scanner();
 

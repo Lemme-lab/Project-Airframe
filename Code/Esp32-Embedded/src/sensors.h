@@ -3,7 +3,13 @@
 
 
 
-void Max30105Setup( );
+void Max30105Setup();
+
+int32_t getheartRate();
+
+int32_t getSpo2();
+
+void max30105_timer_callback(void *arg, int32_t& heartRate, int32_t& spo2);
 
 void Max30105HeartRate(long& irValue, float& beatsPerMinute, double& beatAvg);
 
@@ -14,6 +20,12 @@ void LIS2MDLTRData(int& x, int&y, int& z);
 void Max30105Temp(float& temperature);
 
 void Max30105_O2_Setup();
+
+void Max30105_O2_task(void *parameter);
+
+void stop_Max30105_O2_task();
+
+void start_Max30105_O2_task();
 
 void Max30105_O2(int& heartRate, int& spo2);
 

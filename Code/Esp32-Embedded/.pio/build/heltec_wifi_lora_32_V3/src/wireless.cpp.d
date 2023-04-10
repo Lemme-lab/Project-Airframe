@@ -187,4 +187,7 @@
  .pio/libdeps/heltec_wifi_lora_32_V3/SparkFun_u-blox_GNSS_v3-main/src/u-blox_structs.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/SparkFun_u-blox_GNSS_v3-main/src/u-blox_external_typedefs.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/SparkFun_u-blox_GNSS_v3-main/src/u-blox_Class_and_ID.h \
- .pio/libdeps/heltec_wifi_lora_32_V3/SparkFun_u-blox_GNSS_v3-main/src/sfe_bus.h
+ .pio/libdeps/heltec_wifi_lora_32_V3/SparkFun_u-blox_GNSS_v3-main/src/sfe_bus.h \
+ .pio/libdeps/heltec_wifi_lora_32_V3/PN5180-Library-master/PN5180ISO15693.h \
+ .pio/libdeps/heltec_wifi_lora_32_V3/PN5180-Library-master/PN5180.h \
+ src/wireless.h
