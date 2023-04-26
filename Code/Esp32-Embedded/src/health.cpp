@@ -115,3 +115,57 @@ String getActivityStatus(double heartRate, double oxygen, float acceleration[3],
     
     return "Unknown";               // return "Unknown" if the same status has not been repeated for 20 times
 }
+
+const int windowSize = 5; 
+int signalBuffer[windowSize];
+int bufferIndex = 0;
+
+int movingAverage(int input) {
+  signalBuffer[bufferIndex] = input;
+  bufferIndex = (bufferIndex + 1) % windowSize;
+
+  int sum = 0;
+  for (int i = 0; i < windowSize; i++) {
+    sum += signalBuffer[i];
+  }
+  return sum / windowSize;
+}
+
+int ppgThreshold = 10000; 
+extern unsigned long lastRPeakTimestamp = 0;
+extern unsigned long lastPPGPeakTimestamp = 0;
+int lastPPGValue = 0;
+extern bool ppgPeakDetected = false;
+
+void detectPPGPeak(int ppgValue, unsigned long timestamp) {
+  if (ppgValue > ppgThreshold && lastPPGValue <= ppgThreshold) {
+    ppgPeakDetected = true;
+    lastPPGPeakTimestamp = timestamp;
+  }
+  lastPPGValue = ppgValue;
+}
+
+float stressLevel = 0;
+
+double calculateStress(double heartRate, double bodyTemperature, String activity) {
+    double baselineHeartRate = 60.0;
+    double baselineBodyTemperature = 36;
+
+    double heartRateDeviation = (heartRate - baselineHeartRate) / baselineHeartRate;
+    double bodyTemperatureDeviation = (bodyTemperature - baselineBodyTemperature) / baselineBodyTemperature;
+
+    double heartRateWeight = 0.5;
+    double bodyTemperatureWeight = 0.5;
+    double stressScore = 0;
+
+    if(activity == "Normal"){
+      double stressScore = sqrt((heartRateDeviation * heartRateDeviation) * heartRateWeight +
+                              (bodyTemperatureDeviation * bodyTemperatureDeviation) * bodyTemperatureWeight);  
+    }
+
+    String myStr = String(stressScore);
+    Serial.println("StresssScore: " + myStr);
+    
+
+    return stressScore;
+}
