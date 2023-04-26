@@ -10,4 +10,8 @@ void writeDataNFC();
 
 void GPSSetup();
 
-void GPS(int & latitude, int & longitude, int & );
+void GPS(int & latitude, int & longitude);
+
+double toRadians(double degree);
+
+void Speedometer(double & speed);

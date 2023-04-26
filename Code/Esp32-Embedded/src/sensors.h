@@ -17,6 +17,8 @@ void LIS2MDLTRSetup();
 
 void LIS2MDLTRData(int& x, int&y, int& z);
 
+void Max30105Temp_Setup();
+
 void Max30105Temp(float& temperature);
 
 void Max30105_O2_Setup();

@@ -248,8 +248,56 @@ void GPSSetup() {
     myGNSS.setNMEAOutputPort(Serial);
 }
 
-void GPS(int & latitude, int & longitude, int & ) {
+void GPS(int & latitude, int & longitude) {
     latitude = myGNSS.getLatitude();
     longitude = myGNSS.getLongitude();
     delay(30);
 }
+
+int lat1 = 0;
+int long1 = 0;
+int lat2 = 0;
+int long2 = 0;
+
+const double EARTH_RADIUS = 6371.0;
+
+double toRadians(double degree) {
+    return (degree * M_PI) / 180.0;
+}
+
+bool first = false;
+
+void Speedometer(double & speed){
+
+    if(first){
+     GPS(lat1,long1);
+     GPS(lat2,long2);
+    }
+    first = true;
+    
+    GPS(lat1,long1);
+
+    double lat1_rad = toRadians(lat1);
+    double lon1_rad = toRadians(long1);
+    double lat2_rad = toRadians(lat2);
+    double lon2_rad = toRadians(long2);
+
+    double time_difference = 0.00277777777;
+
+    double dLat = lat2_rad - lat1_rad;
+    double dLon = lon2_rad - lon1_rad;
+
+    double a = std::pow(std::sin(dLat / 2), 2) +
+               std::cos(lat1_rad) * std::cos(lat2_rad) * std::pow(std::sin(dLon / 2), 2);
+
+    double c = 2 * std::atan2(std::sqrt(a), std::sqrt(1 - a));
+    double distance = EARTH_RADIUS * c;
+    speed = distance / time_difference;
+
+    lat2=lat1;
+    long2=long1;
+   
+}
+
+
+

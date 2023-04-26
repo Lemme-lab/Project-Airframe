@@ -115,6 +115,20 @@ void Max30105HeartRate(long& irValue, float& beatsPerMinute, double& beatAvg){
   Serial.println();
 }
 
+void Max30105Temp_Setup(){
+  byte ledBrightness = 0x7F; //Options: 0=Off to 255=50mA
+  byte sampleAverage = 4; //Options: 1, 2, 4, 8, 16, 32
+  byte ledMode = 2; //Options: 1 = Red only, 2 = Red + IR, 3 = Red + IR + Green
+  //Options: 1 = IR only, 2 = Red + IR on MH-ET LIVE MAX30102 board
+  int sampleRate = 200; //Options: 50, 100, 200, 400, 800, 1000, 1600, 3200
+  int pulseWidth = 411; //Options: 69, 118, 215, 411
+  int adcRange = 16384; //Options: 2048, 4096, 8192, 16384
+  // Set up the wanted parameters
+  particleSensor.setup(ledBrightness, sampleAverage, ledMode, sampleRate, pulseWidth, adcRange); //Configure sensor with these settings
+  particleSensor.enableDIETEMPRDY();
+
+}
+
 void Max30105Temp(float& temperature){
   temperature = particleSensor.readTemperature();
   Serial.print("temperatureC=");

@@ -10,6 +10,7 @@
 #include "Sleeptracker.h"
 #include "esp_timer.h"
 #include "wireless.h"
+#include <fallDetection.h>
 
 
 #define BD71850_I2C_ADDRESS 0x4B
@@ -51,6 +52,7 @@ unsigned long previousMillis3 = 0;
 const unsigned long interval = 2000;
 const unsigned long interval2 = 4000;
 const unsigned long interval3 = 30000;
+const unsigned long interval4 = 100;
     
 const uint16_t image1[240*240] PROGMEM  = {
     0xc617, 0xce38, 0xc5d6, 0xc5f7, 0xc5b6, 0xc5d6, 0xbdb6, 0xbdb6, 0xb555, 0xbd75, 0xb575, 0xbd96, 0xa4f3, 0xb575, 0xa4d2, 0xb575, 0xbd95, 0xb554, 0xad34, 0xad34, 0xad34, 0xa4b2, 0xa4d2, 0xa4f3, 0xad13, 0xb555, 0xa4d2, 0xa4f3, 0xa4d3, 0xa4f3, 0xb554, 0xa4d2, 0xa4f3, 0x9cb2, 0x9cb2, 0x9cb2, 0x9451, 0x9491, 0xad34, 0xacf3, 0xacf3, 0x9cb2, 0xa4f3, 0xa4d3, 0x9cb2, 0xad13, 0x9cb2, 0xa4d3, 0x9cb2, 0x9c91, 0x9cb2, 0x9491, 0xa4d2, 0x9cb2, 0xa4d3, 0x9451, 0x9c91, 0xa4d3, 0x9c92, 0xad13, 0x7b8d, 0x9cd2, 0xad34, 0x9450, 0x8c10, 0x9c92, 0xad34, 0x8c30, 0x9471, 0xa4f3, 0xb554, 0x9471, 0x7bae, 0xb575, 0x9451, 0xbd95, 0x9451, 0x6b4c, 0xad34, 0x8c30, 0xb575, 0xb554, 0x6b2c, 0x9450, 0xad34, 0x9451, 0xb555, 0xbdd7, 0x9c91, 0x5acb, 0x9471, 0xad34, 0x8c50, 0x9471, 0xbd95, 0xbdf7, 0xb554, 0x83ef, 0x5acb, 0x9c92, 0xd658, 0xa4f3, 0x9cf3, 0x9451, 0x8c0f, 0xce17, 0xb575, 0xbdf7, 0xce38, 0xbdb6, 0xbd95, 0xb554, 0xad13, 0x9450, 0x83ef, 0x736d, 0x6b4d, 0x7bae, 0x738d, 0x632c, 0x6b4d, 0x73ae, 0x736d, 0x734c, 0x7bae, 0x83ef, 0x9430, 0xa4f3, 0xb554, 0xbd95, 0xbdb6, 0xc617, 0xc5f7, 0xad55, 0xce38, 0x9c91, 0x8c10, 0x9cd3, 0xa4d3, 0xce17, 0xacf3, 0x5acb, 0x7bae, 0xb533, 0xc5d7, 0xbdb6, 0xa4d2, 0x8c30, 0xa4f3, 0xb534, 0x5acb, 0x8c30, 0xbdb6, 0xb575, 0x8c30, 0xa514, 0x8c10, 0x62eb, 0xad33, 0xbdd7, 0x9471, 0xa4f3, 0x83ef, 0x83ce, 0xbdb6, 0xa4f3, 0xa4d3, 0x83ce, 0x8c0f, 0xb554, 0x9cb2, 0x9c92, 0x7b8d, 0xb575, 0x9471, 0xad13, 0x8c0f, 0xad13, 0x9cb2, 0x9471, 0x9cb2, 0xa4f3, 0x9450, 0x8c0f, 0xad34, 0xad13, 0x9cb2, 0x9c92, 0x9c92, 0x9cb2, 0x9cb2, 0x9471, 0x9cb2, 0x9471, 0x9cb2, 0xacf3, 0x9c91, 0x9491, 0x9c92, 0xad13, 0xacf3, 0xa4d2, 0xa4f3, 0xa4d3, 0x9cb2, 0x9471, 0xa4d3, 0x9cb2, 0xb534, 0xad13, 0xb554, 0x9cd2, 0xad34, 0xb554, 0xa4d3, 0xb554, 0xb554, 0xa4f3, 0xad13, 0xa4f3, 0xa4f3, 0xa4d2, 0xb554, 0xb575, 0xb575, 0xad14, 0xb554, 0xb575, 0xad34, 0xb575, 0xb575, 0xad34, 0xbdb6, 0xbd95, 0xc5d6, 0xbdb6, 0xc5d6, 0xc5f7, 0xc5d7, 0xbdb6, 
@@ -616,6 +618,9 @@ int heart_AVG = 70;
 int heart_Max = 90;
 int heart_Min = 60;
 
+double Stresscore = 0;
+bool fallDetectionbool = false;
+
 int bpm = 78;
 int hours = 12;
 int minutes = 34;
@@ -689,11 +694,11 @@ void setup() {
   
   Wire.begin(46,45);
   //Max30105Setup();
-  //LIS2MDLTRSetup();
-  //Max30105_O2_Setup();
-  //ICP_Setup();
-  //KXTJ3_Setup();
-  //LSM6DSLTR_Setup();
+  LIS2MDLTRSetup();
+  Max30105_O2_Setup();
+  ICP_Setup();
+  KXTJ3_Setup();
+  LSM6DSLTR_Setup();
 
   //Serial.begin(115200);
   //Wire.begin(3,4);
@@ -744,11 +749,18 @@ bool timeflag = false;
 
 bool o2_flag = false;
 bool pbm_flag = true;
+bool temp_flag = true;
 
 int counter_sensor_health = 0;
 
 
 SleepQualityCalculator sleepQualityCalc;
+
+bool ppgPeakDetected = false;
+unsigned long lastRPeakTimestamp = 0;
+unsigned long lastPPGPeakTimestamp = 0;
+
+int counter_sensor = 0;
 
 
 void loop() {
@@ -851,6 +863,11 @@ void loop() {
         Max30105_O2_Setup();
         start_Max30105_O2_task();
       }
+
+      if(temp_flag == true){
+        Serial.println("Setting up Body Temp");
+        Max30105Temp_Setup();
+      }
    }
 
    if(pbm_flag == true){
@@ -865,30 +882,78 @@ void loop() {
      //Max30105_O2(heartRate, spo2);
      counter_sensor_health++;
    }
+
+      if(temp_flag == true){
+     //Serial.println("Checking Heart Beat");
+     Max30105Temp(temperature);
+     Stresscore = calculateStress(beatAvg, temperature, activity);
+
+     if (Stresscore < 0.1) {
+       Serial.println("Low stress");
+    } else if (Stresscore < 0.3) {
+       Serial.println("Moderate stress");
+    } else {
+       Serial.println("High stress");
+    }
+     counter_sensor_health++;
+   }
    
    
    if (currentMillis - previousMillis >= interval) {
+       if(counter_sensor == 3){
+        pbm_flag = false;
+        temp_flag = true;
+        o2_flag = false;
+       }
+
       outputData();
+      previousMillis = currentMillis;
+    }
+
+    if (currentMillis - previousMillis >= interval4) {
+      fallDetectionbool = fallDetection(x_acceleration, y_acceleration, z_acceleration, axsi[0], axsi[1], axsi[2]);
       previousMillis = currentMillis;
     }
 
     if (currentMillis3 - previousMillis3 >= interval3) {
 
+
+      if(counter_sensor == 1){   
       if(pbm_flag == true){
         pbm_flag = false;
       }else{
         pbm_flag = true;
       }
+      }
 
+      if(counter_sensor == 2){   
       if(o2_flag == true){
         o2_flag = false;
       }else{
         o2_flag = true;
       }
-      
+      counter_sensor = 0;
+      }
+      counter_sensor++;
       counter_sensor_health = 0;
       previousMillis3 = currentMillis3;
      }
+
+
+       int filteredPPGValue = movingAverage(irValue);
+       unsigned long currentTimestamp = millis();
+       detectPPGPeak(filteredPPGValue, currentTimestamp);
+
+     if (ppgPeakDetected) {
+       float ptt = (lastPPGPeakTimestamp - lastRPeakTimestamp) / 1000.0; 
+       int estimatedBP = estimateBloodPressure(ptt);
+
+       Serial.print("PTT: ");
+       Serial.print(ptt);
+       Serial.print("s / Estimated BP: ");
+       Serial.println(estimatedBP);
+       ppgPeakDetected = false;
+    }
 
  /*
    if (currentMillis - previousMillis >= interval2) {

@@ -1,0 +1,1 @@
+bool fallDetection(float &ax, float &ay, float &az, int &gx, int &gy, int &gz);
