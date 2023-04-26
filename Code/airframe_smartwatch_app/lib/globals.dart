@@ -27,6 +27,9 @@ List<String> past_distance_day = ["14", "16", "18", "20", "22", "24"];
 String training_status = "Running";
 String daily_progress = (steps/100).round().toString();
 
+String ble_string = "";
+String nfc_string = "";
+
 
 int watchface = 1;
 bool always_on_display = true;

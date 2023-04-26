@@ -1152,6 +1152,10 @@ class _AppState extends State<App> {
                                ],
                              ),
                             ),
+                            InkWell(
+                                onTap: () {_navigateToNextScreenStatsTab(context);},
+                                child: Column(
+                                  children: [
                             Container(
                               width: 180,
                               height: 150,
@@ -1220,6 +1224,7 @@ class _AppState extends State<App> {
                                 ],
                               ),
                             )
+                                    ]))
                           ],
 
 
@@ -1328,6 +1333,9 @@ class _AppState extends State<App> {
   }
   void _navigateToNextScreenSettings(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => settings()));
+  }
+  void _navigateToNextScreenStatsTab(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => stattab()));
   }
 
 
@@ -5994,6 +6002,601 @@ class _infosState extends State<infos> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => settings()));
   }
 }
+
+class stattab extends StatefulWidget {
+  const stattab({Key key}) : super(key: key);
+
+  @override
+  State<stattab> createState() => _stattabState();
+}
+
+class _stattabState extends State<stattab> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {_navigateToNextScreenhome(context);},
+          icon: Icon(Icons.home),
+
+        ),
+        title:
+        Text('Airframe'),
+        centerTitle: true,
+        backgroundColor: Color(0xff023535),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        color: Color(0xff1A1A1A),
+
+        child: SingleChildScrollView(
+          child: Container(
+            width: 450,
+            height: 1550,
+            margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0, bottom: 15),
+            decoration: BoxDecoration(
+                color: Color(0xff1A1A1A),
+                border: Border.all(
+                  color: Colors.white,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(35))
+            ),
+            child: Column(
+              children: [
+                Container(
+                    margin: EdgeInsets.only(left: 5.0, top: 10.0, right: 5.0),
+                 child: Row(
+                   children: [
+                     Container(
+                       width: 180,
+                       height: 150,
+                       margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                       decoration: BoxDecoration(
+                           color: Color(0xff1A1A1A),
+                           border: Border.all(
+                             color: Colors.white,
+                           ),
+                           borderRadius: BorderRadius.all(Radius.circular(35))
+                       ),
+                       child: Column(
+                         children: [
+                           Container(
+                             margin: EdgeInsets.only(right: 5.0, top: 10),
+                             child: Text(
+                                 'Temperature:',
+                                 style: TextStyle(
+                                     color: Colors.white,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 23)
+                             ),
+                           ),
+                           Container(
+                             margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 90.0),
+                             child: Text(
+                                 globals.temperature.toString() + '°C',
+                                 style: TextStyle(
+                                     color: Colors.grey,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 21)
+                             ),
+                           ),
+                           Container(
+                             width: 150,
+                             height: 4,
+                             decoration: BoxDecoration(
+                                 color: Colors.white,
+                                 border: Border.all(
+                                   color: Colors.white,
+                                 ),
+                                 borderRadius: BorderRadius.all(Radius.circular(35))
+                             ),
+
+                           ),
+                           Container(
+                             margin: EdgeInsets.only(right: 55.0, top: 10),
+                             child: Text(
+                                 'Altitude:',
+                                 style: TextStyle(
+                                     color: Colors.white,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 23)
+                             ),
+                           ),
+                           Container(
+                             margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 55.0),
+                             child: Text(
+                                 globals.altitude.toString() + '/absl',
+                                 style: TextStyle(
+                                     color: Colors.grey,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 21)
+                             ),
+                           ),
+                         ],
+                       ),
+                     ),
+                     Container(
+                       width: 180,
+                       height: 150,
+                       margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                       decoration: BoxDecoration(
+                           color: Color(0xff1A1A1A),
+                           border: Border.all(
+                             color: Colors.white,
+                           ),
+                           borderRadius: BorderRadius.all(Radius.circular(35))
+                       ),
+                       child: Column(
+                         children: [
+                           Container(
+                             margin: EdgeInsets.only(right: 30.0, top: 10),
+                             child: Text(
+                                 'Heartrate:',
+                                 style: TextStyle(
+                                     color: Colors.white,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 23)
+                             ),
+                           ),
+                           Container(
+                             margin: EdgeInsets.only(left: 25.0, top: 5.0, right: 90.0),
+                             child: Text(
+                                 globals.heartrate.toString() + 'pbm',
+                                 style: TextStyle(
+                                     color: Colors.grey,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 21)
+                             ),
+                           ),
+                           Container(
+                             width: 150,
+                             height: 4,
+                             decoration: BoxDecoration(
+                                 color: Colors.white,
+                                 border: Border.all(
+                                   color: Colors.white,
+                                 ),
+                                 borderRadius: BorderRadius.all(Radius.circular(35))
+                             ),
+
+                           ),
+                           Container(
+                             margin: EdgeInsets.only(right: 85.0, top: 10),
+                             child: Text(
+                                 'Kcal:',
+                                 style: TextStyle(
+                                     color: Colors.white,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 23)
+                             ),
+                           ),
+                           Container(
+                             margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 45.0),
+                             child: Text(
+                                 globals.kcal.toString() + " kcal",
+                                 style: TextStyle(
+                                     color: Colors.grey,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 21)
+                             ),
+                           ),
+                         ],
+                       ),
+                     ),
+                  ]
+                 )
+                ),
+                Container(
+                    margin: EdgeInsets.only(left: 5.0, top: 10.0, right: 5.0),
+                    child: Row(
+                        children: [
+                          Container(
+                            width: 180,
+                            height: 150,
+                            margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                            decoration: BoxDecoration(
+                                color: Color(0xff1A1A1A),
+                                border: Border.all(
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(35))
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 55.0, top: 10),
+                                  child: Text(
+                                      'Battery:',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 23)
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 10.0, top: 5.0, right: 90.0),
+                                  child: Text(
+                                      globals.battery.toString() + '%',
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 21)
+                                  ),
+                                ),
+                                Container(
+                                  width: 150,
+                                  height: 4,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                        color: Colors.white,
+                                      ),
+                                      borderRadius: BorderRadius.all(Radius.circular(35))
+                                  ),
+
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(right: 65.0, top: 10),
+                                  child: Text(
+                                      'Steps:',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 23)
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 65.0),
+                                  child: Text(
+                                      globals.steps.toString() + '',
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 21)
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 180,
+                            height: 150,
+                            margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                            decoration: BoxDecoration(
+                                color: Color(0xff1A1A1A),
+                                border: Border.all(
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(35))
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 45.0, top: 10),
+                                  child: Text(
+                                      'Display:',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 23)
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 70.0),
+                                  child: Text(
+                                      globals.display.toString() + '%',
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 21)
+                                  ),
+                                ),
+                                Container(
+                                  width: 150,
+                                  height: 4,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                        color: Colors.white,
+                                      ),
+                                      borderRadius: BorderRadius.all(Radius.circular(35))
+                                  ),
+
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(right: 35.0, top: 10),
+                                  child: Text(
+                                      'O2Stand:',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 23)
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 65.0),
+                                  child: Text(
+                                      globals.O2stand.toString() + '%',
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 21)
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ]
+                    )
+                ),
+                Container(
+                  width: 370,
+                  height: 150,
+                  margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                  decoration: BoxDecoration(
+                      color: Color(0xff1A1A1A),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                          child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 5.0, top: 10, left: 10),
+                                  child: Text(
+                                      'Past Sleep: ',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20)
+                                  ),
+                                ),
+                                Container(
+                                  width: 156,
+                                  margin: EdgeInsets.only(left: 35.0, top: 5.0, right: 55.0, bottom: 5),
+                                  child: Text(
+                                      globals.past_sleep.toString(),
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16)
+                                  ),
+                                ),
+                              ])
+                      ),
+                      Container(
+                        width: 350,
+                        height: 4,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.white,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(35))
+                        ),
+
+                      ),
+                      Container(
+                          child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 5.0, top: 10, left: 10),
+                                  child: Text(
+                                      'Past Distance: ',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20)
+                                  ),
+                                ),
+                                Container(
+                                  width: 146,
+                                  margin: EdgeInsets.only(left: 5.0, top: 8.0, right: 55.0),
+                                  child: Text(
+                                      globals.past_distance.toString(),
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17)
+                                  ),
+                                ),
+                              ])
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 370,
+                  height: 150,
+                  margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                  decoration: BoxDecoration(
+                      color: Color(0xff1A1A1A),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                          child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 5.0, top: 10, left: 10),
+                                  child: Text(
+                                      'Oxygen: ',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20)
+                                  ),
+                                ),
+                                Container(
+                                  width: 156,
+                                  margin: EdgeInsets.only(left: 35.0, top: 5.0, right: 55.0, bottom: 5),
+                                  child: Text(
+                                      globals.past_sleep.toString(),
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16)
+                                  ),
+                                ),
+                              ])
+                      ),
+                      Container(
+                        width: 350,
+                        height: 4,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.white,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(35))
+                        ),
+
+                      ),
+                      Container(
+                          child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 5.0, top: 10, left: 10),
+                                  child: Text(
+                                      'ECG: ',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20)
+                                  ),
+                                ),
+                                Container(
+                                  width: 146,
+                                  margin: EdgeInsets.only(left: 65.0, top: 8.0, right: 55.0),
+                                  child: Text(
+                                      globals.past_distance.toString(),
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17)
+                                  ),
+                                ),
+                              ])
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 370,
+                  height: 450,
+                  margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                  decoration: BoxDecoration(
+                      color: Color(0xff1A1A1A),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 5.0, top: 10),
+                        child: Text(
+                            'BLE MESSAGE:',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 23)
+                        ),
+                      ),
+                      Container(
+                        width: 150,
+                        height: 4,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.white,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(35))
+                        ),
+
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 55.0),
+                        child: Text(
+                            globals.ble_string.toString(),
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21)
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 370,
+                  height: 350,
+                  margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+                  decoration: BoxDecoration(
+                      color: Color(0xff1A1A1A),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 5.0, top: 10),
+                        child: Text(
+                            'NFC Message:',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 23)
+                        ),
+                      ),
+                      Container(
+                        width: 150,
+                        height: 4,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.white,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(35))
+                        ),
+
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.0, top: 5.0, right: 55.0),
+                        child: Text(
+                            globals.nfc_string.toString(),
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21)
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ),
+      ),
+    );
+  }
+  void _navigateToNextScreenhome(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+  }
+}
+
 
 
 
