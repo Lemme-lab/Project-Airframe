@@ -1,11 +1,8 @@
 #include <Arduino.h>
-
 #include <iostream>
-
 #include <cmath>
-
 #include <tuple>
-
+#include <Filters.h>
 
 double caloriesBurned = 0.0;
 
@@ -168,4 +165,62 @@ double calculateStress(double heartRate, double bodyTemperature, String activity
     
 
     return stressScore;
+}
+
+const int numSamples = 100;
+const float lowcut = 0.5;
+const float highcut = 10.0;
+const int order = 1;
+
+FilterOnePole lowpassFilter(LOWPASS, highcut);
+FilterOnePole highpassFilter(HIGHPASS, lowcut);
+
+float preprocessData(float rawData) {
+  float lowpassed = lowpassFilter.input(rawData);
+  float filteredData = highpassFilter.input(lowpassed);
+  return filteredData;
+}
+
+int findPeaks(float *filteredData, int numSamples, int *peaks) {
+  int numPeaks = 0;
+  for (int i = 1; i < numSamples - 1; i++) {
+    if (filteredData[i] > filteredData[i - 1] && filteredData[i] > filteredData[i + 1]) {
+      peaks[numPeaks++] = i;
+    }
+  }
+  return numPeaks;
+}
+
+float calculatePtt(int *peaks, int numPeaks) {
+  float peakIntervals = 0;
+  for (int i = 1; i < numPeaks; i++) {
+    peakIntervals += peaks[i] - peaks[i - 1];
+  }
+  float ptt = peakIntervals / (numPeaks - 1);
+  return ptt;
+}
+
+void calculate_blood_pressure(float &bpSystolic, float &bpDiastolic, float infraredData) {
+  static float rawData[numSamples] = {0};
+  static float filteredData[numSamples] = {0};
+  int peaks[numSamples] = {0};
+  int numPeaks = 0;
+
+  memmove(rawData, rawData + 1, sizeof(float) * (numSamples - 1));
+  memmove(filteredData, filteredData + 1, sizeof(float) * (numSamples - 1));
+
+  rawData[numSamples - 1] = infraredData;
+  filteredData[numSamples - 1] = preprocessData(infraredData);
+
+  numPeaks = findPeaks(filteredData, numSamples, peaks);
+
+  if (numPeaks >= 2) {
+    float ptt = calculatePtt(peaks, numPeaks);
+
+    bpSystolic = 0.45 * ptt + 80;
+    bpDiastolic = 0.15 * ptt + 60;
+  } else {
+    bpSystolic = -1;
+    bpDiastolic = -1;
+  }
 }

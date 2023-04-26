@@ -1,0 +1,21 @@
+{
+    "authors": {
+        "name": "kazunori ogasawara",
+        "url": "https://os.mbed.com/users/macht/"
+    },
+    "build": {
+        "builder": "MbedLibBuilder"
+    },
+    "description": "ver.beta0",
+    "frameworks": "mbed",
+    "keywords": [
+        "digitalfilter"
+    ],
+    "name": "DigitalFilter",
+    "platforms": "*",
+    "repository": {
+        "type": "hg",
+        "url": "https://os.mbed.com/users/macht/code/DigitalFilter/"
+    },
+    "version": "0.0.0+sha.4e7d58236762"
+}

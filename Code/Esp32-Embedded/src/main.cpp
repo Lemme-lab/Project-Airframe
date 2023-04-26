@@ -11,6 +11,7 @@
 #include "esp_timer.h"
 #include "wireless.h"
 #include <fallDetection.h>
+TFT_eSPI tft = TFT_eSPI(240, 240);
 
 
 #define BD71850_I2C_ADDRESS 0x4B
@@ -18,8 +19,6 @@
 // Define Bd71850 register addresses
 #define BUCK1_VOLTAGE_REG 0x0D
 #define BUCK2_VOLTAGE_REG 0x10
-
-TFT_eSPI tft;
 
 #define TFT_WIDTH  240
 #define TFT_HEIGHT 240
@@ -53,6 +52,72 @@ const unsigned long interval = 2000;
 const unsigned long interval2 = 4000;
 const unsigned long interval3 = 30000;
 const unsigned long interval4 = 100;
+
+
+int battery = 80;
+int O2stand = 75;
+int steps = 0;
+double display = 80;
+int kcal = 657;
+int Oxy_AVG = 80;
+int Oxy_Max = 89;
+int Oxy_Min = 65;
+
+int heart_AVG = 70;
+int heart_Max = 90;
+int heart_Min = 60;
+
+double Stresscore = 0;
+bool fallDetectionbool = false;
+
+int bpm = 78;
+int hours = 12;
+int minutes = 34;
+String training_status = "Normal";
+String daily_progress = "";
+
+float bpSystolic = 0, bpDiastolic = 0;
+
+int watchface = 1;
+bool always_on_display = true;
+bool Battery_Saving_Mode = false;
+bool reset_to_default = false;
+bool software_update = false;
+bool flush_cache = false;
+bool reset_to_defaults = false;
+
+bool bluetooth = true;
+bool nfc = true;
+bool gps = true;
+bool messages = true;
+bool disable_updates = false;
+
+bool Oxymeter_pulse = true;
+bool pressure_altitude = true;
+bool ECG = true;
+bool Axis_IMU = true;
+bool compass = true;
+bool keep_all_on_device = true;
+
+String watch_type = "Airframe";
+double hardware_version = 0.1;
+String sensors = "Oxymeter, Pulse, ECG, Alttitude, Pressure, Temperature, IMU, Compass";
+String soc = "ESP32-S3";
+String ram = "4MB";
+String flash = "8MB";
+String wireless = "GPS, Wifi Bluetooth4.2, NFC Tag";
+String software_version = "0.0.01";
+String last_update = "07.04.2023";
+
+double sleep1[12] = {10, 3, 7, 9, 8, 8, 7, 1, 9, 10};
+int ECG_Values[50] = {43, 68, 141, 105, 124, 144, 7, 56, 96, 44, 126, 48, 47, 129, 18, 68, 89, 129, 68, 56, 37, 137, 126, 91, 112, 43, 71, 121, 1, 98, 81, 78, 46, 72, 35, 121, 28, 85, 2, 90, 42, 102, 123, 16, 9, 32, 16, 94, 22, 19};
+int oxy_level[50] = {20, 3, 54, 94, 137, 21, 91, 1, 16, 89, 138, 71, 5, 47, 20, 59, 2, 80, 31, 6, 117, 20, 136, 108, 10, 44, 80, 16, 109, 86, 129, 115, 31, 107, 84, 23, 17, 33, 19, 23, 22, 69, 26, 53, 113, 121, 8, 17, 91, 66};
+int heart_rate[50] = {7, 60, 113, 39, 59, 41, 47, 91, 62, 48, 135, 41, 97, 137, 95, 136, 132, 46, 89, 114, 87, 82, 111, 97, 82, 95, 93, 129, 51, 90, 110, 36, 61, 15, 43, 6, 107, 103, 12, 41, 2, 82, 114, 114, 98, 8, 139, 21, 139, 27};
+int acc[3] = {50,0,30};
+int axsi[3] = {20, 30, 10};
+double past_distance[6] = {11591, 11599, 11924, 3693, 17728, 13303};
+String past_distance_month[6] = {"Mar", "Mar", "Mar", "Mar", "Mar", "Mar"};
+String past_distance_day[6] = {"14","16","18","20","22", "24"};
     
 const uint16_t image1[240*240] PROGMEM  = {
     0xc617, 0xce38, 0xc5d6, 0xc5f7, 0xc5b6, 0xc5d6, 0xbdb6, 0xbdb6, 0xb555, 0xbd75, 0xb575, 0xbd96, 0xa4f3, 0xb575, 0xa4d2, 0xb575, 0xbd95, 0xb554, 0xad34, 0xad34, 0xad34, 0xa4b2, 0xa4d2, 0xa4f3, 0xad13, 0xb555, 0xa4d2, 0xa4f3, 0xa4d3, 0xa4f3, 0xb554, 0xa4d2, 0xa4f3, 0x9cb2, 0x9cb2, 0x9cb2, 0x9451, 0x9491, 0xad34, 0xacf3, 0xacf3, 0x9cb2, 0xa4f3, 0xa4d3, 0x9cb2, 0xad13, 0x9cb2, 0xa4d3, 0x9cb2, 0x9c91, 0x9cb2, 0x9491, 0xa4d2, 0x9cb2, 0xa4d3, 0x9451, 0x9c91, 0xa4d3, 0x9c92, 0xad13, 0x7b8d, 0x9cd2, 0xad34, 0x9450, 0x8c10, 0x9c92, 0xad34, 0x8c30, 0x9471, 0xa4f3, 0xb554, 0x9471, 0x7bae, 0xb575, 0x9451, 0xbd95, 0x9451, 0x6b4c, 0xad34, 0x8c30, 0xb575, 0xb554, 0x6b2c, 0x9450, 0xad34, 0x9451, 0xb555, 0xbdd7, 0x9c91, 0x5acb, 0x9471, 0xad34, 0x8c50, 0x9471, 0xbd95, 0xbdf7, 0xb554, 0x83ef, 0x5acb, 0x9c92, 0xd658, 0xa4f3, 0x9cf3, 0x9451, 0x8c0f, 0xce17, 0xb575, 0xbdf7, 0xce38, 0xbdb6, 0xbd95, 0xb554, 0xad13, 0x9450, 0x83ef, 0x736d, 0x6b4d, 0x7bae, 0x738d, 0x632c, 0x6b4d, 0x73ae, 0x736d, 0x734c, 0x7bae, 0x83ef, 0x9430, 0xa4f3, 0xb554, 0xbd95, 0xbdb6, 0xc617, 0xc5f7, 0xad55, 0xce38, 0x9c91, 0x8c10, 0x9cd3, 0xa4d3, 0xce17, 0xacf3, 0x5acb, 0x7bae, 0xb533, 0xc5d7, 0xbdb6, 0xa4d2, 0x8c30, 0xa4f3, 0xb534, 0x5acb, 0x8c30, 0xbdb6, 0xb575, 0x8c30, 0xa514, 0x8c10, 0x62eb, 0xad33, 0xbdd7, 0x9471, 0xa4f3, 0x83ef, 0x83ce, 0xbdb6, 0xa4f3, 0xa4d3, 0x83ce, 0x8c0f, 0xb554, 0x9cb2, 0x9c92, 0x7b8d, 0xb575, 0x9471, 0xad13, 0x8c0f, 0xad13, 0x9cb2, 0x9471, 0x9cb2, 0xa4f3, 0x9450, 0x8c0f, 0xad34, 0xad13, 0x9cb2, 0x9c92, 0x9c92, 0x9cb2, 0x9cb2, 0x9471, 0x9cb2, 0x9471, 0x9cb2, 0xacf3, 0x9c91, 0x9491, 0x9c92, 0xad13, 0xacf3, 0xa4d2, 0xa4f3, 0xa4d3, 0x9cb2, 0x9471, 0xa4d3, 0x9cb2, 0xb534, 0xad13, 0xb554, 0x9cd2, 0xad34, 0xb554, 0xa4d3, 0xb554, 0xb554, 0xa4f3, 0xad13, 0xa4f3, 0xa4f3, 0xa4d2, 0xb554, 0xb575, 0xb575, 0xad14, 0xb554, 0xb575, 0xad34, 0xb575, 0xb575, 0xad34, 0xbdb6, 0xbd95, 0xc5d6, 0xbdb6, 0xc5d6, 0xc5f7, 0xc5d7, 0xbdb6, 
@@ -599,74 +664,16 @@ void outputData(){
   Serial.print("Acceleration Z float = ");
   Serial.println(z_acceleration);
 
+  Serial.print("Estimated Blood Pressure: ");
+  Serial.print(bpSystolic, 2);
+  Serial.print("/");
+  Serial.print(bpDiastolic, 2);
+  Serial.println(" mmHg");
+
   Serial.println(" ");
   Serial.println(" ");
 
 }
-
-
-int battery = 80;
-int O2stand = 75;
-int steps = 0;
-double display = 80;
-int kcal = 657;
-int Oxy_AVG = 80;
-int Oxy_Max = 89;
-int Oxy_Min = 65;
-
-int heart_AVG = 70;
-int heart_Max = 90;
-int heart_Min = 60;
-
-double Stresscore = 0;
-bool fallDetectionbool = false;
-
-int bpm = 78;
-int hours = 12;
-int minutes = 34;
-String training_status = "Normal";
-String daily_progress = "";
-
-int watchface = 1;
-bool always_on_display = true;
-bool Battery_Saving_Mode = false;
-bool reset_to_default = false;
-bool software_update = false;
-bool flush_cache = false;
-bool reset_to_defaults = false;
-
-bool bluetooth = true;
-bool nfc = true;
-bool gps = true;
-bool messages = true;
-bool disable_updates = false;
-
-bool Oxymeter_pulse = true;
-bool pressure_altitude = true;
-bool ECG = true;
-bool Axis_IMU = true;
-bool compass = true;
-bool keep_all_on_device = true;
-
-String watch_type = "Airframe";
-double hardware_version = 0.1;
-String sensors = "Oxymeter, Pulse, ECG, Alttitude, Pressure, Temperature, IMU, Compass";
-String soc = "ESP32-S3";
-String ram = "4MB";
-String flash = "8MB";
-String wireless = "GPS, Wifi Bluetooth4.2, NFC Tag";
-String software_version = "0.0.01";
-String last_update = "07.04.2023";
-
-double sleep1[12] = {10, 3, 7, 9, 8, 8, 7, 1, 9, 10};
-int ECG_Values[50] = {43, 68, 141, 105, 124, 144, 7, 56, 96, 44, 126, 48, 47, 129, 18, 68, 89, 129, 68, 56, 37, 137, 126, 91, 112, 43, 71, 121, 1, 98, 81, 78, 46, 72, 35, 121, 28, 85, 2, 90, 42, 102, 123, 16, 9, 32, 16, 94, 22, 19};
-int oxy_level[50] = {20, 3, 54, 94, 137, 21, 91, 1, 16, 89, 138, 71, 5, 47, 20, 59, 2, 80, 31, 6, 117, 20, 136, 108, 10, 44, 80, 16, 109, 86, 129, 115, 31, 107, 84, 23, 17, 33, 19, 23, 22, 69, 26, 53, 113, 121, 8, 17, 91, 66};
-int heart_rate[50] = {7, 60, 113, 39, 59, 41, 47, 91, 62, 48, 135, 41, 97, 137, 95, 136, 132, 46, 89, 114, 87, 82, 111, 97, 82, 95, 93, 129, 51, 90, 110, 36, 61, 15, 43, 6, 107, 103, 12, 41, 2, 82, 114, 114, 98, 8, 139, 21, 139, 27};
-int acc[3] = {50,0,30};
-int axsi[3] = {20, 30, 10};
-double past_distance[6] = {11591, 11599, 11924, 3693, 17728, 13303};
-String past_distance_month[6] = {"Mar", "Mar", "Mar", "Mar", "Mar", "Mar"};
-String past_distance_day[6] = {"14","16","18","20","22", "24"};
 
 BleData data(battery, spo2, steps, beatsPerMinute, display, kcal, temperature, altitude,
                Oxy_AVG, Oxy_Max, Oxy_Min, heart_AVG, heart_Max, heart_Min, beatsPerMinute, hours, minutes,
@@ -680,6 +687,8 @@ BleData data(battery, spo2, steps, beatsPerMinute, display, kcal, temperature, a
 
 MAX30105 particleSensor;
 SemaphoreHandle_t max30105_semaphore;
+
+
 
 void setup() {
 
@@ -729,6 +738,13 @@ max30105_semaphore = xSemaphoreCreateBinary();
       NULL,
       APP_CPU_NUM
   );
+
+  tft.begin(); // Initialize the TFT_eSPI library
+
+  tft.setSwapBytes(true); // Set the byte order of the display to match the ESP32
+
+  tft.setRotation(0); // Set the display rotation to match the orientation of the display
+
   
 
 }
@@ -756,14 +772,12 @@ int counter_sensor_health = 0;
 
 SleepQualityCalculator sleepQualityCalc;
 
-bool ppgPeakDetected = false;
-unsigned long lastRPeakTimestamp = 0;
-unsigned long lastPPGPeakTimestamp = 0;
-
 int counter_sensor = 0;
 
 
 void loop() {
+
+  tft.pushImage(0, 0, 240, 240, (uint16_t*) image1);
 
   unsigned long currentMillis = millis();
   unsigned long currentMillis3 = millis();
@@ -844,6 +858,10 @@ void loop() {
    //ICP_Data(airPressure,temperature,altitude);
    //KXTJ3_Data(x_acceleration, y_acceleration, z_acceleration); // not working now
    //LSM6DSLTR_Data(x_acceleration, y_acceleration, z_acceleration, avg_acc);
+
+
+
+   /*
    axsi[0] = x;
    axsi[1] = y;
    axsi[2] = z;
@@ -939,21 +957,14 @@ void loop() {
       previousMillis3 = currentMillis3;
      }
 
+    
+    calculate_blood_pressure(bpSystolic, bpDiastolic, irValue);
 
-       int filteredPPGValue = movingAverage(irValue);
-       unsigned long currentTimestamp = millis();
-       detectPPGPeak(filteredPPGValue, currentTimestamp);
+    */
 
-     if (ppgPeakDetected) {
-       float ptt = (lastPPGPeakTimestamp - lastRPeakTimestamp) / 1000.0; 
-       int estimatedBP = estimateBloodPressure(ptt);
 
-       Serial.print("PTT: ");
-       Serial.print(ptt);
-       Serial.print("s / Estimated BP: ");
-       Serial.println(estimatedBP);
-       ppgPeakDetected = false;
-    }
+
+
 
  /*
    if (currentMillis - previousMillis >= interval2) {

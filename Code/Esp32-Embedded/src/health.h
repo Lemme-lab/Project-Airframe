@@ -10,6 +10,13 @@ int movingAverage(int input);
 
 void detectPPGPeak(int ppgValue, unsigned long timestamp);
 
-int estimateBloodPressure(float ptt);
-
 double calculateStress(double heartRate, double bodyTemperature, String activity);
+
+float preprocessData(float rawData);
+
+int findPeaks(float *filteredData, int numSamples, int *peaks);
+
+float calculatePtt(int *peaks, int numPeaks);
+
+void calculate_blood_pressure(float &bpSystolic, float &bpDiastolic, float infraredData);
+
