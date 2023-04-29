@@ -6,12 +6,12 @@
 // For ESP32 Dev board (only tested with GC9A01 display)
 // The hardware SPI can be mapped to any pins
 
-#define TFT_MOSI 15 // In some display driver board, it might be written as "SDA" and so on.
-#define TFT_SCLK 14
-#define TFT_CS   5  // Chip select control pin
-#define TFT_DC   27  // Data Command control pin
-#define TFT_RST  33  // Reset pin (could connect to Arduino RESET pin)
-#define TFT_BL   22  // LED back-light
+#define TFT_MOSI 39 // In some display driver board, it might be written as "SDA" and so on.
+#define TFT_SCLK 40
+#define TFT_CS   41  // Chip select control pin
+#define TFT_DC   42  // Data Command control pin
+#define TFT_RST  45  // Reset pin (could connect to Arduino RESET pin)
+#define TFT_BL   46  // LED back-light
 
 
 #define LOAD_GLCD   // Font 1. Original Adafruit 8 pixel font needs ~1820 bytes in FLASH
@@ -26,7 +26,7 @@
 
 
 //#define SPI_FREQUENCY  80000000
-#define SPI_FREQUENCY  27000000
+#define SPI_FREQUENCY 27000000
 
 // Optional reduced SPI frequency for reading TFT
 #define SPI_READ_FREQUENCY  5000000

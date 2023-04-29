@@ -182,6 +182,7 @@
  /Users/lemme/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-spi.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/TFT_eSPI/User_Setup_Select.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/TFT_eSPI/User_Setup.h \
+ .pio/libdeps/heltec_wifi_lora_32_V3/TFT_eSPI/User_Setups/Setup200_GC9A01.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/TFT_eSPI/TFT_Drivers/ILI9341_Defines.h \
  .pio/libdeps/heltec_wifi_lora_32_V3/TFT_eSPI/Processors/TFT_eSPI_ESP32_S3.h \
  /Users/lemme/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/soc/esp32s3/include/soc/spi_reg.h \

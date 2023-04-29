@@ -11,7 +11,11 @@
 #include "esp_timer.h"
 #include "wireless.h"
 #include <fallDetection.h>
-TFT_eSPI tft = TFT_eSPI(240, 240);
+
+
+TFT_eSPI tft = TFT_eSPI(); 
+TFT_eSprite img = TFT_eSprite(&tft);
+TFT_eSprite ln = TFT_eSprite(&tft);
 
 
 #define BD71850_I2C_ADDRESS 0x4B
@@ -688,6 +692,9 @@ BleData data(battery, spo2, steps, beatsPerMinute, display, kcal, temperature, a
 MAX30105 particleSensor;
 SemaphoreHandle_t max30105_semaphore;
 
+const int pwmFreq = 5000;
+const int pwmResolution = 8;
+const int pwmLedChannelTFT = 0;
 
 
 void setup() {
@@ -701,13 +708,13 @@ void setup() {
   //data.printValues();
   
   
-  Wire.begin(46,45);
+  //Wire.begin(46,45);
   //Max30105Setup();
-  LIS2MDLTRSetup();
-  Max30105_O2_Setup();
-  ICP_Setup();
-  KXTJ3_Setup();
-  LSM6DSLTR_Setup();
+  //LIS2MDLTRSetup();
+  //Max30105_O2_Setup();
+  //ICP_Setup();
+  //KXTJ3_Setup();
+  //LSM6DSLTR_Setup();
 
   //Serial.begin(115200);
   //Wire.begin(3,4);
@@ -727,6 +734,7 @@ void setup() {
 
   //scanner_setup();
 
+/*
 max30105_semaphore = xSemaphoreCreateBinary();
 
   xTaskCreatePinnedToCore(
@@ -738,12 +746,26 @@ max30105_semaphore = xSemaphoreCreateBinary();
       NULL,
       APP_CPU_NUM
   );
+*/
 
-  tft.begin(); // Initialize the TFT_eSPI library
+  ledcSetup(pwmLedChannelTFT, pwmFreq, pwmResolution);
+  ledcAttachPin(26, pwmLedChannelTFT);
+  ledcWrite(pwmLedChannelTFT, 90);
 
-  tft.setSwapBytes(true); // Set the byte order of the display to match the ESP32
+  pinMode(12,INPUT_PULLUP);
+   
+  tft.init();
+  tft.setRotation(0);
+  tft.setSwapBytes(true);
+  img.setSwapBytes(true);
+  tft.fillScreen(TFT_ORANGE);
+  img.createSprite(240, 240);
+    
 
-  tft.setRotation(0); // Set the display rotation to match the orientation of the display
+  tft.setPivot(60,60);
+  img.setTextDatum(4);
+  img.setTextColor(TFT_BLACK,0xAD55);
+
 
   
 
@@ -777,7 +799,7 @@ int counter_sensor = 0;
 
 void loop() {
 
-  tft.pushImage(0, 0, 240, 240, (uint16_t*) image1);
+  img.pushImage(0,0,240,240,image1);
 
   unsigned long currentMillis = millis();
   unsigned long currentMillis3 = millis();
