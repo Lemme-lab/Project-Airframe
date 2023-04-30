@@ -15,8 +15,11 @@
 
 TFT_eSPI tft = TFT_eSPI(); 
 TFT_eSprite img = TFT_eSprite(&tft);
-TFT_eSprite ln = TFT_eSprite(&tft);
-
+TFT_eSprite arrow = TFT_eSprite(&tft);
+TFT_eSprite textSprite = TFT_eSprite(&tft);
+TFT_eSprite textSprite2 = TFT_eSprite(&tft);
+TFT_eSprite textSprite3 = TFT_eSprite(&tft);
+TFT_eSprite textSprite4 = TFT_eSprite(&tft);
 
 #define BD71850_I2C_ADDRESS 0x4B
 
@@ -48,7 +51,7 @@ int longitude = 0;
 
 float airPressure;
 float temperature = 0; 
-int altitude = 0;
+int altitude = 550;
 
 unsigned long previousMillis = 0;
 unsigned long previousMillis3 = 0;
@@ -56,11 +59,12 @@ const unsigned long interval = 2000;
 const unsigned long interval2 = 4000;
 const unsigned long interval3 = 30000;
 const unsigned long interval4 = 100;
+const unsigned long interval5 = 1000;
 
 
 int battery = 80;
 int O2stand = 75;
-int steps = 0;
+int steps = 4000;
 double display = 80;
 int kcal = 657;
 int Oxy_AVG = 80;
@@ -75,8 +79,9 @@ double Stresscore = 0;
 bool fallDetectionbool = false;
 
 int bpm = 78;
-int hours = 12;
+int hours = 0;
 int minutes = 34;
+int seconds = 0;
 String training_status = "Normal";
 String daily_progress = "";
 
@@ -697,6 +702,50 @@ const int pwmResolution = 8;
 const int pwmLedChannelTFT = 0;
 
 
+
+void drawThickLine(TFT_eSprite *sprite, int x0, int y0, int x1, int y1, uint16_t color, int thickness) {
+  int half_thickness = thickness / 2;
+  int dx = x1 - x0;
+  int dy = y1 - y0;
+  float len = sqrt(dx * dx + dy * dy);
+  float ux = half_thickness * (y1 - y0) / len;
+  float uy = half_thickness * (x0 - x1) / len;
+
+  sprite->fillTriangle(x0 - ux, y0 - uy, x1 - ux, y1 - uy, x0 + ux, y0 + uy, color);
+  sprite->fillTriangle(x1 - ux, y1 - uy, x0 + ux, y0 + uy, x1 + ux, y1 + uy, color);
+}
+
+// Function to draw an arrow at a given angle
+void drawArrow(TFT_eSprite *arrowSprite, float angle) {
+  // Set the arrow color and center position
+  uint16_t arrowColor = TFT_WHITE;
+  int centerX = 120;
+  int centerY = 120;
+  int arrowLength = 190;
+  int arrowThickness = 4;
+
+  // Calculate the arrow endpoint
+  float radianAngle = (angle - 90) * DEG_TO_RAD; // Convert degrees to radians
+  int x = centerX + (arrowLength/2) * cos(radianAngle);
+  int y = centerY + (arrowLength/2) * sin(radianAngle);
+
+  // Calculate the point in the back
+  int backX = centerX - (0.1 * arrowLength) * cos(radianAngle);
+  int backY = centerY - (0.1 * arrowLength) * sin(radianAngle);
+
+  // Clear the arrow sprite
+  arrowSprite->fillSprite(TFT_TRANSPARENT);
+
+  // Draw the point in the middle
+  int pointSize = 5;
+  arrowSprite->fillCircle(centerX, centerY, pointSize, arrowColor);
+
+  // Draw the arrow with thickness
+  drawThickLine(arrowSprite, backX, backY, x, y, arrowColor, arrowThickness);
+
+}
+
+
 void setup() {
 
   Serial.begin(115200);
@@ -758,16 +807,29 @@ max30105_semaphore = xSemaphoreCreateBinary();
   tft.setRotation(0);
   tft.setSwapBytes(true);
   img.setSwapBytes(true);
-  tft.fillScreen(TFT_ORANGE);
+  tft.fillScreen(TFT_BLUE);
   img.createSprite(240, 240);
     
-
   tft.setPivot(60,60);
   img.setTextDatum(4);
   img.setTextColor(TFT_BLACK,0xAD55);
-
-
   
+
+  arrow.createSprite(240, 240);
+  arrow.setSwapBytes(true);
+  arrow.fillSprite(TFT_TRANSPARENT);
+
+  img.pushImage(0,0,240,240,image1);
+  img.pushSprite(0, 0);
+
+  textSprite.createSprite(40, 30); 
+  textSprite.setSwapBytes(true);
+  textSprite3.createSprite(60, 60); 
+  textSprite3.setSwapBytes(true);
+  textSprite2.createSprite(40, 30); 
+  textSprite2.setSwapBytes(true);
+  textSprite4.createSprite(40, 30); 
+  textSprite4.setSwapBytes(true);
 
 }
 
@@ -796,13 +858,92 @@ SleepQualityCalculator sleepQualityCalc;
 
 int counter_sensor = 0;
 
+String display_h = "";
+String display_m = "";
 
 void loop() {
 
-  img.pushImage(0,0,240,240,image1);
-
   unsigned long currentMillis = millis();
   unsigned long currentMillis3 = millis();
+
+
+  int totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+
+  totalSeconds %= 86400;
+
+  int degrees = map(totalSeconds, 0, 86399, 0, 360);
+
+  if(minutes>=60){
+     minutes = 0;
+     hours++;
+  }
+
+  if(hours >= 24){
+    hours = 0;
+    minutes = 0;
+  }
+
+
+ if(hours < 10){
+    display_h = "0" + String(hours);
+  }else{
+    display_h = hours;
+  }
+
+  if(minutes < 10){
+    display_m = "0" + String(minutes);
+  }else{
+    display_m = minutes;
+  }
+
+
+  if (currentMillis - previousMillis >= interval5) {
+      Serial.println(degrees);
+      Serial.println(hours);
+      hours++;
+    previousMillis = currentMillis;
+}
+
+arrow.fillSprite(TFT_TRANSPARENT);
+      drawArrow(&arrow, degrees);
+      arrow.pushSprite(0, 0, TFT_TRANSPARENT);
+
+      textSprite.fillSprite(TFT_TRANSPARENT); 
+      textSprite.setTextColor(TFT_WHITE);
+      textSprite.setTextFont(1);
+      textSprite.setTextSize(2);
+      textSprite.setCursor(0, 0);
+      String str = String(altitude);
+      textSprite.print(str);
+      textSprite.pushSprite(105,55, TFT_TRANSPARENT); 
+ 
+      textSprite2.fillSprite(TFT_TRANSPARENT); 
+      textSprite2.setTextColor(TFT_WHITE);
+      textSprite2.setTextFont(2);
+      textSprite2.setTextSize(1);
+      textSprite2.setCursor(0, 0);
+      String str2 = String(steps);
+      textSprite2.print(str2);
+      textSprite2.pushSprite(105,185, TFT_TRANSPARENT); 
+
+      textSprite3.fillSprite(TFT_TRANSPARENT); 
+      textSprite3.setTextColor(TFT_WHITE);
+      textSprite3.setTextFont(1);
+      textSprite3.setTextSize(4);
+      textSprite3.setCursor(0, 0);
+      textSprite3.print(display_h);
+      textSprite3.pushSprite(160,85, TFT_TRANSPARENT); 
+
+      textSprite4.fillSprite(TFT_TRANSPARENT); 
+      textSprite4.setTextColor(TFT_WHITE);
+      textSprite4.setTextFont(1);
+      textSprite4.setTextSize(3);
+      textSprite4.setCursor(0, 0);
+      textSprite4.print(display_m);
+      textSprite4.pushSprite(163,115, TFT_TRANSPARENT);
+      img.pushSprite(0, 0);
+
+
 
    /*
    delay(1000);
