@@ -17,4 +17,8 @@ class SleepQualityCalculator {
     bool isWithinTimeRange();
 };
 
+bool isAsleep(int heartRate, int accelX, int accelY, int accelZ, int gyroX, int gyroY, int gyroZ);
+
+void updateSleepCounter(int heartRate, int accelX, int accelY, int accelZ, int gyroX, int gyroY, int gyroZ, int hours, int minutes, int seconds, double (&sleep)[12]);
+
 #endif
