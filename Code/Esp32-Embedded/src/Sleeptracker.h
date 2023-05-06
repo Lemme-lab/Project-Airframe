@@ -21,4 +21,6 @@ bool isAsleep(int heartRate, int accelX, int accelY, int accelZ, int gyroX, int 
 
 void updateSleepCounter(int heartRate, int accelX, int accelY, int accelZ, int gyroX, int gyroY, int gyroZ, int hours, int minutes, int seconds, double (&sleep)[12]);
 
+int getSleepQuality();
+
 #endif

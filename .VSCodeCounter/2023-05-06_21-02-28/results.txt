@@ -1,0 +1,30 @@
+Date : 2023-05-06 21:02:28
+Directory : c:\Hardware\Project-Airframe\Code\airframe_smartwatch_app\lib
+Total : 6 files,  6834 codes, 47 comments, 370 blanks, all 7251 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |          6 |      6,834 |         47 |        370 |      7,251 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                   |          6 |      6,834 |         47 |        370 |      7,251 |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                            | language | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Hardware\Project-Airframe\Code\airframe_smartwatch_app\lib\ble.dart              | Dart     |         57 |          4 |         14 |         75 |
+| c:\Hardware\Project-Airframe\Code\airframe_smartwatch_app\lib\bluetoothconnect.dart | Dart     |        307 |          1 |         58 |        366 |
+| c:\Hardware\Project-Airframe\Code\airframe_smartwatch_app\lib\data.dart             | Dart     |         58 |          0 |         11 |         69 |
+| c:\Hardware\Project-Airframe\Code\airframe_smartwatch_app\lib\globals.dart          | Dart     |         53 |          0 |         11 |         64 |
+| c:\Hardware\Project-Airframe\Code\airframe_smartwatch_app\lib\main.dart             | Dart     |      6,307 |         42 |        267 |      6,616 |
+| c:\Hardware\Project-Airframe\Code\airframe_smartwatch_app\lib\settings.dart         | Dart     |         52 |          0 |          9 |         61 |
+| Total                                                                               |          |      6,834 |         47 |        370 |      7,251 |
++-------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

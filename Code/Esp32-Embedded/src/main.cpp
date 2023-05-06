@@ -113,10 +113,11 @@ String wireless = "GPS, Wifi Bluetooth4.2, NFC Tag";
 String software_version = "0.0.01";
 String last_update = "07.04.2023";
 
-double sleep1[12] = {10, 3, 7, 9, 8, 8, 7, 1, 9, 10};
-int ECG_Values[50] = {43, 68, 141, 105, 124, 144, 7, 56, 96, 44, 126, 48, 47, 129, 18, 68, 89, 129, 68, 56, 37, 137, 126, 91, 112, 43, 71, 121, 1, 98, 81, 78, 46, 72, 35, 121, 28, 85, 2, 90, 42, 102, 123, 16, 9, 32, 16, 94, 22, 19};
-int oxy_level[50] = {20, 3, 54, 94, 137, 21, 91, 1, 16, 89, 138, 71, 5, 47, 20, 59, 2, 80, 31, 6, 117, 20, 136, 108, 10, 44, 80, 16, 109, 86, 129, 115, 31, 107, 84, 23, 17, 33, 19, 23, 22, 69, 26, 53, 113, 121, 8, 17, 91, 66};
-int heart_rate[50] = {7, 60, 113, 39, 59, 41, 47, 91, 62, 48, 135, 41, 97, 137, 95, 136, 132, 46, 89, 114, 87, 82, 111, 97, 82, 95, 93, 129, 51, 90, 110, 36, 61, 15, 43, 6, 107, 103, 12, 41, 2, 82, 114, 114, 98, 8, 139, 21, 139, 27};
+double sleep1[12] = {10.6, 3, 7, 9, 8, 8, 7, 1, 9, 10, 8, 9.5};
+double sleepqualtiy[12] = {90, 89, 79, 67, 98, 98, 89, 95, 92, 78, 88, 97};
+int ECG_Values[50] = {0, -1, 2, 0, 1, 4, 1, 0, -2, -1, 0, -1, 0, 1, 3, 0, 1, 0, -2, -1,0, -1, 0, 1, 2, 0, -1, -3, -2, -1, 0, 1, 0, -1, 0, 2, 0, -1, -2, -1,0, -1, 0, 1, 2, 0, -1, -2, -1, 0};
+int oxy_level[50] = {98, 99, 97, 96, 95, 97, 94, 92, 90, 89, 91, 90, 92, 94, 96, 97, 98, 99, 97, 96, 94, 93, 91, 92, 94, 95, 97, 98, 96, 95, 94, 93, 91, 90, 89, 88, 90, 92, 93, 94, 96, 97, 98, 99, 97, 95, 94, 93, 91, 90};
+int heart_rate[50] = {70, 71, 72, 71, 70, 68, 69, 72, 74, 77, 80, 83, 85, 87, 88, 89, 88, 87, 85, 84, 82, 80, 79, 77, 75, 74, 72, 71, 70, 69, 68, 68, 67, 67, 66, 66, 65, 65, 64, 64, 63, 63, 62, 62, 61, 61, 60, 60, 59, 59};
 int acc[3] = {50, 0, 30};
 int axsi[3] = {20, 30, 10};
 double past_distance[6] = {11591, 11599, 11924, 3693, 17728, 13303};
@@ -286,12 +287,38 @@ SleepQualityCalculator sleepQualityCalc;
 
 int counter_sensor = 0;
 
+bool watchfaces = 1;
+int plot = 1;
+int page = 1;
+
 void loop()
 {
 
   if (Serial.available() > 0)
   {
-    watchface = Serial.parseInt();
+   int usb = Serial.parseInt();
+
+   if(usb == 1){
+     watchface++;
+     if(watchface == 4){
+      watchface = 1;
+     }
+     page=1;
+   }
+   if(usb == 2){
+     plot++;
+     if(plot == 4){
+      plot = 1;
+     }
+     watchfaces = 0;
+     page=2;
+   }
+   if(usb == 3){
+    page=3;
+   }
+   if(usb == 4){
+    page=4;
+   }
   }
 
   daily_progress = steps / 100;
@@ -316,9 +343,18 @@ void loop()
 
   steps++;
 
-  //drawWatchFaces( watchface,  degrees,  altitude,  steps,  kcal,  kcalGoal,  seconds,  minutes,  hours, sleep1, date);  
-  drawStats(heart_rate, heart_AVG);
-
+  if(page == 1){
+    drawWatchFaces( watchface,  degrees,  altitude,  steps,  kcal,  kcalGoal,  seconds,  minutes,  hours, sleep1, date); 
+  }
+  else if(page == 2){
+    drawStats(heart_rate, heart_AVG, heart_Max, heart_Min, oxy_level, Oxy_AVG, Oxy_Max, Oxy_Min, ECG_Values, plot);
+  }
+  else if(page == 3){
+    displaySleepingData(sleep1, sleepqualtiy);
+  }
+  else if(page == 4){
+    drawInfos(watch_type, hardware_version, sensors, soc, ram, flash, wireless, software_version, last_update);
+  }
 
   /*
   delay(1000);
