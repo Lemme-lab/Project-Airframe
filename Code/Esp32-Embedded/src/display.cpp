@@ -1550,8 +1550,6 @@ void displaySleepingData(double (&sleep)[12], double (&sleepquality)[12]) {
   img.setTextColor(TFT_LIGHTGREY);
   img.setTextFont(1);
   img.setTextSize(2);
-
-  Serial.println(sleep[0]);
   
   img.setCursor(55, 174);
   img.print("Sleep Score");
