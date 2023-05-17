@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:rxdart/rxdart.dart';
 import 'package:get_it/get_it.dart';
+import 'ble.dart';
 
 GetIt getIt = GetIt.instance;
+
+BluetoothController bluetoothController = BluetoothController();
 
 class ConfigNameController {
   BehaviorSubject<String> _controller;

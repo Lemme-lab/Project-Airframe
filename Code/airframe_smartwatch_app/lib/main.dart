@@ -19,6 +19,13 @@ StreamController<String> _stringController = StreamController<String>.broadcast(
 String _stringOutput = "";
 StreamSubscription<String> _stringSubscription;
 
+class SEND {
+  static const SERVICE = '1450dbb0-e48c-4495-ae90-5ff53327ede4';
+  static const INT = 'ec693074-43fe-489d-b63b-94456f83beb5';
+  static const BOOL = '45db5a06-5481-49ee-a8e9-10b411d73de7';
+  static const STRING = '9393c756-78ea-4629-a53e-52fb10f9a63f';
+}
+
 void _checkVariable(String newValue) {
   // Check if the variable has changed
   if (newValue != _stringOutput) {
@@ -26,6 +33,8 @@ void _checkVariable(String newValue) {
     _stringController.add(newValue);
   }
 }
+
+GlobalKey<_AppState> appStateKey = GlobalKey<_AppState>();
 
 void main() {
   getIt.registerSingleton<ConfigNameController>(ConfigNameController("ESP32"));
@@ -44,7 +53,9 @@ void main() {
   bluetooth.getStringStream().listen((data) {
     _stringOutput = data;
     print(data);
-    globals.nfc_string = data;
+    globals.ble_string = data;
+
+    appStateKey.currentState?.refreshWidget();
 
     List<String> inputList = data.split(", ");
 
@@ -294,7 +305,11 @@ void main() {
   });
 
   runApp(MaterialApp(
-    home: App(),
+    home: Builder(
+      builder: (BuildContext context) {
+        return App(key: appStateKey);
+      },
+    ),
   ));
 }
 
@@ -307,8 +322,52 @@ class App extends StatefulWidget {
   State<App> createState() => _AppState();
 }
 
+
+
 class _AppState extends State<App> {
 
+  void refreshWidget() {
+    setState(() {});
+  }
+
+  String result = '';
+
+  void prepareString(){
+    result += 'always_on_display: ' + globals.always_on_display.toString() + ', ';
+    result += 'Battery_Saving_Mode: ' + globals.Battery_Saving_Mode.toString() + ', ';
+    result += 'reset_to_default: ' + globals.reset_to_default.toString() + ', ';
+    result += 'software_update: ' + globals.software_update.toString() + ', ';
+    result += 'flush_cache: ' + globals.flush_cache.toString() + ', ';
+    result += 'reset_to_defaults: ' + globals.reset_to_defaults.toString() + ', ';
+    result += 'bluetooth: ' + globals.bluetooth.toString() + ', ';
+    result += 'nfc: ' + globals.nfc.toString() + ', ';
+    result += 'gps: ' + globals.gps.toString() + ', ';
+    result += 'messages: ' + globals.messages.toString() + ', ';
+    result += 'disable_updates: ' + globals.disable_updates.toString() + ', ';
+    result += 'Oxymeter_pulse: ' + globals.Oxymeter_pulse.toString() + ', ';
+    result += 'pressure_altitude: ' + globals.pressure_altitude.toString() + ', ';
+    result += 'ECG: ' + globals.ECG.toString() + ', ';
+    result += 'Axis_IMU: ' + globals.Axis_IMU.toString() + ', ';
+    result += 'compass: ' + globals.compass.toString() + ', ';
+    result += 'keep_all_on_device: ' + globals.keep_all_on_device.toString() + ', ';
+    result += 'watch_type: ' + globals.watch_type.toString() + ', ';
+    result += 'hardware_version: ' + globals.hardware_version.toString() + ', ';
+    result += 'soc: ' + globals.soc.toString() + ', ';
+    result += 'ram: ' + globals.ram.toString() + ', ';
+    result += 'flash: ' + globals.flash.toString() + ', ';
+    result += 'wireless: ' + globals.wireless.toString() + ', ';
+    result += 'senors: ' + globals.senors.toString() + ', ';
+    result += 'software_version: ' + globals.software_version.toString() + ', ';
+    result += 'last_update: ' + globals.last_update.toString();
+  }
+
+  List<FlSpot> points = [
+    FlSpot(0, 110.0),
+
+  ];
+  List<FlSpot> points1 = [
+    FlSpot(0, 110.0),
+  ];
 
   @override
   void initState() {
@@ -318,6 +377,19 @@ class _AppState extends State<App> {
         _stringOutput = data;
       });
     });
+
+    prepareString();
+    print(result);
+    bluetoothController.sendString(result);
+
+    for (int i = 0; i < globals.ECG_Values.length; i++) {
+      points.add(FlSpot(i.toDouble(), globals.ECG_Values[i].toDouble()));
+    }
+
+    for (int i = 0; i < globals.heartrate_list.length; i++) {
+      points1.add(FlSpot(i.toDouble(), globals.heartrate_list[i].toDouble()));
+    }
+
   }
 
   @override
@@ -327,98 +399,10 @@ class _AppState extends State<App> {
     super.dispose();
   }
 
-
-  void setup(){
-    globals.battery = 80;
-    globals.O2stand = 40;
-    globals.steps = 6560;
-    globals.heartrate = 70;
-    globals.display = 90;
-    globals.kcal = 845;
-    globals.temperature = 24;
-    globals.altitude = 550;
-  }
-
-
   final LatLng _center = const LatLng(45.521563, -122.677433);
 
 
-  List<FlSpot> points = [
-    FlSpot(0, 110.0),
-    FlSpot(1, 110.0),
-    FlSpot(2, 130.0),
-    FlSpot(3, 100.0),
-    FlSpot(4, 130.0),
-    FlSpot(5, 160.0),
-    FlSpot(6, 190.0),
-    FlSpot(7, 150.0),
-    FlSpot(8, 170.0),
-    FlSpot(9, 180.0),
-    FlSpot(10, 140.0),
-    FlSpot(11, 150.0),
-    FlSpot(12, 160.0),
-    FlSpot(13, 190.0),
-    FlSpot(14, 150.0),
-    FlSpot(15, 170.0),
-    FlSpot(16, 180.0),
-    FlSpot(17, 140.0),
-    FlSpot(18, 150.0),
-    FlSpot(19, 110.0),
-    FlSpot(20, 110.0),
-    FlSpot(21, 130.0),
-    FlSpot(22, 100.0),
-    FlSpot(23, 130.0),
-    FlSpot(24, 160.0),
-    FlSpot(25, 190.0),
-    FlSpot(26, 150.0),
-    FlSpot(27, 170.0),
-    FlSpot(28, 180.0),
-    FlSpot(29, 140.0),
-    FlSpot(30, 150.0),
-    FlSpot(31, 160.0),
-    FlSpot(32, 190.0),
-    FlSpot(33, 150.0),
-    FlSpot(34, 170.0),
-    FlSpot(35, 180.0),
-    FlSpot(36, 140.0),
-  ];
-  List<FlSpot> points1 = [
-    FlSpot(0, 110.0),
-    FlSpot(0.5, 110.0),
-    FlSpot(1, 130.0),
-    FlSpot(2.5, 100.0),
-    FlSpot(3, 130.0),
-    FlSpot(3.5, 160.0),
-    FlSpot(4, 190.0),
-    FlSpot(4.5, 150.0),
-    FlSpot(5, 170.0),
-    FlSpot(5.5, 180.0),
-    FlSpot(6, 140.0),
-    FlSpot(6.5, 150.0),
-    FlSpot(7, 160.0),
-    FlSpot(7.5, 190.0),
-    FlSpot(8, 150.0),
-    FlSpot(8.5, 170.0),
-    FlSpot(9, 180.0),
-    FlSpot(9.5, 140.0),
-    FlSpot(10, 150.0),
-    FlSpot(10.5, 110.0),
-    FlSpot(11, 110.0),
-    FlSpot(11.5, 130.0),
-    FlSpot(12, 100.0),
-    FlSpot(13, 130.0),
-    FlSpot(14, 160.0),
-    FlSpot(15, 190.0),
-    FlSpot(16, 150.0),
-    FlSpot(17, 170.0),
-    FlSpot(18, 180.0),
-    FlSpot(19, 140.0),
-    FlSpot(20, 150.0),
-    FlSpot(21, 160.0),
-    FlSpot(22, 190.0),
-    FlSpot(23, 150.0),
-    FlSpot(24, 170.0),
-  ];
+
   List<Color> gradientColors = [
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
@@ -540,11 +524,11 @@ class _AppState extends State<App> {
                                                           'SpO2',
                                                           style: TextStyle(color: Colors.white, fontSize: 23))
                                                   ),
-                                                  Container(
+                                                  AnimatedContainer(
                                                     height: 15,
                                                     width: 15,
-
-                                                    margin: EdgeInsets.only(right: 0, left: 0),
+                                                    duration: Duration(milliseconds: 500), // Animation duration
+                                                    margin: EdgeInsets.only(right: (100 - globals.O2stand) * 1.41, left: globals.O2stand * 1.41 + 15, top: 0), // Adjust the values as needed
                                                     child: Image.asset('assets/arrow.png'),
                                                   ),
                                                   Container(
@@ -1494,6 +1478,7 @@ class watchfaces extends StatefulWidget {
 }
 
 class _watchfacesState extends State<watchfaces> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1526,7 +1511,7 @@ class _watchfacesState extends State<watchfaces> {
          child: Column(
           children:[
             InkWell(
-            onTap: () {globals.watchface = 1;_navigateToNextScreenhome(context);},
+            onTap: () {globals.watchface = 1;_navigateToNextScreenhome(context); bluetoothController.sendString("Watchface: " + globals.watchface.toString());},
               child: Container(
                 width: 280,
                 height: 280,
@@ -1545,7 +1530,7 @@ class _watchfacesState extends State<watchfaces> {
               )
             ),
             InkWell(
-                onTap: () {globals.watchface = 2;_navigateToNextScreenhome(context);},
+                onTap: () {globals.watchface = 2;_navigateToNextScreenhome(context); bluetoothController.sendString("Watchface: " + globals.watchface.toString());},
                 child: Container(
                   width: 280,
                   height: 280,
@@ -1570,7 +1555,7 @@ class _watchfacesState extends State<watchfaces> {
                 )
             ),
             InkWell(
-                onTap: () {globals.watchface = 3;_navigateToNextScreenhome(context);},
+                onTap: () {globals.watchface = 3;_navigateToNextScreenhome(context); bluetoothController.sendString("Watchface: " + globals.watchface.toString());},
                 child: Container(
                   width: 280,
                   height: 280,
@@ -1589,7 +1574,7 @@ class _watchfacesState extends State<watchfaces> {
                 )
             ),
             InkWell(
-                onTap: () {globals.watchface = 4;_navigateToNextScreenhome(context);},
+                onTap: () {globals.watchface = 4;_navigateToNextScreenhome(context); bluetoothController.sendString("Watchface: " + globals.watchface.toString());},
                 child: Container(
                   width: 280,
                   height: 280,
@@ -1642,49 +1627,42 @@ class _statsState extends State<stats> {
   void setup(){
   }
 
+  List<FlSpot> points1 = [
+    FlSpot(0, 0.0),
+  ];
+  List<FlSpot> points2 = [
+    FlSpot(0, 0.0),
+  ];
+  List<FlSpot> points3 = [
+    FlSpot(0, 0.0),
+  ];
+
   @override
   void initState() {
     super.initState();
     setup();
+    for (int i = 0; i < globals.ECG_Values.length; i++) {
+      points1.add(FlSpot(i.toDouble(), globals.ECG_Values[i].toDouble()));
+    }
+
+    for (int i = 0; i < globals.heartrate_list.length; i++) {
+      points2.add(FlSpot(i.toDouble(), globals.oxy_level[i].toDouble()));
+    }
+
+    for (int i = 0; i < globals.heartrate_list.length; i++) {
+      points3.add(FlSpot(i.toDouble(), globals.heartrate_list[i].toDouble()));
+    }
+
+    globals.Oxy_Max = globals.oxy_level.reduce((currentMax, element) => element > currentMax ? element : currentMax);
+    globals.Oxy_Min = globals.oxy_level.reduce((currentMin, element) => element < currentMin ? element : currentMin);
+    globals.Oxy_AVG = (globals.oxy_level.reduce((sum, element) => sum + element) / globals.oxy_level.length).toInt();
+
+    globals.heart_Max = globals.heartrate_list.reduce((currentMax, element) => element > currentMax ? element : currentMax);
+    globals.heart_Min = globals.heartrate_list.reduce((currentMin, element) => element < currentMin ? element : currentMin);
+    globals.heart_AVG = (globals.heartrate_list.reduce((sum, element) => sum + element) / globals.heartrate_list.length).toInt();
+
   }
 
-  List<FlSpot> points1 = [
-    FlSpot(0, 110.0),
-    FlSpot(0.5, 110.0),
-    FlSpot(1, 130.0),
-    FlSpot(2.5, 100.0),
-    FlSpot(3, 130.0),
-    FlSpot(3.5, 160.0),
-    FlSpot(4, 190.0),
-    FlSpot(4.5, 150.0),
-    FlSpot(5, 170.0),
-    FlSpot(5.5, 180.0),
-    FlSpot(6, 140.0),
-    FlSpot(6.5, 150.0),
-    FlSpot(7, 160.0),
-    FlSpot(7.5, 190.0),
-    FlSpot(8, 150.0),
-    FlSpot(8.5, 170.0),
-    FlSpot(9, 180.0),
-    FlSpot(9.5, 140.0),
-    FlSpot(10, 150.0),
-    FlSpot(10.5, 110.0),
-    FlSpot(11, 110.0),
-    FlSpot(11.5, 130.0),
-    FlSpot(12, 100.0),
-    FlSpot(13, 130.0),
-    FlSpot(14, 160.0),
-    FlSpot(15, 190.0),
-    FlSpot(16, 150.0),
-    FlSpot(17, 170.0),
-    FlSpot(18, 180.0),
-    FlSpot(19, 140.0),
-    FlSpot(20, 150.0),
-    FlSpot(21, 160.0),
-    FlSpot(22, 190.0),
-    FlSpot(23, 150.0),
-    FlSpot(24, 170.0),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -1921,248 +1899,7 @@ class _statsState extends State<stats> {
                             lineBarsData: [
                               LineChartBarData(
                                 show: true, // t
-                                spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
-                                isCurved: false,
-                                barWidth: 1.5,
-                                belowBarData: BarAreaData(
-                                  show: true,
-                                  color: Color(0xff2A3729).withOpacity(0.5),
-                                ),
-                                dotData: FlDotData(
-                                  show: false,
-                                ),
-                                color: Color(0xff76D571),
-                              ),
-                            ],
-                            borderData: FlBorderData(
-                                border: const Border(bottom: BorderSide( color: Colors.white, width: 3), left: BorderSide(color: Colors.white))),
-                            gridData: FlGridData(show: true),
-                            titlesData: FlTitlesData(
-
-                              leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                              bottomTitles: AxisTitles(sideTitles: SideTitles(
-                                showTitles: true,
-                                reservedSize: 15,
-                                interval: 3,
-                                getTitlesWidget: (value, meta) {
-
-                                  String text = '';
-                                  switch (value.toInt()) {
-                                    case 1:
-                                      text = '1:00';
-                                      break;
-                                    case 2:
-                                      text = '2:00';
-                                      break;
-                                    case 3:
-                                      text = '3:00';
-                                      break;
-                                    case 4:
-                                      text = '4:00';
-                                      break;
-                                    case 5:
-                                      text = '5:00';
-                                      break;
-                                    case 6:
-                                      text = '6:00';
-                                      break;
-                                    case 7:
-                                      text = '7:00';
-                                      break;
-                                    case 8:
-                                      text = '8:00';
-                                      break;
-                                    case 9:
-                                      text = '9:00';
-                                      break;
-                                    case 10:
-                                      text = '10:00';
-                                      break;
-                                    case 11:
-                                      text = '11:00';
-                                      break;
-                                    case 12:
-                                      text = '12:00';
-                                      break;
-                                    case 13:
-                                      text = '13:00';
-                                      break;
-                                    case 14:
-                                      text = '14:00';
-                                      break;
-                                    case 15:
-                                      text = '15:00';
-                                      break;
-                                    case 16:
-                                      text = '16:00';
-                                      break;
-                                    case 17:
-                                      text = '17:00';
-                                      break;
-                                    case 18:
-                                      text = '18:00';
-                                      break;
-                                    case 19:
-                                      text = '19:00';
-                                      break;
-                                    case 20:
-                                      text = '20:00';
-                                      break;
-                                    case 21:
-                                      text = '21:00';
-                                      break;
-                                    case 22:
-                                      text = '22:00';
-                                      break;
-                                    case 23:
-                                      text = '23:00';
-                                      break;
-                                    case 24:
-                                      text = '24:00';
-                                      break;
-                                  }
-                                  return Text(text);
-                                },
-                              ), drawBehindEverything: true,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ]
-              ),
-
-
-            ),
-          ),
-
-        ),
-        Container (
-          width: 400,
-          height: 50,
-          margin: EdgeInsets.only(left: 5.0, top: 10.0, right: 5.0),
-          decoration: BoxDecoration(
-              color: Color(0xff1A1A1A),
-              border: Border.all(
-                color: Colors.white,
-                width: 2,
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(35))
-          ),
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 25.0, top: 0.0, right: 15.0),
-                child:Text(
-                  "AVG: ",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
-                child:Text(
-                  globals.Oxy_AVG.toString() + '%',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-
-              Container(
-                child:Text(
-                  "Min: ",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
-                child:Text(
-                  globals.Oxy_Min.toString() + '%',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-
-              Container(
-                child:Text(
-                  "Max: ",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 14.0),
-                child:Text(
-                  globals.Oxy_Max.toString() + '%',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-
-            ],
-
-          ),
-
-        ),
-        Container (
-          width: 400,
-          height: 180,
-          margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
-          decoration: BoxDecoration(
-              color: Color(0xff1A1A1A),
-              border: Border.all(
-                color: Colors.white,
-                width: 2,
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(35))
-          ),
-
-          child: DefaultTextStyle(
-            style: TextStyle(color: Colors.white),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(30.0),
-              child: Stack(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 28.0, top: 5, right: 5.0),
-                      child: Text(
-                          'Heart Rate',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25)
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 30),
-                      child: Container(
-                        constraints: const BoxConstraints(
-                          maxWidth: 396,
-                          maxHeight: 430,
-                        ),
-                        child: LineChart(
-                          LineChartData(
-                            minY: 70,
-                            lineBarsData: [
-                              LineChartBarData(
-                                show: true, // t
-                                spots: points1.map((point) => FlSpot(point.x, point.y)).toList(),
+                                spots: points2.map((point) => FlSpot(point.x, point.y)).toList(),
                                 isCurved: false,
                                 barWidth: 1.5,
                                 belowBarData: BarAreaData(
@@ -2296,7 +2033,7 @@ class _statsState extends State<stats> {
           child: Row(
             children: [
               Container(
-                margin: EdgeInsets.only(left: 25.0, top: 0.0, right: 15.0),
+                margin: EdgeInsets.only(left: 25.0, top: 0.0, right: .0),
                 child:Text(
                   "AVG: ",
                   style: TextStyle(
@@ -2308,7 +2045,7 @@ class _statsState extends State<stats> {
               Container(
                 margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
                 child:Text(
-                   globals.heart_AVG.toString() + '%',
+                  globals.Oxy_AVG.toString(),
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -2328,7 +2065,248 @@ class _statsState extends State<stats> {
               Container(
                 margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
                 child:Text(
-                  globals.heart_Min.toString() + '%',
+                  globals.Oxy_Min.toString(),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+              Container(
+                child:Text(
+                  "Max: ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 14.0),
+                child:Text(
+                  globals.Oxy_Max.toString(),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+            ],
+
+          ),
+
+        ),
+        Container (
+          width: 400,
+          height: 180,
+          margin: EdgeInsets.only(left: 5.0, top: 20.0, right: 5.0),
+          decoration: BoxDecoration(
+              color: Color(0xff1A1A1A),
+              border: Border.all(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(35))
+          ),
+
+          child: DefaultTextStyle(
+            style: TextStyle(color: Colors.white),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30.0),
+              child: Stack(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 28.0, top: 5, right: 5.0),
+                      child: Text(
+                          'Heart Rate',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25)
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 30),
+                      child: Container(
+                        constraints: const BoxConstraints(
+                          maxWidth: 396,
+                          maxHeight: 430,
+                        ),
+                        child: LineChart(
+                          LineChartData(
+                            minY: 70,
+                            lineBarsData: [
+                              LineChartBarData(
+                                show: true, // t
+                                spots: points3.map((point) => FlSpot(point.x, point.y)).toList(),
+                                isCurved: false,
+                                barWidth: 1.5,
+                                belowBarData: BarAreaData(
+                                  show: true,
+                                  color: Color(0xff76D571).withOpacity(0.5),
+                                ),
+                                dotData: FlDotData(
+                                  show: false,
+                                ),
+                                color: Color(0xff76D571),
+                              ),
+                            ],
+                            borderData: FlBorderData(
+                                border: const Border(bottom: BorderSide( color: Colors.white, width: 3), left: BorderSide(color: Colors.white))),
+                            gridData: FlGridData(show: true),
+                            titlesData: FlTitlesData(
+
+                              leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              bottomTitles: AxisTitles(sideTitles: SideTitles(
+                                showTitles: true,
+                                reservedSize: 15,
+                                interval: 3,
+                                getTitlesWidget: (value, meta) {
+
+                                  String text = '';
+                                  switch (value.toInt()) {
+                                    case 1:
+                                      text = '1:00';
+                                      break;
+                                    case 2:
+                                      text = '2:00';
+                                      break;
+                                    case 3:
+                                      text = '3:00';
+                                      break;
+                                    case 4:
+                                      text = '4:00';
+                                      break;
+                                    case 5:
+                                      text = '5:00';
+                                      break;
+                                    case 6:
+                                      text = '6:00';
+                                      break;
+                                    case 7:
+                                      text = '7:00';
+                                      break;
+                                    case 8:
+                                      text = '8:00';
+                                      break;
+                                    case 9:
+                                      text = '9:00';
+                                      break;
+                                    case 10:
+                                      text = '10:00';
+                                      break;
+                                    case 11:
+                                      text = '11:00';
+                                      break;
+                                    case 12:
+                                      text = '12:00';
+                                      break;
+                                    case 13:
+                                      text = '13:00';
+                                      break;
+                                    case 14:
+                                      text = '14:00';
+                                      break;
+                                    case 15:
+                                      text = '15:00';
+                                      break;
+                                    case 16:
+                                      text = '16:00';
+                                      break;
+                                    case 17:
+                                      text = '17:00';
+                                      break;
+                                    case 18:
+                                      text = '18:00';
+                                      break;
+                                    case 19:
+                                      text = '19:00';
+                                      break;
+                                    case 20:
+                                      text = '20:00';
+                                      break;
+                                    case 21:
+                                      text = '21:00';
+                                      break;
+                                    case 22:
+                                      text = '22:00';
+                                      break;
+                                    case 23:
+                                      text = '23:00';
+                                      break;
+                                    case 24:
+                                      text = '24:00';
+                                      break;
+                                  }
+                                  return Text(text);
+                                },
+                              ), drawBehindEverything: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]
+              ),
+
+
+            ),
+          ),
+
+        ),
+        Container (
+          width: 400,
+          height: 50,
+          margin: EdgeInsets.only(left: 5.0, top: 10.0, right: 5.0),
+          decoration: BoxDecoration(
+              color: Color(0xff1A1A1A),
+              border: Border.all(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(35))
+          ),
+          child: Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 25.0, top: 0.0, right: 0.0),
+                child:Text(
+                  "AVG: ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                child:Text(
+                   globals.heart_AVG.toString(),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+              Container(
+                child:Text(
+                  "Min: ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 15.0),
+                child:Text(
+                  globals.heart_Min.toString(),
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -2347,7 +2325,7 @@ class _statsState extends State<stats> {
               Container(
                 margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 14.0),
                 child:Text(
-                  globals.heart_Max.toString() + '%',
+                  globals.heart_Max.toString(),
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -3683,6 +3661,8 @@ class Generell extends StatefulWidget {
 }
 
 class _GenerellState extends State<Generell> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
