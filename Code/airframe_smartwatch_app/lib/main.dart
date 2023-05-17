@@ -44,93 +44,71 @@ void main() {
   bluetooth.getStringStream().listen((data) {
     _stringOutput = data;
     print(data);
+    globals.nfc_string = data;
 
     List<String> inputList = data.split(", ");
 
     for (String item in inputList) {
       List<String> pair = item.split(": ");
-      String key = pair[0];
-      String value = pair[1];
+      String key = pair[0].trim();
+      String value = pair[1].trim();
 
       switch (key) {
-        case "last_update":
-          globals.last_update = value;
-          break;
-        case "software_version":
-          globals.software_version = value;
-          break;
-        case "steps":
-          globals.steps = int.parse(value);
-          _checkVariable(value);
-          break;
-        case "sensors":
-          globals.senors = value;
-          break;
-        case "wireless":
-          globals.wireless = value;
-          break;
-        case "hardware_version":
-          globals.hardware_version = double.parse(value);
-          break;
-        case "watch_type":
-          globals.watch_type = value;
-          break;
-        case "daily_progress":
-          globals.daily_progress = value;
-          break;
-        case "training_status":
-          globals.training_status = value;
-          break;
-        case "past_distance_day":
-        //globals.past_distance_day = double.parse(value);
-          break;
-        case "past_distance_month":
-        //globals.past_distance_month = double.parse(value);
-          break;
-        case "past_sleep":
-        //globals.past_sleep = value;
-          break;
-        case "heart_Min":
-          globals.heart_Min = int.parse(value);
-          break;
-        case "heart_Max":
-          globals.heart_Max = int.parse(value);
-          break;
-        case "heart_AVG":
-          globals.heart_AVG = int.parse(value);
-          break;
-        case "Oxy_Min":
-          globals.Oxy_Min = int.parse(value);
-          break;
-        case "Oxy_Max":
-          globals.Oxy_Max = int.parse(value);
-          break;
-        case "Oxy_AVG":
-          globals.Oxy_AVG = int.parse(value);
-          break;
-        case "altitude":
-          globals.altitude = int.parse(value);
-          break;
-        case "temperature":
-          globals.temperature = int.parse(value);
-          break;
-        case "heartrate":
-          globals.heartrate = int.parse(value);
-          break;
-        case "O2stand":
-          globals.O2stand = int.parse(value);
-          break;
-        case "kcal":
-          globals.kcal = int.parse(value);
+        case "Data":
+          data = value;
+          if (data == "Generell") {
+            // Continue with processing the remaining key-value pairs
+          } else {
+            continue; // Skip processing the remaining key-value pairs
+          }
           break;
         case "battery":
           globals.battery = int.parse(value);
           break;
-        case "bpm":
-          globals.bpm = int.parse(value);
+        case "O2stand":
+          globals.O2stand = int.parse(value);
           break;
-        case "flash":
-          globals.flash = value;
+        case "steps":
+          globals.steps = int.parse(value);
+          break;
+        case "heartrate":
+          globals.heartrate = int.parse(value);
+          break;
+        case "display":
+          globals.display = double.parse(value);
+          break;
+        case "kcal":
+          globals.kcal = int.parse(value);
+          break;
+        case "temperature":
+          globals.temperature = int.parse(value);
+          break;
+        case "altitude":
+          globals.altitude = int.parse(value);
+          break;
+        case "Oxy_AVG":
+          globals.Oxy_AVG = int.parse(value);
+          break;
+        case "Oxy_Max":
+          globals.Oxy_Max = int.parse(value);
+          break;
+        case "Oxy_Min":
+          globals.Oxy_Min = int.parse(value);
+          break;
+        case "heart_AVG":
+          globals.heart_AVG = int.parse(value);
+          break;
+        case "heart_Max":
+          globals.heart_Max = int.parse(value);
+          break;
+        case "heart_Min":
+          globals.heart_Min = int.parse(value);
+          break;
+        case "training_status":
+          globals.training_status = value;
+          break;
+        case "daily_progress":
+          globals.daily_progress = value;
           break;
         case "hours":
           globals.hours = int.parse(value);
@@ -138,14 +116,180 @@ void main() {
         case "minutes":
           globals.minutes = int.parse(value);
           break;
-        case "ram":
-          globals.ram = value;
+      }
+    }
+
+    for (String item in inputList) {
+      List<String> pair = item.split(": ");
+      String key = pair[0].trim();
+      String value = pair[1].trim();
+
+      switch (key) {
+        case "Data":
+          data = value;
+          if (data == "Info") {
+            // Continue with processing the remaining key-value pairs
+          } else {
+            continue; // Skip processing the remaining key-value pairs
+          }
+          break;
+        case "always_on_display":
+          globals.always_on_display = value == "true";
+          break;
+        case "Battery_Saving_Mode":
+          globals.Battery_Saving_Mode = value == "true";
+          break;
+        case "reset_to_default":
+          globals.reset_to_default = value == "true";
+          break;
+        case "bluetooth":
+          globals.bluetooth = value == "true";
+          break;
+        case "nfc":
+          globals.nfc = value == "true";
+          break;
+        case "gps":
+          globals.gps = value == "true";
+          break;
+        case "messages":
+          globals.messages = value == "true";
+          break;
+        case "disable_updates":
+          globals.disable_updates = value == "true";
+          break;
+        case "Oxymeter_pulse":
+          globals.Oxymeter_pulse = value == "true";
+          break;
+        case "pressure_altitude":
+          globals.pressure_altitude = value == "true";
+          break;
+        case "ECG":
+          globals.ECG = value == "true";
+          break;
+        case "Axis_IMU":
+          globals.Axis_IMU = value == "true";
+          break;
+        case "compass":
+          globals.compass = value == "true";
+          break;
+        case "keep_all_on_device":
+          globals.keep_all_on_device = value == "true";
+          break;
+        case "hardware_version":
+          globals.hardware_version = double.parse(value);
           break;
         case "soc":
           globals.soc = value;
           break;
+        case "ram":
+          globals.ram = value;
+          break;
+        case "flash":
+          globals.flash = value;
+          break;
+        case "wireless":
+          globals.wireless = value;
+          break;
+        case "sensors":
+          globals.senors = value;
+          break;
+        case "software_version":
+          globals.software_version = value;
+          break;
+        case "last_update":
+          globals.last_update = value;
+          break;
       }
     }
+
+    for (String item in inputList) {
+      List<String> pair = item.split(": ");
+      String key = pair[0].trim();
+      String value = pair[1].trim();
+
+      switch (key) {
+        case "Data":
+          data = value;
+          if (data == "Data2") {
+            // Continue with processing the remaining key-value pairs
+          } else {
+            continue; // Skip processing the remaining key-value pairs
+          }
+          break;
+        case "Heart_rate":
+          List<String> heartRateValues = value.substring(1, value.length - 1).split(", ");
+          List<int> heartRate = heartRateValues.map((String val) => int.parse(val)).toList();
+          globals.heartrate_list = heartRate;
+          break;
+        case "acc":
+          List<String> accValues = value.substring(1, value.length - 1).split(", ");
+          List<double> acc = accValues.map((String val) => double.parse(val)).toList();
+
+          break;
+        case "axsi":
+          List<String> axsiValues = value.substring(1, value.length - 1).split(", ");
+          List<double> axsi = axsiValues.map((String val) => double.parse(val)).toList();
+
+          break;
+        case "bpm":
+          globals.bpm = int.parse(value);
+          break;
+        case "hours":
+          globals.hours = int.parse(value);
+          break;
+        case "minutes":
+          globals.minutes = int.parse(value);
+          break;
+        case "past_sleep":
+          List<String> pastSleepValues = value.substring(1, value.length - 1).split(", ");
+          List<double> pastSleep = pastSleepValues.map((String val) => double.parse(val)).toList();
+          globals.past_sleep = pastSleep;
+          break;
+        case "past_distance":
+          List<String> pastDistanceValues = value.substring(1, value.length - 1).split(", ");
+          List<double> pastDistance = pastDistanceValues.map((String val) => double.parse(val)).toList();
+          globals.past_distance = pastDistance;
+          break;
+        case "past_distance_month":
+          List<String> pastDistanceMonthValues = value.substring(1, value.length - 1).split(", ");
+          List<String> pastDistanceMonth = pastDistanceMonthValues.toList();
+          globals.past_distance_month = pastDistanceMonth;
+          break;
+        case "past_distance_day":
+          List<String> pastDistanceDayValues = value.substring(1, value.length - 1).split(", ");
+          List<String> pastDistanceDay = pastDistanceDayValues.toList();
+          globals.past_distance_day = pastDistanceDay;
+          break;
+      }
+    }
+
+    for (String item in inputList) {
+      List<String> pair = item.split(": ");
+      String key = pair[0].trim();
+      String value = pair[1].trim();
+
+      switch (key) {
+        case "Data":
+          data = value;
+          if (data == "Info") {
+            // Continue with processing the remaining key-value pairs
+          } else {
+            continue; // Skip processing the remaining key-value pairs
+          }
+          break;
+        case "ECG_Values":
+          List<String> ecgValues = value.substring(1, value.length - 1).split(", ");
+          List<int> ecg = ecgValues.map((String val) => int.parse(val)).toList();
+          globals.ECG_Values = ecg;
+          break;
+        case "oxy_level":
+          List<String> oxyLevelValues = value.substring(1, value.length - 1).split(", ");
+          List<int> oxyLevel = oxyLevelValues.map((String val) => int.parse(val)).toList();
+          globals.oxy_level = oxyLevel;
+          break;
+      }
+    }
+
 
   });
 
@@ -1496,13 +1640,6 @@ class stats extends StatefulWidget {
 class _statsState extends State<stats> {
 
   void setup(){
-    globals.Oxy_AVG = 80;
-    globals.Oxy_Max = 80;
-    globals.Oxy_Min = 80;
-
-    globals.heart_AVG = 80;
-    globals.heart_Max = 80;
-    globals.heart_Min = 80;
   }
 
   @override
@@ -2320,16 +2457,7 @@ class health extends StatefulWidget {
 class _healthState extends State<health> {
 
   void setup(){
-    globals.bpm = 117;
-    globals.kcal = 346;
-    globals.hours = 7;
-    globals.minutes = 23;
-    globals.past_sleep = [10, 8.12, 5.12, 6.12, 9.20, 5.8, 7.9, 7.7, 7.2, 8.3, 8.8, 5.9];
-    globals.past_distance = [15000, 10000, 8000, 12300, 14200, 3400];
-    globals.past_distance_month = ["Mar", "Mar", "Mar", "Mar", "Mar", "Mar"];
-    globals.past_distance_day = ["14", "16", "18", "20", "22", "24"];
-    globals.training_status = "Running";
-    globals.steps = 6799;
+
   }
 
   void initState() {
