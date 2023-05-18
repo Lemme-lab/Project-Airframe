@@ -29,7 +29,7 @@ class BluetoothController extends BluetoothConnector {
   sendInit() async {
     //await device.requestMtu(512);
     await sendSliderValue(_sliderValue);
-    await sendTextFieldValue(_textfieldValue);
+    await sendString(_textfieldValue);
     await sendButtonPressed(_buttonState);
     subscribeServiceString(RECIVE.STRING, _textStream);
     subscribeServiceInt(RECIVE.INT, _numberStream);
@@ -51,7 +51,7 @@ class BluetoothController extends BluetoothConnector {
     await writeServiceInt(SEND.INT, value, false);
   }
 
-  sendTextFieldValue(String text) async {
+  sendString(String text) async {
     _textfieldValue = text;
     await writeServiceString(SEND.STRING, text, true);
   }

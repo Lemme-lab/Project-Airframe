@@ -115,7 +115,7 @@ String last_update = "07.04.2023";
 
 double sleep1[12] = {10.6, 3, 7, 9, 8, 8, 7, 1, 9, 10, 8, 9.5};
 double sleepqualtiy[12] = {90, 89, 79, 67, 98, 98, 89, 95, 92, 78, 88, 97};
-int ECG_Values[50] = {0, -1, 2, 0, 1, 4, 1, 0, -2, -1, 0, -1, 0, 1, 3, 0, 1, 0, -2, -1,0, -1, 0, 1, 2, 0, -1, -3, -2, -1, 0, 1, 0, -1, 0, 2, 0, -1, -2, -1,0, -1, 0, 1, 2, 0, -1, -2, -1, 0};
+int ECG_Values[50] = {0, -1, 2, 0, 1, 4, 1, 0, -2, -1, 0, -1, 0, 1, 3, 0, 1, 0, -2, -1, 0, -1, 0, 1, 2, 0, -1, -3, -2, -1, 0, 1, 0, -1, 0, 2, 0, -1, -2, -1, 0, -1, 0, 1, 2, 0, -1, -2, -1, 0};
 int oxy_level[50] = {98, 99, 97, 96, 95, 97, 94, 92, 90, 89, 91, 90, 92, 94, 96, 97, 98, 99, 97, 96, 94, 93, 91, 92, 94, 95, 97, 98, 96, 95, 94, 93, 91, 90, 89, 88, 90, 92, 93, 94, 96, 97, 98, 99, 97, 95, 94, 93, 91, 90};
 int heart_rate[50] = {70, 71, 72, 71, 70, 68, 69, 72, 74, 77, 80, 83, 85, 87, 88, 89, 88, 87, 85, 84, 82, 80, 79, 77, 75, 74, 72, 71, 70, 69, 68, 68, 67, 67, 66, 66, 65, 65, 64, 64, 63, 63, 62, 62, 61, 61, 60, 60, 59, 59};
 int acc[3] = {50, 0, 30};
@@ -207,6 +207,7 @@ BleData data(battery, spo2, steps, beatsPerMinute, display, kcal, temperature, a
 MAX30105 particleSensor;
 SemaphoreHandle_t max30105_semaphore;
 
+int blecounter = 0;
 
 void setup()
 {
@@ -218,8 +219,8 @@ void setup()
 
   EEPROM.begin(512);
 
-  // blesetup();
-  // data.printValues();
+  blesetup();
+  data.printValues();
 
   // Wire.begin(46,45);
   // Max30105Setup();
@@ -259,9 +260,7 @@ void setup()
     );
   */
 
-  initDisplay();
-
-
+  //initDisplay();
 }
 
 int age = 18;
@@ -296,29 +295,35 @@ void loop()
 
   if (Serial.available() > 0)
   {
-   int usb = Serial.parseInt();
+    int usb = Serial.parseInt();
 
-   if(usb == 1){
-     watchface++;
-     if(watchface == 4){
-      watchface = 1;
-     }
-     page=1;
-   }
-   if(usb == 2){
-     plot++;
-     if(plot == 4){
-      plot = 1;
-     }
-     watchfaces = 0;
-     page=2;
-   }
-   if(usb == 3){
-    page=3;
-   }
-   if(usb == 4){
-    page=4;
-   }
+    if (usb == 1)
+    {
+      watchface++;
+      if (watchface == 4)
+      {
+        watchface = 1;
+      }
+      page = 1;
+    }
+    if (usb == 2)
+    {
+      plot++;
+      if (plot == 4)
+      {
+        plot = 1;
+      }
+      watchfaces = 0;
+      page = 2;
+    }
+    if (usb == 3)
+    {
+      page = 3;
+    }
+    if (usb == 4)
+    {
+      page = 4;
+    }
   }
 
   daily_progress = steps / 100;
@@ -334,6 +339,32 @@ void loop()
 
   if (currentMillis - previousMillis >= interval5)
   {
+
+    blecounter++;
+    Serial.println(blecounter);
+
+    if (blecounter == 1)
+    {
+      sendJson(data);
+    }
+    if (blecounter == 2)
+    {
+      sendJsonData1(data);
+    }
+    if (blecounter == 3)
+    {
+      sendJsonData2(data);
+    }
+    if (blecounter == 4)
+    {
+      sendJsonInfos(data);
+    }
+    if (blecounter == 5)
+    {
+      sendJson(data);
+      blecounter = 1;
+    }
+
     minutes++;
     seconds++;
     seconds++;
@@ -343,29 +374,24 @@ void loop()
 
   steps++;
 
-  if(page == 1){
-    drawWatchFaces( watchface,  degrees,  altitude,  steps,  kcal,  kcalGoal,  seconds,  minutes,  hours, sleep1, date); 
+/*
+  if (page == 1)
+  {
+    drawWatchFaces(watchface, degrees, altitude, steps, kcal, kcalGoal, seconds, minutes, hours, sleep1, date);
   }
-  else if(page == 2){
+  else if (page == 2)
+  {
     drawStats(heart_rate, heart_AVG, heart_Max, heart_Min, oxy_level, Oxy_AVG, Oxy_Max, Oxy_Min, ECG_Values, plot);
   }
-  else if(page == 3){
+  else if (page == 3)
+  {
     displaySleepingData(sleep1, sleepqualtiy);
   }
-  else if(page == 4){
+  else if (page == 4)
+  {
     drawInfos(watch_type, hardware_version, sensors, soc, ram, flash, wireless, software_version, last_update);
   }
-
-  /*
-  delay(1000);
-  sendJson(data);
-  delay(1000);
-  sendJsonData1(data);
-  delay(1000);
-  sendJsonData2(data);
-  delay(1000);
-  sendJsonInfos(data);
-  */
+*/
 
   /*
    float acceleration[3] = {x_acceleration, y_acceleration, z_acceleration};
