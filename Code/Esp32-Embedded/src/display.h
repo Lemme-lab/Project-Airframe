@@ -21,4 +21,12 @@ void drawInfos(String watch_type, double hardware_version, String sensors, Strin
 
 void displaySleepingData(double (&sleep)[12], double (&sleepquality)[12]);
 
+enum SwipeDirection {
+    SWIPE_LEFT,
+    SWIPE_RIGHT,
+    NO_SWIPE
+};
 
+SwipeDirection checkSwipeDirection(int startX, int startY, int endX, int endY);
+
+bool isDisplayPressed(int touchX, int touchY);

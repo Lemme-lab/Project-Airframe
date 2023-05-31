@@ -13,6 +13,7 @@
 #include <fallDetection.h>
 #include <EEPROM.h>
 #include "display.h"
+#include <CST816S.h>
 
 #define BD71850_I2C_ADDRESS 0x4B
 
@@ -53,6 +54,7 @@ const unsigned long interval2 = 4000;
 const unsigned long interval3 = 30000;
 const unsigned long interval4 = 100;
 const unsigned long interval5 = 1000;
+const unsigned long interval6 = 500;
 
 int battery = 80;
 int O2stand = 75;
@@ -209,6 +211,8 @@ SemaphoreHandle_t max30105_semaphore;
 
 int blecounter = 0;
 
+CST816S touch(21, 22, 5, 4);
+
 void setup()
 {
 
@@ -229,6 +233,9 @@ void setup()
   // ICP_Setup();
   // KXTJ3_Setup();
   // LSM6DSLTR_Setup();
+
+  touch.begin();
+  Serial.print(touch.data.version);
 
   // Serial.begin(115200);
   // Wire.begin(45,46);
@@ -260,7 +267,7 @@ void setup()
     );
   */
 
-  //initDisplay();
+  // initDisplay();
 }
 
 int age = 18;
@@ -290,14 +297,23 @@ bool watchfaces = 1;
 int plot = 1;
 int page = 1;
 
+int app = 0;
+
+int startX = 0;
+int startY = 0;
+
+int endX = 0;
+int endY = 0;
+
+
 void loop()
 {
 
   if (Serial.available() > 0)
   {
-    int usb = Serial.parseInt();
+    app = Serial.parseInt();
 
-    if (usb == 1)
+    if (app == 1)
     {
       watchface++;
       if (watchface == 4)
@@ -306,7 +322,7 @@ void loop()
       }
       page = 1;
     }
-    if (usb == 2)
+    if (app == 2)
     {
       plot++;
       if (plot == 4)
@@ -316,19 +332,72 @@ void loop()
       watchfaces = 0;
       page = 2;
     }
-    if (usb == 3)
+    if (app == 3)
     {
       page = 3;
     }
-    if (usb == 4)
+    if (app == 4)
     {
       page = 4;
     }
   }
 
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval4)
+  {
+    endX = startX;
+    endY = startY;
+
+    startX = touch.data.x;
+    startY = touch.data.y;
+
+    previousMillis = currentMillis;
+  }
+
+  SwipeDirection direction = checkSwipeDirection(startX, startY, endX, endY);
+
+  switch (direction)
+  {
+  case SWIPE_LEFT:
+    app--;
+    break;
+  case SWIPE_RIGHT:
+    app++;
+    break;
+  case NO_SWIPE:
+    bool isPressed = isDisplayPressed(touch.data.x, touch.data.y);
+
+    if (isPressed)
+    {
+
+      if (app == 1)
+      {
+        watchface++;
+        if (watchface == 4)
+        {
+          watchface = 1;
+        }
+        page = 1;
+      }
+
+      if (app == 2)
+      {
+        plot++;
+        if (plot == 4)
+        {
+          plot = 1;
+        }
+        watchfaces = 0;
+        page = 2;
+      }
+    }
+
+    break;
+  }
+
   daily_progress = steps / 100;
 
-  unsigned long currentMillis = millis();
   unsigned long currentMillis3 = millis();
 
   int totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
@@ -374,24 +443,24 @@ void loop()
 
   steps++;
 
-/*
-  if (page == 1)
-  {
-    drawWatchFaces(watchface, degrees, altitude, steps, kcal, kcalGoal, seconds, minutes, hours, sleep1, date);
-  }
-  else if (page == 2)
-  {
-    drawStats(heart_rate, heart_AVG, heart_Max, heart_Min, oxy_level, Oxy_AVG, Oxy_Max, Oxy_Min, ECG_Values, plot);
-  }
-  else if (page == 3)
-  {
-    displaySleepingData(sleep1, sleepqualtiy);
-  }
-  else if (page == 4)
-  {
-    drawInfos(watch_type, hardware_version, sensors, soc, ram, flash, wireless, software_version, last_update);
-  }
-*/
+  /*
+    if (page == 1)
+    {
+      drawWatchFaces(watchface, degrees, altitude, steps, kcal, kcalGoal, seconds, minutes, hours, sleep1, date);
+    }
+    else if (page == 2)
+    {
+      drawStats(heart_rate, heart_AVG, heart_Max, heart_Min, oxy_level, Oxy_AVG, Oxy_Max, Oxy_Min, ECG_Values, plot);
+    }
+    else if (page == 3)
+    {
+      displaySleepingData(sleep1, sleepqualtiy);
+    }
+    else if (page == 4)
+    {
+      drawInfos(watch_type, hardware_version, sensors, soc, ram, flash, wireless, software_version, last_update);
+    }
+  */
 
   /*
    float acceleration[3] = {x_acceleration, y_acceleration, z_acceleration};

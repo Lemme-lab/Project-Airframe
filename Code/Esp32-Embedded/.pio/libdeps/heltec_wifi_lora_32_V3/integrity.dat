@@ -1,8 +1,9 @@
-adafruit/Adafruit Unified Sensor@^1.1.9
-bodmer/TFT_eSPI@^2.5.30
-ivanseidel/ArduinoThread@^2.1.1
-ldab/KXTJ3-1057@^0.0.1
-dfrobot/DFRobot_ICP10111@^1.0.0
 adafruit/Adafruit LIS2MDL@^2.1.4
-bblanchon/ArduinoJson@^6.21.1
+bodmer/TFT_eSPI@^2.5.30
+ldab/KXTJ3-1057@^0.0.1
+adafruit/Adafruit Unified Sensor@^1.1.9
 mbed-macht/DigitalFilter@0.0.0+sha.4e7d58236762
+dfrobot/DFRobot_ICP10111@^1.0.0
+ivanseidel/ArduinoThread@^2.1.1
+bblanchon/ArduinoJson@^6.21.1
+fbiego/CST816S@^1.1.0

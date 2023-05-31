@@ -1584,4 +1584,42 @@ void displaySleepingData(double (&sleep)[12], double (&sleepquality)[12]) {
   img.pushSprite(0, 0, TFT_TRANSPARENT);
 }
 
+enum SwipeDirection {
+    SWIPE_LEFT,
+    SWIPE_RIGHT,
+    NO_SWIPE
+};
+
+SwipeDirection checkSwipeDirection(int startX, int startY, int endX, int endY) {
+    
+    int swipeThreshold = 50;
+
+    int deltaX = endX - startX;
+    int deltaY = endY - startY;
+
+    if (abs(deltaX) > swipeThreshold) {
+       
+        if (deltaX > 0) {
+            return SWIPE_RIGHT;
+        }
+    
+        else {
+            return SWIPE_LEFT;
+        }
+    } else {
+        return NO_SWIPE;
+    }
+}
+
+bool isDisplayPressed(int touchX, int touchY) {
+    // Define the threshold to determine if the display is pressed
+    int pressThreshold = 10;
+    
+    // Check if the touch coordinates are within the press threshold
+    if (touchX >= 0 && touchX <= 240 && touchY >= 0 && touchY <= 240) {
+        return true;
+    } else {
+        return false;
+    }
+}
 

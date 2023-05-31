@@ -20,11 +20,9 @@ class BleData {
     int Oxy_Max;
     int Oxy_Min;
 
-
     int heart_AVG;
     int heart_Max;
     int heart_Min;
-
 
     int ECG_Values[50];
     int oxy_level[50];
