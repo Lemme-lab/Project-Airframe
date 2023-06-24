@@ -1,8 +1,11 @@
 # Project-Airframe
 ![render57](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/646c22c4-e374-44d6-ac0f-87877a9a3229)
-https://github.com/Lemme-lab/Project-Airframe/assets/71924682/a8e7b534-06d8-4b83-96ec-8e22d63b84bf
 ![render59](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/7aafcdc3-8758-4472-8234-4ef7c5881dfe)
-![Render35](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/cc03e500-c1f4-47c4-b2bb-9dcce3c6bce0)
+![IMG_3053](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/83f1d933-ee97-4bca-aef9-81b796344c9b)
+![idk2 (1)](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/174d9c86-a782-402c-9f40-d455ebd8f1ef)
+![idk (4)](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/c0ff1934-5fe4-4696-9213-ace8d471f633)
+![idk3](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/526b04bb-4c5e-44aa-b727-c8f964d9b4d9)
+![IMG_3025](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/50e438e8-4756-424c-868c-67f0bfdfedbb)
 ![render48](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/e9c87f54-92d8-475b-8504-8d2cf418f53a)
 ![render61](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/1c1b4e0c-4dde-461f-a7b2-ccfb9a86e202)
 ![App](https://user-images.githubusercontent.com/71924682/227036885-2fcf2675-f2de-432f-a74a-1f8b804b1e94.png)
