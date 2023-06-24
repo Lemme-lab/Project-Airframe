@@ -4,7 +4,7 @@
 
 
 
-[![Watch the video](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/52c83d8f-e346-43a3-b1da-a9be66447743)](https://youtu.be/T-D1KVIuvjA)
+[![Watch the video]([https://github.com/Lemme-lab/Project-Airframe/assets/71924682/52c83d8f-e346-43a3-b1da-a9be66447743](https://www.youtube.com/watch?v=P--robBKSBY&t=2s))](https://youtu.be/T-D1KVIuvjA)
 
 ![render59](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/7aafcdc3-8758-4472-8234-4ef7c5881dfe)
 ![IMG_3053](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/83f1d933-ee97-4bca-aef9-81b796344c9b)
