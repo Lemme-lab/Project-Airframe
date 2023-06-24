@@ -3,7 +3,7 @@
 
 
 
-[![Watch the video]([https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg](https://i9.ytimg.com/vi_webp/P--robBKSBY/mqdefault.webp?v=6496f066&sqp=CLDk26QG&rs=AOn4CLD8e4PLIcoxvRun8iwXCSFmJXsLpg))]([https://youtu.be/T-D1KVIuvjA](https://www.youtube.com/watch?v=P--robBKSBY))
+[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
 
 ![render59](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/7aafcdc3-8758-4472-8234-4ef7c5881dfe)
 ![IMG_3053](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/83f1d933-ee97-4bca-aef9-81b796344c9b)
