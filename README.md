@@ -1,6 +1,10 @@
 # Project-Airframe
 ![render57](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/646c22c4-e374-44d6-ac0f-87877a9a3229)
-[![Watch the video](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/ad843410-7306-46cc-954f-5aa9d8cffaa3)](https://www.youtube.com/watch?v=P--robBKSBY)
+
+
+
+[![Watch the video]([https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg](https://i9.ytimg.com/vi_webp/P--robBKSBY/mqdefault.webp?v=6496f066&sqp=CLDk26QG&rs=AOn4CLD8e4PLIcoxvRun8iwXCSFmJXsLpg))]([https://youtu.be/T-D1KVIuvjA](https://www.youtube.com/watch?v=P--robBKSBY))
+
 ![render59](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/7aafcdc3-8758-4472-8234-4ef7c5881dfe)
 ![IMG_3053](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/83f1d933-ee97-4bca-aef9-81b796344c9b)
 ![idk2 (1)](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/174d9c86-a782-402c-9f40-d455ebd8f1ef)
