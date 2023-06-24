@@ -1,11 +1,6 @@
 # Project-Airframe
 ![render57](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/646c22c4-e374-44d6-ac0f-87877a9a3229)
-
-
-
-
 [![Watch the video](https://i.imgur.com/ZOLReDb.png)](https://www.youtube.com/watch?v=P--robBKSBY&t=2s)
-
 ![render59](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/7aafcdc3-8758-4472-8234-4ef7c5881dfe)
 ![IMG_3053](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/83f1d933-ee97-4bca-aef9-81b796344c9b)
 ![idk2 (1)](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/174d9c86-a782-402c-9f40-d455ebd8f1ef)
@@ -21,5 +16,5 @@
 ![Render31](https://user-images.githubusercontent.com/71924682/211921454-efc67dd0-3a86-407a-a53b-dbce7d059ead.png)
 ![Render32](https://user-images.githubusercontent.com/71924682/211921023-be5eaab6-67c7-4175-9fbb-dccf33d64313.png)
 ![render37](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/9e02ede3-a548-4d5c-a062-4ec8bbcb5581)
-![Render21_50](https://user-images.githubusercontent.com/71924682/206970466-ed6fe54d-37b1-4690-8290-bd404d770891.png)
+![1710stream-deck2 mp40171](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/47be3b13-c859-4db2-bc9a-ccdbffdd7fe3)
 ![Render43](https://github.com/Lemme-lab/Project-Airframe/assets/71924682/09d4c374-2d0c-455f-a919-4a59138ad10e)
