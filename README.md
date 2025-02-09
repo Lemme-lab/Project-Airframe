@@ -2,6 +2,8 @@
 
 ![244198878-646c22c4-e374-44d6-ac0f-87877a9a3229 (1)](https://github.com/user-attachments/assets/7a5e7fc0-9f43-4ed2-866d-ce484d9eea08)
 
+**Disclaimer** I haven't worked on this in ages. I never got to get all Parts working together. I would not suggest building it on your own at the moment. If you want to contribute feel free to do so. 
+
 **Project Airframe** is an open-source smartwatch designed to give developers and hobbyists full access to both hardware and software. With state-of-the-art sensors, wireless charging, GPS, and more, it’s a versatile tool for exploring wearable technology. Below, you’ll find everything you need to get started, from hardware specifications to software instructions.
 
 ## Table of Contents
